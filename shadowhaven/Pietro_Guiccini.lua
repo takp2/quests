@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings! Have you ever seen my portraits? I am an artisan and collector of portraitures. If you are looking for a portrait, have one to sell, or wish to commission a piece of art I will be happy to take a look.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -35,6 +35,7 @@ local RESPONSES = {
 	"",
 };
 
+---@param e NPCEventTimer
 function event_timer(e)
 	-- periodocally check if players have left the zone, then clear their quest status if so
 	if ( e.timer == "checkreset" ) then
@@ -59,6 +60,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 
 	local name = e.other:GetName();

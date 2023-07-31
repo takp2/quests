@@ -1,10 +1,12 @@
 --This simple script will depop the cliff golem when someone is spawning the glowing cliff golem for the Greenmist quest line. See Alchemist Granika's quest file for more details.
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 0) then
 		eq.depop_with_timer();
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

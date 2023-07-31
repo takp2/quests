@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Please do not harm me.  I am not the one who brought the outsiders to our land.  I am innocent and deserve to return to my people.");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "To open the canopic, I require the two Dai keys, the Dai skull canopic and 400 gold coins.";	

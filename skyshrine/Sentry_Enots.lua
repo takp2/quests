@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Halt, beyond lies the home of the Kin, servants of the mighty Yelinak.  Be forewarned, those who would be enemies to the Kin, shall find themselves fodder for the cubes.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local helmet = item_lib.count_handed_item(e.self, e.trade, {29062});

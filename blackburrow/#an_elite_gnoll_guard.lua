@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local sp = e.self:GetSpawnPointID();
 	local spawn = eq.get_entity_list():GetSpawnByID(sp);
@@ -5,6 +6,7 @@ function event_spawn(e)
 	eq.set_timer("depop",120000);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(not eq.is_paused_timer("depop")) then
@@ -15,6 +17,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop");
 	eq.depop_with_timer();

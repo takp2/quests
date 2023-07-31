@@ -1,8 +1,10 @@
 --This is just some flavor text for the failed crypt raider, who holds one of the scrolls for the seventh Greenmist quest.
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Say("Never.. to feel the mist.. again..");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

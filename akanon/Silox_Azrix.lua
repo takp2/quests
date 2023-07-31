@@ -1,11 +1,13 @@
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("gives you a crooked smile. 'Hello there, " .. e.other:GetCleanName() .. ". I'm doin some important 'meditations' to my god here. Maybe you can go somewhere else?'");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20694})) then

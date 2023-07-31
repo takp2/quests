@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("It is good to see our numbers growing on this land. Welcome! May your travels be as prosperous as mine have. There are many [new powers] to be gained from this land.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {19315, 19322, 19318, 19319});

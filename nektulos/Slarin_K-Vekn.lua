@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("peers at you with glazed eyes from beneath heavy eyelids. 'You do not seem to be near death. If you have come to the [Ultricle] to salvage from the dead like a scavenger wolf then go about your business and leave me to suffer.");

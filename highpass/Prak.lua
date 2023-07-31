@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("The boss might need some help!");
@@ -8,6 +9,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Yeah, hello. I'm Prak, co-owner of the Golden Rooster. If you're thirsty, we have some great imported ales at our bar. If you're looking for a little excitement, try your hand at a little King's Court. We aim to please, my friend.");
@@ -16,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

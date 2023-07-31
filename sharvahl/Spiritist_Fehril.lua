@@ -1,5 +1,6 @@
 --Code by Kagehi - edited by anubisrwml
 --Shar_Val_Cit is used to track you up to when you get your initiate cloak and beyond.--We use it once here, to determine that you should get back your Dar Khura recruit cloak instead,--if you lose it somehow.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("opens his eyes as he awakens from a deep meditaion, 'Hello, " .. e.other:GetCleanName() .. ", how might I be of assistance to you?");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

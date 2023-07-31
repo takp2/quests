@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ". I am Dralin K'Vekn. Several hundred years ago I was the Teir'Dal ambassador to the Combine Empire under Tsaph Katta. I was present when the traitorous Seru made his assassination attempt on Tsaph Katta and divided the Combine Empire into the two factions that exist to this day. I was forced to flee to Luclin with the Loyalist Combine in order to escape death at the hands of the [Inquisition]. Adjusting to a new life on Luclin with no others of my kind was a long, perilous, and often times lonely task. I do not regret it though, I have a beautiful wife and a healthy son now and this place is my home and the [Loyalists] my people.");

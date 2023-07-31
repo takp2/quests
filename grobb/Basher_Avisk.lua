@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("armor")) then
 		e.self:Say("Chain, plate, leather, Krung's Clubs and Junk inside you will find.  Grobb, in the center it be.");

@@ -1,6 +1,7 @@
 -- Starting quest for luclin smithing
 -- other npcs, repair orders : Khala_Dun_Jasir, Khala_Dun_Aihjin, Khala_Dun_Bokh, Khala_Dun_Koby
 -- other npcs, end of the quest : Master_Taruun_Rakutah
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say('Welcome to my shop. Please feel free to look around at the armor we have available. If you are looking for work, just let me know.');
@@ -29,6 +30,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local bloodling = 0;

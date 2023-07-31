@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, and welcome to my humble little shop. I sell and trade various goods for my fellow wizards of the Order of Three. My assistants, Hanlore and Drawna, specialize in magicians' and enchanters' goods and would be glad to help you, too.");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "All right. Remember, I need all three ingredients to test this spell out. Keep up the good work, " .. e.other:GetCleanName() .. ".";
@@ -36,15 +38,18 @@ function event_trade(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("repeat",350000);
  end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Drawna.. Are we all out of bat fur again?");
 	eq.signal(1051,1); -- NPC: Drawna_Opimsor
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Hmmm.. Let's see if we can find someone to help replenish our stock of [rat whiskers] and [bat fur]. I need these items for a new little [experiment] I'm working on.");
 end

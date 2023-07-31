@@ -24,10 +24,12 @@ local BAD_COORDS = {
 local cheaters = {};
 local cheatersToSlay = false;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("check", 10000);
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	table.insert(cheaters, e.signal);
 	if ( not cheatersToSlay ) then
@@ -37,6 +39,7 @@ function event_signal(e)
 eq.debug(tostring(e.signal));
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "kill_list" ) then
 		local i = #cheaters;

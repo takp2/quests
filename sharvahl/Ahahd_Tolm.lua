@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Welcome... Welcome... have a seat and let me know if you need anything.");
@@ -66,10 +67,12 @@ end
 
 
 local count = 0;
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("themoor",5000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	count = count + 1;
 	if(count == 1) then
@@ -107,6 +110,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

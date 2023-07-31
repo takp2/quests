@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("gomoz")) then
 		e.self:Emote("stops in suprise.");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 5) then
 		eq.set_timer(10,2000); --start dancing in 2s
@@ -25,6 +27,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == 10) then
 		--If I'd wanted a career in dancing, I'd have better hips
@@ -57,6 +60,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

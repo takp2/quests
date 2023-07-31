@@ -13,6 +13,7 @@ local QUEST_ITEMS = {
 	quest_helper:melee_boots(THURG_ARMOR.Plate_Boots, 31006), -- boots
 }
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) <= 3) then
 		if(e.message:findi("hail")) then	
@@ -39,6 +40,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	quest_helper:quest_turn_in(e, 3, QUEST_ITEMS, quest_helper.thurg_armor_success);
 end

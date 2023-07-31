@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ale you say? No ale here friend, I am a blacksmith. You'll have to speak loud and clearly by the way, I don't hear so well since the [incident]. Show me your slate if you're looking for work.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2877})) then --Acrylia Slate of Shar Vahl

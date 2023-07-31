@@ -1,14 +1,17 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:CastToNPC():SetNoQuestPause(true);
 	eq.set_timer("inifish",math.random(32000));
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Huh. what you want? Don' scare off da fishes. less you want me to toss you in with dem.");
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "inifish") then
 		eq.stop_timer("inifish");

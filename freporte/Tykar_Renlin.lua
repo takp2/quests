@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("lucan")) then
 		e.self:Say("That man is no just ruler. He has jailed me and my friend Zimel for merely begging.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local champagne = 0;
 	local morechampagne = 0;
@@ -39,6 +41,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;

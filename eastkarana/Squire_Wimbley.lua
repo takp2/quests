@@ -1,4 +1,5 @@
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -100) then --guessing on faction level, only tested at scowls

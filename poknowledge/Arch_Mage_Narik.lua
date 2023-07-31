@@ -1,5 +1,6 @@
 --Willamina's Needles/Planar Armor Exchange/Magician Tomes
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		if(e.other:Race() == "Dark Elf" or e.other:Race() == "Iksar" or e.other:Race() == "Troll" or e.other:Race() == "Ogre" or e.other:Class() == "Shadowknight" or e.other:Class() == "Necromancer") then
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {1239, 1240, 1241, 1242, 1243, 1244, 1245}); --Apothic Armor

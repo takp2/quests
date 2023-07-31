@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hai")) then
 		e.self:Say(string.format("Hello, %s, I am Felodious Sworddancer. A travelling historian and storyteller. Would you care to hear a [story]?",e.other:GetName()));
@@ -36,6 +37,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(math.random(100) < 25) then

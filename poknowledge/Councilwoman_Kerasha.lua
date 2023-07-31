@@ -1,4 +1,5 @@
 --Essences of Power
+---@param e NPCEventSay
 function event_say(e)
 	
 	if ( e.other:HasItem(16260) ) then -- Tiny Gold Fist
@@ -17,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 16266})) then --Power of the Planes

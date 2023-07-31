@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) < 6 and e.message:findi("vampyre slayer")) then
 		e.self:Emote("hands " .. e.other:GetCleanName() .. " his bloodied stake and rifles through his backpack. 'Here, hand me back my stake and you can have this brand new one that has been enchanted by the Praecantors of the Magus Conlegium.'");
@@ -13,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

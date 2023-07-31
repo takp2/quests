@@ -1,4 +1,5 @@
 --The drachnid spy is for the fifth quest in the Greenmist line. Once killed, he'll drop the Charasis Tome that we need.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks upon you with evil eyes and you hear a horrid chatter. Hairs rise from the spider's thorax. 'Greetings, creature. What a fine meal you would make!'");
@@ -7,10 +8,12 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.signal(84319,1); -- NPC: Hero_Goxnok
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

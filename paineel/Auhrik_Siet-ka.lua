@@ -1,5 +1,6 @@
 --BeginFile: Auhrik_Siet`ka.pl
 --Quest for Paineel - Auhrik Siet`ka: Neonate Cowardice
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("understand common")) then
 		e.self:Say("Of course you do. Now, listen carefully. It may be too much for your feeble mind to gather all at once, and I hate to repeat myself. Bring me one bat wing, one rat ear, one snake egg, and one fire beetle eye. Take this bag, and make sure it's sealed before you return it to me. Snake eggs spoil. Now, quit staring at me with your jaw hanging open like a dead codfish. I would have mistaken you for one, but dead codfish smell better. Haha!");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

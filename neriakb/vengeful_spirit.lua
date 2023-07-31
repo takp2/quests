@@ -1,15 +1,18 @@
 -- vengeful spirit - The Visiting Priestess
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	-- Allow the quest to reset
 	eq.set_timer("despawn", 6000000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("despawn");
 	eq.depop();
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

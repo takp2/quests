@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("kerra isle")) then
 		e.self:Say("Kerra Isle is found halfway between Erudin and Qeynos. There is a pride of cat people living on the small island. Unlike their cousins in Kerra Ridge, they are peaceful.");

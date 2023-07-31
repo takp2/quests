@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",300000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("valdanov")) then
 		e.self:Say("I have not seen Valdanov Zevfeer in many years. He came to me once when I was still newly reborn wanting to extract a vial of my blood.  When I refused he attacked me and extracted it against my will. I was still new and unfamiliar with my vampyric powers, Valdanov's [abilities] were far more developed than my own.");
@@ -17,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		eq.depop();

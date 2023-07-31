@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("H-hi.  I'm Tsilos.  I'm a swabbie.  That means I get to swab the decks.  We don't have decks any more so they only let me run paths in the snow.  I get to make lots of lines here and there so the other guys have nice places to walk on.  It's not a bad job, except for the yelling.");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Emote("shivers.  'Y-yes Cap'n.  I'm tough.  I'm a t-tough pirate..");
 end

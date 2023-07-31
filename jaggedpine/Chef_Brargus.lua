@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail") or e.message:findi("patty melt") or e.message:findi("grilled cheese sandwich") or e.message:findi("dryad pate")) then
 		if(e.other:GetFaction(e.self) < 6) then
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

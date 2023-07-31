@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Sorry friend. I have nothing to sell at the moment. These taxes imposed by the Freeport Militia and the Coalition of Tradefolk take a heavy toll on us poor folk.");
@@ -27,6 +28,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

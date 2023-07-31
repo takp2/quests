@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("sign the restraining order")) then
 		e.self:Say("I knew my wicked ways would eventually come to an end. Very well, then. Hand me the legion order and I shall sign it.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

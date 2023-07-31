@@ -1,4 +1,5 @@
 --NPC ID: 86097
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. ". Don't you think this would be a wonderful place to perform a symphony?");
@@ -17,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

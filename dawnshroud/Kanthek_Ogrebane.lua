@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ". Welcome my friend! Please sit and rest yourself. There are many [predators] around. I suggest you rest a bit before continuing your journey.");

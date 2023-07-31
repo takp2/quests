@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ". I am Jaylia the Faithful, daughter of Raiston and Launa Lightmist.  I was born in Qeynos while it was under the rule of Antonius Bayle III.  My parents were both paladins of [Rodcet Nife] and protectors of the city.  They saw to it that I learned the ways of the [Holy Knights].");

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the Spires of Innoruuk.  May your destiny be paved with the Words of Innoruuk.  What is it you seek? [Healing]?  [Curing of disease]?  [Curing of poison]?  That is my divine duty.  So commands Master Zexus.");
@@ -60,6 +61,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

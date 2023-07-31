@@ -1,17 +1,21 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",1800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Emote("chuckles to himself as he notices blades of grass disintegrate beneath his feet. He stares out over the water as if watching for some sign.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("corruption")) then
 		e.self:Emote("grins wide at you. 'Corruption? I know nothing of corruption.' He goes back to staring out over the water.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20696, item2 = 20686, item3 = 20685, item4 = 20687})) then

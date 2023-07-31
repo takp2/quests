@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("And hail to you as well. Please, have a look at my inventory of goods. I have many useful items to aid you with your exploration. Basic supplies of all sorts. I would suggest you at least purchase some bandages, there are many hostile creatures that surround us.");
@@ -66,15 +67,18 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",82000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "1") then
 		local rand = math.random(1,3);

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ahem....yes, hail. I suppose that would suffice in this case. Well, then, hail to you, sir. I am Lorekeeper Gundlt, master keeper of etiquette. It is my duty, as ordained by the Grand Historian, to keep all records and rules on all royal audiences and dealings.");

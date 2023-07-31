@@ -3,6 +3,7 @@
 -- NPC: Lasiya (201362)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 23 and e.other:GetLanguageSkill(23) >= 100) then
         if(e.message:findi("Hail")) then

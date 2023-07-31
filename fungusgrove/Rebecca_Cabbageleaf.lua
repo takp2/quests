@@ -1,5 +1,6 @@
 -- Xanthe's earring of nature and earring of the solstice - spell: protection of the cabbage
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("seems lost in thought and looks up only briefly from her work. 'Oh, hello " .. e.other:GetCleanName() .. ", welcome to the New Thicket Inn! If you'll excuse me, I'm a bit busy copying this [scroll]. I'll be with you in a moment to chat, or to trade if you've come about the [earring]'");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

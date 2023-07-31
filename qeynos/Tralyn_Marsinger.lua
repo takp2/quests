@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ". If you are interested in helping the League of Antonican Bards by delivering some mail then you should talk to my wife, Eve.");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 18150}) or item_lib.check_turn_in(e.self, e.trade, {item1 = 18151}) or item_lib.check_turn_in(e.self, e.trade, {item1 = 18153}) or item_lib.check_turn_in(e.self, e.trade, {item1 = 18154})) then

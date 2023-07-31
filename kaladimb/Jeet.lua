@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFaction(e.self) < 8) then
@@ -33,6 +34,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "What are you?! Some kinda' slacker?! I told you to return with FOUR rat pelts!";
@@ -75,6 +77,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 	    e.self:Say("I am working on it, Mater!!");

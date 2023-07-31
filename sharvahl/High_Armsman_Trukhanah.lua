@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.other);
 	if(e.message:findi("Hail")) then
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "This item, by itself, means nothing to me.";

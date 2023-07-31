@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. "! I have the finest Skyiron Ores for sale! Feel free to examine the quality of my ores! I am also charged with teaching members of the Legion techniques to [work Skyiron], craft [Skyiron Targ Shields], and [Cabilis Scale Mail].");

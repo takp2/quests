@@ -6,6 +6,7 @@
 -- give hime : spectacles, forsaken pariah mask, Evergreen Ivy Ringband, Green Death Rum
 -- Necro skull cap 5, returns A metal key, you have to give it to Tin Banker Assistant
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12848, item2 = 12850, item3 = 12851, item4 = 12610}, 0)) then

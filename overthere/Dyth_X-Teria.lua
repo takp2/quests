@@ -1,6 +1,7 @@
 --Dyth_X-Teria.pl
 --Brain Bite (The Overthere)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("appears to be the local master of wizardry. His garb clearly comes from the dark city of Neriak as it bears a black sun emblem.");
@@ -19,6 +20,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Only three souls will get you my knowledge, wizard.";	

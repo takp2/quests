@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	local n = math.random(1, 3);
 	

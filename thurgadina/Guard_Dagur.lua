@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings and welcome to Thurgadin, " .. e.other:Race() .. ". Ye best watch yer step on the bridge there, it can be a bit slippery."); 

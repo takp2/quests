@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("yoohoo",4200000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Yoohoo!");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there. sweetie!!  How about letting me dance for you?  Two gold and I will do a little dance for you.");
@@ -14,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Har har har! Yu funy lukking. Oooo.. do u hav doze [smarty writin's]?");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {19269, 19238, 19264, 19272});

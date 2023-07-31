@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetRace(69);
 	e.self:SetTexture(1);

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings.  May [Rodcet Nife] keep you healthy and watch over you in times of disease.");

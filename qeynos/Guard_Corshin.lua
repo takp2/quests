@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "!  Guard Corshin Kiniss, at your service. You should be careful in Qeynos after dark. We have had several [bodies] wash up under the docks over the past few weeks. We wouldn't want anything to happen to you.");
@@ -37,6 +38,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("Yes, sir!");

@@ -2,6 +2,7 @@
 
 local ADD_TYPES = { 162115, 162112, 162114, 162113, 162121, 162119, 162122, 162120, 162118, 162116, 162117, 162111 };
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("check", 10000);
@@ -10,12 +11,13 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "check" ) then
-	
+
 		local elist = eq.get_entity_list();
 		local npc;
-		
+
 		for _, typ in ipairs(ADD_TYPES) do
 			npc = elist:GetMobByNpcTypeID(typ):CastToNPC();
 			if ( npc and npc.valid and npc:GetZ() < 240 ) then

@@ -1,5 +1,6 @@
 -- #Lady_Nevederia NPCID: 124076
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.spawn2(124157, 0, 0, -795, 564, 129, 104); -- a_guardian_spirit 
 end

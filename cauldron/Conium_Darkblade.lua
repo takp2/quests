@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("You seek Conium Darkblade, do you? Often I am here. To test my [wasp poison], yes. Fewer aqua gobs there now are. Ha! A true rogue am I with no leader or guild. Just the wind and shadows and much treasure to be had.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "There shall be no wasp venom until three giant wasp venom sacs and 30 gold coins cross my palm."

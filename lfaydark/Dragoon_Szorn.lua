@@ -4,12 +4,14 @@
 --Cleaned up what was there and added a response to quest text -Kilelen
 
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("missing shipment")) then
 		e.self:Say("Seek out Ennixy and tell her [hate be my guide]. She typically works from her homeland in the steamfont mountains.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 19030})) then--Crate of Teir`Dal Provisions

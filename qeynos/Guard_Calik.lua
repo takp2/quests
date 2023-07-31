@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "!  Have you tested your mettle on the Grounds of Fate yet?  They are here in South Qeynos and there is always someone there looking for a challenging opponent.  Beware, though, once you are on the arena floor you are fair game to anyone who wishes to have your head on their pike.");

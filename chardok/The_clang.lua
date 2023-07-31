@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local xloc = e.self:GetX();
 	local yloc = e.self:GetY();
@@ -5,6 +6,7 @@ function event_spawn(e)
 	eq.set_proximity(xloc - 25, xloc + 25, yloc - 25, yloc + 25, zloc - 3, zloc + 6);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	e.self:Emote("of picks and shovels can be heard above the constant crack of whips.");
 	eq.depop_with_timer();

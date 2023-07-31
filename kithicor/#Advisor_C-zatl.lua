@@ -1,8 +1,10 @@
 -- Rogue Epic NPC -- --Advisor_C`zatl
+---@param e NPCEventSay
 function event_say(e)
 	e.self:Emote("ignores you.");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

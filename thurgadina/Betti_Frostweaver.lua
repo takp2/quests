@@ -1,6 +1,7 @@
 -- sixth coldain prayer shawl
 
- function event_say(e)
+ ---@param e NPCEventSay
+function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well, hello there, dear.  It sure gets cold here, doesn't it? Perhaps I can interest you in a sewing pattern to pass the time and keep you warm.");
 	elseif(e.message:findi("embroidered")) then
@@ -13,6 +14,7 @@
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

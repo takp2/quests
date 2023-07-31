@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("puts his guard up and glances from left to right.  'Be on the lookout for Sabertooth Cats.  Many troopers have been wounded by their sharp, piercing teeth.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

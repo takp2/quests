@@ -1,10 +1,12 @@
 --Zone: Overthere  NPC: Tektite
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("tektite")) then
 		e.self:Emote("makes the sound of grinding rocks as he moves his mouth. You cough uncontrollably from the dust cloud it creates. 'YOU SEEK TO OWN ME?' ");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 10011, item2 = 10011})) then

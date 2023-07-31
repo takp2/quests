@@ -1,4 +1,5 @@
 --Tome of Dark Power
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("regards you with narrow eyes, then smiles. 'Greetings. I am Councilman Srethix of Kartis. It is good to see some new visitors to our little corner of the cosmos. I certainly hope you can find what you are looking for here in the Myrist library. Unfortunately, I'm sorry to say that I am quite busy seeking some rare books at the moment, and I do not have much time for light conversation. Otherwise, I believe my aid Garuuk may have some chores he could use help with. That is, if you feel up to it.'");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28741})) then--Locked Tome of Dark Power

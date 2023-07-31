@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(71107,0,0,e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading()); --Bazzazzt --3-1
 end

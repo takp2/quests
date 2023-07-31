@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",80000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Hey there! Come take a look at my torches. It beats hunting in the dark. I have food and bandages.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hail wanderer. I have basic supplies available if you are interested. Have a look.");
@@ -72,6 +75,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

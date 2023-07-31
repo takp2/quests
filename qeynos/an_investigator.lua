@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.self);
 
@@ -26,6 +27,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 18289})) then
@@ -49,6 +51,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade, e.text)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		e.self:Say("Our time has run out. You have failed.");
@@ -57,6 +60,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("We have several witnesses that have signed affidavits swearing to the fact that they had witnessed you raising an undead servant in the hills outside the city several nights past. Do you deny this?");
@@ -70,6 +74,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.delete_global("invest_badge");
 end

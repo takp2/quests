@@ -1,9 +1,11 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(115000)) then
 		eq.depop(115000);
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ahhh, hello there. What can I do for you, " .. e.other:GetCleanName() .. "");

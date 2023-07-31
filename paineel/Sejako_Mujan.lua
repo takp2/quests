@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if((e.message:findi("Hail")) and (e.self:GetX()==924) and (e.self:GetY()==958)) then
 		e.self:Say("Shhhh....keep your voice down lest you wake Alaria. We can [speak elsewhere] if you wish.");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I require all four titan samples in order to pursue the research I desire.";

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good ta see ya! Now start showin' these poodlewalkers how a real fish drinks!");
@@ -19,6 +20,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	local rando = math.random(2);
 	e.self:Say("You shall never take me alive!!");
@@ -27,6 +29,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local moonstone = 0;
 	local item_lib =require("items");

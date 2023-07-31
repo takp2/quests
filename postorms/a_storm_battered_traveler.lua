@@ -1,9 +1,11 @@
 local onetime
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	onetime = 1;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.self:GetAppearance() == 3) then

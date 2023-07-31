@@ -1,5 +1,6 @@
 local bug = 0;
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		e.self:Emote("erupts, loosing a swarm!");

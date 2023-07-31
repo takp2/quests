@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. "!  These are exciting times indeed!  Tanalin and myself have been working on some new [mithril armor], using a few new techniques introduced to us by... A friend.'  Bedida looks hesitant, then smiles again.  'Very exciting indeed!'");

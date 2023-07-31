@@ -8,6 +8,7 @@ function event_waypoint_arrive(e)
 	end
 end
  
+---@param e NPCEventEnter
 function event_enter(e)
 	e.self:Emote("'s spirit moves you to another land ...");
 	eq.SelfCast(2279);

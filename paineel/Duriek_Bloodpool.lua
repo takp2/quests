@@ -1,4 +1,5 @@
 -- Part of SK Epic 1.0 Quest
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) < 7) then
 		if(e.message:findi("apprentice")) then
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local charfaction = e.other:GetFactionValue(e.self); -- Faction: True Spirit

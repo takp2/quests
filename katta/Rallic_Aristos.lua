@@ -1,5 +1,6 @@
 -- The Acrylia Plans
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met " .. e.other:GetCleanName() .. "! I am Rallic Aristos. Governor of trade and economy here in Katta Castellum. I know it sounds like a lot of parchment pushing and coin counting but maintaining good trade relations with the various Houses of Shadow Haven and the haggling Vah Shir of Shar Vahl is not as easy at it may sound. Then there is the issue of the [acrylia mines] in the Tenebrous Mountains.");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

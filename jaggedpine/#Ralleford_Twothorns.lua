@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the Twothorn's residence. My name is Ralleford and this is my wife Diedra and daughter Donna. Things have been a bit [tense] around here lately.");

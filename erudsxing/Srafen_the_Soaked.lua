@@ -1,10 +1,12 @@
 local counting;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("DillonSpawn",170000);
 	counting = 0;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then -- Part of Shaman Epic 1.0
 		e.self:Say("Why hello there! Ahh, it's good to see a new face down [here]. So you've come to [wait] with [us] eh? That is splendid! It's been getting very boring lately.");
@@ -22,6 +24,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 0) then
 		e.self:Say("Hey there, Dillon! Good to see you again, I think.");
@@ -30,6 +33,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if (e.timer == "DillonSpawn") then
 		counting = counting + 1;

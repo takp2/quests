@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("glances over from his books for a moment. 'Greetings. Have you come to the realm of the tranquil to study as have? The chaotic energy of lightning has caught my interest of late. I've been trying to understand the magics that further refine my control of lightning and [thunder].");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -300) then -- this is within 100 faction of being completely accurate, tested at -400 and -200, -400 was too low and -200 worked
@@ -61,6 +62,7 @@ function event_waypoint_arrive(e)
 	
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib =require("items");
 	local text1 = "Yea, this is good, but remember, I need 3 gold and 2 pieces of rat fur to make a cap for you.";

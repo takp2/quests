@@ -1,5 +1,6 @@
 --Lord Korzin is for the Greenmist quest and administers the third quest in the line.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What is it you seek? [Eternal suffering]?");
@@ -24,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "You will be rewarded with the knight's khukri when I have possession of your squire's khukri and the Skull of Torture.";	

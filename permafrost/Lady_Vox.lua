@@ -5,6 +5,7 @@ local SpawnY = 0;
 local SpawnZ = 0;
 local SpawnH = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	SpawnX = e.self:GetX();
 	SpawnY = e.self:GetY();
@@ -15,13 +16,15 @@ function event_spawn(e)
 	eq.set_proximity(SpawnX - range, SpawnX + range, SpawnY - range2, SpawnY + range, SpawnZ - 20, SpawnZ + 50);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	if(e.other:GetLevel() > 52 and e.other:Admin() < 80) then
 		e.other:Message(4,"I will not fight you, but I shall banish you!");
-		e.other:MovePC(30,-7024,2020,-60.7,0); -- Zone: burningwood 
+		e.other:MovePC(30,-7024,2020,-60.7,0); -- Zone: burningwood
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		eq.set_timer("1",1000); --a 1 second leash timer.
@@ -31,6 +34,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "1") then
 		if(e.self:GetX() < -431 or e.self:GetX() > -85 or e.self:GetY() < 770 or e.self:GetY() > 1090 or e.self:GetZ()  < -50) then
@@ -59,6 +63,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		e.self:Shout("The Sleeper stirs!  A glorious new age for Norrath is about to begin, and my exile is about to end!");

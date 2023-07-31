@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("wipes his hands on his trousers leaving a fresh streak of grease. 'Ye come ta see my collection of machinery supplies, have ye, swabby?'");

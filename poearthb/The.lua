@@ -1,6 +1,7 @@
 local INVIS_MEN_SPAWNIDS = { 369487, 369488, 369489 };
 local GINTO_SPAWNID = 369491;
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		local elist = eq.get_entity_list();
@@ -13,4 +14,5 @@ function event_signal(e)
 	end
 	
 	eq.update_spawn_timer(GINTO_SPAWNID, 1000);
+	eq.csr_notice("PoEarthB Gintolaken spawned");
 end

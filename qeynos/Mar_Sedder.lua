@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ".  What brings you to the Tin Soldier?  We have the finest in previously owned weapons and armor.  Feel free to browse.");

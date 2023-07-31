@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 11700000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");
@@ -14,8 +17,9 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
-	eq.zone_emote(0, "Dead silence reigns throughout the crypt as the heroes stand victorious over the High Priests lifeless body. Moments later a soft almost inaudible voice echoes through your mind whispering, 'Free us. Free us you must.' Then a wretched creatures appears out of nowhere shaking and muttering gibberish.");	
+	eq.zone_emote(0, "Dead silence reigns throughout the crypt as the heroes stand victorious over the High Priests lifeless body. Moments later a soft almost inaudible voice echoes through your mind whispering, 'Free us. Free us you must.' Then a wretched creatures appears out of nowhere shaking and muttering gibberish.");
 
 	eq.unique_spawn(200267, 0, 0, 309, 330, -72.122, 128); -- Tarkil_Adan
 	eq.signal(200267, e.killer:GetID()); -- e.killer for death_complete is somebody with kill rights, not death blow

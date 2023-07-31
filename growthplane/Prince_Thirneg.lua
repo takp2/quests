@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Salutations, " .. e.other:GetCleanName() .. "! I am the Prince of the Tunarean Court! What brings you to this most sacred of all Tunares blessed creations?");

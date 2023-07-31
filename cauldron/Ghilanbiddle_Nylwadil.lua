@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	fac = e.other:GetFaction(e.self);
 	
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "The deal was - an article of Klunga's and his blood along with my fee of 100 gold coins and you will have his resurrection."
@@ -34,6 +36,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade);
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Ha!! One like that one stands no chance within this realm. The goblins shall skin him alive!!");
 	eq.signal(70005, 5); -- NPC: Elmion_Hendrys

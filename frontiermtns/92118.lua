@@ -1,4 +1,5 @@
 --This Iksar slave is actually Veltar, one of Master Rinmark's students. We interact with him and grant him his freedom in order to move further in the monk shackle quest line that eventually culminates in the Whistling Fists
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("seems to have lost all hope. He sadly looks to the ground. His shackles are different than the others you see in this cell. One is definitely steel and not of goblin design. The other is made of an unfamiliar metal.");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12839, item2 = 4194, item3 = 4195})) then

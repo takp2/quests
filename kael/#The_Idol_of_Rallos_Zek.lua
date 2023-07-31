@@ -1,5 +1,6 @@
 -- On death, spawns the Avatar of War
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.set_global("Avatar","1",7,"F");
 	eq.delete_global("Idol");

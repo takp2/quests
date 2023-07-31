@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("pounces at you, grabbing you by your throat. 'What are you doing here? Who sent you?'");

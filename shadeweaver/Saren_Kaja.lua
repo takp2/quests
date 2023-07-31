@@ -1,4 +1,5 @@
 --Quest: Chialle's Friendship Ring
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello there friend, would you like to buy some of my delicious [Payala] goodies?");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Oh thank you ever so much! You are truly as sweet as the gift you bring.";

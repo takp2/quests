@@ -1,5 +1,6 @@
 -- part of 7th coldain prayer shawl
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("A ring or necklace for yer sweetheart, traveler? It'll be sure ta brighten their day and ye'll not find finer craftmanship this side o' the Gretespeign.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

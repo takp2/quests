@@ -6,6 +6,7 @@
 -- Author: a_sewer_rat
 ------------------------------------------------------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello " .. e.other:GetCleanName() .. ". Have you ever peered beyond our little world? Somewhere out there in the vast darkness is a world filled with great technology and adventure. Our people should concentrate on reaching these distant worlds beyond the sparkling skies.");

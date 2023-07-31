@@ -1,5 +1,6 @@
 --The enslaved iksar is part of the Greenmist quest line, and is for the seventh quest in the series.
 --He gives a bit of flavor through most of his speech, but is also used to turn in items for a part of the Stupendous Tome.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks up at you. You can tell his spirit is broken. His scars speak of a severe beating.");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "Oh no!! The bargain was, you bring me the keys to the main gates and the pen key to cell one.";		

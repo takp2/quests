@@ -1,4 +1,5 @@
 -- A_feeling NPCID: 124140
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local ex = e.self:GetX();
 	local ey = e.self:GetY();
@@ -6,6 +7,7 @@ function event_spawn(e)
 	eq.set_proximity(ex - 30, ex + 30, ey - 30, ey + 30, ez - 30, ez + 30);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	e.other:CastToClient():Message(0,"A feeling of danger washes over you.");
 end

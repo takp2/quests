@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("roar",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "roar") then
 		eq.stop_timer("roar");
@@ -13,6 +15,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(not eq.is_paused_timer("depop")) then
@@ -23,6 +26,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.unique_spawn(100024,0,0,e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading());
 end

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What are you doing back here?! I cannot stand it when the [children] allow their friends to run rampant on our estate. Please leave!");

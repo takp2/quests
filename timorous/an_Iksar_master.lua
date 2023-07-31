@@ -1,4 +1,5 @@
 --This iksar master is actually Master Rinmark, for the monk shackle quest line that eventually culminates in the Whistling Fists
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("is humming and chanting softly. He seems oblivious to your presence.");
@@ -26,6 +27,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12815})) then

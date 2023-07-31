@@ -1,6 +1,7 @@
 --Loveal_S-Nez.pl
 --Sir Lindeal's Testimony/Thex Mallet/SK Trainer
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("What is this I see before me? A would-be hero of the Dead? You reek of false bravado. I have seen others much stronger than you meet their fate at the end of a blade. I see no reason to continue our conversation. How can one such as you assist with my [delegated duties]?");
@@ -54,6 +55,7 @@ function event_say(e)
 		e.self:Say("Have you not been educated in the ancient elven language? The three races of elvenkind are designated thus: Teir'Dal are dark elves, Koada'Dal are high elves and Feir'Dal are wood elves.");
 	end
 end
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

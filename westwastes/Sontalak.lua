@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Why are you here, " .. e.other:Race() .. "? There is nothing you can gain from this land but an unsung death at the talons of your betters. If you want to prove your worth to Dragonkind, it will take more than slaying a few giants to accomplish it. Far more.");

@@ -1,8 +1,10 @@
 --Dharr's Lure Quests
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",95000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "1") then
 		local rand = math.random(8);
@@ -33,6 +35,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Step up. step up! Please take a moment to purchase some supplies from me. Times are hard and my [luck] has been bad.");
@@ -103,6 +106,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 3648, item2 = 3648, item3 = 3648, item4 = 3648})) then

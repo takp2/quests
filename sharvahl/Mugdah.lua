@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oi there. Our alchemists have developed some deadly toxins to help us keep our enemies at bay. Be careful what you touch, some of that stuff can kill you in seconds. I have a few for sale if you've got the coin for them.");
@@ -64,6 +65,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local sp = e.self:GetSpawnPointID();
 	local spawn = eq.get_entity_list():GetSpawnByID(sp);
@@ -11,6 +12,7 @@ function event_death(e)
 	spawn:SetRespawnTimer(3000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Grimror no have time ta talk. Gots stuffs ta do.");
@@ -26,6 +28,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Grimror not thupeed! Dis not four!";

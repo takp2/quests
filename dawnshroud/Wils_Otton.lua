@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("forest ravager")) then
 		e.self:Say("I can't believe Jon mentioned that to you. I'll deal with him myself. If you want to help us kill the forest ravagers then you must first find Carre Harger. Bring this note to him. He'll get you started.");
@@ -5,6 +6,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -15,6 +17,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Quiet yourself little brother!");
 end

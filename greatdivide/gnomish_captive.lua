@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",300000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Uh, hi. Hey, that was great work and all. I couldn't believe that. Knowing that bear, I was sure my time was up. I'm heading back to Ak'Anon. I've had enough of pirates, mountains, snow, and bears ten times my size. If you want a map to get back you can have it.");
@@ -12,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop");
 	eq.depop();

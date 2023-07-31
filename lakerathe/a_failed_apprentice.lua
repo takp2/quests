@@ -1,5 +1,6 @@
 -- Necromancer Epic NPC -- a_failed_apprentice
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(51144,0,0,-1518.9,347.6,53,31):AddToHateList(e.other,1);
 end

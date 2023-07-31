@@ -1,5 +1,6 @@
 -- Friend of the Kin
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

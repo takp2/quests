@@ -1,6 +1,7 @@
 local CONTROLLER_TYPE = 215419; -- POACastellanController
 local INLOKHER_TYPE = 215409; -- #Inlokher_the_Warlord
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 
 	eq.signal(CONTROLLER_TYPE, 1);

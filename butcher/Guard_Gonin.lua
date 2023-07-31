@@ -1,8 +1,10 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("You mean your stench will soon march upon the land!");
 	eq.signal(68209,1); -- NPC: Guard_Kyte
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, friend! Welcome to Fort Gonin. Home to me and my slow-witted brother, Kyte.");

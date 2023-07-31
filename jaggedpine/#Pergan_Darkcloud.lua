@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ". My wife Nerdala and I have been in the business of making delicacies from the fresh ingredients available locally in our forest. Well, really my wife is the better cook but I'm pretty good at [making Noodles].");

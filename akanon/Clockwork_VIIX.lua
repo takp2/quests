@@ -1,5 +1,6 @@
 -- Test of Enlightenment - enchanter epic - start of quest
 
+---@param e NPCEventSay
 function event_say(e)
 	if (e.message:findi("are you mizzle")) then
 		e.self:Say("Oh hello! I'm Mizzle, that I am. I bet you want to be given true clarity, don't you?");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if (item_lib.check_turn_in(e.self, e.trade, {item1 = 10604})) then

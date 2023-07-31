@@ -1,10 +1,12 @@
 -- Use invis men to indicate kills so Ginto can spawn if zone crashes between Chiefan kills
 local INVIS_MAN_ID = 369487;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("check", 1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer(e.timer);
 	if ( eq.get_entity_list():IsMobSpawnedByNpcTypeID(222009) ) then -- A_Stonefist_Clansman
@@ -13,6 +15,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.get_entity_list():GetSpawnByID(INVIS_MAN_ID):GetNPC():Depop(true);
 	eq.signal(222034, 1);

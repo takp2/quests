@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to Gord's Smithy! What brings you to our shop this good day? Is it our lavish assortment of weapons? Or perhaps it is to learn the art of the [seafarers' buckler] and [seafarers' weapons]?");

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met, " .. e.other:GetCleanName() .. ". My name is Lashun Novashine and I am a humble priest of [Rodcet Nife], the Prime Healer. I wish to spread His word to every corner of Norrath. My job gets more difficult each day with so many so willing to take lives rather than preserve them.");
@@ -21,6 +22,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	-- experience reward verified through live data

@@ -1,13 +1,16 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",4800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.set_global("sirran","6",3,"M20");
 	eq.spawn2(71058,0,0,234,-1078,812,192); --Sirran the Lunatic

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("HA! Greetings there, " .. e.other:GetCleanName() .. "!  How are ya this fine day?  Me?  I'm doing all right.  Guard duty down here always reminds me of home.");
@@ -8,11 +9,13 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	-- Signal from Beur_Tenlah
 	e.self:Say("Bah! Don't listen to this fool. Listen, I've something a little more important for you to do than buy ales. I need you to take a [message] to my friend Janam over in West Freeport.");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

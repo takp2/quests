@@ -2,6 +2,7 @@
 
 local Z_LEVEL = 100; -- if boss is below this Z, cazic touch players
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("cheat_check", 120000);
@@ -11,23 +12,24 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "cheat_check" ) then
-	
+
 		if ( e.self:GetZ() < Z_LEVEL ) then
 			eq.stop_timer(e.timer);
 			eq.set_timer("kill_player", 500);
 			e.self:CastSpell(1948, e.self:GetID(), 0, 1); -- Destroy
 		end
-		
+
 	elseif ( e.timer == "kill_player" ) then
-	
+
 		local hl = e.self:GetHateList();
 		for ent in hl.entries do
 			if ( ent.ent:IsClient() ) then
 				e.self:CastSpell(982, ent.ent:GetID(), 0, 1); -- Cazic Touch
 				return;
 			end
-		end		
+		end
 	end
 end

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail " .. e.other:GetCleanName() .. ".' With a concerned look, Krystiana motions you to come closer.  'It is my husband, Draan - he has recently been suffering terrible [nightmares].");

@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",390000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Where am I? Oh god no, please let this be a simple nightmare. Please don't hold my withering soul here any longer!  Who are you? Why have you freed me? Please tell me it is over!");
@@ -12,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -21,6 +24,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Emote("suddenly clasps his hands over his ears and wails. he begins to fade away until all that is left is the echo of his tormented screams.");
 	eq.depop();

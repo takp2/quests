@@ -1,8 +1,10 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:Say("Well met again, Srafen. How goes it?");
 	eq.signal(98046,0); -- NPC: Srafen_the_Soaked
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then -- Part of Shaman Epic 1.0
 		e.self:Say("Hey Srafen, who is this weirdo talking to me? Or is it another one of those funny illusions Froham keeps talking about?");
@@ -16,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if (e.timer == "DillonDepop") then
 		eq.depop();
@@ -23,6 +26,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 0) then
 		e.self:Say("Again? Oh I don't know Srafen, I don't want to [bore] our company, even if it is an illusion.");

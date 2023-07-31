@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote(" bows at the waist, his manner sincere and regal with the soft smile upon his lips. ''Greetings and good day " .. e.other:GetCleanName() .. ", I trust that [you are well]?");

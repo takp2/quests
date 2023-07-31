@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("checking",1600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "checking" and not e.self:IsEngaged())then
 		e.self:Say("Checking Master.");

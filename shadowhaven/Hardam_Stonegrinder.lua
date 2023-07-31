@@ -1,5 +1,6 @@
 -- Hardam's Goods
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("In need of some ores or other mining supplies? Well step right up, I got everything ye could possibly need! Also I'll have more supplies coming in as soon as I can get some dern time to deliver my [payment] to the commissioner.");
@@ -15,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("glanoxx sent me")) then
 		e.self:Say("So you've been talking to Elder Glanoxx eh? The disease has addled his mind, claiming gods speak to him. Nothing more than fever dreams if you ask me. Sometimes though... one could almost hope it was true. No! The fanatics will not catch me with unclean thoughts. If only there were some way to take advantage of the weakness I've discovered.");

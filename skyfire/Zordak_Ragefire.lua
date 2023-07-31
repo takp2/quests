@@ -1,8 +1,10 @@
 -- EPIC CLERIC -skyfire-
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(91006,0,0,e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading()); -- Zordakalicus_Ragefire
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

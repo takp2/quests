@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	-- on death of soul carrier two a essence carrier spawn
 	eq.spawn2(71070,0,0,e.self:GetX()+10,e.self:GetY(),e.self:GetZ(),e.self:GetHeading()):AddToHateList(e.other,1);

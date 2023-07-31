@@ -10,6 +10,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e) 
 	if(e.message:findi("Hail")) then
 		e.self:Say("Ahoy. mate!! The name's Fiddy Bobick! Perhaps you've heard of me.. the greatest halfling to sail the seas of Norrath? I have been to the North. South. East and West. and thank Prexus. I have survived it all!  Why I have returned to this little hollow is a wonder to me. Obviously. the salty air finally got to my brain!");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
  
+---@param e NPCEventTrade
 function event_trade(e)
 local item_lib = require("items");
 

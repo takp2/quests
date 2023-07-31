@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("playdead",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "playdead") then
 		e.self:SetAppearance(3);
@@ -13,6 +15,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

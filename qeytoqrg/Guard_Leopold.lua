@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ". You had best keep moving. One who stands around too long in Qeynos Hills tends to get surprised by vicious creatures.");

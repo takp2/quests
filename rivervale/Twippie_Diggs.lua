@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say(string.format("What a lovely day it is, %s!  You look rather sunburned!'  Twippie winks at you.  'I've some fine leather armor for sale today, or perhaps I could bend your ear with a little [learning]?", e.other:GetCleanName()));

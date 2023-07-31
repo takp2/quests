@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",120000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "1") then
 		local rand = math.random(4);
@@ -20,6 +22,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings friend. Have a look at all this delicious food. If you have any questions about them just ask! That's what I'm here for.");
@@ -96,6 +99,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

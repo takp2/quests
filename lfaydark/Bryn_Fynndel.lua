@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("morin sent me")) then
 		e.self:Say("Morin Shadowbane, the great ranger, sent you to assist us?  A strong ranger you must be if he has sent you personally.  There is a great evil stalking the land, and it has spread its tendrils into Kithicor Forest.  We believe the [shadowed men] are involved with this, somehow.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

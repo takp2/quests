@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "! I am Magistrate Broote Malicus of the Loyalist Combine Empire. Have you come to me to learn of the Vah Shir or for another matter?");

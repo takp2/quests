@@ -1,6 +1,7 @@
 local SLEEPER_TYPE = 128094; -- #The_Sleeper
 local SHOUT_TYPES = { 114618, 114508, 114435, 114564, 114434, 114501, 114014 };
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		eq.debug("Sleeper timer started");
@@ -22,6 +23,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer(e.timer);
 	if ( e.timer == "sleeper" ) then

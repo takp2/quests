@@ -9,10 +9,12 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Just get me the tart and put your eyes back in your sockets or I'll pry them out for good!");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= 0) then -- need exact faction
@@ -37,6 +39,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

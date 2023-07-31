@@ -1,5 +1,6 @@
 local s1, s2, s3;
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 3 ) then -- from #Breddan_Rutyl
 		s3 = true;
@@ -9,6 +10,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if ( s2 and s3 ) then
 		eq.depop_with_timer(200007); -- #_Carprin_Deatharn
@@ -20,15 +22,18 @@ function event_death_complete(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	s1, s2, s3 = false, false, false;
 	eq.set_timer("depop", 800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");

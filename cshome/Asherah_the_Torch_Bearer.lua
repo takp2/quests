@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings! Welcome to Sunset House, enjoy your stay, and the solace that our home provides. I am Asherah the Torch Bearer guardian of this realm, if you ever need me or want to chat I can be found patrolling the grounds, I stand watch over all who come to this place, and my special friends who live within this house.");

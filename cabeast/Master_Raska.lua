@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hmmph!! Expect to be a great master such as I? Maybe. You still appear to be a [whiff].");
@@ -39,6 +40,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "You will get nothing until I hold two bandit masks and the shackles of dust and clay.";	

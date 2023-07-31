@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Nice to see you have made it to the Bazaar " .. e.other:GetCleanName() .. ", if you should need any smithing supplies I will be happy to assist.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 26055})) then--Tattered Newsletter

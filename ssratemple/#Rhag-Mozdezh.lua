@@ -1,5 +1,6 @@
 -- second part of the arch lich rhag`zadune cycle
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.delete_global("Rhag");
 	eq.set_global("Lich","1",7,"F");

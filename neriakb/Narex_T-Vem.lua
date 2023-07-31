@@ -1,6 +1,7 @@
 --Narex_T-Vem.pl
 --Fire Goblin Runner/Halfling Raider Helms
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Welcome to the Cauldron of Hate. If you are a young warrior, you have come to the right place. There are many [duties] to be performed. If you are a veteran of the blade, we welcome your return to service. Perhaps you return with a [Leatherfoot] skullcap?");
@@ -39,6 +40,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Fool! There shall be no reward until I have four skullcaps in my hands!";

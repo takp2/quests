@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well hey-there yourself, welcome to Fort Jaggedpine! My business has really picked up lately with all these newcomers around lately. If you're handy, I've got just about all you'd want in the way of molds to make all kinds of baking supplies, from Cookie Molds to Frying Pans! Have a look!");

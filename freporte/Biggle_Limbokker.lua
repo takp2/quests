@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Say("Good day to you, " .. e.other:GetCleanName() .. "! Learn to mind your own business in this place. If a fight breaks out, do not get in the way.");
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;

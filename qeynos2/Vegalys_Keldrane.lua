@@ -1,6 +1,7 @@
 -- BeginFile qeynos2\Vegalys_Keldrane.lua (2051)
 -- Quest file for North Qeynos - Vegalys Keldrane: Investigators Badge (Badge #1)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings to you, citizen. By order of the Council of Qeynos I have been given the duty of apprehending the individuals [responsible] for unleashing this terrible plague upon the people and the lands of Antonius Bayle. The more I look into this matter, the more I come to find that this will be no easy task.");
@@ -47,6 +48,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

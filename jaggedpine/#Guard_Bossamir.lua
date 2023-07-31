@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ". We have been sent to protect Fort Jaggedpine against the gnoll threat. Sergeant Caelin seems confident being a veteran of many battles against the gnolls of Blackburrow. I am a bit [concerned] myself due to some rumors I have been hearing.");

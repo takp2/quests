@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("stop",5000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.signal(1095,2); -- NPC: Bassanio_Weekin
 	eq.signal(1120,2); -- NPC: Gahna_Salbeen

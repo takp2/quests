@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 
 	if(e.message:findi("hail")) then
@@ -18,6 +19,7 @@ function event_waypoint_arrive(e)
 
 end	
 
+---@param e NPCEventSignal
 function event_signal(e)
 
 	local xloc = e.self:GetX();

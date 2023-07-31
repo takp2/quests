@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ". You'd better not be in Qeynos to start trouble. Commander Kane has little patience for ruffians. If he were in charge of Qeynos, things would be much better.");

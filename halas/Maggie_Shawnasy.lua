@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Good day, " .. e.other:GetCleanName() .. "!  You look cold indeed; come and warm yourself by the forge.  Frostbite is a cruel foe for the unprepared!'  Maggie winks at you, 'Tell me, do you much about our special [Halas armor]?");

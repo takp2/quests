@@ -1,4 +1,5 @@
 -- chance for random mob respawn on a black reaver death
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	local chance_spawn = math.random(100);
 	if(chance_spawn <= 80) then
@@ -8,6 +9,7 @@ function event_death_complete(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

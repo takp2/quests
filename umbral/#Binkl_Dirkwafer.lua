@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ey! What're you doin' here! This is my home. Shoo. Look at you. What's wrong with you. Here in the middle of giant rotting flesh beasts, abnormal trees, fanged giant death horselike things and youre worried about pleasantries? GO AWAY! You are insane.");

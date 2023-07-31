@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("chat",math.random(96000,480000));
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("snaps his eyes in your direction. He gestures wildly with his hands and face, his voice crackling with insanity as he speaks, 'Are you talking to me? I don't see anyone else around so you must be talking to me. Did you come to discuss matters of high importance like the struggle between the Violet Tri-tubes and their oppression under the iron fist of the Barrel Trees? Or perhaps you wish to speak directly with the animals for I can show you how. If you came in search of the power of flight, you would not be the first.'");
@@ -18,9 +20,10 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
-	
+
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 5994}, 0)) then
 		e.self:Emote("struggles as you try to force-feed him the elixir, making you think twice about the wisdom of force-feeding something to a madman. 'I DON'T WANT TO DRINK MY JUICE, MOTHER! NOW GET YOUR HANDS OFF OF ME!' he shouts.");
 		eq.attack(e.other:GetName());
@@ -29,6 +32,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	Chatone = "says 'Well my mother lived underground with the rest of them, don't you know.  Where would you expect a royal envoy to live, in the middle of a raging storm?  Of course she would, but enough about me, tell me about your mother...'  He looks at his elemental pet for a moment as though awaiting a reply, and responds to the absolute silence, 'really, is it as drafty up there as one would assume?'"
 	Chattwo = "appears to be playing a game with invisible pieces.  He stares intently at the air in front of him, deep in strategic planning before reaching out, grabbing an unseen token and moving it silently to another space in midair.  A moment later, his head jerks up and he stares directly at his pet, 'what?  I did not and I resent your implication that I did.  Like I would need to!  If this is the way you are going to be then I don't even want to play!' he states and spins around indignantly.  The elemental pet has no apparent response."
@@ -42,6 +46,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(not eq.is_paused_timer("chat")) then
@@ -52,6 +57,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.depop_with_timer(172010);
 	eq.unique_spawn(172012, 0, 0, e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading());

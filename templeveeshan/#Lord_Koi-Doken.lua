@@ -1,5 +1,6 @@
 -- #Lord_Koi`Doken NPCID: 124103
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.spawn2(124157, 0, 0, -679, 509, 129, 194); -- a_guardian_spirit 
 end

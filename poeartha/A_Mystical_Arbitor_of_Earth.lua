@@ -1,15 +1,18 @@
 local PLANAR_PROJECTION_TYPE = 218398;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 3000000);
+	eq.csr_notice("PoEarthA Arbitor spawned");
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("drophate", 1000);
 	else
 		eq.stop_timer("drophate");
-		
+
 		-- this is to mimic certain behavior Sony's servers had/has.  NPCs aggroed a long time sometimes warp home or
 		-- some distance away in the direction of home and heal somewhat when they hate list wipe.  The exact logic to this
 		-- behavior is unknown.  Bosses with the tank hate list drop mechanic need this in order to not trivialize the
@@ -22,6 +25,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "drophate") then
 
@@ -32,14 +36,17 @@ function event_timer(e)
 			end
 			eq.debug(e.self:GetName().." dropped target from hate list ("..target:GetName()..")", 2);
 		end
-	
+
 	elseif ( e.timer == "depop" ) then
 		eq.debug("Arbitor depop");
 		eq.depop();
+		eq.csr_notice("PoEarthA Arbitor despawned");
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(PLANAR_PROJECTION_TYPE, 0, 0, e.self:GetX(), e.self:GetY(), e.self:GetZ(), 0);
 	eq.signal(PLANAR_PROJECTION_TYPE, e.killer:GetID()); -- e.killer for death_complete is somebody with kill rights, not death blow
+	eq.csr_notice(string.format("PoEarthA Arbitor slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end

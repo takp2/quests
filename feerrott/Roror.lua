@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(math.random(2) == 1) then
@@ -8,6 +9,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greeetingsssssssssss. What brings sssssuch asssss you to the heart of the Feerrott? Do you [know fear]?");
@@ -21,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Yesss. But remember, Cazic-Thule demandsssss both the item and 66 gold piecessss assssss an offering.";

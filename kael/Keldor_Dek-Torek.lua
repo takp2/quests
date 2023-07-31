@@ -1,8 +1,10 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("king",math.random(2700000,7500000));
 	eq.set_timer("med",math.random(270000));
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -100) then
@@ -13,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "med") then
 		e.self:Emote(eq.ChooseRandom("'s eyes glow for a moment.","seems to be concentrating on a far off place.","whispers, 'Velketor... I know you are watching.'"));

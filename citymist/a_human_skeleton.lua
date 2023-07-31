@@ -1,11 +1,13 @@
 -- Quest: Brain Bite (Concussion)
 -- NPC's Involved: Despondo (Firiona Vie), a_human_skeleton (x3, Trakanon's Teeth, Karnor's Castle, City of Mist)
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Save my.. Soul.. Find.. Wizard.. Desp..");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12963})) then -- Hand in Mardon's Bottle

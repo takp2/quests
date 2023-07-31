@@ -1,11 +1,13 @@
 -- part of seventh coldain prayer shawl
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I wasn't always a pottery salesman ye know, I used to forge fine velium weapons and even had me own shop.  Unfortunately no one wanted to buy anything from Brittleblade's, sl I work with clay now, care to purchase somethin?");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

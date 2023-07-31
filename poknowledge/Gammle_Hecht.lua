@@ -1,5 +1,6 @@
 --Quest Name: Gammle's Display
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Good day " .. e.other:GetCleanName() .. ".  I don't mean to be curt but I have much work to do to be ready for my museum display, and there is not much time left. I expect many young warriors to be visiting here, but it is unfortunate that I do not have the final pieces I am [missing]. They would add to the collection greatly.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -59,6 +59,7 @@ local SPAWN_LOCS = {
 	{ 1260, -430, 120 },
 };
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if ( e.self:GetSpawnPointID() == 0 ) then -- not from a spawngroup; spawned from a pit corpse via script
 		eq.set_timer("depop", 300000);
@@ -72,6 +73,7 @@ function event_spawn(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "check" ) then
@@ -79,12 +81,13 @@ function event_timer(e)
 			e.self:AssignWaypoints(29);
 			eq.stop_timer(e.timer);
 		end
-		
+
 	elseif ( e.timer == "depop" and not e.self:Charmed() and not e.self:IsEngaged() ) then
 		eq.depop_with_timer();
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");

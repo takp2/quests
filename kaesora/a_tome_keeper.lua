@@ -1,4 +1,5 @@
 --The tome keeper will give us one of a few possible tomes, chosen randomly, that will tell us how to proceed on the next part of the Shackle of Tynonnium quest.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("shows awareness of you, but ignores you completely.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 4196})) then

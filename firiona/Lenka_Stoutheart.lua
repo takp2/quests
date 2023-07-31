@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("sips on her ale.  'Look what we have here, Bronto!  A would be hero!'");
@@ -15,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "hobble") then
 		eq.unique_spawn(84005,22,0,-3148,-1305,256,0); -- NPC: #Sir_Hobble
@@ -22,6 +24,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("We're just kidding with you, kid. Heh.  Although they are making heroes kinda small these days.  Hey, you [want to see something interesting]?");
@@ -30,6 +33,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

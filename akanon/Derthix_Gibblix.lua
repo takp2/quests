@@ -1,5 +1,6 @@
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings " .. e.other:GetCleanName() .. ". It is my duty to train young gnomes that have been called to they ways of Bertoxxulous, the Plague Bringer, and wish to [serve as a cleric] of the Dark Reflection. The faithful of the Plague Bringer are gifted with the sight of the Dark Reflection. The ability to recognize the importance of the powerful forces of disease and decay, and the role they play in the cycles of deterioration and renewal, death and life, destruction and creation.");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if (item_lib.check_turn_in(e.self, e.trade, {item1 = 10993})) then

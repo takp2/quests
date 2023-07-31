@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well, let's not just stand here gawking! Please purchase something or move on.")
@@ -24,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("I never knew Antonius Bayle to be such a tyrant. This cannot be his law!");

@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ah, good day, friend. My name's Leanon Ruksey, loyal member of the League of Antonican Bards. Qeynos Chapter, of course. It's part of my job to keep up with the goings-on of the city, who's coming and going and all that. So we usually keep a man here and one at the docks. Anyway, nice chatting with you. Be careful out there!");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

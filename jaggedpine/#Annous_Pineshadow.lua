@@ -1,5 +1,6 @@
 -- gale weaver Quest
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail") or e.message:findi("long") or e.message:findi("sacred way") or e.message:findi("faith in my heart") or e.message:findi("willing") or e.message:findi("azure idol of karana")) then
 		if(e.other:GetFaction(e.self) < 2) then
@@ -41,6 +42,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

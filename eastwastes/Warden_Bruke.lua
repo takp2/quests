@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		Guards = math.random(0,4);

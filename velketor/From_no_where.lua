@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined == true) then
 		e.self:Emote("a terror springs to attack you.");

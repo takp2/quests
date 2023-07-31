@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Chika val na vi Paebala Neb'ri. I am Neb of the Paebala. Aknila sa rik nor valkuta aknila. Start no trouble, there will be no trouble. Nish ala ro tak na re Chetari, skas vena ral. Avoid the Chetari, they will kill you.");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

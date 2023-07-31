@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello. " .. e.other:GetCleanName() .. ". What brings you to the watery lands of Rathtear? Do you seek [enlightenment]?'");

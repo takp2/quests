@@ -1,8 +1,10 @@
 --This will start Shaman Epic 1.0
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",600000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local randomize = math.random(100);
 	
@@ -26,6 +28,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

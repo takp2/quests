@@ -1,11 +1,13 @@
 local x, y, z;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	x = e.self:GetX();
 	y = e.self:GetY();
 	z = e.self:GetZ();
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("leashcheck", 3000);
@@ -14,6 +16,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "leashcheck" ) then
 		if ( e.self:CalculateDistance(x, y, z) > 155 ) then

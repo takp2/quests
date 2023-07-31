@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks at " .. e.other:GetCleanName() .. " and smirks. 'I be Bolli and it's sure an honor to meet such a fine person such as yourself! I have plenty of deals for any stealthy types'");
@@ -22,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "You have done well to bring me this, but there is more needed before you get your reward.";

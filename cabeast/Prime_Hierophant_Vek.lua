@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Praise to the ancients, my friend! There is much suffering to be given unto the world. I am the Prime Hierophant of the Temple of Terror.  Through me and my fellow priests flows the wisdom of our ancestors.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Aren't you forgetting something, dear " .. e.other:GetCleanName() .. "?'  He stands still for a moment, sneering, then suddenly screeches at the top of his lungs, 'DO NOT RETURN UNLESS YOU HAVE ALL THAT I ASKED FOR!";	

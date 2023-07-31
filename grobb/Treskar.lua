@@ -1,6 +1,7 @@
 -- Quest Name: Treskar's Secret Mission
 -- Quest for SK GM Treskar in Grobb
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("You dare speak to Master Treskar!  You be [sent by Hukulk] or you be hurtin'! Me have no time to waste with ugly one like you!");
@@ -25,6 +26,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Me change mind! Me want total of THREE ogre black shadow tunics. Ha Ha! And you also pay two gold for Nightkeep tax! Ha! Ha!";	

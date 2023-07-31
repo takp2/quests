@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings noble one. Are you interested in purchasing valuables?");
@@ -68,14 +69,17 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",75000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Gems, jewelry, and other shiny things! Come take a look at my latest shipment of jewel crafting supplies.");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

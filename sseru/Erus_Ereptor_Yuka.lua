@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("So you think you think you can help the Eye? I doubt it. You see we have plenty of men rooted in all the jobs that need to be done. So any service you have to offer would be of little use to us. I know every move that the Loyalists make. So please move along maybe someone has some other menial task for you. If you don't mind I need to get back to these [diagrams].");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

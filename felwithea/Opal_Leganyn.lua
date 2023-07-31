@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome, good " .. e.other:GetCleanName() .. ". We carry the finest in smithing supplies. Do you care to view my wares? Or have you come for instructions on how to craft a [Koada Dal Falchion]?");

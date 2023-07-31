@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("croaks slowly and wipes a filthy muck from its eyes as it tries to look at you. 'Something come to talk to Ulump. Too much pain. Just go.' It goes back to scratching and wiping at its muck and filth covered body.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

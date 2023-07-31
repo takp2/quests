@@ -1,4 +1,5 @@
 --Champion of the Vah Shir
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("waits patiently for a hero to emerge, one that will deliver a crippling blow to those that would hunt the cats of these lands. His eyes look deep to your soul as if to ask, 'Is this the hero I await?' ");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 30854})) then--Hero's Shroud

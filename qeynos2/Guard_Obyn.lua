@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ".  Obyn is my name.  Are you from Qeynos?  I was born here myself.  It's the best city in all of Norrath, if you ask me.  Well I'd better get back to guarding.");

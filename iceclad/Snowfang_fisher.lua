@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("fishing",math.random(90000,150000));
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "fishing") then
 		eq.stop_timer("fishing");
@@ -10,6 +12,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("You make too much noise furless one.  Quiet or all fish go away.  Maybe even vengeful ocean spirit come because you anger all his sea spirits.");

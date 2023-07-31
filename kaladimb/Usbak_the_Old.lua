@@ -1,18 +1,22 @@
 -- refined ancient sword - ranger epic
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",1800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Took ya long enough! Ye'd think ya had an Orc head on them shoulders there. I'm owin' ya for yer help though. Else I'd have been on that darn hammer for ages. Ye said ya had an ancient blade or somethin ta be smithin. If so lemme see it.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20477},0)) then

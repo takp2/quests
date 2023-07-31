@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Another newcomer, just what we need. I don't mind if you're here to help protect us against the gnoll threat but stay away from my daughter. I don't want her head to be filled up with any other crazy ideas. She has already taken to sneaking away to the city of Qeynos and doing Karana-knows-what with those heathens over there. So just do what you need to do and stay away from her!");

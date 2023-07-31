@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks up from her teary handkerchief, the deepest sadness visible in her eyes, 'I am very sorry, but I am not very good company at the moment. I fear my love will never return.'");
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

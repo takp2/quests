@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",300000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail and well met " .. e.other:GetCleanName() .. "! I give the second half of the test of songs. If you are ready, choose between the tests of brass, wind, and harmony.");
@@ -14,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20830, item2 = 20961, item3 = 20828, item4 = 20829})) then --Bard test of Brass using Adamantium Bands, Effreeti War horn, glowing diamond, and saffron spiroc feather
@@ -32,6 +35,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop");
 	eq.depop();

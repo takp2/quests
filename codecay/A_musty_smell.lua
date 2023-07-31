@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		e.self:Emote("surrounds you as you enter the depths of a darkened crypt.");

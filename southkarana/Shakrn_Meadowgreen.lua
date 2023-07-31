@@ -2,6 +2,7 @@
 -- generic reward text - could only find the correct text for the bracer
 -- updated the original file with correct text and used the handin plugin
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail. I am Shakrn Meadowgreen, Warrior extraordinaire and Master Armorer of the Meadowgreen family. My brother and I craft [armor] for the bravest warriors in the land -- do you think you [qualify]?");
@@ -30,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Wait, " .. e.other:GetCleanName() .. ", are you not forgetting something?";

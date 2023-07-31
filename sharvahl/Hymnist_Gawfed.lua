@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if((e.message:findi("hail")) and e.other:HasItem( 3659)) then --Buckler of the Jharin Recruit
 		e.self:Say("Very well met, young friend. I assume that Gherik has sent you to me for the purpose of training you. Unforunately, I will not be doing any formal training for the several days. I'm taking a bit of a holiday to celebrate my wife's birthday. If you could take this receipt to the [merchant] for me before my wife gets home, I'd appreciate it. I'll place you at the top of my training list as well.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 3659})) then --Buckler of the Jharin Recruit

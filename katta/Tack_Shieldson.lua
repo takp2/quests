@@ -1,5 +1,6 @@
 -- Beer for the guards
 
+---@param e NPCEventSay
 function event_say(e)
 	local rowle = eq.get_entity_list():GetMobByNpcTypeID(160207);
 	if(e.message:findi("share a pint")) then
@@ -19,6 +20,7 @@ function event_say(e)
 end
 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks around frantically, 'What are you doing here? You'll be killed! Do not waste your time trying to help me. Save yourself and leave at once!'");

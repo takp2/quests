@@ -1,5 +1,6 @@
 --  Hammer of the Ancients - ranger epic
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("ancient hammer")) then
 		e.self:Say("Yes, the ancient hammer. I heard something about that. Do you mind if I take a look at it?");
@@ -8,6 +9,7 @@ end
 
 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

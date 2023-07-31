@@ -1,9 +1,11 @@
 -- soulbound hammer - ranger epic
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_proximity(e.self:GetX() - 20, e.self:GetX() + 20, e.self:GetY() - 20, e.self:GetY() + 20);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	eq.set_timer("chatter",10000);
 end
@@ -12,6 +14,7 @@ function event_exit(e)
 	eq.stop_timer("chatter");
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "chatter") then
 		e.self:Emote("whimpers pathetically as his reflection catches his eye. He turns and stares pitifully at the ceiling.");
@@ -19,6 +22,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 17860})) then
@@ -31,6 +35,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.stop_timer("chatter");
 	eq.clear_proximity();

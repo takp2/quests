@@ -1,19 +1,23 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.signal(71014, 1); -- a_spiroc_walker
 	eq.signal(71007, 1); -- a_spiroc_banisher
 	eq.signal(71010, 1); -- a_spiroc_revolter
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("lord", 1000);
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		eq.set_timer("lord", 1000);
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.self:IsEngaged() or e.self:Charmed() or e.self:GetX() ~= e.self:GetSpawnPointX() or e.self:GetY() ~= e.self:GetSpawnPointY() ) then
 		return;

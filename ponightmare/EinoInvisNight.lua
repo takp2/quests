@@ -1,5 +1,6 @@
 local EINO_TYPE = 204467; -- Aid_Eino
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.debug("EinoInvisNight spawn", 2);
 	local xloc = e.self:GetX();
@@ -10,6 +11,7 @@ function event_spawn(e)
 	eq.set_timer("timecheck", 10000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "timecheck" ) then

@@ -3,6 +3,7 @@
 -- NPC: Archpriest Del`Maque (201333)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 17 and e.other:GetLanguageSkill(17) >= 100) then
         if(e.message:findi("Hail")) then

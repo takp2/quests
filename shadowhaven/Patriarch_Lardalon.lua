@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("It is a pleasure to meet you, " .. e.other:GetCleanName() .. ". I am the residing High Priest of the House of Stout. Many have come to seek my guidance for I have seen many a foe in my fighting days. If you are interested in [lending a hand] to the House of Stout, I may have some tasks for you to complete");

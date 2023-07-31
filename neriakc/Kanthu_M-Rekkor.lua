@@ -1,6 +1,7 @@
 --Kanthu M'Rekkor, Neriakc 42075
 --Status: COMPLETE
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("material")) then
 		e.self:Say("Many species of dangerous creatures, the restless dead, and halfling invaders from Rivervale inhabit the Nektulos Forest. You must defeat these creatures and halflings in order to obtain the materials. The materials you seek depend on the piece of armor you desire. Do you desire to craft [gloves], [boots], a [bracer], a [coif], [leggings], [sleeves], or a [tunic]?");
@@ -30,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",300000);
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal==1) then
 		e.self:Emote("sighs and says, 'My hands are full right now hon.'  Delival looks your way curiously and asks, 'I don't suppose you would want to [tuck] her in for me if I give you a blanket?'");
@@ -11,6 +13,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("tuck")) then
 		e.self:Say("Thank you again, have been a great help.  Here is her favorite blanket, just give it to her and she should be fine.  G'night Shainai.");
@@ -18,6 +21,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 4460})) then
@@ -29,6 +33,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		eq.stop_timer("depop");

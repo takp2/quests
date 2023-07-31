@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hey there! Wanna test your luck? I have here my mystery satchel filled with gifts. Sometimes you get something nice, and sometimes ya get nothing at all. Wanna give it a shot? It only costs four funnies.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

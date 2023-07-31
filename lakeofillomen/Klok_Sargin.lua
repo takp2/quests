@@ -1,4 +1,5 @@
 --Shaman Skull Quest 6
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Sisters of Scale") and e.other:GetFaction(e.self) <= 5) then
 		e.self:Say("Looking for the skull I had for sale? I am afraid I sold it to a staunch lizard champion. I would gladly give you his name if you would do me a [slight favor].");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	--Turn in the Sarnak Dragoon Helm  dropped off of Sarnak Dragoons in lake of ill omen
@@ -17,6 +19,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade) --return items if not the ones required
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Ye.. Ye.. Yes.. Yes, Bruiser.");
 	eq.signal(85226,51); -- NPC: Bruiser_Noz

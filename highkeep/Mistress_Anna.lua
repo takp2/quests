@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Yes? I don't often converse with the servants of Highkeep, but what do you want? I am a very good friend of Carson McCabe's. If I wished it so, you could be sent to the dungeons to converse with the artisans of pain."); 

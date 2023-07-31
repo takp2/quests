@@ -1,10 +1,12 @@
 --Monk Tomes/Planar Armor Exchange
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("closes his eyes and gives a deep-seated bow before " .. e.other:GetCleanName() .. ". 'Greetings, traveler. I am Grand Master Limsa, master of the tranquil order of the Tanaan district of the Plane of Knowledge. Monks of both Norrathian orders may approach me for guidance and knowledge through the long path of self-mastery and discipline.'");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {1201, 1202, 1203, 1204, 1205, 1206}); --Shiverback-hide Armor

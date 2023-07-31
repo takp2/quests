@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to Ironforge Jewelers. We are the finest jewelers this side of the Serpent's Spine.");

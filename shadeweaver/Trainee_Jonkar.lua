@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Well met " .. e.other:GetCleanName() .. ". Pay close attention to Captain Tarief's words of advice. It takes a skillful hunter to kill a Saurek [Darkclaw]. His advice could mean the difference between life and death.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

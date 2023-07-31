@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I'm busy, " .. e.other:GetCleanName() .. ", go away.");	
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "I thought I told you to bring me the head of Streaven and 3 rubies. Do not interupt me until you have all that I have asked of you."

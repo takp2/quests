@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	local qglobals = eq.get_qglobals();
 
@@ -16,12 +17,14 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, brave traveller. I sell keys that take you to other islands in this here Plane of Sky. My prices are the best around. Heh, heh.");
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "soul") then
 		eq.unique_spawn(71075,0,0,-996.3,910.5,192.3,18.0); -- NPC: Keeper_of_Souls

@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings " .. e.other:GetCleanName() .. ", it is good to see you. If you have come for the first stage of Khati Sha training please show me your acrylia slate.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2877})) then --Acrylia Slate of Shar Vahl

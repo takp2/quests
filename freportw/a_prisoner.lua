@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("goog",150000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say(eq.ChooseRandom("unngh!!.. Biggle and boo.. Goggle froo..","ahhhh!!.. Tiggle bumble coo.. Bog n' Goo.."));
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Aaaarghhh!!.. Buggl n gump.. Figgle and fump..");
@@ -16,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Bog n Goo.. Blanket too!!"

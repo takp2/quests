@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= 100) then
@@ -30,6 +31,7 @@ end
 
 -- 4 sarnak hatchling brains, returns necro skull cap 1, raises brood of kotiz and legions of cabilis
 -- mended tapestry + necro skull cap1, raises brood of kotiz and legions of cabilis
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "I must have the mended tapestry and your first circle apprentice cap before I reward you."

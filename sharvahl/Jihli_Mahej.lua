@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Oh. hello there " .. e.other:GetCleanName() .. ".  Thank you for stopping by. but this is just not a very good time for visitors.  My daughter is very upset over what has happened.");
@@ -64,6 +65,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 5954})) then

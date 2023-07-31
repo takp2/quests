@@ -1,9 +1,11 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(127005) == false) then
 		eq.set_timer("chance",1000);
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "chance") then
 		eq.stop_timer("chance");

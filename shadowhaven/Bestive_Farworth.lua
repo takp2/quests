@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. ". I have some heavy duty ruff 'n tuff storage devices for sale. You may not want to carry them 'round much, unless you're the burly type. Even the beetle box I made is kinda heavy.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "This is just one item I need to complete this task for you. Please give me the other so that I am able to reward you.";

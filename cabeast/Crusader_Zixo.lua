@@ -1,5 +1,6 @@
 --Crusader Zixo starts and ends The Penance quest. This allows a young iksar to replace their guild's starting item if they've lost it.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Do you come to me empty handed, knave? Did you lose your pike?");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 18272, item2 = 24770})) then	--The Penance quest

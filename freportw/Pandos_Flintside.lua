@@ -1,5 +1,6 @@
 local Bakery = 0;
 
+---@param e NPCEventSay
 function event_say(e)
 	if(Bakery == 0) then
 		if(e.message:findi("hail")) then
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local muffin = 0;
 	local item_lib =require("items");
@@ -42,6 +44,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	local xloc = e.self:GetX();
 	local yloc = e.self:GetY();
@@ -58,6 +61,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("Thank you very much! These look delicious. Well, I need to get back to duty. I'll be back tomorrow!");

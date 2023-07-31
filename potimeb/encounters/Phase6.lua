@@ -159,6 +159,7 @@ function QuarmHP(e)
 	eq.signal(POTIMEA_CONTROLLER_TYPE, 6, 0, tostring(quarmState));
 	
 	eq.debug("PoTime Quarm state is now "..quarmState);
+	eq.csr_notice("PoTime Quarm state is now "..quarmState);
 end
 
 function DoQuarmAOE(quarm)
@@ -256,6 +257,7 @@ function QuarmDeath(e)
 		e.self:ClearItemList();
 		e.self:Depop();
 		eq.depop_all(corpseType);
+		eq.csr_notice("PoTime error: Quarm did not power up correctly.  state == "..quarmState);
 	end
 end
 
@@ -265,6 +267,7 @@ function QuarmDeathComplete(e)
 	local egg = eq.get_entity_list():GetMobByNpcTypeID(EGG_TYPE);
 	egg:SetSpecialAbility(35, 0); -- No Harm from Players off
 	egg:SetBodyType(7, false); -- NoTarget off
+	eq.csr_notice(string.format("PoTime Quarm slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function EggDeathComplete(e)

@@ -1,8 +1,10 @@
 --Shaman Skull Quest 6
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Shout("the river of Xinth...");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	--Turn in the a potion of swirling liquid

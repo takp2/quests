@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	fac = e.other:GetFaction(e.self);
 

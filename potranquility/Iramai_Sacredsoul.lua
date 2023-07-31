@@ -1,6 +1,7 @@
 -- Iramai_Sacredsoul
 -- Alternate Access: Plane of Torment
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oh, hello. I am sorry, I did not see you approach. I have been giving all of my attention to poor [Phanti] here.");
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Hmm, it looks like I will need both the cure and the purified bile in order to heal Phanti.";

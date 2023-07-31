@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Arrr.  Swab me ports and shiver me starboards!  Another mainlander, eh?  Come closer, laddy, I can't sees ya too well.  Arr, that's better.  If ya came fer frostbite, frozen pants, and an empty stomach then ya came to the right place.  Plenty o' sights ta see here.");

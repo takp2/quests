@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
      eq.set_timer("depop",3600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop_with_timer();
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, traveller! I am Karg of Clan Icebear, lone hunter of the Everfrost Peaks. Have you seen any polar bears about?");
@@ -22,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "OK! Now, where is the rest?";

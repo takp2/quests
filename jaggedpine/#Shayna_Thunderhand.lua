@@ -1,5 +1,6 @@
 -- Quest: Order of the Storm Caller
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail") or e.message:findi("organization") or e.message:findi("founding member") or e.message:findi("plans") or e.message:findi("ritual") or e.message:findi("item") or e.message:findi("establish themselves") or e.message:findi("great storm") or e.message:findi("order of the storm caller") or e.message:findi("decision") or e.message:findi("retreat") or e.message:findi("never forgive") or e.message:findi("traitorous") or e.message:findi("revenge") or e.message:findi("pieces") or e.message:findi("urwenae's tome") or e.message:findi("stolen") or e.message:findi("retrieve the ancient ashwood tome") or e.message:findi("aid the order") or e.message:findi("components")) then
 		if(e.other:GetFaction(e.self) < 2) then
@@ -50,6 +51,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

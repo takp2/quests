@@ -1,5 +1,6 @@
 -- no response on hail from live
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I require the parchment from Leraena as well as the Odd Cold Iron Necklace.";

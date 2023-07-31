@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings. I used to work for the Qeynos Hold as a book keeper but I got transferred here. I guess it is kind of a promotion. Definitely different way out here and I've gotten a [mixed reception] from some of the locals.");

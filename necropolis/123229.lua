@@ -1,5 +1,6 @@
 local musthelp = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("proxsay",2000);
 end
@@ -23,6 +24,7 @@ function event_proximity_say(e)
 	end
 end
  
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "pause") then
 		eq.stop_timer("pause");

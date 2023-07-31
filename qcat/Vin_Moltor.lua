@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Heh?? .. BURRP!.. Leave me be will ya.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "What are you trying to do, cheat me?!  I need three bottles of Kalish and a rat ear pie before I'll give up the paw."

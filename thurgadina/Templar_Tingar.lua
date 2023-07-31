@@ -1,9 +1,11 @@
 -- Templar Tingar
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("talk",480000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	local count = 0;
 	if(e.timer == "talk") then

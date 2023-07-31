@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "! How's the life of an adventurer treating you?  If you need some extra income, you might visit Captain Tillin at the Grounds of Fate. He is recruiting volunteers to help defend the city from the gnolls to the north.");

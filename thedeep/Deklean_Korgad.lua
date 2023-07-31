@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("eyes you suspiciously. His beard is tangled in completely impossible knots, and you wonder very much if he has ever seen fresh water in his life. He seems to be completely oblivious of the small insects that crawl freely across his tattered clothing. He speaks to you in a low growl. 'Go away! I don't like being bothered! Your making too much noise! The horrors will hear you and then I'll have to [move again]!'");
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",1200000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if (e.timer == "depop") then
 		eq.stop_timer("depop");
@@ -9,6 +11,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

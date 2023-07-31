@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("'Yes?  What?' Ghul fingers the hilt of the dagger that sits in his belt. 'I'm a very busy man. I have [thoughts] upon my mind.'");

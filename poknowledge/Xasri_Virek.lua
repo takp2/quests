@@ -1,6 +1,7 @@
 --Xasri_Virek.pl
 --Intermediate Combat Manual
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		if(e.other:HasItem(28788)) then
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28788, item2 = 29145})) then --Beginner Combat Manual, Junk Beast Power Source

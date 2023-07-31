@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		local mob1 = eq.unique_spawn(200229, 0, 0, 382, -127, -62, 192); -- #Breddan_Rutyl
@@ -9,10 +10,10 @@ function event_combat(e)
 			if ( mob1.valid ) then mob1:AddToHateList(e.other, 1); end
 			if ( mob2.valid ) then mob2:AddToHateList(e.other, 1); end
 			if ( mob3.valid ) then mob3:AddToHateList(e.other, 1); end
-		end		
+		end
 	else
 		eq.stop_timer("drophate");
-		
+
 		-- this is to mimic certain behavior Sony's servers had/has.  NPCs aggroed a long time sometimes warp home or
 		-- some distance away in the direction of home and heal somewhat when they hate list wipe.  The exact logic to this
 		-- behavior is unknown.  Bosses with the tank hate list drop mechanic need this in order to not trivialize the
@@ -25,10 +26,11 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "drophate") then
-	
+
 		if ( math.random() < 0.01666 ) then -- averages to once per minute
 			local target = e.self:GetTarget();
 			if ( target and target.valid ) then

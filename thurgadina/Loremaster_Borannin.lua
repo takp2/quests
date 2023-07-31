@@ -1,5 +1,6 @@
 -- prayer shawl quests
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ", please be seated and hear the Grand Historian, he is among the wisest of our people.");
@@ -20,6 +21,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

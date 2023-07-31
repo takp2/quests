@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("where",3100000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Where are they?! I can't wait forever!");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I have no time to answer questions. whelp!  Now. leave this place before the sting of death finds the life in your veins!");
@@ -24,6 +27,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

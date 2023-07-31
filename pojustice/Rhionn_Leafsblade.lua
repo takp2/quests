@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("raises his head from his hands, it appears he was weeping. 'Murderer! I am a [murderer].'");

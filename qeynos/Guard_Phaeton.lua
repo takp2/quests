@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "! What brings you to the docks? Come to visit ol' Captain Rohand and do some fishing? I plan on doing that when I can get a day off.");
@@ -32,6 +33,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
   e.self:Say("Yes, sir!");
 end

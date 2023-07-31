@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		e.self:Emote("of a fresh sacrifice are littered across the altar.");

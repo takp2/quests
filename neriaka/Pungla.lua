@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome! Drink you shall, some of de finest drinks of da lands! [Flaming Pungla], I suggest to you. It all me sells.")
@@ -6,18 +7,20 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
-	
+
 	if(item_lib.check_turn_in(e.self, e.trade, {gold = 3})) then
 		e.self:Say("Bottoms up!")
 		-- confirmed no faction hits
 		e.other:QuestReward(e.self,0,0,0,0,13382) -- Flaming Pungla
 	end
-	
-	item_lib.return_items(e.self, e.other, e.trade)
-end 
 
+	item_lib.return_items(e.self, e.other, e.trade)
+end
+
+---@param e NPCEventCombat
 function event_combat(e)
 
 	if(e.joined) then

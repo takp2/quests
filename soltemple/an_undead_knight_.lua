@@ -1,5 +1,6 @@
 -- Quest for Darkforge Helm/Breastplate/Vambraces/Bracers
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Leave this place or find yourself [bound to this land] as I am.");
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "Two damaged Freeport Militia helms, the decayed helm and the decayed visor.";	

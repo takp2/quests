@@ -1,5 +1,6 @@
 --Quest Name: Alexis' Book Collection
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Why hello there. " .. e.other:GetCleanName() .. ".  I'm so glad you could take the time to see my exhibit.  I am a collector of [books]. and I seek many more volumes of strange and wonderful texts.  Perhaps I could hire your services to help me find some more?");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

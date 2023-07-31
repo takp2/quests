@@ -1,16 +1,19 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 2000000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		eq.depop();
-		
+
 	elseif ( e.timer == "call_help" ) then
 		CallHelp();
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ah, the pouch.  This is the first step Anson.  The Circle has to be upset having this taken right out from under them.  That speaks well of the person who did the taking.  Hanns must be even more furious now <chuckle>.");
@@ -37,7 +40,7 @@ function event_say(e)
 		e.self:Say("Aye, " .. e.other:GetCleanName() .. ", Hanns has wanted me dead for years. He's tried many times, though not personally. He's smart, that one, for not facing me, but foolish for wasting so many good men for naught.");
 	elseif(e.message:findi("clear.* name")) then
 		e.self:DoAnim(64); -- points
-		e.self:Say("I need proof that what I say about Johann is truth, so that Hanns may forgive me. YOU can gather that proof for me. First, travel to Kaladim and Neriak, and there, upon the persons of the rogue guildmasters, you should find that which I seek, two parts of a document I recovered from the dead agent. I entrusted one to Founy, but that trust is gone, and Founy would betray me to Hanns were I to attempt to reclaim it. Tani N'mar has the other, which he should not possess, and keeps it only to spite me, not knowing its real importance. Steal them both, and bring them back to me. And don't let anyone follow you! If I am not around, tell Anson you want to see me.");		
+		e.self:Say("I need proof that what I say about Johann is truth, so that Hanns may forgive me. YOU can gather that proof for me. First, travel to Kaladim and Neriak, and there, upon the persons of the rogue guildmasters, you should find that which I seek, two parts of a document I recovered from the dead agent. I entrusted one to Founy, but that trust is gone, and Founy would betray me to Hanns were I to attempt to reclaim it. Tani N'mar has the other, which he should not possess, and keeps it only to spite me, not knowing its real importance. Steal them both, and bring them back to me. And don't let anyone follow you! If I am not around, tell Anson you want to see me.");
 	elseif(e.message:findi("Joren")) then
 		e.self:Say("Joren was the boon companion to the King of Felwithe, a mighty paladin of great reknown, much loved by all the high elves. To slay him, certain. . .items. . .were crafted to make the job possible. With the death of the Teir'dal agent, and my theft of the [tools], the General was forced to abandon the plot.");
 	elseif(e.message:findi("help")) then
@@ -59,8 +62,9 @@ function CallHelp()
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
-	
+
 	if ( e.joined ) then
 		CallHelp();
 		eq.pause_timer("depop");
@@ -71,12 +75,14 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("I tend to agree Anson.  We could make a deal.  I have a blade I won't use anymore, and you have those fine looking daggers Vilnius gave you.  Of course, you would have to do something for me first.  Let me tell you my story, then you decide.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Did you forget something?";

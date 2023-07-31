@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings! Please look through my fine wares. I have spent most of my life practicing my skills in tailoring. I do my best to compete with the other local merchants, but I have yet to make a profit. I pray to Tunare that my [banded orc vests] will finally bring me a few extra coins.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "! What business do you have in the pens of the Qeynos Arena? Have you a report of the [escaped catman]?");
@@ -20,6 +21,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -65,6 +67,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "86") then
 		eq.signal(1005,1); -- NPC: a_young_lion

@@ -1,4 +1,5 @@
 --Quest for Trakanon's Teeth - Kaiaren (Mad): Monk Epic 1.0
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("AHHH get it away from me go away .. leave me alone");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -25,6 +27,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Say("Not bad.. Now lets see if you can find my trueform if you do we discuss this further.");
 end

@@ -1,19 +1,23 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("The mystics of New Tanaan greet " .. e.other:GetCleanName() .. " openly. Do not be afraid of Pikor. for my appearance betrays my nature in this place. All are Pikor's equals. and none below me. I am a mystic of Innoruuk. but my faith in the dark father is not of blood and death any longer. Pikor is of knowledge and power beyond Norrath. and I must cast down my guidance of the eye and turn to the spirit. as shall you when your time comes. If you are a shaman. Pikor may guide you as I have scribed my memory of spells no longer useful here for shaman who seek and need the power.");
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	x = e.self:GetX();
 	y = e.self:GetY();
 	eq.set_proximity(x - 90, x + 90, y - 90, y + 90);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	eq.signal(202274,5); --Nomaad
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

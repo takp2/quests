@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good day to you, " .. e.other:GetCleanName() .. ". I hope that you are enjoying the sanctuary that this beautiful city of ours provides. We go through great efforts to keep this city not only clean, but extremely safe as well. Have you ever wondered about the [lengths] to which we have to work to maintain the safety of a city as fine as this?");
@@ -22,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("nadox")) then
 		e.self:Say("How am I supposed to know? Sounds like some darn troll lair. You're the adventurer, why don't you go investigate it. I will stay here to look for more clues.");
@@ -6,6 +7,7 @@ end
 
 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

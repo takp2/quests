@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("swats at the mosquitoes flying around his head.  'Greetings!  The sea wall is no place for you.  Head back to the mainland.  You may find a party of adventurers to join up with and venture into the outlands.  I hear reports of [strange weapons] being found.  An adventurer could make quite a haul and you could help the outpost by decreasing the goblin population.'");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

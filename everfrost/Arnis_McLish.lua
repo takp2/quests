@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("My word!! I cannot believe how cold it is out here. I must keep running around just to keep warm.");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -27,6 +29,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade);
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetRunning(true);
 end

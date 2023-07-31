@@ -1,7 +1,9 @@
+---@param e NPCEventSay
 function event_say(e) -- no matter what you say, he'll always respond to this text.
 	e.self:Say('Close the door and be gone fool! You are going to give away my hiding spot!');
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

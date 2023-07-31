@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What are you doing up here?  This area is for the Koada'Vie only!  If you are not a [defender of Felwithe]. leave at once!!");

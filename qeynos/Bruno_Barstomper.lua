@@ -1,7 +1,9 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Yeah, Yeah. I hope you fall in, you little creep.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ".  Welcome to Fish's Ale.  Have fun but watch your step.  We get a rough crowd in here and I would hate to have to bust your head in if you started trouble.");

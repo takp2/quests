@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("follow",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "follow") then
 		local mobtypeID =  eq.get_entity_list():GetMobByNpcTypeID(126235);

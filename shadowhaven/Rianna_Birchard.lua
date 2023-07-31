@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("turns to you and smiles brightly, 'Hello, " .. e.other:GetCleanName() .. ".  Lots of work to be done- books to shelve, lessons to learn...  I know it sounds a bit ridiculous, but I feel so at home here.");

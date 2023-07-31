@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail and well met " .. e.other:GetCleanName() .. ". Are you inquiring as to the legendary happenings I might have heard of in passing? I will tell you the tale if you are [interested] in hearing it.");

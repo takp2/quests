@@ -1,7 +1,9 @@
+---@param e NPCEventSay
 function event_say(e)
 	e.self:Say("Leave before I call the guard. Don't come back, " .. e.other:Race() .. ".");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

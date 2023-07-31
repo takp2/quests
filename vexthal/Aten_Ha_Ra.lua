@@ -18,6 +18,7 @@ function Warp(mob)
 	checks = 0;
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.self:GetZ() < 229 or e.self:GetZ() > 260 ) then
@@ -46,6 +47,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("sploitcheck", 5000);
 end

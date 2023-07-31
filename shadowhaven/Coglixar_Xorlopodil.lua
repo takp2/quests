@@ -1,5 +1,6 @@
 -- Mining Operation
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ", It's nice to meet you. Are you just passing through our fine city or do you have dealings you need to address to me personally? Also if ye know anyone that will want to assist with some deliveries to our mining contingent in the Paludal caverns let me know.");

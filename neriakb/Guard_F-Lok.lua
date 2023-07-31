@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("supplies")) then
 		e.self:Say("The local guild houses should sell a few items, but the best place to visit would be the Commons Quarter.  It is filled with shops.");
@@ -32,6 +33,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		eq.stop();

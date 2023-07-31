@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "!  I am Bunu Stoutheart of the [Fangbreakers].  I am a loyal shaman who serves the will of the Tribunal.");

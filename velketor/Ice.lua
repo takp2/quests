@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined == true) then
 		e.self:Emote("on the floor shimmers as a beast made of crystalline ice emerges.");

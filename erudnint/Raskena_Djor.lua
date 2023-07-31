@@ -1,5 +1,6 @@
 -- Quest for Raskena Djor in erudnint - Wizards first assignment 
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings. What brings you to Raskena? Did Ghanlin send you?"); 
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

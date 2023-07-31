@@ -2,6 +2,7 @@
 -- Second part of the chardok quest, initiated by Herald Telcha
 -- Regal Band of Bathezid
 
+---@param e NPCEventSay
 function event_say(e)
 	-- Flagging wasn't needed.  Could skipped the first part and just obtained the note
 	if(e.message:findi("proceed")) then
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

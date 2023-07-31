@@ -1,4 +1,5 @@
 --Willamina's Needles
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("regards you indifferently.  'You appear to be new around here, as I have not seen your face walking these streets before.  If you have come seeking knowledge, the library of Myrist will be a most excellent resource for you.  If you have come for any other reason, I'm afraid your quest will not go very far with me, as I do not have much time to hear of your escapades.  Good day.'");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28188})) then--History of Evils: The Age of Scale

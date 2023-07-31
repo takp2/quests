@@ -1,13 +1,16 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("visit",150000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "visit") then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Didn't your mother teach you not to walk in other people's rooms without knocking?! You didn't even have the courtesy to close the door behind you!!");

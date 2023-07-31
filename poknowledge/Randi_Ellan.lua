@@ -1,5 +1,6 @@
 --Randi's Floral Specimens
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("And a good morning to you as well, " .. e.other:GetCleanName() .. ". I can see by the gleam in your eye you are interested in learning more about the flowers of Norrath. Sadly my exhibit is not much to speak of. I require new [specimens] to help build my collection.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

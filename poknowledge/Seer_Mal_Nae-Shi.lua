@@ -370,6 +370,7 @@ function UnlockMemories(client)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Emote(" snaps from her meditation,  'Greetings traveler, I am Mal Nae`Shi.  I have come here to heighten my awareness through meditation, much can be learned through a brief exploration of one's self... Assuming there is something there to learn.  While reaching inner peace is a journey each spirit must undertake on its own, I can begin your voyage with [guided meditation] which will aid your memory, once you are seated.  I can also [unlock] some [memories] which may previously been inaccessible.'");

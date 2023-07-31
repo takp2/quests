@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	local client = eq.get_entity_list():GetClientByID(e.signal);
 	

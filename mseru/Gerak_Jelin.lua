@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("gasps for air upon hearing your voice. 'Oh, you scared me! Try not to sneak up on people anymore ok?'");

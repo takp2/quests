@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	local chance_spawn = math.random(100);
 	if(chance_spawn <= 20) then

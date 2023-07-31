@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Some cracked old bone's, two zombie flesh, and a salt minnow make up the rest. Throw inside a skull and mix, and I would have a delightful dish. But with no eye's I have no sight to make Kurn's delicious delight. And if I could I would not eat without a tongue behind my teeth.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items"); --Handin: a Glowing Skull
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12401})) then

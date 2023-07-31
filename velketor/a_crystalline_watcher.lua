@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("loot",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("loot");
 	if(math.random(100) < 31) then

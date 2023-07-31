@@ -1,13 +1,16 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("fishing",94000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("pot of gold") or e.message:findi("pot o gold")) then
 		e.self:Say("Pot o` gold? Bwahahahaha! Only pot around is them ones I warsh my clothes in. Gotta be careful though, one time I dropped one of dem woids of wealth in and BADABING no clothes jus a stinkin coin that wouldn't buy me a fishin grub.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -19,6 +22,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "fishing") then
 		e.self:Say("I'm fishing fishing fishing. I fish the whole week through. Just fishing fishing fishing. It's what I always do.");

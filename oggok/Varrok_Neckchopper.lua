@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Me got da toughest weapons in da lands! Yoo come ta buy weapon or ta learn from Varrok bout [war mace] an [war hammer]?");

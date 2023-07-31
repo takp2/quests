@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hail and Well Met! If you are here to get a weapon of the Horde converted, let me see it. If not, please speak to Wygans. Don't worry, he may be tough as nails, but he won't bite you.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 7182})) then -- Claw of the Horde

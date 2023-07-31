@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Blessed are the followers of [Rodcet Nife].  Do you [seek the answers to life]?");

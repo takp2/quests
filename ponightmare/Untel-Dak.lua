@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("boundscheck", 3000);
@@ -6,6 +7,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "boundscheck" ) then

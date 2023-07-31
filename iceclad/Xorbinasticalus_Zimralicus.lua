@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("considers you for a moment.  Your jaw seems to ache from having to say such a horrible name.  The gnome pulls out a book and flips through each page, making sure not to wrinkle the paper.  Finally he stops on one and glances up at you as he reads.  'Ahoy there me matey.  Shiver me biscuits and hoist the bloomers.'  He puts away the book and looks up at you.  'Ritual greetings and all.  Have to stick to protocol.  Nice to meet you.  I'm the magics advisor here.'");

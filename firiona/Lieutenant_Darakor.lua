@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, adventurer, and welcome to the outpost of Firiona Vie. You should find just about everything you need in this outpost from supplies to information. But beware if you travel outside our patrol region, as the [drolvargs] and other minions of evil will be quick to end your adventuring days.");

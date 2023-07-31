@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("" .. e.other:GetCleanName() .. "!  Well met!  Come away from Sir Ranlon's forge one moment so that we may talk.'  Issilyn steps away from the forge with a smile.  'We live in interesting times!  Have you heard of Sir Ranlon's [armor]?");

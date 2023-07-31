@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",300000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Great, let us waste no more time! Do you wish to begin your test of concentration, focus, or meditation?");
@@ -14,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20930, item2 = 20741, item3 = 20742})) then 	--wizard test of concentration using azure tessera, augmentor's gem, grey damask cloak
@@ -32,6 +35,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop");
 	eq.depop();

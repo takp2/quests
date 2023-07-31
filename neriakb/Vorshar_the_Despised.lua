@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("turns toward you with an icy glare. ''Hail Findim , I am Vorshar the Despised. I trust that you have important business with me? Why else would you disturb one such as I when it is so obvious that I am a being of great power. I was [selected by Innoruuk] himself to reside in the Realm of Heroes. I have sacrificed many a mortal in the eyes of hate and do not be so quick to assume that I would not be delighted to perform such a rite again.'' Vorshar the Despised curls his lip in a twisted, sinister smirk.");

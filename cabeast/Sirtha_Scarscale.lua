@@ -1,5 +1,6 @@
 --The other NPC for the Iksar Shadowknight low- to mid-level armors.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("eyes you intently. 'So, yet another hatchling approaches us. I am known as Sirtha and that is Sarth. We are of [Rile's] children. Who do you call your father, broodling?'");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	--Dreadscale Helm for:  Head=14822  Sword=14826  Helm=3053  Ruby=10035

@@ -24,12 +24,14 @@ function ClientCanFlag(mob)
 	return false;
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	dragonSlain = false;
 	walking = false;
 	flags = 0;
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	dragonSlain = true;
 	e.self:CastToNPC():SetNoQuestPause(false);
@@ -54,6 +56,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 
 	if ( dragonSlain ) then
@@ -93,6 +96,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -123,6 +127,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		eq.depop_with_timer();

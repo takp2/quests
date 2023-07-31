@@ -1,5 +1,6 @@
 -- beginning of the arch lich rhag`zadune cycle
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.set_global("Rhag","1",7,"F");
 	eq.unique_spawn(162192, 0, 0, 644, -280, 152, 196); -- rhag`mozdezh

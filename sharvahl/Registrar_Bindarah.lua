@@ -5,6 +5,7 @@
 ---- are at. 1 = Citizen Application. 2 = Cert. of Taxability, 3 = Stamped Cert.,
 ---- 4 = Note to King Raja, 5 Note 'from' the king, 6 = Notarized Application
 ---- and 7 = Initiate's Cloak.
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.self,e.other);
 	---- Non-canon fixmes. Note: One issue with these is that they will say the text, even if you
@@ -25,6 +26,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "This item, by itself, means nothing to me.";

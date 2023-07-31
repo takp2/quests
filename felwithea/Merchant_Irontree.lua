@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met. " .. e.other:GetCleanName() .. "! I am a master craftsman of both steel and [mithril plate] armors. I am also the creator of the [woodlanders shields]. light shields perfect for those who spend much time under the canopy of the All Mothers forests.");

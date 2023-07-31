@@ -13,14 +13,17 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("There you are!  Stay close to me, girl.");
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	e.self:Say("What do you think you are doing?!?");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "! My name is Blixkin Entopop. Have you seen the wonderful assortment of [spiders] and [beetles] that inhabit the thicket? I have quite an extensive [bug collection]. Be careful, though. I have seen many brave halflings fall beneath a [swarm] of clicking and hissing bugs.");
@@ -49,10 +52,11 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Oh you have a complete collection for me?! Good! Good! Well done. But remember that I need the complete bug collection and you must return my want list before I can pay you.";
-	
+
 	if(e.other:GetFactionValue(e.self) >= -100 and item_lib.check_turn_in(e.self, e.trade, {item1 = 13268, item2 = 18011},1,text)) then
 		e.self:Say("Excellent! Good work! I knew you were the one for this job! Thank you so much! My collection just gets better and better each day. Here is your reward as I promised.");
 		e.other:Faction(e.self,292, 5); -- Faction: Merchants of Rivervale

@@ -1,5 +1,6 @@
 -- Beer for the guards
 
+---@param e NPCEventSay
 function event_say(e)
 	local tack = eq.get_entity_list():GetMobByNpcTypeID(160398);
 	if(e.message:findi("hail")) then
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

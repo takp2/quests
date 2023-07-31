@@ -1,5 +1,6 @@
 --Renni's Rock Collection
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Har har, " .. e.other:GetCleanName() .. "! I see yer curious mind has brought ye to what will be the most fabulous and fascinating museum display of them all, the geological exhibit. Behold the [rocks] of Norrath! I'd be most delighted to show them to ye, eh, but I'm afraid it's not quite ready yet, you see. Some pieces of my collection have gone missing and I haven't gone to get replacements yet.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

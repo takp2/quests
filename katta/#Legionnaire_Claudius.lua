@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local vahn = eq.get_entity_list():GetMobByNpcTypeID(160137);
 	if(e.message:findi("traitor to the Validus Custodus")) then

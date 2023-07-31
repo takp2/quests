@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met. " .. e.other:GetCleanName() .. "! I am Tanalin Silverkale, provider of the finest [mithril ore] and master craftsman of [mithril chainmail]!");

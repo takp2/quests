@@ -2,6 +2,7 @@
 ---- Quest: The Realm of Heroes -- Misty Thicket
 
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Why, hello there " .. e.other:GetCleanName() .. "! And what brings ya to see little old me? Oh, let me guess! I am sure it is because ya wish t'buy a good spot of Jumjum and listen to [my tale]? Oh, quite lovely so! Why else would one well rounded " .. e.other:Race() .. " come to see the great Bidils the Quickhand other than to hear of this rogue's great adventures!");

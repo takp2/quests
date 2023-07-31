@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good day to you " .. e.other:GetCleanName() .. ", would you happen to have any boiled rockhopper eggs for sale? I'm so very hungry and they're my favorite food.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if ( e.self:GetSpawnPointID() == 0 ) then -- 0 means script spawned
 		eq.set_timer("depop", 360000);
@@ -5,10 +6,11 @@ function event_spawn(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "checkhp" ) then
-	
+
 		if ( e.self:GetHPRatio() < 50 ) then
 			if ( math.random(100) < 25 ) then	-- some of these seem to not split?
 				eq.stop_timer(e.timer);
@@ -18,19 +20,20 @@ function event_timer(e)
 				eq.depop_with_timer();
 			end
 		end
-		
+
 	elseif ( e.timer == "depop" ) then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");
 		if ( e.self:GetSpawnPointID() > 0 ) then
 			eq.set_timer("checkhp", 5000);
 		end
-		
+
 		-- RZ script anti-cheat to prevent players from casting on third floor mobs from 2nd floor
 		-- if we're a flayer in RZ area
 		if ( e.self:GetZ() > 156 and e.self:GetX() > 0 ) then
@@ -57,6 +60,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	-- Rallos event spawns.  doing this to not have to clone the NPC type
 	if ( e.signal == e.self:GetID() ) then

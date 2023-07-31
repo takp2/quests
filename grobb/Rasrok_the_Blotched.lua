@@ -1,5 +1,6 @@
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, yerself. What you want? Youse shud know dat youse talkin to a hee-ro. Me give many peeples [nightmares] and dat make Cazic-Thule happy soes he tooks me to da [Realm of Heroes]. I live dere a long time but now me back here agin. My job iz ta reward dose dat urned favor in da eyes of da gods.");
@@ -36,6 +37,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

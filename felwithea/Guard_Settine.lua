@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("supplies")) then
 		e.self:Say("Looking for supplies, are we?  Doing a bit of adventuring?  You'd best head over to Rolyn Longwalker's shop, Beyond Faydark.  It would be next to Faydark's Bane.");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

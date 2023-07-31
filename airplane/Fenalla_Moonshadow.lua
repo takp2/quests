@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",300000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("We are children of the trees, friends and protectors of nature. We are brothers and sisters to the wolves and bears. The call of the Great Pine has filled your heart and led you here to be tested.");
@@ -16,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20739, item2 = 20738, item3 = 20965, item4 = 20740})) then 		--druid test of nature using efreeti scimitar, fire sky ruby, lush nectar, storm sky opal
@@ -34,6 +37,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop");
 	eq.depop();

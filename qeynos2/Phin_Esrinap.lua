@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("konem",4100000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("I can't believe that lazy [Konem] has been gone for over two days.  That's the last time I send that guy out for me.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, my name is Phin. Practice, practice, practice.. That's my motto. It is my responsibility to train our members, and help them to advance their skills and abilities. I also reward our members with colored [Headbands] for completing certain tasks.");
@@ -55,6 +58,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "Good.. the more of these vile dogs we slay, the safer the citizens of Qeynos will be.";

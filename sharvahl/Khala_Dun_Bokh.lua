@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings, traveler. If you are headed through these gates you should be aware that there are many [dangers] you may encounter.");
@@ -80,6 +81,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	--Quest: Beetle Eyes (End)

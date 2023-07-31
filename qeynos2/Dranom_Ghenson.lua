@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ". My name's Dranom Ghenson. My daughter, Aenia, and I moved out here from Freeport about a year ago. That dump of a city is just horrible! I feel that Qeynos is a much safer place for [Aenia] and myself to set up our shop. I only have a few things to sell right now, but hopefully business will pick up soon.");

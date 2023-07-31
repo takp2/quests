@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Arggh!  Can ye believe me luck?  Just when we were starting to get ahead of schedule this goes and happens.");

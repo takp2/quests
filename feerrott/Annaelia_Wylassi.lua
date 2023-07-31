@@ -1,5 +1,6 @@
 -- Annaelia Wylassi is a gnome necromancer for the Whistling Fists quest line. By interacting with her, we can get one of the sets of bones that we need to combine in Cazic Thule's pack.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("If you have nothing other than a hail to offer me you best move along, I need concentration to study these odd bones that I unearthed. Funny thing about them though, they seem to resonate a hum. Quite unusual, you probably aren't [interested] in that though.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

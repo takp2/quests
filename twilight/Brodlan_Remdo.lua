@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Why hello, I'm in charge of the fishing operations here on Jern's Isle.  [Fish] are my area of expertise.");
@@ -24,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "You have done well to bring me this, but there is more needed before you get your reward.";

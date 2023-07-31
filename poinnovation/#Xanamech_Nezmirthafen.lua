@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		e.self:SetAppearance(0);
@@ -5,21 +6,23 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("lie", 300);
 	eq.set_timer("depop", 1800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	eq.stop_timer(e.timer);
-	
+
 	if ( e.timer == "depop" ) then
 		eq.depop();
-		
+
 	elseif ( e.timer == "lie" ) then
 		e.self:SetAppearance(1);
-		
+
 	elseif ( e.timer == "wake" ) then
 		e.self:SetSpecialAbility(24, 0); -- Will Not Aggro off
 		e.self:SetSpecialAbility(25, 0); -- Immune to Aggro off
@@ -28,6 +31,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");
@@ -36,6 +40,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.signal(206033, e.killer:GetID()); -- Nitram_Anizok
 end

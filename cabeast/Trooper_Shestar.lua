@@ -1,5 +1,6 @@
 --Before quest works, must add tradeskills:  Shestar's Scaled Coif(3 Loose Scales (Item 12466), 1 Unfinished Coif(Item 12468)) then, blacksmithing, I believe trivial in teens, does not always work, yields Shestar's Scaled Coif(Item 12467), yields unfinished coif on failure (Item 12468).
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("My father was a great blacksmith.  He taught me how to make great items such as the [Shestar scaled coif].  Alas, smithing was not my rebirth, but rather the life of a warrior.");
@@ -7,6 +8,7 @@ function event_say(e)
 		e.self:Say("The Shestar Scaled Coif was a light coif my father would fashion out of loose scales from the scaled wolves.  I have some scales on me and if you bring me three loose scales I will have enough to create the coif for you, but I require you to also pay a fee of five gold.");
 	end
 end
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I asked for three loose wolf scales and my fee of five gold.";	

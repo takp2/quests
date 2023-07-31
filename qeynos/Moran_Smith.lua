@@ -1,8 +1,10 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("pick_up", 2000);
 	e.self:SetRunning(true);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "pick_up" ) then		
 		while ( e.self:CheckGround() ) do
@@ -11,6 +13,7 @@ function event_timer(e)
 	end	
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		eq.stop();
@@ -21,6 +24,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings!! Moran here. I just love this city. I traveled from Freeport to Qeynos to stay far from the [Freeport Militia].");

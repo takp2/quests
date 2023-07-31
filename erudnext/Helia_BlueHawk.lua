@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there. adventurer! I am sure you are thirsty after that long boat ride from Qeynos!");
@@ -5,6 +6,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Pipe down, Phloatin! Treat the new clientele with respect.");
 end

@@ -1,13 +1,16 @@
 -- Paladin Epic 1.0
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("Nothin",4200000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Emote("strikes the wall with his pick. A dull clang sounds throughout the cave. 'Arrr. Nothin' here either.");
 end
 
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("strikes the wall with his pick. A clacking sound echoes through the cave. 'Har har. There's something all right.'");
@@ -19,6 +22,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 29007})) then --cold plate of beef and bread

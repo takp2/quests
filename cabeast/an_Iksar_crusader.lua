@@ -1,9 +1,11 @@
 --This iksar crusader is actually Hero Goxnok, for the fifth leg of the Greenmist quest. He gives you a coin that you give back to him in Firiona Vie, to get him out of his disguise and speaking to you.
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",900000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then 				--Test of Betrayal (Greenmist Quest 5/8)
 		e.self:Emote("clicks his heels together at attention. 'Hail, follower of Pain. Have you been sent to me?'");
@@ -23,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

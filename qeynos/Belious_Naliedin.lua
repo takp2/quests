@@ -1,7 +1,9 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Sure. Go Ahead and play it now, while the stage is clear.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome, my name is Belious Naliedin of the League of Antonican Bards. A few years ago, I had finally saved up the money, and I bought this place. I settled in, and have been [working] here ever since.");
@@ -26,6 +28,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

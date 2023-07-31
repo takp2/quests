@@ -1,15 +1,17 @@
 local BOSS_TYPES = { 222035, 222037, 222036, 222008, 222009, 222010 }; -- Chieftans, Chieftan spawners
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("check", 1000);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("drophate", 1000);
 	else
 		eq.stop_timer("drophate");
-		
+
 		-- this is to mimic certain behavior Sony's servers had/has.  NPCs aggroed a long time sometimes warp home or
 		-- some distance away in the direction of home and heal somewhat when they hate list wipe.  The exact logic to this
 		-- behavior is unknown.  Bosses with the tank hate list drop mechanic need this in order to not trivialize the
@@ -22,16 +24,17 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "drophate" ) then
-	
+
 		if ( e.self:GetX() < -137 ) then
 			e.self:GMMove(e.self:GetSpawnPointX(), e.self:GetSpawnPointY(), e.self:GetSpawnPointZ(), e.self:GetSpawnPointH());
 			e.self:WipeHateList();
 			e.self:CastSpell(3230, e.self:GetID()); -- Balance of the Nameless
 			return;
 		end
-		
+
 		if ( math.random() < 0.03333 ) then -- averages to once per 30 seconds
 			local target = e.self:GetTarget();
 			if ( target and target.valid ) then
@@ -39,7 +42,7 @@ function event_timer(e)
 			end
 			eq.debug(e.self:GetName().." dropped target from hate list ("..target:GetName()..")", 2);
 		end
-	
+
 	elseif ( e.timer == "check" ) then
 		eq.stop_timer(e.timer);
 
@@ -54,7 +57,9 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.get_entity_list():GetSpawnByID(369490):GetNPC():Depop(true);
 	eq.get_entity_list():GetSpawnByID(369490):SetTimer(302400000);
+	eq.csr_notice(string.format("PoEarthB Gintolaken killed by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end

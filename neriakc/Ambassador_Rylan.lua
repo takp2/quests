@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local sp = e.self:GetSpawnPointID();
 	local spawn = eq.get_entity_list():GetSpawnByID(sp);

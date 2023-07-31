@@ -1,4 +1,5 @@
 -- Quest for luclin smithing
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("You there.  Have you seen the [poachers] out in the thicket?  You best not be one of them!");
@@ -73,6 +74,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	-- takes repair order from master Barkhem

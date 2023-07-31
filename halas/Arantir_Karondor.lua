@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("ArantirDepop",640000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.self,e.other);
 
@@ -28,6 +30,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local qglobals = eq.get_qglobals(e.self,e.other);
@@ -51,6 +54,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("ArantirDepop");
 	eq.depop();

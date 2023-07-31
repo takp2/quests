@@ -5,6 +5,7 @@
 -- Author: a_sewer_rat
 ------------------------------------------------------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings! It is good to see a new face out here. I am Tindo Frugrin, observer for the Eldritch Collective.");

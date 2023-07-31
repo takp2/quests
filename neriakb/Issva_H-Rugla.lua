@@ -1,6 +1,7 @@
 --Issva_H-Rugla.pl
 --Orc Slayer Armor
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("If you're looking for chit chat you can bugger off. I'm here to sell supplies not company.");
@@ -30,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

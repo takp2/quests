@@ -1,10 +1,12 @@
 --Rogue Tomes/Planar Armor Exchange
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("performs a deep, sweeping bow in a graceful and almost flamboyant display of greetings. 'Welcome, welcome to the district of Selia, my friend. I am Assassin Rysarieul -- even the light needs its agents who walk the shadows. We lend an ear to its whispered secrets and an eye to the evils that it harbors. We are essential in this battle against the infectious corruption that threatens every corner of existence, for only we can learn of its secrets. In Selia, however, I serve as an advisor and observer more so than an active agent. The passing of time has finally taken its toll upon me -- though my people timeless in their natural long life, we do eventually grow old and wary. This is not to say that because the blade has left my hand and my feet too weak to tread upon the shards of darkness that I have abandoned my cause. I serve the cause of light still, though as a mentor to the young scouts and agents of this era of turmoil and chaos.'");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {4901, 4902, 4903, 4904, 4905, 4906, 4907}); --Woven Shadow Armor

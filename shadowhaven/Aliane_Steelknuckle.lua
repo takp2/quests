@@ -1,11 +1,13 @@
 -- Mining Operation
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. ". I'm waiting to hear from my husband. He's been working on assignment for the Patriarch.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

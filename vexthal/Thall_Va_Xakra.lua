@@ -28,7 +28,7 @@ local BAD_COORDS = {
 	  603, 1000,		-- min Y, max Y
 	  -1000, 1000,		-- min Z, max Z
 	},
-	-- above floors 
+	-- above floors
 	{ -500, 1000,		-- min X, max X
 	  -1000, 1000,		-- min Y, max Y
 	  100, 1000,		-- min Z, max Z
@@ -44,7 +44,7 @@ function BadAreaCheck(self)
 			table.insert(clients, ent.ent:CastToClient());
 		end
 	end
-	
+
 	if ( self:GetX() > -260 and self:GetZ() < 0 ) then
 		self:GMMove(self:GetSpawnPointX(), self:GetSpawnPointY(), self:GetSpawnPointZ(), self:GetSpawnPointH());
 		self:WipeHateList();
@@ -53,7 +53,7 @@ function BadAreaCheck(self)
 	for _, client in ipairs(clients) do
 		if ( not client:GetGM() ) then
 			for _, coords in ipairs(BAD_COORDS) do
-			
+
 				if ( client:GetX() > coords[1] and client:GetX() < coords[2]
 					and client:GetY() > coords[3] and client:GetY() < coords[4]
 					and client:GetZ() > coords[5] and client:GetZ() < coords[6]
@@ -75,20 +75,20 @@ function AggroLink(boss, guardId)
 	if ( bossTopHate > LINK_HATE_CAP ) then
 		cappedHate = LINK_HATE_CAP;
 	end
-	
+
 	if ( npcList ) then
-	
+
 		for npc in npcList.entries do
 
 			if ( npc.valid and npc:GetSpawnPointID() == guardId ) then
-				
+
 				if ( bossTopHater ) then
 					topHaterGuardHate = npc:GetHateAmount(bossTopHater, false);
-					
+
 					if ( topHaterGuardHate < cappedHate ) then
 						npc:SetHate(bossTopHater, cappedHate);
 					end
-				end				
+				end
 				return;
 			end
 		end
@@ -96,16 +96,17 @@ function AggroLink(boss, guardId)
 
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("aggrocheck", 1000);
-		
+
 		-- players were pulling this NPC through the wall to outside or to 3rd floor to avoid trash.  Kill the bastard
 		if ( e.self:GetX() > -260 ) then
 			eq.set_timer("cheat_check", 1000);
 			BadAreaCheck(e.self);
 		end
-	else	
+	else
 		eq.stop_timer("aggrocheck");
 		eq.stop_timer("cheat_check");
 		if ( e.self:GetX() < -150 ) then
@@ -114,6 +115,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "aggrocheck" ) then
 		local selfId = e.self:GetNPCTypeID();
@@ -126,12 +128,12 @@ function event_timer(e)
 			AggroLink(e.self, SOUTH_VA_XAKRA1_SPAWNID);
 			AggroLink(e.self, SOUTH_VA_XAKRA2_SPAWNID);
 		end
-		
+
 	elseif ( e.timer == "cheat_check" ) then
 		if ( e.self:GetX() > -260 and e.self:GetHPRatio() > 95 ) then
 			BadAreaCheck(e.self);
 		else
 			eq.stop_timer(e.timer);
-		end	
+		end
 	end
 end

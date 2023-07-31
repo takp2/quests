@@ -1,5 +1,6 @@
 -- scripts to randomly spawn one of these npc : a_Xakra_Shah or a_Xakra_Sei
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		e.self:Emote("at your feet explodes into violent motion!");

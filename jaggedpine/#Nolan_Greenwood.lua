@@ -1,6 +1,7 @@
 -- Nolan Greenwood
 -- Jaggedpine druid armor quest
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail") or e.message:findi("ancient way") or e.message:findi("accept them") or e.message:findi("trials") or e.message:findi("tools") or e.message:findi("ask of her") or e.message:findi("guide me") or e.message:findi("silver griffon") or e.message:findi("jade studded")) then
 		if(e.other:GetFactionValue(e.self) >= 750) then
@@ -31,6 +32,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
  

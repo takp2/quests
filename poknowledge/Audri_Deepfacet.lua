@@ -4,12 +4,14 @@
 --NPCs Involved: 2 [Castlen Drewe(202294) and Audri Deepfacet(202069)]
 --Items Involved: 1 Permafrost Crystals(22121)
 ----------------------------------
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings. traveler. and welcome to New Tanaan. You will find that there is much to be gained in the way of knowledge here. Knowledge not only of the mind. but of skill. I am an adept jeweler and have offered my services to the city to repay its gracious host to me over the years. Please. feel free to search my inventory and purchase that which you might fancy.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 22121})) then--Permafrost crystal

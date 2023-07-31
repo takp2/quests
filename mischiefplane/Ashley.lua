@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	Brittina = eq.get_entity_list():GetMobByNpcTypeID(126213);
 	Diana = eq.get_entity_list():GetMobByNpcTypeID(126187);

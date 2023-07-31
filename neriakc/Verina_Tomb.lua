@@ -1,6 +1,7 @@
 -- Test of Illusion - enchanter epic - Innoruuk's Word
 --
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		e.self:Say("Hatred is the Universal Truth.");

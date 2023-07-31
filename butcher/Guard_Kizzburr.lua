@@ -14,6 +14,7 @@ function event_waypoint_depart(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "warning") then
 		e.self:Say("WARNING TO ALL TRAVELERS! Bandits have been sighted on the road ahead. Beware!");

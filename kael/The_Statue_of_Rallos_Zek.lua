@@ -1,11 +1,13 @@
 -- On death, spawns the Idol of Rallos Zek
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Shout("Protect the Idol of Zek!");
 	eq.set_global("Idol","1",7,"F");
 	eq.unique_spawn(113341,0,0,1289,1300,-90,259); -- NPC: #The_Idol_of_Rallos_Zek
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 
 	if (e.joined) then

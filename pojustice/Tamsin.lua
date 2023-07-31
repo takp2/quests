@@ -3,6 +3,7 @@
 -- NPC: Tamsin (201401)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 8 and e.other:GetLanguageSkill(8) >= 100) then
         if(e.message:findi("Hail")) then

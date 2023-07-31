@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 1800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	
 	if ( e.message:findi("hail") ) then

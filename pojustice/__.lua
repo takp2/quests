@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	e.self:Emote("The shrill croon of banshees fills the room...");
 	if ( not eq.get_entity_list():IsMobSpawnedByNpcTypeID(201287) ) then

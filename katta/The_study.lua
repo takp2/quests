@@ -1,14 +1,17 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(160097)) then
 		eq.set_timer("depop_servant", 10000);
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	e.self:Emote("locks behind you.. You get the feeling you are not alone.");
 	eq.set_timer("servant",5000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "servant") then
 		eq.stop_timer("servant");

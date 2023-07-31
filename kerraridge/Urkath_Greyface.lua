@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("wish",3000000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Errrrrmf. If only just that [wish] for Urrkath?");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFactionValue(e.self) >= -500) then
 		if(e.message:findi("hail")) then
@@ -18,6 +21,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

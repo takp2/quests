@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the Fortune's Fancy. " .. e.other:GetCleanName() .. "!  I carry only the finest jewels and jewelry in all the land.  All of the [charges and accusations] made against me are obviously false. as you can see by my beautiful wares.");

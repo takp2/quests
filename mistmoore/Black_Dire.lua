@@ -1,12 +1,15 @@
 -- for shaman epic
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",2100000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop_with_timer();
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) < 3) then -- need warmly with true spirit.
 		if(e.message:findi("hail")) then
@@ -20,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

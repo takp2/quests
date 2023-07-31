@@ -1,4 +1,5 @@
 -- Yendilor_the_Cerulean_Wing NPCID: 124056
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

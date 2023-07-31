@@ -1,6 +1,7 @@
 -- More Help for Innoruuk
 -- Aid Garuuk
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= 0) then -- not sure exact faction, indifferent works, threatening doesn't
@@ -17,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if (e.other:GetFactionValue(e.self) >= 0 and item_lib.check_turn_in(e.self, e.trade, {item1 = 13916})) then -- Deathfist Slashed Belt

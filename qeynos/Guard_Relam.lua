@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met, " .. e.other:GetCleanName() .. ".  My name is Relam Yenn and I have sworn to uphold the laws of Qeynos.  As long as you stay out of trouble, we will get along fine.");

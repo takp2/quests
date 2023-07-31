@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks up at you through wild eyes, 'You help me, I tell you things! I no lie! You not kill me. I beg. Things I know, you will see.' ");

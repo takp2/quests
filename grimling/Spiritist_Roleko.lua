@@ -1,11 +1,13 @@
 -- Rakshasa Skulls
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings Traveler. If it is rest you seek then I'm sure you may rest safely within the walls of this outpost. As the sentries keep watch for physical danger I commune with the spirits of this territory to watch for less noticeable threats.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "I require both the crate of tortured vah shir skulls and the report from Roshawna."

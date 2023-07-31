@@ -1,6 +1,7 @@
 -- NPC: #Kaithys_Galestrider in Jaggedpine
 -- Quest: Silver Blade of Thunder  (http://everquest.allakhazam.com/db/quest.html?quest=2137)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail") or e.message:findi("great knowledge") or e.message:findi("greater threat") or e.message:findi("turmoil") or e.message:findi("interest") or e.message:findi("threat") or e.message:findi("report") or e.message:findi("group") or e.message:findi("troubling") or e.message:findi("philosophies") or e.message:findi("leave their woods") or e.message:findi("proven to be in vain") or e.message:findi("return the tome") or e.message:findi("key material") or e.message:findi("horrible danger") or e.message:findi("turned") or e.message:findi("victor") or e.message:findi("blade") or e.message:findi("purge the corruption")) then
 		if(e.other:GetFaction(e.self) < 2) then
@@ -51,6 +52,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

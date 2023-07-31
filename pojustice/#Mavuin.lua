@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.self, e.other);
 	local mavuinFlag = tonumber(qglobals["mavuin"]) or 0;

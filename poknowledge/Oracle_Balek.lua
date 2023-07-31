@@ -1,5 +1,6 @@
 --Planar Armor Exchange
 --New file, no text at all for him, so just going with the armor turn-ins and that's all.
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {5182, 5183, 5184, 5185, 5186, 5187, 5188, 5189}); --Scaled Hierophant Armor

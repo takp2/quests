@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello. I am Rashinda Elore. The city Landholder Manager. If you have business to discuss. please direct it to my two clerks downstairs. Good day.");

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings. " .. e.other:GetCleanName() .. ". Are you here to serve in the war against the grimling horde?");
@@ -15,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -38,6 +40,7 @@ function event_trade(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("talk2");
 	

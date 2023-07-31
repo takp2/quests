@@ -1,5 +1,6 @@
 -- white paper portion of enchanter epic quest lead-in
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("slowly lifts her head.'Have you brought any writing materials for me? The last few supplies I had were stolen.'");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

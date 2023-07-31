@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ". Stock up on goods while you can in the relative safety of this outpost. When you are out in the field, you'll need every bit of protection you can afford.  If you happen upon any Grimlings, spare them no mercy. My husband was tortured by grunts in the forest.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

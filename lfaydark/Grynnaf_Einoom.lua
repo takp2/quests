@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks at " .. e.other:GetCleanName() .. " and wonders if he is looking for the Scalekeeper?");

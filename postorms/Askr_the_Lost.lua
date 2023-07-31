@@ -28,6 +28,7 @@ local RESPONSES = {
 	"Askr merely glances at you with a questioning look, as though he doesn't know what that is to be used for. Perhaps you should speak with him to clarify.",
 };
 
+---@param e NPCEventTimer
 function event_timer(e)
 	-- periodocally check if players have left the zone, then clear their quest status if so
 	if ( e.timer == "checkreset" ) then
@@ -72,6 +73,7 @@ function SetState(name, state)
 	stateTable[name] = state;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 
 	local name = e.other:GetName();
@@ -151,6 +153,8 @@ function event_say(e)
 	
 end
 
+---@param e NPCEventTrade
+---@param e NPCEventTrade
 function event_trade(e)
 	local karana = tonumber(eq.get_qglobals(e.other).karana or 0);
 	local item_lib = require("items");

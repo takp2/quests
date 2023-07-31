@@ -1,5 +1,6 @@
 -- Test of Illusion - enchanter epic - Chalice of Kings
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I hope you have been sent by the King. There is an urgent matter at hand.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

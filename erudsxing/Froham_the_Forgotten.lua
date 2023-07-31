@@ -1,10 +1,12 @@
 local counting;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("FrohamDepart",140000);
 	counting = 0;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then -- Part of Shaman Epic 1.0
 		e.self:Emote("looks up at you and mumbles a brief greeting. He appears uncomfortable around others.");
@@ -21,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	
 	if (e.timer == "FrohamDepart") then

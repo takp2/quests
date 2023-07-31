@@ -1,4 +1,5 @@
 --Art of Vah Shir Brewing
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello " .. e.other:GetCleanName() .. ". would you care for a drink?  Or perhaps you're the one they sent to help me?  If you've come to help please show me your acrylia slate.");
@@ -73,6 +74,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2877})) then

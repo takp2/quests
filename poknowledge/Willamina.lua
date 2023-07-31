@@ -1,5 +1,6 @@
 -- poknowledge\Willamina.lua NPCID 202057 
 
+---@param e NPCEventSay
 function event_say(e)
 		if(e.message:findi("hail")) then
 			e.self:Say("Hello and good morning " .. e.other:GetName().. " It's such a lovely day to sit and enjoy the beautiful surroundings. is it not?  I do hope you find what you are looking for here. Not all of us have been so successful in our individual [quests].");
@@ -10,6 +11,7 @@ function event_say(e)
 		end
 end 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

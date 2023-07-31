@@ -3,6 +3,7 @@
 -- NPC: Gubkuk (201404)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 6 and e.other:GetLanguageSkill(6) >= 100) then
         if(e.message:findi("Hail")) then

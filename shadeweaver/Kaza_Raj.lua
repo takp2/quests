@@ -2,6 +2,7 @@
 --I saw no mention of experience or faction hits in the quest on Alla's.
 --After writing this, I saw that someone else already had.  I merged my work and theirs, whoever it was.  They had better dialogue information than I did.  -Kilelen
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Ah. greetings!  I am Kaza Raj, trainer of young Vah'shir!  Bring me the items I ask and I will reward you with pieces of armor to protect you in your travels.  I have a fine pair of [gloves] available now if you're interested.");
@@ -22,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2476, item2 = 2476, item3 = 2476, item4 = 2476})) then--Broken Brigand Skull  x4

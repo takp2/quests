@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oh, hello, " .. e.other:GetCleanName() .. ".  Don't mind my associate Klieb over there.  He gets quite grumpy when he drinks.  We are relatively new here ourselves but have made some fast friends in Qeynos.  This is a city of opportunity.");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Hey...  Better get me another one... I can't quite remember...  Heh heh...";	
@@ -21,6 +23,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 		
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Say("Ha ha ha ha!");

@@ -1,5 +1,6 @@
 -- Part of quest for Bracer of the Reverent
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("regis")) then
 		e.self:Say("Regis was my one true love, but he was [killed] and his soul enslaved by Zahal the Vile.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

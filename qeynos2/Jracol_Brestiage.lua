@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("pick_up", 2000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "pick_up" ) then		
 		while ( e.self:CheckGround() ) do
@@ -13,6 +15,7 @@ end
 
 local proof = 0;
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -100) then
@@ -35,6 +38,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

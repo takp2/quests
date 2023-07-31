@@ -1,4 +1,5 @@
 --Willamina's Needles
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("What?  Oh, sorry.  You appear to be harmless enough.  Never can be too careful these days, you know.  Say. as long as you're here, would you care to have a look at my stock of supplies and see if there's anything you might need?  I worked really hard to scrounge this together, won't you just like to have a look?");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28084})) then--Note to Caden

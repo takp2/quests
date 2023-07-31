@@ -1,4 +1,5 @@
 --This iksar knight is actually Grizzle, for the fourth quest in the Greenmist line, The Test of the Zealot.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("wipes the sweat from his forehead and spits some flarefire seeds on the ground near your feet. 'Whew!! Good to be back and safe at the Cabilis Gate. The troopers will protect us.'");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "spits flarefire seeds on your chest. 'Is this all? Listen up!! I asked for the misscribed spells; Fear, Lifetap and Gate, and also, a shovel.";			

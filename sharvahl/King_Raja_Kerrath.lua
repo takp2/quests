@@ -5,6 +5,7 @@
 ---- are at. 1 = Citizen Application. 2 = Cert. of Taxability, 3 = Stamped Cert.,
 ---- 4 = Note to King Raja, 5 Note 'from' the king, 6 = Notarized Application
 ---- and 7 = Initiate's Cloak.
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.self,e.other);
 	if(e.message:findi("Hail")) then
@@ -15,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 18299})) then

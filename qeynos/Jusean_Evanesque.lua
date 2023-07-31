@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -200) then -- verified faction amount
@@ -41,6 +42,7 @@ function event_waypoint_arrive(e)
 end
 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local item_check = 0;

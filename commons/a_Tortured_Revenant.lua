@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.signal(21011,1); -- NPC: Simon_Aldicott
 end

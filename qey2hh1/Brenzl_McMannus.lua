@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, traveler! It is good to see new faces in our fishing village. I am Brenzl McMannus. I am quite talented with wood and string. I sell the finest nets and bows in the land. Have a glance.")				

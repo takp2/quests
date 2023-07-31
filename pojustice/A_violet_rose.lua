@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	e.self:Emote("lies in the middle of the floor.  It seems to call to you in a faint whisper.  As you get closer, it suddenly explodes in a cloud of thick black smoke.");
 	eq.spawn2(201517, 0, 0, 116, -308, -0.259, 33); -- Wraith_of_Domagr

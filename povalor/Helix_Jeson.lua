@@ -1,5 +1,6 @@
 local clientIDs = {};
 
+---@param e NPCEventSay
 function event_say(e)
 
 	if ( e.message:findi("hail") ) then
@@ -13,6 +14,7 @@ function event_say(e)
 end
 
 -- don't want to make a qglobal for this; signal sent is entity ID of client who hails the Sergeant
+---@param e NPCEventSignal
 function event_signal(e)
 	clientIDs[e.signal] = true;
 end

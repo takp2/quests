@@ -1,8 +1,10 @@
 -- This is for the second of the two greater spirits in North Freeport.
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",1800000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then -- Part of Shaman Epic 1.0
 		e.self:Say("It is good to see you. We're glad you trusted in our brother and did what was asked regardless of Bondl's intentions. Thi sfill us with joy, as the true spirits work in ways most people would not understand and trust is the first lesson of the Heyokah.");
@@ -25,6 +27,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

@@ -1,12 +1,15 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("despawn",3600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("despawn");
 	eq.depop();
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -19,6 +22,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Emote("growls as his power seeps into the earth.");

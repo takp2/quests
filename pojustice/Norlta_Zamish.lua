@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hmm, is someone there?  I've been [wrongfully imprisoned] I'm waiting for appeal, but its been a long time.  Where, in the name of Brell, is my appeal?");

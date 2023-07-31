@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",600000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("says, in an unknown tongue, 'Hgidf! Hsdh je shafoin jsjsi!... Frundlpap gnut hfna iiongio... Woha?! Yiond?'");
@@ -10,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(not eq.is_paused_timer("depop")) then
@@ -20,6 +23,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

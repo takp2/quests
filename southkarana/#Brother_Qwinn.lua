@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("In the name of the [Brotherhood of the Lost Circle], I greet you.");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "We had an agreement. The proof of a skilled monk, the purple headband, and the Code of the Whistling Fist.";

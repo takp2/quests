@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Uuuhh, this be a private room, me friend. Mayhap ye should leave before somethin' unfortunate happens.");

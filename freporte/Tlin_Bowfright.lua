@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Say("Nice to meet you! Sit down! Have some food and grog. Just learn not to annoy anyone in here. This place attracts a pretty rough crowd at times. It is not uncommon to have a brawl break out");
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;

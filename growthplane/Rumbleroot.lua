@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		call_zone_to_assist(e.self,e.other);
@@ -7,6 +8,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "come") then
 		e.self:Shout("Spirits of the groves, you are needed now!");

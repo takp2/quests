@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to my home, my apologies for being untidy. I have been preoccupied with the thought of my brother lately. I love Seru and I love this town do not get me wrong, but it still makes me sad to see someone cast out. He was forced to submit to the Question when he was found to be supplying [Recuso] with food, water, and medical supplies. Because of the power of the question, they soon found this out, and now he has to live amongst the very people he was helping.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

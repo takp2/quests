@@ -1,13 +1,14 @@
 -- #Lord_Feshlak NPCID: 124008
 
+---@param e NPCEventSpawn
 function event_spawn(e)
-	eq.spawn2(124157, 0, 0, -810, 470, 129, 34); -- a_guardian_spirit 
+	eq.spawn2(124157, 0, 0, -810, 470, 129, 34); -- a_guardian_spirit
 end
 
 function event_death(e)
 
 	local npc_list = eq.get_entity_list():GetNPCList();
-	
+
 	if ( npc_list ) then
 		for npc in npc_list.entries do
 			if ( npc:GetNPCTypeID() == 124157 and npc:GetX() == -810 and npc:GetY() == 470 ) then
@@ -18,6 +19,7 @@ function event_death(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 
 	if (e.joined) then
@@ -28,6 +30,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "help") then
 		HelpMe(e);
@@ -36,7 +39,7 @@ end
 
 function HelpMe(e)
 	local aaryonar = eq.get_entity_list():GetMobByNpcTypeID(124010);
-	
+
 	if (aaryonar.valid) then
 		aaryonar:CastToNPC():MoveTo(e.self:GetX(), e.self:GetY(), e.self:GetZ(), 0, false);
 	end

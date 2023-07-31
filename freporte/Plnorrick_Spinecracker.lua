@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Say("What do you want? I don't have any spare change.");
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;

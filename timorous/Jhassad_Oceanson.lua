@@ -1,4 +1,5 @@
 -- EPIC CLERIC (Timorous deep)
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28048, item2 = 28049, item3 = 28050})) then --Orb of Clear Water, Orb of Frozen Water, Orb of Vapor

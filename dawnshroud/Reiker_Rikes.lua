@@ -1,12 +1,14 @@
 -- Fungus covered mushrooms hand in
 -- Pt. 2
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I be Reiker Rikes! The fastest gnome in the woods!");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local mushroom = item_lib.count_handed_item(e.self, e.trade, {31479});

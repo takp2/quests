@@ -1,6 +1,7 @@
 --Lokar_To-Biath.pl
 --Red Wine (Part of Tome of Ages)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("scribe of dal")) then
 		if(e.other:GetFactionValue(e.self) >= 0) then
@@ -29,6 +30,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -55,6 +57,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Say("The death of a Dark Bargainer never goes unnoticed!");
 end

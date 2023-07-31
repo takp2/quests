@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Heh.  Me name's Tyrak.  Guardin' is what I do.  But I likes when I gets to bash faces, too.");

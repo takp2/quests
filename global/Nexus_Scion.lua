@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
         e.self:Say("Hello " .. e.other:GetCleanName() .. ". I do not have much time to chat. I must concentrate on the portal that is due to open soon. If you wish to [journey to Luclin], tell me so."); 
@@ -7,6 +8,7 @@ function event_say(e)
     end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to my shop. " .. e.other:GetCleanName() .. ".  Feel free to purchase whatever you need.  I am sure that I can fill those needs. as [the Seekers of the Dark Truth] generally keep me stocked and on my toes.");

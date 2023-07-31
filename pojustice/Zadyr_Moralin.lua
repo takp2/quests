@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.language == 17 and e.other:GetLanguageSkill(17) >= 100) then -- Elder Teir'Dal
 		if(e.message:findi("hail")) then

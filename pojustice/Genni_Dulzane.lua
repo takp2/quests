@@ -3,6 +3,7 @@
 -- NPC: Genni Dulzane (201410)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.message:findi("Hail")) then
         e.self:Emote("turns her face to you; the expression is one of compassion.  'Hail to thee, ".. e.other:GetName() .. ".  'Tis a fearful dread that ye carry, fearful indeed.  I am not fearful any more.  In death, one learns tranquility.  Did not the old ones of Quellious always put it so?  Let me stay your fears; wouldst ye [talk a while]?");

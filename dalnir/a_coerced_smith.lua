@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks up at you. You can tell his spirit is broken. His scars speak of a severe beating.");

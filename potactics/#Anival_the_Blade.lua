@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if ( e.self:GetSpawnPointID() == 0 ) then -- 0 means script spawned
 		eq.set_timer("depop", 360000);
@@ -5,10 +6,11 @@ function event_spawn(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "checkhp" ) then
-	
+
 		if ( e.self:GetHPRatio() < 50 ) then
 			if ( math.random(100) < 25 ) then	-- some of these seem to not split?
 				eq.stop_timer(e.timer);
@@ -18,12 +20,13 @@ function event_timer(e)
 				eq.depop_with_timer();
 			end
 		end
-		
+
 	elseif ( e.timer == "depop" ) then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");

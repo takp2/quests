@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("What's a kid like you doing in a dangerous place like this?  Shouldn't you be at home having bread. cakes and milk?");
@@ -5,6 +6,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Emote("puts his head over your head as if measuring you.  'Heh!!  Going to have to grow up before the General lets him out to play in Kunark!'");
@@ -21,6 +23,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

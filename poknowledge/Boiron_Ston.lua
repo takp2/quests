@@ -1,4 +1,5 @@
 --Willamina's Needles
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Welcome to New Tanaan. traveler.  The practice of smithing is a time-honored tradition for my people.  My particular specialty is craftsmanship of plate armor for the larger races of Norrath.  Feel free to search my stock for anything you might need to help aid your pursuit of this skill.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28085})) then--Boiron's Standard

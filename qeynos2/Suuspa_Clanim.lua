@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the Temple of Life, " .. e.other:GetCleanName() .. ". It is here that you may pay tribute to the [Prime Healer]. Does not your heart beat with the sound of life?  It is He who makes it so. Do not let the hand of [Bertoxxulous] and his [new disease] lay upon your soul or, like so many, you shall meet your fate at the end of my sword!");
@@ -24,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say(string.format("%s, well met!  Perhaps you would care to peruse my wares.'  Galbasi smiles gently and shows you a number of cloth pieces.  'Or maybe you would care to learn of my hand-made [Woven Platinum] or [Steelweave] armors?", e.other:GetCleanName()));

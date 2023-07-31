@@ -3,6 +3,7 @@
 -- NPC: Master Vhezar (201378)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 18 and e.other:GetLanguageSkill(18) >= 100) then
         if(e.message:findi("Hail")) then

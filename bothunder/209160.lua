@@ -2,15 +2,18 @@
 
 local casting = {};
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 5000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	casting[e.self:GetID()] = nil;
 	eq.depop();
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( casting[e.self:GetID()] ) then
 		return;

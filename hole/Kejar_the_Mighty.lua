@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)--need correct text for all parts
 	if(e.message:findi("hail")) then
 		e.self:Say("I do not have time to talk to you, I am looking for something that I [lost]");
@@ -6,6 +7,7 @@ function event_say(e)--need correct text for all parts
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 1360})) then

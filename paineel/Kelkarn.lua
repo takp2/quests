@@ -1,9 +1,11 @@
 -- animation does not currently work for skeleton models.   leaving it for possible future fix.
 
+-----@param e NPCEventTimer
 --function event_spawn(e)
 --  eq.set_timer("repeat", 3000);
 --end
-	
+
+-----@param e NPCEventTimer
 --function event_timer(e)
 --  e.self:DoAnim(58); -- dance
 --end

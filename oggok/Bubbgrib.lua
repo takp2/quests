@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Yooz small, and yooz look weak.  Mez tink dat yooz need new [armor].'  Bubbgrib peers at you with a blood-red eye from within his heavy helm.  'Yooz REALLY need new armor!");

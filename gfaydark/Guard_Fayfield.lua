@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("soldiers")) then
 		e.self:Say("On one of the highest platforms, you can find the Soldiers of Tunare.  They are the druids of the Faydarks and even a few Koada'Dal are respected members.");

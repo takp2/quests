@@ -1,4 +1,5 @@
 --Rytan's Progressive Fletching Quest
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello " .. e.other:GetCleanName() .. ", I trust all is well with you today. Come in and have a look around, just let me know if you see anything you like. By the way, I am in need of the assistance of an official Shar Vahl citizen. If you know of any please send them my way.");
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

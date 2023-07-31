@@ -26,11 +26,13 @@ local QUEST_ITEMS = {
     quest_helper:melee_helmet(THURG_ARMOR.Leather_Cap, 31091)
 }
 
+---@param e NPCEventSay
 function event_say(e)
     quest_helper.quest_text(e, QUEST_TEXT, 3);
 end
 
 
+---@param e NPCEventTrade
 function event_trade(e)
     quest_helper:quest_turn_in(e, 3, QUEST_ITEMS, quest_helper.thurg_armor_success)
 end

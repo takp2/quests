@@ -1,4 +1,5 @@
 -- Quest: Tailfang
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("And hail to you adventurer. It is good to see one willing to brave the craters. I must warn you that there are deadly [scorpions] all around these parts. Some of them are quite large indeed, and their poison can be very deadly.")
@@ -10,6 +11,7 @@ function event_say(e)
 		e.self:Say("Tailfang has been responsible for many attacks. He is quite sly, and as yet our Taruun have been unable to find him. I saw him once, long ago. I was searching for bluecapped mushrooms among the stones when I saw something shiny underneath one of the rocks. As I got closer to look, Tailfang sprung at me with a dagger in hand no less!  I swear this on my honor, although I still cannot believe it myself. I tried to slay the little bugger, but he ran off. I did get his dagger though, it's yours if you bring me proof of his death.")
 	end
 end
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 30667})) then

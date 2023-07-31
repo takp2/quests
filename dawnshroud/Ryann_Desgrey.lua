@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What brings to our outpost " .. e.other:GetCleanName() .. "? Did you run into [Anario] by any chance?");

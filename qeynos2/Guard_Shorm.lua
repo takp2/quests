@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What do you want with bothering Shorm? I have no time for the likes of you, " .. e.other:GetCleanName() .. "! Clear my path or meet my blade!");

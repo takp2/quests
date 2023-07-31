@@ -8,6 +8,7 @@
 -- ZONE: sro
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the lands of Ro. Stand and fight with me. We shall fight to reclaim the desert in the name of Solusek Ro. Death to all [dervish cutthroats]!!");
@@ -22,10 +23,11 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I was instructed to wait for two gems.";
-	
+
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12348, item2 = 12349},1,text)) then -- 2 Gems
 		e.self:Say("You serve the Burning Prince as I do. The Redeemed has instructed me to give you this reward upon completion of your test. Practice your arts and prepare yourself. Evil approaches our realm. Long live Ro!!");
 		e.other:Faction(e.self,415,25,0);	-- faction better: 'Temple Of Sol Ro'

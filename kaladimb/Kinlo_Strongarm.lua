@@ -1,13 +1,16 @@
 -- enchanted clay quest/refined mithril blade -- ranger epic
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("chant",math.random(1800000,2700000));
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Mud, rock, crystals, gems, metal. Arrrrrr!");
 end
 
+---@param e NPCEventSay
 function event_say(e)--indifferent or better
 	if(e.other:GetFaction(e.self) < 6) then
 		if(e.message:findi("mud")) then
@@ -32,6 +35,7 @@ function event_say(e)--indifferent or better
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");--indifferent or better
 	if(e.other:GetFaction(e.self) < 7 and item_lib.check_turn_in(e.self, e.trade, {item1 = 5664},0)) then

@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("RUFF RUFF");	
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -23,6 +25,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	local bad_thief = eq.ChooseRandom(12190,12190,12190,12190,12190,12191);
 	local random_x = eq.ChooseRandom(-3461,-3902,-4011);
@@ -44,6 +47,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	eq.stop_follow();
 	e.self:SetRunning(false);

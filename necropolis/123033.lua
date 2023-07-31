@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("is now aware of your presence.  This could be bad, very bad...");
@@ -5,6 +6,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if(math.random(2) == 2) then
 		eq.spawn2(123026,0,0,e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading());

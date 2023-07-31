@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 
 	if ( e.joined ) then
@@ -8,6 +9,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "help" ) then
@@ -23,14 +25,14 @@ function HelpMe(e)
 		[127103] = 1,	-- an_entoling_essence_channeler
 		[127026] = 1,	-- an_entoling_harvester
 	};
-	
+
 	local list = eq.get_entity_list():GetNPCList();
-	
+
 	if ( list ) then
-	
+
 		for npc in list.entries do
-		
-			if ( helpers[npc:GetNPCTypeID()] and npc.valid ) then			
+
+			if ( helpers[npc:GetNPCTypeID()] and npc.valid ) then
 				npc:CastToNPC():MoveTo(e.self:GetX(), e.self:GetY(), e.self:GetZ(), 0, false);
 			end
 		end

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. "! Join in the [celebration]! Have a few drinks. Alas, there are no [Tumpy Tonics].");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local Tumpy_Tonic = 0;
 	local item_lib =require("items");
@@ -44,6 +46,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;

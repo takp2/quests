@@ -1,5 +1,6 @@
 -- Razortooth
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFactionValue(e.self) >= -500) then
 		if(e.message:findi("Hail")) then
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

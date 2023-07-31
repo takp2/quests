@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal==1) then
 		eq.stop();
@@ -16,6 +17,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

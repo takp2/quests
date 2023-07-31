@@ -35,6 +35,7 @@ function RaidHasKey(client)
 	return false;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 
 	if ( e.message:findi("hail") ) then 

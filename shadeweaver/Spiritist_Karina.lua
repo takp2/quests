@@ -1,8 +1,10 @@
 local count = 0;
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("karina",90000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	count = count + 1;
 	if(count == 1) then
@@ -28,6 +30,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome, friend. Come dance by our warm fire or have a seat and [learn] a little bit about the ways of the spiritist.");
@@ -53,6 +56,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Thank you for your aid " .. e.other:GetCleanName() .. ". I will place this spirit to peaceful rest and give these remains a proper burial. It is a shame you could only return with one. It takes four of these to make a real difference. Nevertheless your efforts are appreciated. Thank you.";

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("some ink")) then -- can be done at dubiously
 		e.self:Say("Jinkus must've sent ye fer some more of me special ink made from the pigment of th' datura flower. Ye may take some free o' charge, as a donation to the church and to the will o' the Tribunal as well");
@@ -5,6 +6,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

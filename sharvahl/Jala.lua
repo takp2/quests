@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings noble one. I am Jala, Master weaver of Shar Vahl. I have been perfecting the art of [Xakra] weaving lately. Please have a look at what I have crafted, maybe you will find something to suit your fashion needs.");
@@ -7,6 +8,7 @@ function event_say(e)
 		e.self:Say("Wonderful! I'm not much of a hunter myself, so as you can see it can be quite difficult for me to obtain these silks. If you can bring me four of them. I would greatly appreciate it.");
 	end
 end
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2789, item2 = 2789, item3 = 2789, item4 = 2789})) then

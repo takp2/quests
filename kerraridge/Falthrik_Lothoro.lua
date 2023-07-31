@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFactionValue(e.self) >= -500) then
 		if(e.message:findi("hail")) then

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("shakes his body and his countless necklaces cause a loud rattle to echo off the stone walls. 'Hello " .. e.other:GetCleanName() .. ". Have you come to [worship] or have you just come for a visit to view our wonderful architecture and to [pay your respects].'");
@@ -30,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

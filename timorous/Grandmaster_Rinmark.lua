@@ -1,8 +1,10 @@
 --Grandmaster Rinmark is spawned from an iksar master in this zone and is part of the Test of Patience. Please see the iksar master's quest file for details.
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("Depop1",90000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "Depop1") then
 		e.self:Emote("seems to lose a small amount of concentration.");
@@ -12,6 +14,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,5 +1,6 @@
 -- Coldain Ring: Quest 2
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

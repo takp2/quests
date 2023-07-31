@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Welcome to the Everhot Forges! Home of the finest smiths in all of Kaladim! I teach experienced smiths how to work [brellium ore] and craft the finest dwarven [battle shields] and [dwarven plate].");

@@ -3,15 +3,17 @@ local SpawnY = 0;
 local SpawnZ = 0;
 local SpawnH = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	SpawnX = e.self:GetX();
 	SpawnY = e.self:GetY();
 	SpawnZ = e.self:GetZ();
 	SpawnH = e.self:GetHeading();
-	
+
 	e.self:SetSkill(11, 250);		-- block
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		eq.set_timer("goback",1000); --a 1 second leash timer.
@@ -21,6 +23,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "goback") then
 		if(e.self:GetX() < -364 or e.self:GetX() > -100 or e.self:GetY() < -564 or e.self:GetY() > -300) then

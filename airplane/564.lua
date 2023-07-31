@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:ChangeSize(5);
 	e.self:SetRace(126);

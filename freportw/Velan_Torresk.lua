@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local fac = e.other:GetFaction(e.self);
 
@@ -36,6 +37,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "Ah, very good. You are well on your way to earning the white sash."

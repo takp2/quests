@@ -1,5 +1,6 @@
 -- part of 7th coldain prayer shawl
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("cutlass fish oil")) then
 		e.self:Say("Grab a pole and fish the waters in Iceclad until you catch yourself three Iceclad Cutlass fish. Place them in this oil extractor and you'll have whatcha need.");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Praise to Seru.  I...am...on...duty...I...will...not...converse...with...you.  Praise to Seru.");

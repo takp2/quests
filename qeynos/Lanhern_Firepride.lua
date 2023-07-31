@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good day, traveler! You look as though you are in need of [superior armor]. We here at Firepride's specialize in armor. My [husband], Ton, knows his way around the anvil.");

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("turns to shake your hand.  Clay covers his hand and now yours as well. 'Greetings!  Looking for treasures? There is no greater treasure than the one a lizard creates for itself from the mud and the clay.");

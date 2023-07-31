@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("clean",6200000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Clean the [aqueducts] they tell me!  Peh.  I don't care how much they pay me, I am not climbing into that filth.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("aqueducts")) then
 		e.self:Say("Aye, the aqueducts are a horrible place. I have heard rumors of horrible [beasts] who live under the city in the water and just the other day, a child playing in the water just up and disappeared!");
@@ -16,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib =require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 13713})) then

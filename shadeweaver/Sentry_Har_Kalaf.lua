@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Tread cautiously here. The road to the [paludal] caverns is a dangerous journey these days.");

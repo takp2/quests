@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oh, hello down there, puny one. I'm Brutol Rhaksen. Commmander of warriors who [serve] the Dismal Rage, and that's really all you need to know..for now.");
@@ -10,6 +11,7 @@ function event_say(e)
 end
 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("It is an honor to meet a fellow hunter. I am training to learn how to hunt down the [saurek] that roam the thicket. It is our duty as taruun to provide food for our kin. I plan on claiming captain Tarief's [reward].");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

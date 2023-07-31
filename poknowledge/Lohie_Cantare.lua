@@ -1,5 +1,6 @@
 --Lohie's Music Exhibit
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ". Have you come to see my exhibit? I am honored but also sad to say it is incomplete. Mine will be the finest presentation of musical history you will find, once I finish assembling my display. If you have some free time, perhaps you could help me collect some still missing [pieces]?");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

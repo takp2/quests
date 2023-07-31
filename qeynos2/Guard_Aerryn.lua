@@ -5,6 +5,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "!  I am sorry but I do not have time to chat, as I must get back to my patrol.  May the [Prime Healer] walk with you!");

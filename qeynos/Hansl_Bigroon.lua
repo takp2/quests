@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. "! Are you a [citizen of Qeynos] or are you a [traveler of sorts]?");
@@ -36,12 +37,14 @@ function event_waypoint_depart(e)
 	end
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	e.other:Message(15,"A note on the ground catches your eye.");
 	e.other:SummonCursorItem(18835); -- Item: A Sealed List
 	eq.clear_proximity();
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("picks up a discarded item from the ground and says 'Don't people have enough respect for our grand city to not throw things onto the streets?!'");
 end

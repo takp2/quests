@@ -1,9 +1,11 @@
 -- Initiate Corrith fighting
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("fight",math.random(30000) + 10000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:DoAnim(2);
 	e.self:DoAnim(7);

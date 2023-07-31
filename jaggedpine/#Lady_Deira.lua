@@ -1,6 +1,7 @@
 -- Lady Deira
 -- Crown of the Tempest Guard Quest
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail") or e.message:findi("duties") or e.message:findi("lost") or e.message:findi("undisciplined") or e.message:findi("secrets") or e.message:findi("no place") or e.message:findi("alive once again") or e.message:findi("ways of your ancestor") or e.message:findi("tempest guard") or e.message:findi("worthy to bear") or e.message:findi("items") or e.message:findi("Nyrein's Tome") or e.message:findi("Tempest Rune") or e.message:findi("entrusted with the stone") or e.message:findi("history") or e.message:findi("decision") or e.message:findi("truth") or e.message:findi("doubt") or e.message:findi("have his tale")) then
 		if(e.other:GetFaction(e.self) < 2) then
@@ -53,6 +54,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

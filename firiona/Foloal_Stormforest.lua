@@ -1,4 +1,5 @@
 -- warmly glowing stone quest -- ranger epic
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("are you one such as myself")) then
 		e.self:Emote("stares at you and whispers. 'You must be the one that has been spoken of. Yes, yes I am one of the circle. There are many of us in the lands right now, all seeking answers to the ills that have befallen our homes.'");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20462, item2 = 20461})) then

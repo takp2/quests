@@ -1,5 +1,6 @@
 -- NPC: Larsk_Juton
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, Adventurer! I hope you are enjoying your time in Surefall Glade. You must be careful when leaving the Jaggedpine. There have been many report of [Sabertooths] attacking travelers.");
@@ -52,6 +53,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Good work, but I must see at least three Blackburrow casks before I can reward you with the [Cloak of Jaggedpine].";

@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hi there! Are you perhaps a musician? I have lots of finely crafted musical instruments for sale. Each one has its own unique tone. Take a look and see if there are any instruments here to suit your performance needs. Just tap me when you are ready to make a purchase.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 5960})) then

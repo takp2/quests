@@ -57,6 +57,7 @@ function event_click_door(e)
 	end	
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.self:GetGM() ) then
 		if ( e.message == "shutdown instance now" ) then

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then --Part of Shaman Epic 1.0
 		e.self:Say("Oh thank Marr you are here, " .. e.other:GetCleanName() .. ". I was beginning to think I would be abandoned in my time of need. I have a [task] for you to complete in the name of my patron Mithaniel Marr.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "That's one of the fiend's daggers. Quickly, where is the other one?";	

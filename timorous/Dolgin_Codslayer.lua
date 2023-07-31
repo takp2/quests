@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("ARGH! Dangit, ya scared me! Tread cautiously, fri. This here place ain't as frily as it seems. There's a beast lurkin' in this here puddle.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20696}) and e.other:GetClass() == 6) then

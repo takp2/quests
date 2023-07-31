@@ -4,6 +4,7 @@
 -- Whether or not it was a human form or still the suit version which did not disappear, I have no way to know.
 -- The log does have the shield+sword turn in, which was turned in after the amulet+symbol, and that text here is accurate.
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Emote("groans in extreme anguish. '[Help] me.'");
@@ -19,6 +20,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -35,10 +37,12 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade);
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 100000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		eq.depop();

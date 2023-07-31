@@ -5,6 +5,7 @@
 -- Author: a_sewer_rat
 ------------------------------------------------------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello my friend. Good to meet you.");

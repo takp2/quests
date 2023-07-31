@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("produces a dagger from the folds of his clothing and scowls at you. 'Who are you? What are you doing here? Did [they] send you?'");

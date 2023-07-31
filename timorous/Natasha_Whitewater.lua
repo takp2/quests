@@ -1,14 +1,17 @@
 -- NPC:96080 -- Natasha Whitewater, Cleric epic 1.0 quest NPC
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("NatashaDepop",600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "NatashaDepop") then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib =require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28018},0)) then

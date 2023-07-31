@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("hatchling", 30000);
@@ -6,6 +7,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "hatchling" ) then
 		-- spawn an_abhorrent_hatchling or a_rapacious_hatchling or a_voracious_hatchling

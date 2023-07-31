@@ -1,4 +1,5 @@
 -- Carx`Vean (124094) NPCID: 124094
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

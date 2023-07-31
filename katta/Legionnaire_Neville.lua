@@ -1,5 +1,6 @@
 -- Zone Katta   Legionnaire_Neville  ID  160263
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("coughs a bit and looks up at you with tired, bleary eyes, 'Ugh, I have not had such a cold as this since I was a boy. I have heard of a tea-maker in the city of the Vah Shir that makes a stamina enhancing tea. I would like to try some and see if it might help.'");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

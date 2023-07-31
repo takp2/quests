@@ -15,10 +15,11 @@ function AnimateTribunal(animationId)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Say("Greetings mortal, it seems the council has deemed you worthy of the challenge, are you ready to face judgement?");
-		
+
 	elseif ( e.message:findi("ready to face") ) then
 		e.self:Say("Very well mortals, Now begins the test of your very souls!");
 		skipAggroText = true;
@@ -26,6 +27,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		if ( not skipAggroText ) then
@@ -40,18 +42,19 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "verdict" ) then
 		eq.set_timer("verdict", 187000);
 		AnimateTribunal(42);
 		eq.get_entity_list():GetMobByNpcTypeID(INVIS_TRIBUNAL_TYPE):CastSpell(1108, e.self:GetID()); -- Verdict of Eternity
-		
+
 	elseif ( e.timer == "tremor" ) then
 		eq.set_timer("tremor", 187000);
 		AnimateTribunal(1);
 		eq.get_entity_list():GetMobByNpcTypeID(INVIS_TRIBUNAL_TYPE):CastSpell(1107, e.self:GetID()); -- Tremor of Judgment
-		
+
 	elseif ( e.timer == "stop" ) then
 		eq.stop_timer("stop");
 		eq.stop_timer("verdict");

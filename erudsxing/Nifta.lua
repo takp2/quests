@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("lights glory")) then
 		e.self:Say("The Light's Glory? Yes I know of that ship. I have seen it many times. Many ships come through here on their way to Erudin. I hear many stories, many tales of the ocean. [Bad news] is all I have for you this day however.");

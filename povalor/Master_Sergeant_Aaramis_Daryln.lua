@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 
 	local questState = tonumber(eq.get_qglobals(e.other).pov_orb_quest or 0);

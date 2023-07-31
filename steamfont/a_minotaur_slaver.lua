@@ -1,5 +1,6 @@
 --NPC: a_minotaur_slaver   Zone: steamfont
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	ran = math.random(100);
 	if(ran > 99) then

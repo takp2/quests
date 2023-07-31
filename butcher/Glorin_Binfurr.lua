@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Pleasure to meet you.  Keep your eye out for the ship.  You don't want to miss it.");

@@ -1,6 +1,7 @@
 --BeginFile: rivervale\Ace_Slighthand.pl
 --Quest file for Rivervale - Ace Slighthand: Kevlin Diggs' Debt & Extraordinary Rodents
 
+---@param e NPCEventSay
 function event_say(e)
 	local level = e.other:GetLevel();
 
@@ -19,6 +20,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 local item_lib = require("items");
 

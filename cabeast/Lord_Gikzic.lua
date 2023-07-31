@@ -1,5 +1,6 @@
 --Lord Gikzic is for the Greenmist quest line and administers the first two quests in the line.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("You dare to intrude upon the presence of a Lord of Pain?!  Such foolish acts can only be those of a knight in training.  Are you a [knight in training]?");
@@ -34,6 +35,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "I instructed you to return the full sarnak head pack and also your pawn's khukri.";	

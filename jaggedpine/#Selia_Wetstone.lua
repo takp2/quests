@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to our shop, " .. e.other:GetCleanName() .. ". Why don't you take a look at what my husband Morgan and I have for sale? Morgan is a great sketch artist but he's a bit old fashioned.");

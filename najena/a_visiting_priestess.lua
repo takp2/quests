@@ -1,5 +1,6 @@
 -- Quest for The Visiting Priestess
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "! Are you the champion Najena sent for?");
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "grins evilly as she disassembles the staff and holds forth a runed wooden rod.";

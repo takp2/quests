@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("healer")) then
 		e.self:Say("You have a ooch?  No show me.  Make me sick.  Go see Greenblood Shaman in caves.  They fix you.");

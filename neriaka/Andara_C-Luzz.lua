@@ -3,6 +3,7 @@
 --Need Factions
 --Status: Not Complete
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 16166, item2 = 19582, item3 = 19583})) then

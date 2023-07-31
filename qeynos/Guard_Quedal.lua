@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("<Burp!>  Heh?  " .. e.other:GetCleanName() .. "?  Nevah hoid o' ya.  Beat it.  I got woik ta do.");

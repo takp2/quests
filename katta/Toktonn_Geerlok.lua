@@ -1,5 +1,6 @@
 -- Grimling Picks
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met, kind " .. e.other:Race() .. ". I am Governor Toktonn Geerlok of the Loyalist Combine. It is my duty to oversee all matters concerning engineering, construction, and maintenance within Katta Castellum. There is a wonderful ore native to Luclin called [Acrylia] that has proved to be a valuable asset to my crew and I.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

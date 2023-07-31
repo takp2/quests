@@ -11,6 +11,7 @@ local SPAWN_LOCS = {
 	1889, 270,
 };
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 
 	local x, y, t;

@@ -19,7 +19,7 @@ local DREAMSPINNER_TYPE = 167708;		-- this is a wizard.  Sony design error?
 
 local GRIMLING_TYPES = { COMMANDER_TYPE, MANACRAFTER_TYPE, DEATHBRINGER_TYPE, PRIEST_TYPE, CADAVERIST_TYPE, DREAMSPINNER_TYPE, SKULLCRACKER_TYPE };
 
-local CAMP_SPAWN_IDS = { 334957, 334958, 334959, 334960, 334961, 334962, 334963, 334964, 334965, 334966, 334967, 334968, 334969, 
+local CAMP_SPAWN_IDS = { 334957, 334958, 334959, 334960, 334961, 334962, 334963, 334964, 334965, 334966, 334967, 334968, 334969,
 	334946, 334947, 334948, 334949, 334950, 334951, 334952, 334953, 334954, 334955, 334956 };
 
 local SPAWNS = {		-- these NPCs are level 35-39
@@ -208,22 +208,22 @@ local quickWave = false;
 function GovernorSignalEvent(e)
 
 	if ( e.signal == 1 ) then
-	
+
 		local cat = eq.get_entity_list():GetNPCByNPCTypeID(VADREL_WALKING_CAT_TYPE);
 		eq.spawn2(VADREL_ROOTED_CAT_TYPE, 0, 0, cat:GetX(), cat:GetY(), cat:GetZ(), cat:GetHeading());
 		eq.depop_all(VADREL_WALKING_CAT_TYPE);
 		eq.set_timer("start", 65000);
 		FlipFlags(true);
 		eq.spawn_condition("grimling", 5, 0);		-- disable camp respawns
-		
+
 	elseif ( e.signal == 2 ) then
 		DepopCamps();
 		eq.set_timer("repop", 1000);
-		
+
 	elseif ( e.signal == 3 ) then
 		eq.stop_timer("wave");
 		eq.set_timer("reset", 90000);
-		
+
 	end
 end
 
@@ -234,7 +234,7 @@ function GovernorTimerEvent(e)
 		) then
 			SpawnWave();
 			local t = 100000;
-			
+
 			-- this is not precise.  didn't do the event long enough to determine the exact spawn timer pattern
 			-- copying raid 4's pattern, which is also not precise
 			if ( quickWave ) then
@@ -249,7 +249,7 @@ function GovernorTimerEvent(e)
 					quickWave = true;
 				end
 			end
-			
+
 			t = t + math.random(1, 10) * 1000;
 			eq.set_timer("wave", t);
 		end
@@ -260,14 +260,14 @@ function GovernorTimerEvent(e)
 			and eq.get_entity_list():IsMobSpawnedByNpcTypeID(GERGIL_ROOTED_CAT_TYPE)
 		) then
 			SpawnWave(true);
-		end		
+		end
 	elseif ( e.timer == "repop" ) then
 		eq.stop_timer("repop");
 		RepopCamps();
-		
+
 	elseif ( e.timer == "reset" ) then
 		eq.stop_timer("reset");
-		
+
 		FlipFlags(false);
 		eq.spawn_condition("grimling", 5, 1);		-- enable camp respawns
 		eq.depop_all(VADREL_ROOTED_CAT_TYPE);
@@ -286,26 +286,26 @@ end
 
 function SpawnWave(noOfficer)
 	local spawn, spawnType, mob;
-	
+
 	if ( not noOfficer and math.random(100) <= 4 ) then
 		wave = 1;	-- officer wave
 	else
 		wave = math.random(2, #WAVES);
 	end
-	
+
 	local i = 1, npc, spawn;
-	
+
 	while i < #WAVES[wave] do
-	
+
 		npc = WAVES[wave][i];
 		spawn = WAVES[wave][i+1];
-		
+
 		mob = eq.spawn2(npc, SPAWNS[spawn].grid, 0, SPAWNS[spawn].x, SPAWNS[spawn].y, SPAWNS[spawn].z, 0);
 		mob:SetRunning(true);
-		
+
 		i = i + 2;
 	end
-	
+
 	-- keep town cat timer at 30 minutes so it doesn't respawn mid-event
 	eq.get_entity_list():GetSpawnByID(TOWN_CAT_SPAWNID):SetTimer(1800000);
 end
@@ -348,11 +348,11 @@ function VadrelTimer(e)
 	if ( e.timer == "depop" ) then
 		eq.stop_timer("depop");
 		eq.depop();
-		
+
 	elseif ( e.timer == "ambush" ) then
 		eq.stop_timer("ambush");
 		e.self:Say("Guard me! The invasion will fail if I am slain!");
-		
+
 		local mob;
 		mob = eq.spawn2(MANACRAFTER_TYPE, 38, 0, -79, -245, -15.3, 0);
 		mob:SetRunning(true);
@@ -364,19 +364,19 @@ function VadrelTimer(e)
 		mob:SetRunning(true);
 		mob = eq.spawn2(PRIEST_TYPE, 38, 0, 111, -155, 23.3, 0);
 		mob:SetRunning(true);
-		
+
 	elseif ( e.timer == "wounded" ) then
 		if ( not e.self:IsEngaged() ) then
 			eq.stop_timer("wounded");
 			e.self:Say("Quickly now, tend to any wounded, we march on in a few moments.");
 			eq.set_timer("continue", 45000);
 		end
-		
+
 	elseif ( e.timer == "continue" ) then
-		eq.stop_timer("continue");		
+		eq.stop_timer("continue");
 		e.self:Say("It's obvious our invasion isn't going to surprise the grunts. We'll have to earn success through sheer courage and determination.");
 		e.self:ResumeWandering();
-		
+
 	elseif ( e.timer == "gergil" ) then
 		eq.stop_timer("gergil");
 		e.self:Say("Half of you stay with Gergil here and keep him alive at all costs. The rest follow me, I'll order the attack shortly.");
@@ -385,12 +385,12 @@ end
 
 function VadrelTrade(e)
 	local item_lib = require("items");
-	
+
 	if ( item_lib.check_turn_in(e.self, e.trade, {item1 = 5988}, 0) ) then -- Grimling Commander's Head
 		e.self:Say("You have done well "..e.other:GetCleanName()..".  You will need continued success to overcome the master of the enemy, whoever that may be.  Speak to the general, tell him the invasion was successful.  He will guide your efforts further.  Now gather your forces and leave this place.  The enemy will overrun it soon.  Farewell!");
 		e.other:QuestReward(e.self, 0, 0, 0, 0, 5989, 5000); -- Golden Medal of the Shar Vahl
-		
-		DisableCat(e.self);		
+
+		DisableCat(e.self);
 		victory = true;
 		eq.signal(GOVERNOR_TYPE, 3);
 		eq.signal(GERGIL_ROOTED_CAT_TYPE, 4);
@@ -441,7 +441,7 @@ end
 
 function GergilDeath(e)
 	eq.signal(GOVERNOR_TYPE, 3);
-	
+
 	-- unknown what Gergil says when dying.  Made something up here
 	e.self:Shout("I have fallen, our mission has failed. Curses upon the grimling horde!");
 	eq.signal(VADREL_ROOTED_CAT_TYPE, 1);
@@ -468,7 +468,7 @@ end
 
 -- true == cat, false == grimling
 function FlipFlags(state)
-	
+
 	local door;
 
 	door = eq.get_entity_list():GetDoorsByDoorID(FLAG1_ID);
@@ -479,7 +479,7 @@ function FlipFlags(state)
 			door:ForceClose(eq.get_entity_list():GetMobByNpcTypeID(GOVERNOR_TYPE));
 		end
 	end
-	
+
 	door = eq.get_entity_list():GetDoorsByDoorID(FLAG2_ID);
 	if ( door ) then
 		if ( state ) then
@@ -491,16 +491,16 @@ function FlipFlags(state)
 end
 
 function DepopCamps()
-	
+
 	local npcList = eq.get_entity_list():GetNPCList();
-	
+
 	if ( npcList ) then
-	
+
 		local campHashMap = {};
 		for _, id in ipairs(CAMP_SPAWN_IDS) do
 			campHashMap[id] = true;
 		end
-	
+
 		for npc in npcList.entries do
 
 			if ( npc.valid and campHashMap[npc:GetSpawnPointID()] ) then
@@ -513,7 +513,7 @@ end
 function RepopCamps()
 
 	local elist = eq.get_entity_list();
-	
+
 	for _, id in ipairs(CAMP_SPAWN_IDS) do
 		--eq.spawn_from_spawn2(id);
 		elist:GetSpawnByID(id):SetTimer(1);
@@ -541,7 +541,7 @@ end
 function event_encounter_load(e)
 	eq.register_npc_event("Vadrel", Event.timer, GOVERNOR_TYPE, GovernorTimerEvent);
 	eq.register_npc_event("Vadrel", Event.signal, GOVERNOR_TYPE, GovernorSignalEvent);
-	
+
 	eq.register_npc_event("Vadrel", Event.say, VADREL_ROOTED_CAT_TYPE, VadrelHail);
 	eq.register_npc_event("Vadrel", Event.waypoint_arrive, VADREL_WALKING_CAT_TYPE, VadrelWaypointArrive);
 	eq.register_npc_event("Vadrel", Event.waypoint_depart, VADREL_WALKING_CAT_TYPE, VadrelWaypointDepart);
@@ -556,7 +556,6 @@ function event_encounter_load(e)
 	eq.register_npc_event("Vadrel", Event.signal, GERGIL_WALKING_CAT_TYPE, GergilSignalEvent);
 	eq.register_npc_event("Vadrel", Event.signal, GERGIL_ROOTED_CAT_TYPE, GergilSignalEvent);
 	eq.register_npc_event("Vadrel", Event.waypoint_arrive, GERGIL_WALKING_CAT_TYPE, GergilWaypointArrive);
-	eq.register_npc_event("Vadrel", Event.timer, GERGIL_WALKING_CAT_TYPE, GergilTimer);
 	eq.register_npc_event("Vadrel", Event.death, GERGIL_WALKING_CAT_TYPE, GergilDeath);
 	eq.register_npc_event("Vadrel", Event.death, GERGIL_ROOTED_CAT_TYPE, GergilDeath);
 
@@ -567,6 +566,6 @@ function event_encounter_load(e)
 		eq.register_npc_event("Vadrel", Event.timer, typeId, GrimlingTimer);
 		eq.register_npc_event("Vadrel", Event.combat, typeId, GrimlingCombat);
 	end
-	
+
 	eq.spawn_condition("grimling", 5, 1);		-- enable camp respawns in case they are off due to zone crash or whatever
 end

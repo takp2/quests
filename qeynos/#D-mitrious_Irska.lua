@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("shall we continue")) then
 		e.self:Say("Now that the scepter has been properly modified for the task, you must keep it safe for now. Your next task will be to seek out two more components, for the original components and the spells describing how they were forged are lost forever -- destroyed by Urwenae's second and final pupil who went mad while attempting to fulfill his duty. The Essence of Storms must be retrieved, and there is only one place within the whole of Norrath's prime or astral realms that it can be found -- the Plane of Sky. There is a being known as The Storm Mistress who dwells there. Seek her out and retrieve the Essence of Storms from her ethereal being. Do not worry yourself over what seems to be a gruesome murder and thieving, for she will coalesce again as all immortal, planar beings do in time. The second item that you must retrieve is the Cloudy Azure Sphere, which lies in the hands of [Priestess Auraia] in the depths of Kedge Keep.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

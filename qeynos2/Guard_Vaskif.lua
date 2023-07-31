@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good evening to you, " .. e.other:GetCleanName() .. ". Beware. We have had reports of the undead prowling about on the plains just north of there. Evil is growing here in Qeynos. I can sense it.");

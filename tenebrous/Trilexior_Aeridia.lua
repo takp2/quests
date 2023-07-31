@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(172013) == false and eq.get_entity_list():IsMobSpawnedByNpcTypeID(172014) == false) then
 		if(math.random(100) < 5) then

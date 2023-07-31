@@ -3,6 +3,7 @@
 -- NPC: Grum (201327)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 7 and e.other:GetLanguageSkill(7) >= 100) then
         if(e.message:findi("Hail")) then

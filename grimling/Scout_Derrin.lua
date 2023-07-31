@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ". What brings you to the battlegrounds? Looking to raid a grimling camp perhaps?");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	if ( eq.get_entity_list():IsMobSpawnedByNpcTypeID(167682) ) then -- ##Scout_Derrin
 		return;

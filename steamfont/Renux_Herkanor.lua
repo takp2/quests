@@ -1,5 +1,6 @@
 -- Rogue Epic NPC -- Renux_Herkanor
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("BOO! I'm sure you didn't expect to see me here, but you've left quite a trail. Why did you go to all the trouble to get this scrap of parchment? What can be so important about it that Father would risk all for it? No matter, Hanns will figure it out. Now, will you tell me where to find Stanos?");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Say("Tell Hanns I tried, and will love him always. Tell Father I will save a seat in hell for him!");
 end

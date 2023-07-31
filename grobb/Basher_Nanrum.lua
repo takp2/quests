@@ -2,6 +2,7 @@
 -- Author: BWStripes
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Peh! What am you wanted?! I am Basher Nanrum. You? " .. e.other:GetCleanName() .. " ? Heh, you look for works? Hmm, me tinks you too weakling for [job] me need done. Hmm.. You might do, mebbe.");
@@ -30,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Well dat be some of da eyeballses I askeded for. But I you needs ta give me three for da shiny.";

@@ -9,12 +9,14 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == e.self:GetID() ) then
 		eq.set_timer("move", 60000);
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "check" ) then
 		if ( e.self:GetX() > 0 ) then

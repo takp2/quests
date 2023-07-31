@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I am sorry, but I have been ordered to refrain from speaking to anyone that does not carry the Khati Sha Seal of War. If you do not carry such identification, please move out of my camp.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,11 +1,13 @@
 -- Coldain Ring: Quest 2
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello stranger, I am Boridain, master hunter of the Coldain. Glad to meet you.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

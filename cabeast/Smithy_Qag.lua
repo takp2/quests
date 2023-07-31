@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ".  We are exceptionally busy today - I trust that your business is of suitable import.'  Smithy Qag flicks his tail, covered with the scars of the forge.  'Or have you come to assist in our [new project]?");

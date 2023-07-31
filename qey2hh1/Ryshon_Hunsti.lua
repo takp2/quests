@@ -1,5 +1,6 @@
 -- Part of Ghoulbane quest
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say(string.format("Hello, %s. What brings you to the Karanas? Do you seek [enlightenment]?",e.other:GetName()));

@@ -7,6 +7,7 @@ function event_enter_zone(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "seventh" ) then
 		eq.stop_timer("seventh");

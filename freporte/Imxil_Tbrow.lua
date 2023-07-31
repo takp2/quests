@@ -1,11 +1,13 @@
 local factionId = 0;
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Say("I have no desire to speak with anyone. That includes you!");
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( not e.joined and factionId ~= 0 ) then
 		e.self:CastToNPC():SetNPCFactionID(factionId);		-- restore faction if Plnorrick doesn't kill
@@ -13,13 +15,14 @@ function event_combat(e)
 end
 
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;
 	end
 
 	local turn, bard;
-	
+
 	if ( e.signal == 1 ) then
 		-- This NPC text is not precise.  It was put together from these alla comments:
 		-- http://everquest.allakhazam.com/db/npc.html?id=985#m107866514287264
@@ -41,15 +44,15 @@ function event_signal(e)
 		turn = true;
 	elseif ( e.signal == 10 ) then
 		factionId = e.self:CastToNPC():GetNPCFactionID();
-		e.self:CastToNPC():SetNPCFactionID(0);		-- remove faction to prevent NPCs from assisting	
+		e.self:CastToNPC():SetNPCFactionID(0);		-- remove faction to prevent NPCs from assisting
 	end
-	
+
 	if ( turn ) then
 		bard = eq.get_entity_list():GetMobByNpcTypeID(10141);			-- NPC: Trolon_Lightleer
 		if ( not bard.valid ) then
 			bard = eq.get_entity_list():GetMobByNpcTypeID(10158);		-- NPC: Branis_Noolright
 		end
-		if ( not bard.valid ) then 
+		if ( not bard.valid ) then
 			bard = eq.get_entity_list():GetMobByNpcTypeID(10165);		-- NPC: Palana_Willin
 		end
 		if ( bard.valid ) then
@@ -58,6 +61,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	local random_result = math.random(60);
 
@@ -13,10 +14,12 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Emote("slams to the ground with a loud THUD!!  The ground around you still trembles.  'Now.. I shall never slay my blasphemous.. brother..  Xyl..'");
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -19,6 +19,7 @@ function SpawnGiant(id)
 	eq.unique_spawn(id, 0, 0, -1070, -1739, 2257, 64);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.zone_emote(0, "Agnarr the Storm Lord says 'Fool! This is the realm of the Storm Giants now, and you hope to defeat me here?'");
@@ -34,6 +35,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "link" ) then
@@ -45,27 +47,27 @@ function event_timer(e)
 		local npcList = eq.get_entity_list():GetNPCList();
 
 		for npc in npcList.entries do
-		
+
 			if ( npc.valid and ADD_TYPES[npc:GetNPCTypeID()] and e.self:GetTarget() and e.self:GetTarget().valid ) then
 				npc:AddToHateList(e.self:GetTarget(), 100);
-				
+
 				if ( npc:GetZ() < 2200 ) then
 					npc:GMMove(npc:GetSpawnPointX(), npc:GetSpawnPointY(), npc:GetSpawnPointZ(), 0);
 				end
 			end
 		end
-	
+
 	elseif ( e.timer == "portals" ) then
 		eq.zone_emote(0, "Agnarr strikes his staff to the ground, causing great ripples of energy to rage across the room.");
 		eq.signal(209034, 1); -- A_storm_portal
-		
+
 		if ( e.self:GetHPRatio() < 25 ) then
 			eq.set_timer("portals", 60000);
-			
+
 		elseif ( e.self:GetHPRatio() < 50 ) then
 			eq.set_timer("portals", 90000);
 		end
-		
+
 	elseif ( e.timer == "spawn" ) then
 		eq.stop_timer(e.timer);
 		SpawnGiant(JOLUR_TYPE); -- Jolur_Sandstorm
@@ -77,17 +79,19 @@ function event_hp(e)
 	if ( e.hp_event == 75 ) then
 		eq.set_next_hp_event(50);
 		SpawnGiant(EKIL_TYPE); -- Ekil_Thundercall
-		
+
 	elseif ( e.hp_event == 50 ) then
 		eq.set_next_hp_event(25);
 		SpawnGiant(OLJIN_TYPE); -- Oljin_Stormtide
-	
+
 	elseif ( e.hp_event == 25 ) then
-		SpawnGiant(HIBDIN_TYPE); -- Hibdin_Cyclone	
+		SpawnGiant(HIBDIN_TYPE); -- Hibdin_Cyclone
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(KARANA_TYPE, 0, 0, -477, -1758, 2355, 192);
 	eq.signal(KARANA_TYPE, e.killer:GetID()); -- e.killer for death_complete is somebody with kill rights, not death blow
+	eq.csr_notice(string.format("BoThunder Agnarr slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end

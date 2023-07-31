@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined == true) then
 		e.self:Emote("on the back of your neck stands up straight.");

@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetRunning(true);
 	local sp = e.self:GetSpawnPointID();

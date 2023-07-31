@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("has large scars on the right side of his face.  He is missing one eye and wears no patch.  'Another adventurer?  If you think you will find fame and fortune in this land, you are sadly mistaken.  Only death awaits you out there in the wilds of Kunark.  Just when you think you are raiding a [tomb], you will find it becomes your own final resting place.'");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say(string.format("Hello, %s - my how you've grown!  Would you perhaps care to see my cloth armor for sale?'  Her eyes twinkle.  'Maybe you'd like to hear a little about the traditional halfling craft of [bagmaking]?", e.other:GetCleanName()));

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. "  My name is Rashik Hiccs and I would like to welcome you to Qeynos on behalf of all the guards.  If you get into trouble, just find one of us and we will help you out.");

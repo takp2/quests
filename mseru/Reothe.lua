@@ -1,5 +1,6 @@
 -- Earring of Veracity #1 (Insignia)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("bregun dorey")) then
 		e.self:Say("Bregun Dorey... I have not heard that name in many years. I will never forget it. He was very unique, always running around with an odd metal hat on. He swore that it would keep out the mind probing magics of the Question. I know where he was last seen, and I will tell you if you help by getting us some [supplies].");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 
 	if ( not eq.get_entity_list():IsMobSpawnedByNpcTypeID(207047) ) then -- A_Horrifying_Vision
@@ -5,6 +6,7 @@ function event_spawn(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	
 	if ( e.message:findi("hail") ) then

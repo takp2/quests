@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("looks up at you with a curious gleam in his eyes. 'Ahh, a visitor.  Is there something you need or are you here for a story?'");

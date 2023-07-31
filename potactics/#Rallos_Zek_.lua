@@ -45,10 +45,12 @@ function GetWraith()
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("corpses", 60000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "corpses" ) then
 	

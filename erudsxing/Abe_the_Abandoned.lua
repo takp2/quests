@@ -1,10 +1,12 @@
 local counting;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("letbegin",60000);
 	counting = 0;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then -- Part of Shaman Epic 1.0
 		e.self:Emote("turns his head slowly toward you but his eyes never come into focus. You can't tell if he's looking at you, behind you, or right in front of his own face. Then, suddenly, he shouts at the top of his lungs, 'HOOOOKAAAHEEEEYYYY! I AM [ABE]!");
@@ -22,6 +24,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "letbegin") then
 		counting = counting + 1;

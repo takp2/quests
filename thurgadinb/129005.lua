@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("By Brell's black beard, ye startled me! So, it seems you have survived the dangers of the pit like we did. At first we thought it a blessing, but now we know that it is the curse of our dishonor.");

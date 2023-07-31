@@ -5,6 +5,7 @@ local SpawnY = 0;
 local SpawnZ = 0;
 local SpawnH = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	SpawnX = e.self:GetX();
 	SpawnY = e.self:GetY();
@@ -14,13 +15,15 @@ function event_spawn(e)
 	eq.set_proximity(SpawnX - range, SpawnX + range, SpawnY - range, SpawnY + range);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	if(e.other:GetLevel() > 52 and e.other:Admin() < 80) then
 		e.other:Message(4,"I will not fight you, but I shall banish you!");
-		e.other:MovePC(27,534,913,55,0); -- Zone: bothunder 
+		e.other:MovePC(27,534,913,55,0); -- Zone: bothunder
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		eq.set_timer("1",1000); --a 1 second leash timer.
@@ -30,6 +33,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "1") then
 		if(e.self:GetX() < -1000 or e.self:GetX() > -650 or e.self:GetY() < -1500 or e.self:GetY() > -1170) then
@@ -58,6 +62,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		e.self:Shout("Ha!  The Ring and Claws are doomed!  The Sleeper has been awakened, what a glorious day!  Lady Vox, I will see you soon, our long delayed nuptials can now proceed!");

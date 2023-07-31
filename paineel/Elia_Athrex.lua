@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("souls",3100000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("The cold of souls and stench of death! Always, here, do I find it...");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello.  Do you need something or did you merely wish to grace me with your oh-so-delightfully perfumed breath?");

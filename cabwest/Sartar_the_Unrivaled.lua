@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello. " .. e.other:GetCleanName() .. ". I am Sartar. In my former life I forged my body into a versatile weapon capable of defeating any foe that crossed my path. I was a student. a leader. a scholar and a scoundrel. My deeds caught the eyes of the gods and Cazic-Thule blessed me. Removing me from this plane and placing me within the [Realm of Heroes].");

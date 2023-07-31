@@ -9,6 +9,7 @@
 -- ##
 -- ############################################
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetName() ..". Welcome to the fishing village of Clan McMannus. We sell what we can here.  Have a look around but, please do not buy too much. We must save most of our stock for delivery to [our home].");
@@ -32,6 +33,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

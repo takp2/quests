@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("pick_up", 2000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "pick_up" ) then		
 		while ( e.self:CheckGround() ) do
@@ -10,6 +12,7 @@ function event_timer(e)
 	end	
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello. I am afraid I cannot tell you much about my merchandise. I was hired by Ton to look after the shop at night. I can tell you that you would find a better deal during the daytime hours. Ton instructs me to charge more for nighttime service.");		

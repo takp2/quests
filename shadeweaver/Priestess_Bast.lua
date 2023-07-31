@@ -1,10 +1,12 @@
 --Champion of the Vah Shir
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("speaks to you without opening her eyes or disturbing her meditations, 'Greetings to you. I, like others before me, have dedicated my life to protecting the animals that roam these lands. The blight of poachers and others that would profit from their destruction has overrun their peaceful way of life. You may also serve this noble cause, speak with Sentry Ferin in the field. No doubt there is plenty to be done.'");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 30856, item2 = 30853, item3 = 30853, item4 = 30853})) then --The Champion's Cape, 3x Drop of Loda Kai Blood

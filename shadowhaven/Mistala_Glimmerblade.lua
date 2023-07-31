@@ -1,5 +1,6 @@
 -- Mistala's Report
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. "! I am Lady Mistala Glimmerblade of the House of Fordel.  I preside over this great city of Shadowhaven along with my husband Daloran. I take great pride in knowing that our city has come so far and become a place of free trade and freedom for all of its inhabitants. We also are lucky to have some of the finest guardspersons in the land. Which reminds me, I need to collect my [report].");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

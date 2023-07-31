@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "!  What brings you out this way?  I am the leader of the [Fangbreakers].  We are employed by the [people of the Plains of Karana] to keep their homeland free of [lycanthropes].  We are on the trail of several particularly nasty [werewolves].");

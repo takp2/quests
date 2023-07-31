@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if(math.random(100) < 50) then
 		brofath = 15138;

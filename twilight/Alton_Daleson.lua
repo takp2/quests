@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to Jern's Rest!  I'm the owner and proprietor of this inn, it's been in my family for generations.  My great grandaddy, Jern, built it back when Katta Castellum was first being built.  If ya be wantin' of anything don't hesitate to ask."); 
@@ -22,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "You have done well to bring me this, but there is more needed before you get your reward.";

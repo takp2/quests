@@ -5,6 +5,7 @@
 --Items Involved:Algae Covered Flesh, Swollen Flesh, Waterlogged Flesh
 ----------------------------------
 
+---@param e NPCEventSay
 function event_say(e) 
 	if(e.message:findi("Hail")) then
 		e.self:Emote("jumps at your voice, he's obviously very focused on a set of beakers on the table. They seem to be holding samples of rotted flesh. Gapeers says, 'Oh my heart! You could have stopped it! Please be careful when entering these chambers. It would be unfortunate if I had dropped and broken these [specimens].");
@@ -36,6 +37,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Oh....well.....This is nice, but I'll need the swollen, waterlogged, and algae covered flesh before I can reward you.";

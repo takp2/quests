@@ -1,13 +1,15 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 100000);
 	eq.set_timer("move", 1);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "move" and not e.self:IsEngaged() ) then
 		eq.set_timer("move", 6000);
-		
+
 		local boss = eq.get_entity_list():GetMobByNpcTypeID(207003); -- The_Acolyte_of_Affliction
 		if ( not boss or not boss.valid ) then
 			eq.depop();
@@ -20,6 +22,7 @@ function event_timer(e)
 
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");

@@ -1,5 +1,6 @@
 local reaction = 0;
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		eq.follow(eq.get_entity_list():GetMobByNpcTypeID(181164):GetID(),15);
@@ -9,6 +10,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "react") then
 		reaction = reaction + 1;

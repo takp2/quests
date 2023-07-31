@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	fac = e.other:GetFaction(e.self);
 
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Leave our new friend alone, Ghilanbiddle.  He is quite welcome to rest amongst us.");
 end

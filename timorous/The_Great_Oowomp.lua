@@ -1,4 +1,5 @@
 --Quest Name: McMerrin's Feast - "Evil" Races, or any with VS faction
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("gestures as if casting a powerful spell...'Come forward, adventurer! Come and [see the dancing skeleton]. I shall cast a powerfull spell and bring forth this operatic, clattering jumble of bones and he shall do a fine dance for you. From the nether regions and planes beyond, I call forth this bardic, magical, rhyming, tap-dancing hunk of undead!! I am Oowomp the Great!!'");
@@ -15,12 +16,13 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {gold = 5})) then
 		e.self:Emote("flings the coins into the air and they all fall neatly into his oversized coin pouch. <Tink, tink, tink, tink, TINK!!> 'Gaze upon my awsome powers of the arcane!! You, a simple " .. e.other:Race() .. ", shall see my power. Allakabam!!'");
 		eq.unique_spawn(96088,0,0,3122.8,5725.2,7.9,13.0); -- NPC: a_dancing_skeleton
-		eq.set_timer("dance",3000);
+		eq.set_timer(1,3000);
 	elseif(item_lib.check_turn_in(e.self, e.trade, {item1 = 12942, item2 = 12945, item3 = 12944, item4 = 12943})) then
 		e.self:Emote("begins to jump for joy. The ground trembles. 'Grand! Here is the secret of McMerin's Feast. Scribe it and you shall learn more of its power.");
 		e.other:QuestReward(e.self,0,0,0,0,12941,45000);
@@ -28,9 +30,10 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
-	if(e.timer == "dance") then
+	if(e.timer == 1) then
 		eq.signal(96088,5,0); -- NPC: a_dancing_skeleton
-		eq.stop_timer("dance");
+		eq.stop_timer(1);
 	end
 end

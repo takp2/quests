@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail " .. e.other:GetCleanName() .. "! It is a pleasure to have such seasoned adventurers visit our noble city. I am Magistrate Celris Shadetracker of the Loyalist Combine Empire. I was of the original members of the Combine Empire to arrive here on Luclin and have since become quite familiar with its many lands and their inhabitants. I used to travel extensively but in my old age I have found comfort in remaining here at the Tsaph Katta Hall telling younger explorers of my many journeys and teaching them of the [dangers] that abound.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

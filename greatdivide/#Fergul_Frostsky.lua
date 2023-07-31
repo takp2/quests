@@ -6,6 +6,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	-- upon death, send signal to shardwurm to depop with timer and Gralk to depop.
 	eq.depop(118012); -- #Gralk_Dwarfkiller

@@ -1,6 +1,7 @@
 -- Paladin Epic 1.0
 -- Zone: erudnext
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail to you, friend.  Seek you knowledge or atonement in this temple of peace?");
@@ -28,6 +29,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

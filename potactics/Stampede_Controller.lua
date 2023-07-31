@@ -60,10 +60,12 @@ function SpawnBoars()
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("stamp", math.random(40, 120) * 60000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "stamp" ) then
 		eq.set_timer("stamp", math.random(40, 120) * 60000);

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("tax")) then -- triggers without starting quest
 		e.other:Faction(e.self,291,-1,0); -- Faction: Merchants of Qeynos

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Shhhh... Greetings, " .. e.other:GetCleanName() .. ". Welcome to the Library of Erudin. Please respect the other patrons and speak softly."); 

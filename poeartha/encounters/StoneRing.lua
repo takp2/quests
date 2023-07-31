@@ -112,6 +112,7 @@ function TriggerDeath(e)
 			end
 			
 			eq.debug("Stone Ring started");
+			eq.csr_notice(string.format("PoEarthA Stone Ring started started by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 		end
 		
 		local locs = FORT_LOCS[TRIGGER_TYPES[myType]];
@@ -299,6 +300,7 @@ function EventSuccess(e)
 	end
 	
 	eq.signal(ARBITOR_GUY_TYPE, 1);
+	eq.csr_notice("PoEarthA Stone Ring success");
 end
 
 function DespawnSpawn(e)
@@ -325,6 +327,7 @@ function DespawnTimer(e)
 		
 		eq.debug("Stone Ring failed and reset");
 		eq.depop();
+		eq.csr_notice("PoEarthA Stone Ring failed");
 	end
 end
 

@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	local client = eq.get_entity_list():GetClientByID(e.signal);
 	if ( client and client.valid ) then
@@ -5,6 +6,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.signal(215419, 2); -- POACastellanController
 	eq.signal(215411, e.killer:GetID(), 1000); -- #Chamberlain_Escalardian

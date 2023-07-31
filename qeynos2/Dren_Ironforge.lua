@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to Ironforge's.  We are the makers of all things fine. Would you care to view my [wares], or have you come to learn the fine art of crafting [Antonian Weapons]?");

@@ -1,18 +1,22 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",1800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop")
 	eq.depop();
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Didn't think I was gone for good, did you? We're that much closer to finishing this trial of our strength, thanks to you.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20481})) then

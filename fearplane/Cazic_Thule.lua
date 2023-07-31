@@ -1,11 +1,13 @@
 -- Call All mobs to aid Cazic Thule if they're still alive
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("Shout",600000);
 	-- use a timer for the zone repop so that the entire zone is not popping twice immediately on zone bootup.
 	eq.set_timer("RepopZone",5000); -- Uncomment this to Enabled zone repop on CT spawn.
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("gandan has failed in his task")) then
 		e.self:Emote("'s thoughts begin to pervade your own, they creep into your mind with great force. You feel pressure as if your head will explode. You see his thoughts becoming your own. You see in these visions a tome bound in flesh dropped to the ground. You then open your eyes to see that same book, and take it knowing that it was meant for you.");
@@ -13,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 8226, item2 = 18898, item3 = 18899})) then
@@ -22,6 +25,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- call all mobs to assist
@@ -35,6 +39,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "Shout" and eq.get_entity_list():GetClientList() ~= nil) then
 		e.self:Shout("Beware all infidels who dare to taint my plane, for I shall rend your minds with fright, dread, and terror!");
@@ -51,6 +56,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.stop_timer("come");
 end

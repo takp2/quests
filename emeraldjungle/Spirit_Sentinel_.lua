@@ -1,5 +1,6 @@
 --Spirit Sentinel is for Shaman Epic 1.0 and administers the Final Test and the completion of the epic.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("is lost")) then --Part of Shaman Epic 1.0
 		e.self:Say("The mantle was the product of thousands of faithless individuals. Not the single shroud we believed existed. Torsis is now truly cursed for all eternity as a great stain upon the universe. Today is a sad day, indeed. However, some good can still come of this. Your sacrifice and spiritual devotion in this matter have become legendary. You have waited for us at the bottom of the ocean. You have rubbed out a mighty rogue spirit. You have endured the black hole of Torsis and entered the abode of Fear itself to save a child from eternal suffering. It is only fitting that we reward you with our greatest treasure, the [Spear of Fate].");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

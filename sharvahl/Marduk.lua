@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",82000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("The outdoors can be cold. Come pick up some extra cloth. Just have a look it wont hurt ya! I'll give you a good deal. Come now don't be shy.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("nods his head and smiles. 'Welcome, traveler. I carry fine linen to help protect you from the elements. They are crafted with woven flax of the finest quality. Please have a look!");
@@ -72,6 +75,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

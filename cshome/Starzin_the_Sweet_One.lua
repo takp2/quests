@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail"))then
 		e.self:Say("A warm hello to you. " .. e.other:GetCleanName() .. "! Please make yourself at home here in the serene locale of Sunset Home. Here you can forget about the [queue]. and enjoy the company of your fellow guides!");

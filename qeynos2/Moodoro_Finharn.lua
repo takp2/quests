@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= 0) then -- requires indifferent	
@@ -26,6 +27,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 
 	if(e.signal == 1) then
@@ -34,6 +36,7 @@ function event_signal(e)
 	
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -58,6 +61,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Emote(string.format("'s corpse says 'I'll get you back %s!'",e.other:GetCleanName()));
 end

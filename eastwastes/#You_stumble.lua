@@ -1,9 +1,11 @@
 -- proximity trigger to spawn Tanik Greskil for 4th coldain prayer shawl
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_proximity(e.self:GetX() - 50, e.self:GetX() + 50, e.self:GetY() - 50, e.self:GetY() + 50);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(116010)) then
 		e.self:Emote("in the snow.");

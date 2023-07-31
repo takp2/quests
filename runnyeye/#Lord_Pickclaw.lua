@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",3600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop_with_timer();
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(not eq.is_paused_timer("depop")) then

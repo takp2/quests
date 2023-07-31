@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to my fiefdom, wayward " .. e.other:Race() .. ". I am Duke Shamus Aghllsews of the Tunarean Court. Only those who pledge friendship or membership to the Court are allowed sanctuary in the Wakening Lands.");
@@ -10,6 +11,7 @@ end
 
 
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

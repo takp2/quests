@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings friend. If you're in the business for some herbs or shamanistic supplies you've come to the right place. Please take a look around for yourself or if you're looking for something feel free to ask and we may have you need somewhere behind the counter.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {gold = 1000})) then

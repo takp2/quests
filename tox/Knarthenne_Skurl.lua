@@ -1,5 +1,6 @@
 -- Part of SK Epic 1.0
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Ah, you do not possess the heart of an innocent. Be gone with you!");

@@ -1,4 +1,5 @@
 --Willamina's Needles
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("coughs and says. 'Hello traveler.  Allow me to introduce myself. I am Bolcen. If you are looking for my master Xelrin. you may find him upstairs.  Careful should you stand too close to me however. I have become ill.'  He coughs again.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28091})) then--Curative Potion

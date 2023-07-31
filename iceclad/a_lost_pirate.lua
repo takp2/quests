@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("twitches and growls a little. 'Arrr. Grrr. Ahoy, mate. The name's Teep.' He shivers and you notice a little drool at the corner of his mouth. 'Ya ain't lost out here too, are ya?'");
@@ -19,6 +20,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

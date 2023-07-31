@@ -1,4 +1,5 @@
 --Quest for Whiptail Poison Gland
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to our fair city traveler. We have much in the way of fine food and entertainment. If you are planning to explore the crater, please beware of the [vermin] infesting the area.");
@@ -69,6 +70,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,5 +1,6 @@
 -- Fertilizer & rare plants
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. "! I am Governess Tobala Honeyjar of Katta Castellum. Overseeing the maintenance of the [Nocturnal Gardens] is just one of my duties as the governess of agriculture and ecology.");
@@ -15,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

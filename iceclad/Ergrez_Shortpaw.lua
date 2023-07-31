@@ -1,11 +1,14 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("skin",120000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Emote("works at skinning and cleaning the raw furs around him.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("skinning")) then
 		e.self:Say("Yes.  I take skin of animal that hunters catch and make into things.  Very important, very big job for clan.");
@@ -28,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

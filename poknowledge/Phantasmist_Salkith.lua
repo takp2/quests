@@ -1,4 +1,5 @@
 --Planar Armor Exchange
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("tilts his head back, a sneer crossing his features in unmasked disgust toward " .. e.other:GetCleanName() .. ". 'What exactly are you doing here, " .. e.other:GetCleanName() .. "? Don't you know that this is the district of Kartis -- the center of the shaded voice of mortal power in the known universe? Perhaps you stumbled into the darkness by accident -- but then, why would not your deity of pure light, justice, valor, and honor deter you from this place? Perhaps they have abandoned you, or perhaps you have been subject to the true face value of their illusion.'");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {1246, 1247, 1248, 1249, 1250, 1251, 1252}); --Insidious Armor, the comments on Alla's about this not being taken are in error, I believe.  It's Fine Insidious that's not taken.

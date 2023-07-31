@@ -1,4 +1,5 @@
 -- Kedrak NPCID: 124093
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

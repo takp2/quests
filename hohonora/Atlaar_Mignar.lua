@@ -1,5 +1,6 @@
 local n;
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		eq.stop_timer("animate");
@@ -19,6 +20,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	
 	if ( e.timer == "animate" ) then

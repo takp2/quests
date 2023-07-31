@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("angrily rattles his shackles. 'Damned Kobolds!! Some day I will return and these filthy warrens will be littered with their dog faced corpses! You wouldn't happen to have a key for these shackles would you?'");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

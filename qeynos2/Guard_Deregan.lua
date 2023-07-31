@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ".  I am Deregan. I used to be an adventurer much like yourself. Of course I was not as frail and childlike as you appear to be.");

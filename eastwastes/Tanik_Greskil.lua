@@ -1,10 +1,12 @@
 -- Tanik Greskil dialogue - hand him a vial of velium vapors to complete quest
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("faint",1000);
 	eq.set_timer("moveloc",120000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Outlander! Thank Brell you've found me! I am the last surviving member of my unit. Our mission was somehow compromised, the bloody Kromrif knew just where to find us... I can't imagine how they knew. I was barely able to escape with my life and wandered into a trap here. I am badly hurt and need your help.");
@@ -15,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -27,6 +30,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "faint") then
 		eq.stop_timer("faint");
@@ -37,6 +41,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.stop_timer("moveloc");
 end

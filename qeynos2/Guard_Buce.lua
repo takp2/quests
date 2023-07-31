@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, citizen! While I have taken an oath to protect you. that does not mean I have to waste my breath talking to you.");

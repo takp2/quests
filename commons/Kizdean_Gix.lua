@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("If you have business then out with it!! If not, then please be gone. I have little time to waste on chitchat!");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if(math.random(100) < 15) then
 		eq.unique_spawn(21141,0,0,3036,-706,-39,0); -- chance for Dragoon Zytl to spawn.

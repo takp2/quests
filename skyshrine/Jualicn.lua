@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Why hello there, " .. e.other:GetCleanName() .. ". I do not see many that pass through these chambers unless they are trusted. What brings you before me today?");

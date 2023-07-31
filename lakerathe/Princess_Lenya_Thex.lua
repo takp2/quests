@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("yay",600000);
 	eq.zone_emote(15,"a royal fish changes into a beautiful princess!!");
@@ -5,12 +6,14 @@ function event_spawn(e)
 	e.self:Emote("<glug>'  She motions to you to follow her to shore.'");
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer=="yay") then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I am rescued from the hands of the Teir'Dal! I am grateful.  Show me your [proof of allegiance] along with a key to remove these [dark shackles] and I shall reward thee.");
@@ -23,10 +26,11 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I will require both the shackle key for the dark shackles and some proof of allegiance.";
-	
+
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20008, item2 = 13108},1,text)) then
 		e.self:Say("You have saved me!!  " .. e.other:GetCleanName() .. ", you are my hero!!  Take my amulet and the royal suite key to Tearon in Highkeep.  Help put his soul at ease and he shall reward you.  Now I must go.. I am sorry I cannot transport you as well, but my powers are weak from much swimming.  Farewell, brave soul!");
 		e.other:Faction(e.self, 226, 75); -- Faction: Clerics of Tunare

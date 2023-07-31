@@ -1,8 +1,10 @@
 local spawn;
+---@param e NPCEventSpawn
 function event_spawn(e)
 	spawn = 0;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. ". Are you perchance a minstrel?");
@@ -23,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20536})) then --Mystical Lute Body
@@ -34,6 +37,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if(spawn == 1) then
 		eq.spawn2(89039,0,0,-693,-2103,-140.62,0):AddToHateList(e.other,1);

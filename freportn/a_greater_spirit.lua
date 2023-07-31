@@ -1,8 +1,10 @@
 -- This is for the second of the two greater spirits in North Freeport.
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",1800000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then -- Part of Shaman Epic 1.0
 		e.self:Say("Greetings, shaman. Tell me, do you follow [Justice], [War], [Honor], [Fear], or [Hate]?");
@@ -38,6 +40,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

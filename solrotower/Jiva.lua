@@ -21,7 +21,8 @@ local SAYS = {
 };
 
 local add = 0;
-	
+
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(212412, 0, 0, -2126, 105, -1100, 0);	-- a_flaming_cauldron
 	eq.spawn2(212417, 0, 0, -2211, -790, -1094, 128);	-- a_warder_of_Jiva
@@ -29,6 +30,7 @@ function event_death_complete(e)
 	eq.spawn2(212417, 0, 0, -2301, -790, -1094, 128);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("adds", 45000);
@@ -38,6 +40,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "adds" ) then
 		add = add + 1;

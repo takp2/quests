@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	ran = math.random(75000);
 	eq.set_timer("1",ran);
 end
+---@param e NPCEventTimer
 function event_timer(e)
 	local rand = math.random(2);
 	if(rand == 1) then
@@ -14,6 +16,7 @@ function event_timer(e)
 	eq.set_timer("1",ran);
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

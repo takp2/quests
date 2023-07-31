@@ -4,6 +4,7 @@ local MOB_TYPES = {
 	204474, -- a_voracious_hatchling
 };
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		local r = math.random(2, 4);

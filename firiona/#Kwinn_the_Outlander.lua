@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, adventurer! Kwinn's the name. Hunting is my game. I have been all over this continent. Seen many things and found [odd trinkets]. I have no quarrel with any race. I judge a person or critter by their actions. Heck, my best friend is a troll!!");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12828})) then

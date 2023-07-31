@@ -1,4 +1,5 @@
 --Willamina's Needles
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Well, good day to you, good traveler. I am Elisha Dirtyshoes, a humble citizen of New Tanaan. Though I have never braved the dangers of an adventurer's life, I make a suitable and humble life here in this beautiful city. If you are a potter, then perhaps my wares might interest you?");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28086})) then--Letter to Elisha

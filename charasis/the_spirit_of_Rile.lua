@@ -1,4 +1,5 @@
 --Shaman Skull Quest 8
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Use your cudgel to unite my soul with my body " .. e.other:GetCleanName() .. "";	

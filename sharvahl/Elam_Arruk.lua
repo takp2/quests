@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("task")) then
 		e.self:Say("You will need to begin familiarizing yourself with the moor and its inhabitants. As a scout, there is one creature that roams the moor that you are going to need to focus on in particular. These creatures are wolf-like in their appearance, but have no need for sight and show absolutely no fear of the tactics that we usually use to scare off animals. They move in packs and attack swiftly. To learn their behavior, you will need to track a few down. Fill that bag with a few of their tongues and bring it back to me. Once you have seen them, I will be able to teach you more.");
@@ -74,6 +75,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 5558},0)) then

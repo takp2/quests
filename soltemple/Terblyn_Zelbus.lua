@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings. " .. e.other:GetCleanName() .. ". I am the wizard known as Terblyn Zelbus.  I became a merchant after I couldn't handle the pressures of being one of [Al'Kabor]'s assistants.  He's an old fogey. but don't tell him I said that. I don't think he likes short people very much.");

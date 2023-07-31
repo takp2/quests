@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oh good.  Another fine example of why I am growing to hate this city.  If Commander Bayle were running things here, we would not have to put up with weaklings like you walking our streets.");

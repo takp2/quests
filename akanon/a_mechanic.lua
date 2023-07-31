@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("clockwork")) then
 		e.self:Say("The clockworks of Ak'Anon are automata created by the Eldritch Collective.  They come in many models from combat to service.  All are formidable opponents.");

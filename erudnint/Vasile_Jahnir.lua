@@ -1,6 +1,7 @@
 -- The Power of the Gatecallers
 -- Rungupp
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings!  You seek knowledge of our ways. You shall find knowledge and you shall offer knowledge you have been taught.  What is the power of the Gatecallers?");
@@ -19,6 +20,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Your proof lies in TWO summoned daggers and two summoned loaves of black bread.";

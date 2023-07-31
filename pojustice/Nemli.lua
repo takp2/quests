@@ -3,6 +3,7 @@
 -- NPC: Nemli (201357)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 5 and e.other:GetLanguageSkill(5) >= 100) then
         if(e.message:findi("Hail")) then

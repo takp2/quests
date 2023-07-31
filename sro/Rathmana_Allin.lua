@@ -1,5 +1,6 @@
 -- NPC: Rathmana Allin.  Location: South Ro
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Company?! Way out here in the desert of Ro? This is a pleasant surprise! Won't you stay for a while? I am sure the desert has dried your throat. I have supplies if necessary. At a price, of course. Are you [traveling] or are you here on [business]?");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I believe there is more yet.";
@@ -32,7 +34,7 @@ function event_trade(e)
 	elseif (item_lib.check_turn_in(e.self, e.trade, {item1 = 18808, item2 = 18809, item3 = 18810, gold = 20},1,text)) then -- Bayle List I, Bayle List II, Bayle List III
 		e.self:Say("A simple code. Why do you even bother Rathmana with such child's play? Here is your translation. That was the easiest twenty gold coins I ever earned.");
 		e.other:Faction(e.self,415,5); -- Faction: Temple of Solusek Ro
-		e.other:Faction(e.self,416,-1); -- Faction: Shadowed Men		
+		e.other:Faction(e.self,416,-1); -- Faction: Shadowed Men
 		e.other:QuestReward(e.self,0,0,0,0,18825); -- Bayle List
 	end
 	item_lib.return_items(e.self, e.other, e.trade)

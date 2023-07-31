@@ -1,9 +1,11 @@
 local count = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("roll",70000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Shove off, mate.  We're busy 'scoutin'.  Can't ya see?  Hehehe!");
@@ -16,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	count = count + 1;
 	if(count == 1) then

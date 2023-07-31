@@ -1,12 +1,14 @@
 --Dran_-Slug-_Rembor.pl
 --Part of Innoruuk Regent
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("ithvol")) then --Disciple Symbol of Innoruuk
 		e.self:Say("So you're the lucky errand boy, eh?! Let's hope you are more successful than the last chump who was sent. From what I hear, there was something pretty important in that last crate that was sent out. It just looked like a bunch of junk to me. Anyhow, we ran out of steel boning. Bring me two bonings so we can bind up the crate and be quick about it! Both of our necks are on the line!");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Gee, thanks, but I can't do a whole lot without the rest! Get your act straight or we're both dead!";

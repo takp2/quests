@@ -1,17 +1,18 @@
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "teleport" ) then
-	
+
 		eq.set_timer("teleport", math.random(2, 30) * 1000);
 		local target = e.self:GetTarget();
-		
+
 		if ( target and target.valid ) then
 			e.self:SetHate(target, 1);
 			if ( target:IsClient() ) then
 				target:CastToClient():MovePC(206, 281, -239, 2, 64*2);
 			end
 		end
-		
+
 	elseif ( e.timer == "boundscheck" ) then
 		if ( e.self:GetY() > -350 or e.self:GetY() < -600 ) then
 			e.self:Emote("rattles violently and disappears!");
@@ -23,6 +24,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.set_timer("teleport", math.random(2, 30) * 1000);

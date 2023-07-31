@@ -1,5 +1,6 @@
 --Quest Name: Bard Mail Quest
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hail. " .. e.other:GetCleanName() .. "  -Are you [interested] in helping the League of Antonican Bards by delivering some [mail]?");

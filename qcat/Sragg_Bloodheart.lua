@@ -1,8 +1,10 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("I will hear no more excuses, Tovax!  Enjoy eternal pain and suffering!");
 	eq.attack_npc_type(45040); --Tovax Vmar
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -23,6 +23,7 @@ function ClientCanFlag(mob)
 	return false;
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	rid, gid, cid = nil, nil, nil;
 	local client = eq.get_entity_list():GetClientByID(e.signal);	-- the signal # is the entity ID of a client with kill credit
@@ -43,17 +44,20 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	flags = 0;
 	eq.set_timer("depop", 600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	
 	if ( ClientCanFlag(e.other) ) then

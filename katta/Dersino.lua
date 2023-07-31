@@ -1,11 +1,13 @@
 -- Beriol's Research
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello stranger. Im very busy with my work, is there something specific you need to speak to me about?");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

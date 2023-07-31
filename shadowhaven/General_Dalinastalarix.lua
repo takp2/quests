@@ -24,6 +24,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oi there " .. e.other:GetCleanName() .. "! Not causing any trouble are ya? Well that's good to hear. Allow me to introduce myself. I am Head Guardsman Dalinastalarix the VI . I take pride in my position and care for my guardsmen the best I can. Well enough out me, enjoy your stay will ya? Perhaps we will share an ale or two over stories of battle.");

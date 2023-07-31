@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.language == 22 and e.other:GetLanguageSkill(22) == 100) then -- Elder Dragon
 		if(e.message:findi("hail")) then

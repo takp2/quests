@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("whispers, 'Speak softly outlander or you may end up like Frekka and some of the others.'");

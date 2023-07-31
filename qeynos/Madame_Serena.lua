@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local fac = e.other:GetFaction(e.self);
 	if(e.message:findi("follow")) then
@@ -49,6 +50,7 @@ function event_say(e)
 	
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {gold = 50})) then

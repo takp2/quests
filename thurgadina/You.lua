@@ -1,9 +1,11 @@
 local count = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("proxsay",2000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	local xloc = e.self:GetX();
 	local yloc = e.self:GetY();

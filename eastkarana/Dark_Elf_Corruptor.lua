@@ -1,13 +1,16 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("despawn",600000);
 	e.self:SetRunning(true);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("despawn");
 	eq.depop();
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.stop_timer("despawn");
 end

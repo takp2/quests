@@ -1,5 +1,6 @@
 -- Hollow Skull
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Argh... The [beasts] are on my tail. They will find me soon... I gave them the [skull] and still they pursue me!");
@@ -15,6 +16,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "assassin") then
 		eq.stop_timer("assassin");
@@ -23,6 +25,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined and eq.get_entity_list():IsMobSpawnedByNpcTypeID(12005)) then
 		eq.get_entity_list():GetMobByNpcTypeID(12005):Say("You cannot escape the claws of Splitpaw!");
@@ -30,4 +33,4 @@ function event_combat(e)
 	end
 end
 
--- END of FILE zone: ID:12167 -- Yiz_Pon.pl 
+-- END of FILE zone: ID:12167 -- Yiz_Pon.pl

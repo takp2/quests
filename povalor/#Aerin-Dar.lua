@@ -1,6 +1,6 @@
 local PLANAR_PROJECTION_TYPE = 208207;
 local MINION_TYPE = 208175; -- A_Mindless_Minion
-local RAHLGON_TYPE = 208176; -- Rahlgon 
+local RAHLGON_TYPE = 208176; -- Rahlgon
 local SPAWNIDS = {
 	347220, 347221,
 	347219, 347217,
@@ -34,11 +34,13 @@ function RespawnAdds()
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.spawn2(PLANAR_PROJECTION_TYPE, 0, 0, 360, 2528, 39, 0);
 	eq.signal(PLANAR_PROJECTION_TYPE, e.killer:GetID()); -- e.killer for death_complete is somebody with kill rights, not death blow
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_next_hp_event(85);
 	RespawnAdds();
@@ -49,20 +51,21 @@ function event_hp(e)
 	if ( e.hp_event == 85 ) then
 		eq.set_next_hp_event(65);
 		WakeUp(1, 2);
-		
+
 	elseif ( e.hp_event == 65 ) then
 		eq.set_next_hp_event(45);
 		WakeUp(3, 4);
-		
+
 	elseif ( e.hp_event == 45 ) then
 		eq.set_next_hp_event(25);
 		WakeUp(5, 6);
-		
+
 	elseif ( e.hp_event == 25 ) then
-		WakeUp(7, 8, 9);		
+		WakeUp(7, 8, 9);
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( not e.joined and e.self:GetHPRatio() < 86 ) then
 		eq.set_timer("checkhp", 3000);
@@ -73,16 +76,17 @@ function event_combat(e)
 		eq.stop_timer("boundscheck");
 	end
 end
-		
+
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "boundscheck" ) then
 		if ( e.self:GetZ() > 120 or e.self:GetY() < 2100 or e.self:GetY() > 2880 ) then
 			e.self:GMMove(e.self:GetSpawnPointX(), e.self:GetSpawnPointY(), e.self:GetSpawnPointZ(), e.self:GetSpawnPointH());
 		end
-		
+
 	elseif ( e.timer == "checkhp" ) then
-	
+
 		if ( e.self:GetHPRatio() == 100 ) then
 			eq.stop_timer(e.timer);
 			eq.set_next_hp_event(85);

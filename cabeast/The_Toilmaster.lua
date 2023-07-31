@@ -1,5 +1,6 @@
 --The Toilmaster is part of The Penance quest, which is for any iksar who has lost the item they received from turning in their newbie note. He is also used for the Granite Pebbles quest.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Do not bother me unless you wish to join the chain gang. Now go away or I shall have my slaves chop you as they chop this granite!");
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12660, item2 = 12660})) then

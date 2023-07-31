@@ -1,5 +1,6 @@
 -- scripts to randomly spawn one of these npc : boulder fiend, a stone beast, a boulderling, stonehead, Boulder
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local ex = e.self:GetX();
 	local ey = e.self:GetY();
@@ -7,6 +8,7 @@ function event_spawn(e)
 	eq.set_proximity(ex - 65, ex + 65, ey - 65, ey + 65, ez - 60, ez + 60);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	e.self:Emote("of living stone leaps out at you from amongst the rocks!");
 	creature = math.random(100);

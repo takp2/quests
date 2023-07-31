@@ -7,6 +7,7 @@
 --Quest Status: finished
 -- Updated by Kilelen
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Please, I am trying to work here. If you bother me I will write a horrible song about you and sing it from the mountain tops!");
@@ -30,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

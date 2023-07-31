@@ -1,11 +1,13 @@
 local followtarget;
 local skip;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	followtarget = nil;
 	skip = 0;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there " .. e.other:GetName() .. ". I don't suppose you can spare some coins? I'm just a poor halfling that is far away from home. I can't afford anything to eat or drink. Anything you can offer me will be of help.");
@@ -17,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "follow" and eq.get_entity_list():GetClientByID(followtarget).valid and skip == 0) then
 		eq.follow(followtarget); -- Follow the player who triggered the event
@@ -34,6 +37,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e) -- Note that we are intentionally accepting any trade
 	local item_lib = require("items");
 	

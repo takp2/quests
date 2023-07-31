@@ -20,11 +20,13 @@ function SendSignals(n)
 	eq.signal(211038, n); -- Eldon_Starkorp
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("say", 10000);
 	n = 0;
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.self:IsEngaged() or e.self:GetX() ~= e.self:GetSpawnPointX() or e.self:GetY() ~= e.self:GetSpawnPointY() ) then

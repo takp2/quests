@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",1800000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
   if(e.message:findi("bloodsaber")) then
     e.self:Say("A Bloodsaber? Of course I'm not, don't be ridiculous!");
@@ -9,6 +11,7 @@ function event_say(e)
   end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2344})) then
@@ -21,6 +24,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade, e.text)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
   if(e.timer == "depop") then
 	e.self:Say("I'm outta here!");
@@ -29,6 +33,7 @@ function event_timer(e)
   end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Emote("begins to perspire and says, 'Umm... Well, I don't know. It just started following me around.  You know, like a puppy. I didn't actually RAISE it. Really. Come on!'");

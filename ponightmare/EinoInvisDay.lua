@@ -7,6 +7,7 @@ local TORMENT_BAT_TYPE = 204031; -- a_torment_bat
 
 local MOB_TYPES = { [BANSHEE_TYPE] = 1, [NIGHTSTALKER_TYPE] = 1, [HOBGOBLIN_TYPE] = 1, [TREMULOUS_BAT_TYPE] = 1, [TERROR_BAT_TYPE] = 1, [TORMENT_BAT_TYPE] = 1 };
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.debug("EinoInvisDay spawn", 2);
 	eq.set_timer("timecheck", 10000);
@@ -32,6 +33,7 @@ function event_spawn(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "timecheck" ) then
 		local zoneTime = eq.get_zone_time()["zone_hour"] + 1;

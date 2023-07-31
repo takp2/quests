@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. ", welcome to the war zone. I probably don't have to mention that these are dangerous times here. I pray to the spirits that they might reveal to me the path to victory over our enemy. Recently, I have begun to feel that the answer to my pleas will present itself in the near future.");

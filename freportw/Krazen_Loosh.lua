@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetRunning(true);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("The towering wall of stone is clearly unmovable at this point, being held in place by collection of magical energies.");
@@ -16,6 +18,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 		e.self:Say("As you try to open penetrate the stone wall it is clearly being held in place by a powerful force.");
 		eq.attack_npc_type(9141);

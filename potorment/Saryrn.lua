@@ -18,7 +18,7 @@ local spawns = { 0, 0, 0, 0, 0 };
 function Spawn()
 	local loc;
 	local elist = eq.get_entity_list();
-	
+
 	for i = 1, #spawns do
 		if ( spawns[i] == 0 or not elist:GetMob(spawns[i]).valid ) then
 			loc = SPAWN_LOCS[i];
@@ -29,29 +29,31 @@ end
 
 function Despawn()
 	local npcList = eq.get_entity_list():GetNPCList();
-	
+
 	for i = 1, #spawns do
-	
+
 		if ( spawns[i] ~= 0 ) then
-			
+
 			for npc in npcList.entries do
-		
+
 				if ( npc.valid and npc:GetID() == spawns[i] ) then
 					npc:Depop();
 				end
 			end
-			
+
 			spawns[i] = 0;
 		end
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.get_entity_list():GetSpawnByID(SORROWSONG_SPAWNID):SetTimer(1); -- force spawn Sorrowsong
 	event = 1;
 	eq.set_next_hp_event(HP_EVENTS[event]);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.stop_timer("checkup");
@@ -64,20 +66,21 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "bounds" ) then
-	
+
 		if ( e.self:GetZ() < 575 ) then
 			e.self:GMMove(e.self:GetSpawnPointX(), e.self:GetSpawnPointY(), e.self:GetSpawnPointZ(), e.self:GetSpawnPointH());
 			e.self:CastSpell(3230, e.self:GetID()); -- Balance of the Nameless
 		end
-	
+
 	elseif ( e.timer == "checkhp" ) then
-	
-		if ( e.self:GetHPRatio() == 100 ) then		
+
+		if ( e.self:GetHPRatio() == 100 ) then
 			eq.stop_timer(e.timer);
-			
+
 			eq.signal(SORROWSONG_TYPEID, 3); -- revert to untargetable
 			event = 1;
 			eq.set_next_hp_event(HP_EVENTS[event]);
@@ -86,18 +89,18 @@ function event_timer(e)
 end
 
 function event_hp(e)
-	
+
 	event = event + 1;
 	if ( HP_EVENTS[event] ) then
 		eq.set_next_hp_event(HP_EVENTS[event]);
 	end
-	
+
 	if ( e.hp_event == 99 ) then
 		e.self:Say("Sorrowsong, sing for us.  We want these wretches to enjoy their stay, don't we?");
 		eq.signal(SORROWSONG_TYPEID, 1); -- start silencing
 		Spawn();
 		return;
-		
+
 	elseif ( e.hp_event == 25 ) then
 		e.self:Say("This filth is proving to be a challenge!  Sorrowsong, attack these mortals!");
 		eq.signal(SORROWSONG_TYPEID, 2); -- become targable/attack
@@ -110,6 +113,7 @@ function event_hp(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	Despawn();
 	eq.spawn2(PLANAR_PROJECTION_TYPE, 0, 0, e.self:GetX(), e.self:GetY(), e.self:GetZ(), 0);

@@ -1,16 +1,19 @@
 -- pulsing green stone - ranger/druid epic
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(102010)) then -- if VS is up. VSR will depop.
 		eq.depop_with_timer();
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("The living fire. I seek the fires of life. Bring them.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 10295})) then

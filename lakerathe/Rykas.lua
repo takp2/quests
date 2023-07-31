@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("'Greetings, " .. e.other:GetCleanName() .. ". I am Rykas, chronicler of knowledge. I have journeyed all throughout the lands of Norrath, and I have learned many tales of adventure from people I have encountered during my travels. I have learned of legends known and unknown to most mortals. Are you in search of knowledge?");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28003, item2 = 28004, item3 = 28031})) then

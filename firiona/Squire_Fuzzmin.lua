@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	 e.self:SetRunning(true);
 end
@@ -5,13 +6,14 @@ end
 function event_waypoint_arrive(e)
 	if(e.wp == 9) then
 		e.self:SetRunning(false);
-		eq.stop();
 		local mobtypeID =  eq.get_entity_list():GetMobByNpcTypeID(84005);
 		local follow_hobble = mobtypeID:GetID();
 		eq.follow(follow_hobble);
+		eq.stop(23);
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("awakens from a quick shuteye.");
@@ -25,6 +27,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I need the three dragon scales of Azdalin, Gylton and Xyfyl.";

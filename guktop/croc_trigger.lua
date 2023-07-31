@@ -1,5 +1,6 @@
 local CrocUp = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	croc_spawns();
 end
@@ -40,6 +41,7 @@ function croc_spawns()
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	CrocUp = CrocUp - 1;
 	if(CrocUp == 0) then
@@ -47,6 +49,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "spawn timer") then
 		croc_spawns();

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello. researcher!  There are many things to be found here.  Our selection grows daily.  Would you [care for any books]?");

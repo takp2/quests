@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to our humble outpost, traveler. Let me know if you see anything you need. I consider it an honor to sell here.  I am doing my part to help Vah Shir in training stay in the field.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

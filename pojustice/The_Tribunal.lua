@@ -153,6 +153,7 @@ function MoveGroup(zone, client, dist, x, y, z, h)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	local trialNum = SPAWNPOINT_IDS[e.self:GetSpawnPointID()];
 	
@@ -167,6 +168,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( #e.timer == 6 ) then
 		eq.stop_timer(e.timer);
@@ -179,6 +181,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.self, e.other);
 	local trialNum = SPAWNPOINT_IDS[e.self:GetSpawnPointID()];

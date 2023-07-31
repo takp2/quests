@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Welcome to the royal court of King Raja Kerrath. King of Shar Vahl City. Descendant of the Great Vah Kerrath. Leader of all Vah Shir!  Please be respectful when you enter the royal throne room.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,16 +1,19 @@
 local signal = 0;
 local lastSong = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("ready", 300000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.message:findi("hail") ) then
 		e.self:Say("Greetings!! I am Trolon Lightleer. Harmonizer of the soul. Please sit and order an ale. I shall be playing soon.");
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "ready" ) then
 		e.self:Say("What a cheerful crowd.");
@@ -33,6 +36,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	song = math.random(1, 6);
 	while ( song == lastSong ) do

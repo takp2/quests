@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Eh?... <yawn>... Ah good evening to you, too, " .. e.other:GetCleanName() .. ". I'd be careful outside the city gates tonight if I were you... I've heard rumors of evil people and undead wandering the hills recently.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

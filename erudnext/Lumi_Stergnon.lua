@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local fac = e.other:GetFaction(e.self);
 
@@ -29,6 +30,7 @@ function event_say(e)
 end
 
 			
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

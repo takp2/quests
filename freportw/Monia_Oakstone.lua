@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Pay mind to the authorities of Freeport. Vile they may be, but powerful and many they are.");

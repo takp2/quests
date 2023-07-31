@@ -13,6 +13,7 @@ local QUEST_ITEMS={
 	quest_helper:melee_boots(SKYSHRINE_ARMOR.Plate_Boots, 31125) -- boots
 }
 
+---@param e NPCEventSay
 function event_say(e)
 	if (e.other:GetFaction(e.self) < 2) then --must be ally
 		if(e.message:findi("hail")) then
@@ -40,6 +41,7 @@ function event_say(e)
 
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	quest_helper:quest_turn_in(e, 1, QUEST_ITEMS, quest_helper.skyshrine_armor_success) --Need to check SKYSHRINE_ARMOR_success to make sure it works
 end

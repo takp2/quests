@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("pick_up", 2000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "pick_up" ) then		
 		while ( e.self:CheckGround() ) do
@@ -16,6 +18,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -500) then
@@ -44,6 +47,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib =require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {gold = 2})) then

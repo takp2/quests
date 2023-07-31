@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local shifty = "Your shifty eyes tell me that you are no ally of the Stormguard.";
 	local prove = "Prove yourself to the Stormguard and then we shall talk. Perhaps you may assist Master Canloe and show your worth to us.";
@@ -63,6 +64,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local temphandins = 0;

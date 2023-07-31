@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 		-- send a signal to the Key_Master
 		eq.signal(71056,2); -- NPC: Key_Master

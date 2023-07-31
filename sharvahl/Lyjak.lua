@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Well met my friend. I have patterns and sewing kits to supply any would be tailor. It's easy to learn if you havn't done so already. Just pick up one of my kits and try weaving the silks of the Xakra together.");
@@ -66,10 +67,12 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",82000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "1") then
 		local rand = math.random(1,3);
@@ -85,6 +88,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

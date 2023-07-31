@@ -1,6 +1,7 @@
 --Ennixy_Frennor.pl
 --Part of Innoruuk Regent
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Unless you have something to tell me about yourself that I could possibly be interested in, be gone!");
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

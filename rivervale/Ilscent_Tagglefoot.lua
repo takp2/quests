@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oh hello. " .. e.other:GetCleanName() .. ".  My name is Ilscent.   I am glad to see you. but I am in a bit of a [bind] right now.");

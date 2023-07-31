@@ -6,6 +6,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if (e.message:findi("hail") ) then
 		e.self:Say("Bug off!  Unless you want an Irontoe boot to caress your head?!");

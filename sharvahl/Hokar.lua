@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What have we here? A would be adventurer? Better learn to take your foes at range my friend, A few shots can give you a slight advantage in any battle. I've already prepared a few things for purchase, but if you prefer to test your own hand at crafting your weapon of choice I have tools available to help you in that as well.");
@@ -64,6 +65,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

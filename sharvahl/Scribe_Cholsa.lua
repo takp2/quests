@@ -1,5 +1,6 @@
 --  Rakshasa Skulls
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Things slip my mind easily these days. Are you here for something specific or are you a one of our new recruits?");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 31849}, 0)) then  -- Rolekos Report of Occurrences

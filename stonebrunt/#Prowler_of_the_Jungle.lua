@@ -1,11 +1,13 @@
 -- Prowler of the Jungle
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("crouches and narrows his eyes, examining " .. e.other:GetCleanName() .. " attentively. 'I am Prowler of the Jungle, stalker of the corrupt, hunter of the impure. I am the guardian spirit of those who tread silently across the lands destroying that which has been tainted.'");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

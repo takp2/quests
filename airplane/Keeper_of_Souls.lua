@@ -1,9 +1,11 @@
 -- Epic NPC -- Keeper_of_Souls
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("summit",2880000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "summit") then
 		eq.stop_timer("summit");
@@ -11,6 +13,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		eq.stop_timer("summit");
@@ -19,6 +22,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	sirran= nil;
 	eq.set_global("sirran","4",3,"M20");

@@ -1,11 +1,13 @@
 -- part of seventh coldain prayer shawl
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("burin")) then
 		e.self:Say("You'll need a fletching kit and a fair bit of skill for this one, " .. e.other:GetCleanName() .. ". Round up a tooth from a swordfish and attatch it to an Ulthork tusk wrapped in a Molkor hide.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

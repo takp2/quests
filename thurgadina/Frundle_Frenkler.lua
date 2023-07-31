@@ -1,5 +1,6 @@
 -- Frundle Frenkler - vial of velium vapors
 
+---@param e NPCEventSay
 function event_say(e)
 	if (e.other:GetFaction(e.self) < 6) then
 		if(e.message:findi("velium vapor")) then

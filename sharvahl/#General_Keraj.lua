@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",210000);
 	eq.set_timer("2",220000);
@@ -12,6 +13,7 @@ function event_spawn(e)
 	eq.set_timer("11",705000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer=="1") then
 		e.self:Say("Nay friend, we appear to be making decent progress. The grimling numbers are increasing, but so are ours. Many of the newcomers are working with us in the moor and forests. The influx of adventurers has provided us with some amazing new leaders. They are so full of energy and fearless ambition");
@@ -67,6 +69,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

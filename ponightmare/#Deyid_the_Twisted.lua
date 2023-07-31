@@ -19,6 +19,7 @@ local FOREBODING_LOCS = {
 
 local forebodingIDs;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 1800000);
 	eq.set_timer("checkbounds", 5000);
@@ -65,11 +66,13 @@ function event_hp(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.signal(SEILAEN_TYPE, 1);
 	eq.signal(FOREBODING_TYPE, 1);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "checkbounds" ) then
 		if ( e.self:GetZ() < 270 ) then

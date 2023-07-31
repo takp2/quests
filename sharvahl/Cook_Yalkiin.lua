@@ -3,6 +3,7 @@
 --Worm Meat Broth
 --Vegetables
 --Also turn in for Taruun Apprentice quest
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Welcome to our kitchen! As you can tell we stay pretty busy in here.  There are a lot of people to feed and a vast number of delicious meals to feed them.  I'm in charge of preparing [stews], [broth], and [vegetables].  If you ever have any questions about those areas. please let me know.");
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local chanceitem = 0;

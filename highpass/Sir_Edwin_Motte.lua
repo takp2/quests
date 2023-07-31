@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	
 	if ( e.message:findi("hail") ) then
@@ -5,10 +6,12 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("timecheck", 60000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "timecheck" and not e.self:IsEngaged() ) then
 	
@@ -20,6 +23,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.update_spawn_timer(336269, 1200000);
 end

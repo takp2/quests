@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 20) then
 		eq.get_entity_list():Message(0,256,"A Mystic Voice says 'In approximately fifteen minutes the portals will become active and will transport you back to Odus, Antonica, Faydwer, and Kunark. In ten minutes the portal to Velious will become active.'");

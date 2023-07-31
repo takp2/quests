@@ -1,5 +1,6 @@
 --Nihilist Zeegarn starts and ends The Penance quest. This allows a young iksar to replace their guild's starting item if they've lost it.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Mind yourself within Cabilis. We will not tolerate any mischief. If you don't heed my warnings, you may be sentenced to the pit of the Crusaders of Greenmist. You don't want that! Also, you should always wear your robe when entering these walls. You do have your Drape of the Brood, correct?");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

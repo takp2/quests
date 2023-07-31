@@ -1,13 +1,16 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local xloc = e.self:GetX();
 	local yloc = e.self:GetY();
 	eq.set_proximity(xloc - 20, xloc + 20, yloc - 20, yloc + 20);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	eq.set_timer("hum",30);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "hum") then
 		e.self:Emote("hums softly, a little tune that tickles the back of your mind but you can't quite recall.");
@@ -15,6 +18,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("tune") or e.message:findi("humming")) then
 		e.self:Say("Ohh. Just a little song my mother taught me when I was young. It speaks of the earth, the sky, and the sparkling stars above, always there.");
@@ -25,6 +29,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

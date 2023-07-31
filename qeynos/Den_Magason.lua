@@ -4,6 +4,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -100) then	
@@ -38,6 +39,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib =require("items");
 	local text = "Ok, good job, but I still need the other ones, too. Get the rest of them, so I can ship them all to Odus.";

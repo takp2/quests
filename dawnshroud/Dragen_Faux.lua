@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I've been told that you may be the wolf slayer. I don't know though. You look a little scrawny to be the one. I suggest you prove it and bring me the Wolf Slayer. Once I've seen it we shall speak again."); 
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

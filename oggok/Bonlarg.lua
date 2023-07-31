@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Shadowknight master me be!!  " .. e.other:GetCleanName() .. " prove to me that " .. e.other:GetCleanName() .. " be worthy to be one with Greenblood and me give " .. e.other:GetCleanName() .. " black shadow tunic.  You [want black shadow tunic]?");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Fool! Bonlarg say THREE lizardman scout fifes and green stained skin tunic.";	

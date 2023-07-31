@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("flips through a few pages of a small book, reading intently before answering you. 'Ye scurvy dog. I'll strike yer colors 'fore ya can put me on a gibbet. Take that, ya crimp!' She flips through a few more pages then smiles at you. 'Arrrr!'");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

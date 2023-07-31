@@ -1,13 +1,15 @@
 local entityIDs = {};
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 60000);
 	eq.set_timer("lay", 150);
 	eq.set_timer("attack", 6000);
-	
+
 	entityIDs[e.self:GetID()] = e.self:GetX();
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");
@@ -16,10 +18,11 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		local id = entityIDs[e.self:GetID()];
-		if ( id and id == -1954 ) then			
+		if ( id and id == -1954 ) then
 			eq.get_entity_list():GetSpawnByID(365397):SetTimer(1);
 		elseif ( id and id == -1748 ) then
 			eq.get_entity_list():GetSpawnByID(366053):SetTimer(1);
@@ -30,7 +33,7 @@ function event_timer(e)
 		end
 		entityIDs[e.self:GetID()] = nil;
 		eq.depop();
-		
+
 	elseif ( e.timer == "lay" ) then
 		eq.stop_timer("lay");
 		e.self:SetAppearance(3);

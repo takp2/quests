@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Can I help you?  I'm just finishing up here. but I may be available to assist you if you return [when I'm done].");

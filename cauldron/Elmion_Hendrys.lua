@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	fac = e.other:GetFaction(e.self);
 
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Pipe down, Ghil!! We have no quarrel with this adventurer.");
 end

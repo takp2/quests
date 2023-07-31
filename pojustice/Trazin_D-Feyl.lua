@@ -3,6 +3,7 @@
 -- NPC: Trazin_D`Feyl (201196)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 4 and e.other:GetLanguageSkill(4) >= 100) then
         if(e.message:findi("Hail")) then

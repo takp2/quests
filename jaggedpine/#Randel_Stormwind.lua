@@ -1,6 +1,7 @@
 -- Randel_Stormwind
 -- Quest for Jaggedpine - Randel Stormwind: Jaggedpine Poacher Heads
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met, " .. e.other:GetCleanName() .. ". This has been a very stressful time for many of us and some of us have been kind of edgy lately. We've lived here for generations and in relative seclusion and we enjoyed a simple life for the most part. Unfortunately, this was not to last and the sudden [change] has left many on edge.");
@@ -29,6 +30,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

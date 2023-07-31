@@ -1,6 +1,7 @@
 --BeginFile lakerathe\Kazen_Fecae.pl
 --Quest for Lake Rathetear - Kazen Fecae: Necromancer Epics (1.0)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("'s eyes seem to glow as he turns to you and says, 'Leave me be if you have no reason to be here, mortal!'");
@@ -21,6 +22,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

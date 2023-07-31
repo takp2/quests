@@ -1,4 +1,5 @@
 --This version of Hero Goxnok will lead us to the drachnid spy and the traitor. When the spy is killed, a second version of Goxnok will spawn, and he will reveal that he is in fact the traitor. This is all part of Greenmist quest number five.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("charasis tome")) then
 		e.self:Say("The Charasis Tome has been scribed and now another copy exists. The traitor obviously wants to keep a copy for himself. I am told you will deliver both copies to Lord Qyzar along with your zealot khukri and you shall be awarded that of a crusader. Let us rest for a minute and then I shall show you the meeting place.");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		eq.spawn2(84401,0,0,e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading());
@@ -16,6 +18,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "Talk1") then
 		e.self:Emote("stops abruptly and shudders with fear. 'Look!! There, past the wolf people. Near an ancient tunnel can be found the meeting place. I fear we may be too late. I thought I saw a shadow dash from the tunnels, but I did not see any spider riders. We'll see when we reach it.'");
@@ -28,6 +31,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

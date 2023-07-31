@@ -1,10 +1,12 @@
 local counting;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("combat",20000);
 	counting = 0;
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if (e.timer == "combat") then
 		counting = counting + 1;

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 
 	local qglobals = eq.get_qglobals(e.other);
@@ -64,6 +65,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local questState = tonumber(eq.get_qglobals(e.other).pov_orb_quest or 0);
 	local item_lib = require("items");

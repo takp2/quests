@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ahh, hello there, " .. e.other:GetName() .. ".  I am a trader from Sanctus Seru trying to make my way to Shadowhaven for some dealings.  I have come this far with the aid of guards from Sanctus Seru, but they have turned back and left me to go on my own.  I hear there are many terrible [creatures] here lurking in the shadows, leave it to the guards of the Hand to leave me unprotected.");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,5 +1,6 @@
 local closeby = 0;
 
+---@param e NPCEventSay
 function event_say(e)
 	if(closeby == 0) then
 		if(e.message:findi("Hail")) then			
@@ -29,6 +30,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1 and closeby == 0 and (e.self:GetX() >= 300 and e.self:GetX() <= 340) and (e.self:GetY() >= 250 and e.self:GetY() <= 285)) then
 		e.self:Say("I am now accepting quests.");
@@ -40,6 +42,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(closeby == 1 and item_lib.check_turn_in(e.self, e.trade, {item1 = 13769})) then --Ruined Backpack
@@ -54,6 +57,7 @@ function event_trade(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	closeby = 0;
 	eq.stop_follow();

@@ -1,4 +1,5 @@
 -- Vukuz NPCID: 124015
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

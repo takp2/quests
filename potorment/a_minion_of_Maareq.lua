@@ -1,8 +1,10 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	--eq.set_timer("move", 6000); -- Maareq is permarooted in AK's time, so don't need this
 	eq.set_timer("check", 1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	
 	local boss = eq.get_entity_list():GetMobByNpcTypeID(207004); -- Maareq_the_Prophet

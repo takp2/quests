@@ -1,5 +1,6 @@
 -- Converted to .lua by Speedz
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
     xloc = e.self:GetX();
     yloc = e.self:GetY();

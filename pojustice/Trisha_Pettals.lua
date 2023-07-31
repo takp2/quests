@@ -3,6 +3,7 @@
 -- NPC: Trisha Pettals (201264)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 9 and e.other:GetLanguageSkill(9) >= 100) then
         if(e.message:findi("Hail")) then

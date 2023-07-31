@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local xloc = e.self:GetX();
 	local yloc = e.self:GetY();
@@ -5,6 +6,7 @@ function event_spawn(e)
 	eq.set_proximity(xloc - 25, xloc + 25, yloc - 25, yloc + 25, zloc - 3, zloc + 6);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	e.self:Emote("sees shadows gather themselves into the form of skeletons.");
 	eq.spawn2(111116,0,0,358,326,-2.2,0); -- NPC: a_shadowbone

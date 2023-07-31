@@ -7,11 +7,13 @@ local SHOUTS = {
 };
 local nextShout = 1;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("zoneshout", 2400000);
 	eq.set_timer("depop", 48 * 60 * 60 * 1000);		-- he despawns, but the uptime and respawn times are unknown, so this is a guess
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "zoneshout" ) then
@@ -28,6 +30,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Mortal! You MUST aid me! I will have my revenge, and my rest!");
@@ -46,6 +49,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

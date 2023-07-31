@@ -1,4 +1,5 @@
 --Holly Longtail's Replacement Parts
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. ". The preservation of ancestors is a time-honored tradition. It's a task one must handle with painstaking care and precision. Please do not fret for the lives of these specimens. They live in the eternal realm of beauty now. I have quite a large collection of stuffed animals ready to go, but many of them have sustained injuries in their capture. In fact, I wouldn't mind some help to collect some [replacement parts] from creatures around the world.");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 28076})) then--Collection of Taxidermy

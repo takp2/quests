@@ -6,10 +6,10 @@ local rid, gid, cid;
 function ClientCanFlag(mob)
 	if ( mob:IsClient() ) then
 		local client = mob:CastToClient();
-		
+
 		local raid = client:GetRaid();
 		local group = client:GetGroup();
-		
+
 		if ( rid and raid.valid and raid:GetID() == rid ) then
 			return true;
 		elseif ( gid and group.valid and group:GetID() == gid ) then
@@ -21,15 +21,16 @@ function ClientCanFlag(mob)
 	return false;
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	rid, gid, cid = nil, nil, nil;
 	local client = eq.get_entity_list():GetClientByID(e.signal);	-- the signal # is the entity ID of a client with kill credit
-	
+
 	if ( client.valid ) then
-	
+
 		local raid = client:GetRaid();
 		local group = client:GetGroup();
-		
+
 		if ( raid.valid ) then
 			rid = raid:GetID();
 		elseif ( group.valid ) then
@@ -42,15 +43,18 @@ function event_signal(e)
 end
 
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 600000);
 	keys = 0;
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		eq.pause_timer("depop");
@@ -59,13 +63,14 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.other);
 
 	if ( ClientCanFlag(e.other) ) then
 
-		if ( e.message:findi("hail") ) then 
-		
+		if ( e.message:findi("hail") ) then
+
 			if ( not qglobals.bertox_key and keys < MAX_KEYS ) then
 
 				e.other:Message(0, "Tarkil Adan lets out a groan and then whimpers saying, 'Yes great ones yesss I was king once I wasss. ' The creature then mutters under his breath and passes you a small glowing bone fragment etched in runes. Then speaks again saying, 'The tortured ones oh the tortured ones, you must go to the depths of Lxanvom and free them.  Go to the bone throne at the ruins entrance there you will find access to the depths.'  He then goes back to whimpering and rocking back and forth.");

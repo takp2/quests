@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hurry, hurry step right up and buy a ticket! Show your skills at battle! Amaze the crowds with your great skill! Buy a ticket from me, and when you think you are prepared for the fight give me the ticket!");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

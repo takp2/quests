@@ -10,11 +10,13 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("I am f.. fff.. fff.. fine, brother. You um.. don't need to worry about me so much. I am a big girl now.");
 	eq.signal(4055,5); -- NPC: Baobob_Miller
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Um.. I do not know you. Please um.. leave me be.");
@@ -41,6 +43,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Oh.. I see.. But um.. I still need the other thing before I can make anything for you.. sorry.";

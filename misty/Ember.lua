@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("follow",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if(e.timer == "follow") then
@@ -16,6 +18,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Emote("clicks at Blixkin happily.");
 	eq.signal(33066);

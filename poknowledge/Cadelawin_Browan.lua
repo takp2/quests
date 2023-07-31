@@ -1,4 +1,5 @@
 --Mystic Cloak Recharge
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail") and e.other:HasItem(1057)) then
 		e.self:Say("Wow, you have a Mystic Cloak! I was just reading a book about cloaks with similar enchantments. I'm studying to try and learn how to make magical and enchanted armor. I'm pretty sure I have figured out a way to [recharge] a Mystic Cloak.");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

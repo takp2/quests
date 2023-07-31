@@ -1,5 +1,6 @@
 -- Ink of the dark - enchanter epic lead in quest
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

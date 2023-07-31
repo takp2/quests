@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetRunning(true);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello " .. e.other:GetCleanName() .. ", nice to meet you.  I just came out to run some [errands].");

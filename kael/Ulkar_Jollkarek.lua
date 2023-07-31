@@ -13,6 +13,7 @@ local QUEST_ITEMS = {
 	quest_helper:silk_boots(KAEL_ARMOR.Silk_Boots, 25411),
 }
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) < 2) then --Must be ally
 		if(e.message:findi("hail")) then
@@ -47,6 +48,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	quest_helper:quest_turn_in(e, 1, QUEST_ITEMS, quest_helper.kael_armor_success);
 end

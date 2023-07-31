@@ -1,8 +1,10 @@
 local count = 0;
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("karim",175000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	count = count + 1;
 	if(count == 1) then
@@ -39,12 +41,14 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings, adventurer. Pay no heed to Captain Koldar should you see him. Our true enemy are the Gor Taku. It is very apparent that they are in league with the Loda Kai Brigands. We need to show the Shak Dratha that we are not their enemy. Help me destroy the Gor Taku clan, return to me with four of their earthcaller stones and I will help you however I can.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

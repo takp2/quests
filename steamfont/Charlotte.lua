@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetRunning(true);
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if((e.signal==1) and ((e.self:GetX() == -495) or (e.self:GetX() == -734)) and ((e.self:GetY() == -154) or (e.self:GetY() == 114))) then
 		e.self:Emote("Beep.. Beep.. Beep..");

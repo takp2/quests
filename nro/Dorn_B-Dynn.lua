@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("attend to business")) then
 		e.self:Say("So, business is your mission! I have never met you. Who sent you?");

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ye Gods, that's the stuff!'  Ragunk burps loudly as he takes a swig from a small flask on his forge.  'Fit for the King himself!  Maybe I can get this [armor] finished on time!");

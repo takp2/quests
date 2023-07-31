@@ -1,12 +1,15 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("paw",600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Can you believe that? That guy actually thinks he is going to find the [Paw of Opolla!]! Bwah ha ha ha!");
 	eq.signal(1072,1); -- NPC: Micc_Koter
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hey, " .. e.other:GetCleanName() .. "!  Do I know you from somewhere?  Highpass?  Nah, you ain't who I thought you were.  If I were you I would just keep my trap shut and buy some drinks.");
@@ -18,11 +21,13 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	-- e.self:FaceTarget(e.other:GetMobByNpcTypeID(1072));
 	e.self:Say("Shut your hole, Micc, you dirty son of a kobold!");

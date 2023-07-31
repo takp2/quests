@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Yes? What do you want?! I have one [purpose] here, to speak with potential heroes that the gods send to me, not to give pointless chit chat to some base, frail mortal who I could destroy in less time than it would take for me to unsheath my weapon.");

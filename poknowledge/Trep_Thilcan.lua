@@ -1,5 +1,6 @@
 -- poknowledge\Trep_Thilcan.lua NPCID 202057 
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetLevel() < 35) then
 		e.self:Say(eq.ChooseRandom("Someone with your skills is more suited to beetle slaying.  Run along, now.","This matter is far too advanced for you to handle.  Come back after you've killed a few more large rats.","It's much safer for you to spend time fishing than on a dangerous issue like this.","I think I saw a gnoll pup you could probably defeat, a few miles back."));
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

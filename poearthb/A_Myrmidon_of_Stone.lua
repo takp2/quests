@@ -4,6 +4,7 @@ local AWISANO_SPAWNID = 369492;
 local SPAWNIDS = { 369438, 369439, 369440, 369441 };
 
 -- force them to respawn at same time
+---@param e NPCEventSpawn
 function event_spawn(e)
 	for _, id in ipairs(SPAWNIDS) do
 		eq.update_spawn_timer(id, 1000);
@@ -12,6 +13,7 @@ function event_spawn(e)
 	eq.update_spawn_timer(INVIS_MAN_ID, 1000);
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 
 	if ( not eq.get_entity_list():IsMobSpawnedByNpcTypeID(222008) ) then -- A_Myrmidon_of_Stone

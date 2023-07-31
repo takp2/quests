@@ -3,6 +3,7 @@
 local quest_helper = require('velious_quest_helper');
 local THURG_ARMOR = quest_helper.THURG_ARMOR;
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) <= 3 ) then --kindly or better
 		if(e.message:findi("hail")) then
@@ -46,6 +47,7 @@ local QUEST_ITEMS = {
 	quest_helper:silk_helmet(THURG_ARMOR.Silk_Turban, 31077),
 }
 
+---@param e NPCEventTrade
 function event_trade(e)
 
 	local item_lib = require('items');

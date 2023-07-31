@@ -1,5 +1,6 @@
 -- Arcane Order armor quests
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Why hello there " .. e.other:GetCleanName() .. "! Its not often that I get many visitors to our sacred hall here. I am Juegile Sohgohm, Master Elementalist of the Order of Three. I have studied in these hallowed halls for all of my days. In my spare time I also pride myself as being a mentor for all of our new apprentices. If you are a young [Magician, Wizard or Enchanter] and you hail from the Order of Three house I might have some work for you.");
@@ -40,6 +41,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

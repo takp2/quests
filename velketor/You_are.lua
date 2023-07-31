@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined == true) then
 		e.self:Emote("assaulted by a blast of freezing wind and the sound of hissing.");

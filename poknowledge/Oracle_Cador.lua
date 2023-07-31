@@ -1,4 +1,5 @@
 --Willamina's Needles/Planar Armor Exchange
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("gives a stiff nod in proper greetings to " .. e.other:GetCleanName() .. ". 'The light of Selia shines in welcoming, friend. If you seek supplies or training, know that Selia will accommodate your every need in these specific areas most efficiently -- for that is what we have striven for in the recent past with the unexpected, though eagerly welcome influx of Norrath's heroes. I am Oracle Cador, shaman of The Truthbringer and adept of my art in the district of Selia. I shall oblige any needs that you may have now or in the future regarding training in the shamanistic ways. If you are of another adept path, then do not be disheartened for Selia holds an adept master for every art that the pure light of goodly mortal virtues shines upon.'");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local count = item_lib.count_handed_item(e.self, e.trade, {4871, 4872, 4873, 4874, 4875, 4876, 4877}); --Rune Etched Armor

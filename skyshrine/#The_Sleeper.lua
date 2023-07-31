@@ -202,6 +202,7 @@ local GRID = {
 	1976.00, 2645.00, -158.70,
 };
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	e.self:SetSpecialAbility(24, 0); -- will not aggro
 	e.self:SetSpecialAbility(35, 0); -- no harm from players

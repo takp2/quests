@@ -1,4 +1,5 @@
 -- Handy Shillelagh & Beguile Plants
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("brushes pollen off of his tunic. 'Aachoo!! Oh!! Hello. Please look around. Unless you are a [druid looking for work].'");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "Hey!! Trying to pull a fast one?!! I said I wanted tump stumps of Kromdek and Kromdul type and a mantrap root!!";		

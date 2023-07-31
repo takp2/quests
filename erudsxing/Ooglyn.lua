@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ooooh, it you, " .. e.other:GetCleanName() .. ". Me's been waitin for you cuz our frenz say you comin an need da test. So's I gib you da test. Hmm, now where me put it? Ooglyn been waiting for sign for so long dat me forget where me put test. Keep your eyes out for sign while me look for test. Oh, hey, " .. e.other:GetCleanName() .. ", they gib you gem? I need dat gem, please, heheh.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -24,6 +26,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.spawn2(98046,0,0,4196,-1586,-280,181); -- NPC: Srafen_the_Soaked
 	eq.depop_with_timer();

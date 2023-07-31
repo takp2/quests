@@ -1,9 +1,11 @@
 -- Saurek Scales
 local count = 0;
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("tarief",180000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	count = count + 1;
 	if(count == 1) then
@@ -34,6 +36,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Well met, have you [come to aid] us in hunting the hoppers of the thicket?");
@@ -46,6 +49,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 30861, item2 = 30861, item3 = 30861, item4 = 30861})) then --Saurek Hopper Scales

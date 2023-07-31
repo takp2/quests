@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("nice hat") or e.message:findi("nice mask")) then
 		e.self:Say("Thank you. It is worn with pride and is the trademark of the deputies of the Guardians of the Vale.");
@@ -28,6 +29,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

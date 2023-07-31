@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("requested",1800000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "requested" and not e.self:IsEngaged())then
 		e.self:Say("Yes Mistress. Here is the requested part.");

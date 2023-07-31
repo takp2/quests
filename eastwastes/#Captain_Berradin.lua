@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("playdead",1000);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		eq.stop_timer("depop");
@@ -11,6 +13,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "playdead") then
 		e.self:SetAppearance(3);
@@ -20,7 +23,7 @@ function event_timer(e)
 		e.self:Say("Uhhhh... I've been poisoned. Carry on the work men. Don't let me die in vain.");
 		if(eq.get_entity_list():IsMobSpawnedByNpcTypeID(116100)) then
 			eq.get_entity_list():GetMobByNpcTypeID(116100):Say("Heh, I never liked him anyway...");
-		end		
+		end
 		eq.depop();
 	end
 end

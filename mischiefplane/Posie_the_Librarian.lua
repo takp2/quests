@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("SHHHHH! QUIET!! And how dare you enter here without a library card! It's " .. e.other:Race() .. " like you who have ruined your own books! You'll not ruin mine!");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

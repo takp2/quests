@@ -1,5 +1,6 @@
 --Heirophant Zand starts and ends The Penance quest. This allows a young iksar to replace their guild's starting item if they've lost it. She is also for the 3rd and 5th shaman skullcap quests.
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("chosen savior")) then
 		if(e.other:GetFactionValue(e.self) >= 100) then
@@ -22,6 +23,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text1 = "seems to black out, and then recover. He speaks with the voice of an ancient. 'We are Dai and Die and we await our skulls and your iron cudgel of the prophet. Become a channeler.";	

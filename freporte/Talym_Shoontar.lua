@@ -1,5 +1,6 @@
 local factionId = 0;
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("How are you, friend?  It is a good day to be alive in Antonica!  If you should happen to visit Surefall Glade, say hello to Hager Sureshot for me.");
@@ -14,19 +15,21 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( not e.joined and factionId ~= 0 ) then
 		e.self:CastToNPC():SetNPCFactionID(factionId);		-- restore faction if Tlin doesn't kill
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.self:IsEngaged() ) then
 		return;
 	end
 
 	local turn, bard;
-	
+
 	if(e.signal == 1) then
 		e.self:Say("What kind of girly song was that? It stank as bas as a troll's breath.");
 		turn = true;
@@ -61,7 +64,7 @@ function event_signal(e)
 		if ( not bard.valid ) then
 			bard = eq.get_entity_list():GetMobByNpcTypeID(10158);		-- NPC: Branis_Noolright
 		end
-		if ( not bard.valid ) then 
+		if ( not bard.valid ) then
 			bard = eq.get_entity_list():GetMobByNpcTypeID(10165);		-- NPC: Palana_Willin
 		end
 		if ( bard.valid ) then

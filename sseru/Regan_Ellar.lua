@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ", as she fiddles absently with the ring on her finger as though it were a gift from someone who meant a great deal to her...");

@@ -1,24 +1,28 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("jillin",550000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "jillin") then
 		e.self:Say("[Jillin]? Jillin? Where did he go? Hrumph!");
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
-		e.self:Say(string.format("Hello. %s.  Welcome to the Fool's Gold!  Cards are upstairs. drinks are down here.  Have fun!", e.other:GetCleanName())); 
+		e.self:Say(string.format("Hello. %s.  Welcome to the Fool's Gold!  Cards are upstairs. drinks are down here.  Have fun!", e.other:GetCleanName()));
 	elseif(e.message:findi("jillin")) then
-		e.self:Say("Jillin is my courier. He was supposed to take this pot of [stew] over to Deputy Lowmot in Guardian Stronghold. It is just about ready and Mayor Gubbin hates cold stew!"); 
+		e.self:Say("Jillin is my courier. He was supposed to take this pot of [stew] over to Deputy Lowmot in Guardian Stronghold. It is just about ready and Mayor Gubbin hates cold stew!");
 	elseif(e.message:findi("stew")) then
 		e.self:Say("Here. Take it to Lowmot. The stew is already paid for but the good Deputy usually tips Jillin quite well. Hurry! It's getting cold!");
 		e.other:SummonCursorItem(13959); -- Item: Carrot Stew
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

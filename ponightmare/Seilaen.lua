@@ -68,6 +68,7 @@ function ClientOnPlateau()
 	return false;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	
 	if ( e.message:findi("hail") ) then
@@ -110,6 +111,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		e.self:Shout("Oh thank you! Thank you! I don't feel the trees watching me anymore!  And.. Let me try Mother's Locket again, I think it might work..");
@@ -125,10 +127,12 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	ports = 0;
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "checkplateau" ) then
 		if ( not ClientOnPlateau() ) then

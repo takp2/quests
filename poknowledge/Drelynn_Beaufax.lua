@@ -1,4 +1,5 @@
 --Drelynn's Gem Collection
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("A fine day to you, " .. e.other:GetCleanName() .. ". The exhibit you will see here soon will likely be the most valuable of them all. My display will house some of the most precious and rare gemstones you will ever find. It is too sad there are still spaces missing in my display box, if I could only find a few more [gems] to fill them out.");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

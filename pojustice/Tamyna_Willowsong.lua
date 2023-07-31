@@ -3,6 +3,7 @@
 -- NPC: Tamyna Willowsong (201325)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.message:findi("Hail")) then
         e.self:Emote("gives a solemn nod in recognition of ".. e.other:GetName() .. ", though her features are wrought with an unfathomable sorrow, 'Shhh, friend. The prisoners are not to speak here. If we are caught, we will be placed in solitary confinement, and I do not think that I would be able to endure that torment again. Nevertheless, your presence is comforting. It has been a long time since I have had another show any interest in me.' The Feir'Dal's face gains a strange light of wonder for a moment, 'Perhaps you would wish to hear my tale and grant a brief moment of release from this torture?");

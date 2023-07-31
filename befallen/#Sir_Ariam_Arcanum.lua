@@ -2,6 +2,7 @@ function spawn_event(e)
 	eq.set_timer("depop",1200000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("My thanks for destroying these minions of Befallen's masters. This accursed place rends my soul trying to twist me to its purposes. My time here is short, so i must get this [task] done quikly.");
@@ -25,11 +26,13 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

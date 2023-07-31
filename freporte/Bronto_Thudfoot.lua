@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	local fac = e.other:GetFaction(e.self);
 
@@ -18,6 +19,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("You said it, boss!  Stay clear of taking sides and you should be just fine, young one.");
 end

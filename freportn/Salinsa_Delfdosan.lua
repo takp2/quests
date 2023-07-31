@@ -1,5 +1,6 @@
 -- Quests for North Freeport - Salinsa Delfdosan: Ordained Armor Quests (Cleric Newbie Armor)
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say(string.format("Pleasure to meet you %s. I am Lady Salinsa Deifdosan of House Marr. I have spent many hours on the battlefield in service of our glorious god however these days I spend my time training new [recruits].",e.other:GetName()));
@@ -38,6 +39,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

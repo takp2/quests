@@ -1,5 +1,6 @@
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Mez got secretz!'  Kragia's eyes glint with menace.  'Mez bet yoo wantz to know my [secretz]!");

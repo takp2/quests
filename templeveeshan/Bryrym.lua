@@ -1,4 +1,5 @@
 -- Bryrym NPCID: 124005
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

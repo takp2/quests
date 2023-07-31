@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.get_entity_list():GetSpawnByID(e.self:GetSpawnPointID()):SetRespawnTimer(150);
 end
@@ -24,6 +25,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local a = 155339;
 	if(e.message:findi("hail")) then
@@ -83,6 +85,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

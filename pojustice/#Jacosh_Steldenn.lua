@@ -3,6 +3,7 @@
 -- NPC: Jacosh Steldenn (201080)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.message:findi("Hail")) then
         e.self:Emote("looks down, his dark eyes burrowing into yours.  'My prison is not one for casual visits, " .. e.other:Race() .. ".  What is your business here?  Do you seek an audience with the Tribunal?'");

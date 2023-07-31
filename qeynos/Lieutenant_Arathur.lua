@@ -16,6 +16,7 @@ function event_waypoint_arrive(e)
   end
 end  
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail, " .. e.other:GetCleanName() .. "!  Lieutenant Arathur Swelnik at your service.  I take great pride in keeping Qeynos safe and proper.  I also try to bring the word of [Mithaniel Marr] to the people of this fine city.");

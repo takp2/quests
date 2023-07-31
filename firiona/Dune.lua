@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("follow", 1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "follow") then
 		local getmobbynpctype = eq.get_entity_list():GetMobByNpcTypeID(84131);
@@ -11,6 +13,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

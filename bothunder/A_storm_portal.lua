@@ -1,3 +1,4 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	if ( e.signal == 1 ) then
 		e.self:Emote("glows with power as several large silhouettes begin to take shape inside.");

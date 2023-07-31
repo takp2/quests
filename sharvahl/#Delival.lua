@@ -1,13 +1,16 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("worry",120000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "worry") then
 		e.self:Emote("sees you come into the room but looks just past you, 'Shainai is that you?'");
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal==1) then
 		eq.spawn2(155340,0,0,e.self:GetX(),e.self:GetY(),e.self:GetZ(),e.self:GetHeading());
@@ -15,6 +18,7 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello there, " .. e.other:GetCleanName() .. ". I do not suppose you have seen a little girl running around with a box of [buttons]? I sent [Shainai] over to Master Barkhem's place so I can finish these uniforms I am working on.");
@@ -27,6 +31,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 4460})) then

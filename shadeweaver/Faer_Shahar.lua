@@ -1,4 +1,5 @@
 --Quest: Garbage Collecting
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings friend, please mind your [garbage]. They attract the hoppers who can be a danger to our young ones.");
@@ -7,6 +8,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 30618, item2 = 30618, item3 = 30618, item4 = 30618})) then

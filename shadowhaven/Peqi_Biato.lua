@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("What are you doing in here?  Get out, no one invited you here, leave me be!  Come back again and I'll call the guards.  Go!");

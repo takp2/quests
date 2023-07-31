@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to my shop, " .. e.other:GetCleanName() .. ". I am Felok N'Tan, master smith of steel and [adamantite plate] armors. I am also the creator of the [dragoon shields] favored by members of the Indigo Brotherhood.");

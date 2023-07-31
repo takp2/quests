@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.signal(93087,1); -- General_V`Deers 
 	eq.signal(93024,1); -- Dragoon_T`Vem 
@@ -8,6 +9,7 @@ function event_spawn(e)
 	eq.signal(93186,1); -- #High_Priest_I`Xar
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

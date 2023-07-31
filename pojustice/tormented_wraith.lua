@@ -1,5 +1,6 @@
 -- there are two types of NPCs with this name
 
+---@param e NPCEventSay
 function event_say(e)
 	if ( e.self:GetNPCTypeID() == 201055 ) then
 		e.self:Emote("glares at you and does not respond.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 
 	if ( e.self:GetNPCTypeID() == 201055 ) then

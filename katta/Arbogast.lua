@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	miller = eq.get_entity_list():GetMobByNpcTypeID(160376);
 	
@@ -34,6 +35,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	miller = eq.get_entity_list():GetMobByNpcTypeID(160376);

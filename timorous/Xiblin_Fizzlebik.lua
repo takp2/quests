@@ -1,14 +1,17 @@
 -- Part of quest for Veeshan's Peak key
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("sit",10000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "sit") then
 		e.self:SetAppearance(1);
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. "! I am Xiblin Fizzlebik, renowned archeologist and historian of Ak'Anon. I'm currently in search of artifacts and relics on the Iksar [Jarsath tribe]. If you stumble upon anything, please bring it to me.");
@@ -21,6 +24,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Yes yes, now where is the rest of the medallion?";	
@@ -32,6 +36,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		e.self:Emote("sighs to himself in resignation and continues to dig with obvious annoyance.");

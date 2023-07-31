@@ -1,19 +1,23 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("faction",5000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "faction") then
 		eq.set_proximity(e.self:GetX() - 45, e.self:GetX() + 45, e.self:GetY() - 45, e.self:GetY() + 45, e.self:GetZ() -5, e.self:GetZ() +5);
 	end
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	if(e.other:GetFactionValue(e.self) < 1800 and e.other:Admin() < 80) then
 		e.self:AddToHateList(e.other,1);
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

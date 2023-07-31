@@ -1,14 +1,17 @@
 -- Earring of Veracity #1 (Insignia)
 -- Sanctus Seru : torsten reidan
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("hum",300000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Emote("looks through the bookcase as if searching for something.");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oh, hello there. Sorry I didn't notice you before I was thinking of an [old friend]. This used to be his room. I guess no one else has been assigned to these quarters.");
@@ -17,6 +20,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

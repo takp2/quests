@@ -1,3 +1,4 @@
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -44,12 +45,14 @@ function event_waypoint_arrive(e)
 end
 
 -- if Player enter the proximity then spawns the 2 giants and clear proximity.
+---@param e NPCEventEnter
 function event_enter(e)
 	eq.spawn2(118015,0,0,-2397,-2615,294,0); -- NPC: #Fergul_Frostsky
 	eq.spawn2(118012,0,0,-2391,-2569,299,0); -- NPC: #Gralk_Dwarfkiller
 	eq.clear_proximity();
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "korf") then
 		eq.unique_spawn(118018,0,0,-3171,-6187,-370,0); -- NPC: #Relik

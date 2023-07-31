@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Yer not the first to come thru here ye know. O'er the years there have been a few who escaped a death in the pit and left thru the Tizmak caves below. It is to make up for my disgrace that I choose to stay.");

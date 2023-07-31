@@ -1,3 +1,4 @@
+---@param e NPCEventCombat
 function event_combat(e)
 
 	if (not e.joined) then
@@ -5,6 +6,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greater ones than you have stood before King Tormax.  Show respect fool.");

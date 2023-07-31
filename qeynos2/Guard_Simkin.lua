@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Heh?  " .. e.other:GetCleanName() .. ", huh?  What do you want?  Can't you see I am a busy man, guarding and protecting you weaklings..  er.. citizens?  You better just move along before something happens to you!");

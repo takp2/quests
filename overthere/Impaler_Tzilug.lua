@@ -1,4 +1,5 @@
 -- Test of Charm - enchanter epic - Enchanted Emerald
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

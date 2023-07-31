@@ -1,5 +1,6 @@
 -- The Velium Focus
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Busy, busy, busy. Must get all these tools sharpened before the miners get cranky.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "Hey, I can't start me work without both Stonetooth's axe and the small piece of Velium. Get to it, lad!";

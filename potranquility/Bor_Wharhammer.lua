@@ -1,6 +1,7 @@
 -- Bor_Wharhammer
 -- PoP quest armors
 
+---@param e NPCEventSay
 function event_say(e)
 	e.self:DoAnim(49);  -- does this animation regardless of phase
 	if(e.message:findi("hail")) then
@@ -24,6 +25,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

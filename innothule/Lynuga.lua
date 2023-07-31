@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hrrump?! Who you? " .. e.other:GetCleanName() .. "? What you want with Lynuga? Me am out [collecting]. Leave me be!");
@@ -6,10 +7,11 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local rewarditem = 0;
-	
+
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 10035},0)) then -- Handin: Ruby
 		e.self:Say("Mmm. Ruby!! Me thank's you! Here take this, me got it off dead someone who try take my collection. Me think's this valuable thing..");
 		if (math.random(100) < 6) then -- 5%
@@ -25,10 +27,12 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 2700000);
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if ( e.joined ) then
 		if ( not eq.is_paused_timer("depop") ) then
@@ -39,6 +43,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		eq.depop_with_timer();

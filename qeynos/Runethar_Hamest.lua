@@ -1,7 +1,9 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Hire one soon, Wolten. We need to get in touch with Drosco!");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the Temple of Thunder. We are home to paladins and clerics who follow the ways of Karana. Do you [need guidance] or are you [already a follower of Karana]?"); 
@@ -48,6 +50,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "I thank you, but before I reward you I must have both the Bayle List II and your Thunder Staff.";

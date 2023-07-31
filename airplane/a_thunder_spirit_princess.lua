@@ -1,5 +1,6 @@
 -- Necromancer Epic NPC
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, travelers, welcome to the Plane of Sky! We are thunder spirits - this first island is our home. You are welcome to stay here as long as you like. If you wish to go to other islands you may purchase keys from the Key Master.");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {gold = 10})) then
@@ -16,6 +18,7 @@ function event_trade(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.set_global("sirran","1",3,"M20");
 	eq.spawn2(71058,0,0,688,1381,-645,192); -- NPC: Sirran_the_Lunatic

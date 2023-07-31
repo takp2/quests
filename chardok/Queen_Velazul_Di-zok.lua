@@ -1,4 +1,5 @@
 -- Spirit Wracked Cord
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:GetFaction(e.self) <= 1) then -- Only if you are ally with Sarnaks
 		if(e.message:findi("hail")) then
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	-- 6477 spirit wracked urn

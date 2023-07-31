@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ahh, a new student perhaps?  Have you come to [learn] the history of our wonderful kingdoms?");

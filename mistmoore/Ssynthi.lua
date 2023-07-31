@@ -1,5 +1,6 @@
 -- Quest for Scepter of Sorrow
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I am Ssynthi, [Warder of Ro]. Would you do a simple [service] for me?");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

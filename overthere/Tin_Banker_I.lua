@@ -1,10 +1,12 @@
 -- A Metal Key for Necro Skull Cap 5
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Insert Metal Key *whirrrr*.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12849})) then

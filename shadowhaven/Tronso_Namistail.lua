@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hail dere to you as well, " .. e.other:GetCleanName() .. ". Me name is Tronso Namistail. I am a carpenter in this here Shadowhaven and responsible for many of the fine structures that we have here. I have lived in this city for quite some time, and know me way around pretty well I would say. So I thought I would help out the new folks a bit. Are you a [newcomer] to the Haven?");

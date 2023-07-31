@@ -1,8 +1,10 @@
 --Quest for Trakanon's Teeth - Kaiaren (True): Monk Epic 1.0
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("1",3600000); --Depop in 1 hour
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.other:HasItem(1689)) then
 		if(e.message:findi("lheao")) then
@@ -15,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -31,6 +34,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.depop();
 end

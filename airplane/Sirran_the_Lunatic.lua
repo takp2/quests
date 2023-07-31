@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("bye",1200000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals();
 
@@ -32,6 +34,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 20920})) then 		--A Miniature Sword
@@ -102,12 +105,14 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined == true) then
 		e.self:Shout("What?! Now you've done it! The bunnies are angry! ANGRY I TELL YOU!");
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "bye") then
 		eq.stop_timer("bye");
@@ -115,6 +120,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.delete_global("sirran");
 end

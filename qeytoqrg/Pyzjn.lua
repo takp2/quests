@@ -1,5 +1,6 @@
 local despawntime;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	if(e.self:GetSpawnPointID() == 365105 or e.self:GetSpawnPointID() == 365106) then
 		despawntime = 0;
@@ -7,6 +8,7 @@ function event_spawn(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		eq.stop_timer("depop");
@@ -24,6 +26,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -100) then

@@ -1,5 +1,6 @@
 local killTimes = {};
 
+---@param e NPCEventSignal
 function event_signal(e)
 	local now = os.time();
 	local dayAgoTime = now - 86400;

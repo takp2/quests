@@ -19,6 +19,7 @@ function HasItemInvOnly(client, itemid)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 
 	local qglobals = eq.get_qglobals(e.other);

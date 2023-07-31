@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("lowers his horn towards " .. e.other:GetCleanName() .. ". The air around you begins to waver as if immense heat was rising from the floor, yet the air feels no different. You begin to feel heavy and disoriented as you hear a loud whisper begin to speak yet hear no sound at all. 'wHaT sEeK iT Is YoU FrOM LiTHiNiaTh?'");

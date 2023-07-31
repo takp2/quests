@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Oi there! Its nice to meet you. You must excuse me for I am currently working on a special spell for my studies. I would love to talk but I have to teach a class very soon to the new [initiates] and I don't have my lesson prepared yet. Are you also a [young initiate of the Eldritch Collective]? If you are then I hope you will be ready for the lesson.");
@@ -36,6 +37,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 9116, item2 = 9117, item3 = 9118, item4 = 9119})) then

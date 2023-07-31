@@ -1,8 +1,10 @@
 -- #Theodore_Exantham in south karana
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.signal(14050,1,5000); -- NPC: an_interrogator
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	if(e.signal == 1) then
 		eq.move_to(-2750,-5465,00,192,true);
@@ -28,21 +30,24 @@ function event_signal(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined == true) then
 		eq.set_timer("defeat",3000);
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "defeat") then
 		e.self:Say("Sweet father of rot, alright already! Stop hitting me and tell me what you want me to do!");
 		eq.stop_timer("defeat");
 		e.self:WipeHateList();
-		eq.signal(14050,6,5000); -- NPC: an_interrogator 
+		eq.signal(14050,6,5000); -- NPC: an_interrogator
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local xloc = e.self:GetX();
 	local yloc = e.self:GetY();
@@ -51,7 +56,7 @@ function event_trade(e)
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 2344}) and (xloc == -3098 and yloc == -5872)) then -- confession document
 		e.self:Emote("makes a big X at the bottom of the document and hands it back saying, 'A bunch of worthless thugs is all you folks are!'");
 		e.other:QuestReward(e.self,0,0,0,0,2395); -- Theodore's Confession
-		eq.signal(14050,9,5000); -- NPC: an_interrogator 
+		eq.signal(14050,9,5000); -- NPC: an_interrogator
 		eq.depop();
 	end
 	item_lib.return_items(e.self, e.other, e.trade)

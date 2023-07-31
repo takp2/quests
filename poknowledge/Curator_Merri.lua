@@ -1,5 +1,6 @@
 --Merri's Artifact Collection/The Collector's Box
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Emote("beams a smile as you approach. 'Welcome " .. e.other:GetCleanName() .. ". This building will be the site of New Tanaan's greatest museum ever. I realize it looks a bit empty now, but just imagine how beautiful it will look after we fill it with rare and exotic treasures from all over. It's a very exciting time, no? Of course, we still need to obtain a few more [artifacts].'");
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

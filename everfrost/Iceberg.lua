@@ -1,17 +1,20 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
-		e.self:Say("Rrrroarrrrr...");	
+		e.self:Say("Rrrroarrrrr...");
 	end
 end
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("follow",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "follow") then
 		local mobtypeID =  eq.get_entity_list():GetMobByNpcTypeID(30061);
-		
+
 		if(mobtypeID) then
 			local follow_mob = mobtypeID:GetID();
 			eq.follow(follow_mob);
@@ -20,6 +23,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined == true) then
 		e.self:Say("Grrroarrr !!");
@@ -29,6 +33,7 @@ function event_combat(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
@@ -45,4 +50,4 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
--- END of FILE Zone:everfrost  ID:30046 -- Iceberg 
+-- END of FILE Zone:everfrost  ID:30046 -- Iceberg

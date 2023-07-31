@@ -1,7 +1,9 @@
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Hey!  Quit pestering Mezzt!  Can't you see he has no tongue?  And before you ask, it is none of your business what happened to him.  Bug off!");
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= 50) then -- requires mid indifferent
@@ -42,6 +44,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
   e.self:Say("Yes, sir!");
 end

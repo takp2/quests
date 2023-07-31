@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("begins to stroke the nearby brew barrel.  'What will it be?   Me and Old Gertie here make the finest brew this side of the Timorous Deep.  Afraid I am the only one who is allowed to touch her - she's very special to me.  If you want to brew yourself, you can start looking for that [jungle city].'");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

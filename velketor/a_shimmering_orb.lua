@@ -1,3 +1,4 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	local ex = e.self:GetX();
 	local ey = e.self:GetY();
@@ -5,6 +6,7 @@ function event_spawn(e)
 	eq.set_proximity(ex - 65, ex + 65, ey - 65, ey + 65, ez - 10, ez + 20);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	e.self:CastSpell(2098,e.other:GetID(),0,1); -- Spell: Nulling Void
 	eq.depop_with_timer();

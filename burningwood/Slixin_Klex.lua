@@ -1,4 +1,5 @@
 -- Part of quest for Veeshan's Peak key
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("So long ago... The burning of our land?");
@@ -13,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 19956, item2 = 19957, item3 = 19958})) then --Piece of a Medallion (Bottom, Middle, Top)

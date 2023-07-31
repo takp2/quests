@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -500) then -- might be slightly off, tested at -300 and scowls, determined it's within that range
@@ -43,6 +44,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local muffin = 0;
 	local item_lib =require("items");

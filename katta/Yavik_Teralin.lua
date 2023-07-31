@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("tree", 1800000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings friend! Pull up a stool and order some of the finest ale in all of Luclin. If it's a [tale or two] you're lookin to hear as well I would suggest staying away from those two fools Arbogast and Miller. They're full of more hot air than a red dragon!");
@@ -22,6 +24,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "tree") then
 		e.self:Say("You ever communed with a tree?  Most people just walk right past them and don't take the time to stop and really appreciate what that tree means.");

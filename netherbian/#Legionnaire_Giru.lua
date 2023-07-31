@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Yeah, yeah, whatever. Don't cause trouble here, don't cause trouble in Sanctus Seru, don't feed the Trogs, and don't feed the Haven guards.  Do that, and we'll get along just fine.");

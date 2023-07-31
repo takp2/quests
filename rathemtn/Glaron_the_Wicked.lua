@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then --Part of Shaman Epic 1.0
 		e.self:Say("Are you the one they sent to help our cause? I should have known they would send a green witch doctor to serve Bertoxxulous and myself. Very well, you will have to suffice. I have a [task] you must fulfill if you wish to know the blessing of my god and impress your masters.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

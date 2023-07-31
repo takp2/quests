@@ -1,11 +1,13 @@
 --The Magic Pool
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("tarerd")) then
 		e.self:Say("Tarerd is the one who told us about these pools. He wanted us to kill some sort of lizards for him, but we have neither the time nor energy for such adventures. Perhaps you can get some information about the pools from him.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	item_lib.return_items(e.self, e.other, e.trade)

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ". This is my domain and I hope you have a peaceful stay. That is, unless the [lunatic sent you].");
@@ -11,6 +12,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	eq.set_global("sirran","3",3,"M20");
 	eq.spawn2(71058,0,0,320,540,-54,128); -- NPC: Sirran_the_Lunatic

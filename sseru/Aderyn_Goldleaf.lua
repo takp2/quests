@@ -1,5 +1,6 @@
 -- Jeweled Quiver of the Hand
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings, " .. e.other:GetCleanName() .. ". I am a Ranger of Seru. There are not many that follow our ways within the city, as there is only limited need for us. Tracking is an invaluable tool at times though so our ways continue to be passed on. There is no way that [Katta] Castellium can match our tracking skills. What are you look... ah, I see you are eyeing my quiver. It is the Jeweled Quiver of the Hand. It is given to each ranger that is in the Hand's Ranks. ");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

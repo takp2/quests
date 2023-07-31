@@ -1,16 +1,19 @@
 local FLAG_LIMIT = 72;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	flags = 0;
 	eq.set_timer("depop", 600000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if ( e.timer == "depop" ) then
 		eq.depop();
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	local qglobals = eq.get_qglobals(e.other);
 

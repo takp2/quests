@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e) 
 	if(e.message:findi("hail")) then
 		e.self:Say("Zonkers! You scared me! Well it is good to meet you nonetheless young " .. e.other:GetCleanName() .. ". Many young Guardians of the Vale often come to me for guidance. If there is something I can help you with in your training you make sure you let Dalorio know! In the meanwhile I will be working on my [trade].");
@@ -38,6 +39,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if (item_lib.check_turn_in(e.self, e.trade, {item1 = 22940, item2 = 22941, item3 = 22942, item4 = 22943})) then

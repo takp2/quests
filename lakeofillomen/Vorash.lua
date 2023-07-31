@@ -1,3 +1,4 @@
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	-- MonkEpic 1.0
 	e.self:Say("Foolish mortal! you think you have defeated me? Now, witness the true power of Rallos Zek!");

@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("run",1000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "run") then
 		e.self:SetRunning(true);
@@ -24,6 +26,7 @@ function event_waypoint_arrive(e)
 	end
 end
 			
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	if(e.self:GetWaypointID() > 8 and e.self:GetWaypointID() <= 14) then
 		eq.spawn2(160172,0,0,e.self:GetX() + 5,e.self:GetY(),e.self:GetZ(),0);

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Greetings stranger. It's nice to have visitors of the living sort. Seems like my work here is never done. When I'm not having to dig fresh graves and keep the mausoleum clean I'm having to refill old graves that have been dug up by the [restless dead] or them disrespectful [grave robbers]!");
@@ -17,6 +18,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

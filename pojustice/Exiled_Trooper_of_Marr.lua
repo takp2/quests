@@ -1,8 +1,10 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop", 120000);
 	eq.set_timer("fd", 100);	-- have to set appearance change on a timer after spawning because the server code is retarded
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		eq.depop();
@@ -12,6 +14,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

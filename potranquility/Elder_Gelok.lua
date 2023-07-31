@@ -10,6 +10,7 @@ function DoRandomGem(e)
 	end
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there! Welcome in. . . Welcome in. . . Just watch yourself when making your way past my most trusted assistant, Drogguk. While he may have superior strength, his coordination is most inferior. He's dropped many a gear on my toes, but I know he means well. In fact, I was intending to send him on a [serious mission], though I would rather he not go.");
@@ -26,6 +27,7 @@ function event_say(e)
 	end
 end
   
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

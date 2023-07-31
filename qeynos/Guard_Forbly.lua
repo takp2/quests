@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Ahoy, " .. e.other:GetCleanName() .. "!  My name is Forbly Taxx.  My father was a sailor and we settled here in Qeynos.  I love the sea air.  I don't know why anyone would ever want to leave.");
@@ -32,6 +33,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	e.self:Say("Yes, sir!");
 end

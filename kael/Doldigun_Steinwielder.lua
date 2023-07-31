@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("I... umm... I was caught by a band of giants roaming outside Thurgadin last week and they brought me here... Honest!");
@@ -8,6 +9,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -18,6 +20,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	e.self:Say("Hiya Peff... err... uhh... outlander? I have heard tales of your deeds, please tell me you've come to rescue me from these heathens. The Dain would certainly reward you for such a noble act.");
 	eq.stop_timer("read");

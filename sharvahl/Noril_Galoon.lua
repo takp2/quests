@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("spare time")) then
 		e.self:Say("Shields and bucklers are very versatile. They can be used to deflect blows, knock your opponents off balance, and even offer a secondary form of attack. If you want me to help you to modify your shield, I'll need you to gather some rough ore pieces. They can be taken from the rhinobeetles that reside in the moor. Place them in a forge with a flask of water and your set of files to create bolts. Combine the full bag of bolts and return the product and the buckler to me.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 5545}, 0)) then

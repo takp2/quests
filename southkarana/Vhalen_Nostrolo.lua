@@ -1,6 +1,7 @@
 -- Winds of Karana
 -- Broken Lute
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Nice to meet you.  Do not the plains of Karana abound with life?  This land is truly blessed by the gods.  Would you like to [hear a tune] or will you pass up the opportunity?");
@@ -25,6 +26,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

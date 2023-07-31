@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome to the village of McMannus. We sell many goods. Feel free to look around - just keep your hands to yourself and mind [Frostbite]. Good day.");

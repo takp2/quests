@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("armor")) then
 		e.self:Say("If armor it is you're seeking, then go no further than Everhot Forge in North Kaladim.  The Everhots are the finest smiths to have walked Norrath.  Many have come from far and wide to be trained in their skills.");

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hail friend. welcome to our workshop.  This area once housed the arena's armory. but was converted to a weapons workshop during the initial stages of the war against the Horde.  That was a few years before our time. but Kotahl. Saulgan. and I have been here for at least a decade now.  We've been experimenting with new ways to fight against the Horde.");
@@ -10,6 +11,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 7170})) then -- Claw of the Grunt

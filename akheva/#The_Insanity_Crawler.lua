@@ -1,14 +1,17 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.zone_emote(7, "You hear squealing voices of Centi echo through the dark hallways.  Something must have them frightened.  You find yourself wondering what could possibly scare the servants of the Akheva.  Do you really want to know?");
 	eq.set_timer("depop",2940000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "depop") then
 		eq.depop_with_timer();
 	end
 end
 
+---@param e NPCEventCombat
 function event_combat(e)
 	if(e.joined) then
 		if(not eq.is_paused_timer("depop")) then

@@ -3,6 +3,7 @@
 -- NPC: Jhyric Kan Voth (201377)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 24 and e.other:GetLanguageSkill(24) >= 100) then
         if(e.message:findi("Hail")) then

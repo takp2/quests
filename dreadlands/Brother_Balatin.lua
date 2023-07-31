@@ -1,4 +1,5 @@
 --Brother Balatin is for both the monk epic and the iksar-centric Whistling Fists. The monk epic work for this quest file has been done by Senzo, with the later Whistling Fists additions by Jim Mills.
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("turns toward you. A transparent human face materializes upon the skull. As he speaks the smells of rotted rat corpses rushes into your face. You must fight the urge to vomit. 'What discipline do you [follow]?'");
@@ -9,6 +10,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	local text = "May you have the correct items or lost forever will be all.";	

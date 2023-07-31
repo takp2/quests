@@ -52,10 +52,12 @@ local HEROS = {
 local oldIDs;
 local newIDs = {};
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("timecheck", 10000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "timecheck" ) then
@@ -96,6 +98,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventSignal
 function event_signal(e)
 	local newnpc = eq.get_entity_list():GetNPCByID(e.signal);
 

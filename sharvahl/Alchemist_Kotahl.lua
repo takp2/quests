@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hail and welcome! If you're here to have me convert a weapon of the High Grimling for you. please give it to me.  If not. please speak to Wygans.  He's in charge of dealing with the tourists this week.  I've got a lot of work to do.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 7285})) then -- Claw of the High Grimling

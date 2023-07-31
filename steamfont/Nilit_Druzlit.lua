@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Eh?  Eh?!  Talk not now!  My [creation] is running wild!  Destroy it for me. please!  If you do you can keep whatever parts you want from it.");

@@ -3,6 +3,7 @@
 -- NPC: Drazl (201304)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 13 and e.other:GetLanguageSkill(13) >= 100) then
         if(e.message:findi("Hail")) then

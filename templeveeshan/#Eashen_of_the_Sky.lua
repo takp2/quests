@@ -1,4 +1,5 @@
 -- #Eashen_of_the_Sky NPCID: 124017
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

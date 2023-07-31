@@ -3,6 +3,7 @@
 -- NPC: Royal_Guardian_Finro (201415)
 ----------------------------------------------------------------------
 
+---@param e NPCEventSay
 function event_say(e)
     if(e.language == 12 and e.other:GetLanguageSkill(12) >= 100) then
         if(e.message:findi("Hail")) then

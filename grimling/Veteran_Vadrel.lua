@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good day, " .. e.other:GetCleanName() .. ". If you're interested in serving the war effort you can begin by speaking with one of the scouts here in the outpost. If you'll excuse me, I must return to making plans.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

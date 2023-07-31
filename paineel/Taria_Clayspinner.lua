@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Hello. " .. e.other:GetCleanName() .. ".  I make the finest statuettes in all the land.  Each one depicts a power on Norrath.  I have some of the most realistic and lifelike statues.  I only take [special orders] as they are rather time-consuming to make.");

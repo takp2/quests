@@ -1,9 +1,11 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("You!  Remove yourself from my presence!  Do you not know to whom you speak?  My husband is a very powerful noble and if you do not do as I say. he will have your head!");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

@@ -1,5 +1,6 @@
 local delivery = 0;
 
+---@param e NPCEventSignal
 function event_signal(e)
 	local qglobal = eq.get_qglobals();
 
@@ -35,6 +36,7 @@ function event_waypoint_depart(e)
 	end
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	delivery = 0;
 	eq.signal(56178,0); --Hector

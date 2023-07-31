@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Love and passion to you. my friend.  Seek you the [Gauntlets of Ro]?  If not. then I offer you the safety of this camp.");
@@ -12,6 +13,7 @@ function event_say(e)
 	end
 end
 	
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 

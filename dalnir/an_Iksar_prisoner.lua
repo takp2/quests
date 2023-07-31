@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("squints at you and gasps when he recognizes notoriety within Iksar society. He scrambles to his feet and says, 'Please, brother! Get me out of these chains so that I may escape back to Cabilis! They intend to coerce me like the others. A more tragic fate no Iksar should endure. I implore you to [help] me!'");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("depop",90000);
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("shivers and growls to itself.  'Much thanks must I give " .. e.other:GetCleanName() .. ".  Furless one still wants magic thing, after all the troubles?  Say quickly.  Much pain from attack.  Must go, shaman help.'");
@@ -12,6 +14,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	eq.stop_timer("depop");
 	eq.depop();

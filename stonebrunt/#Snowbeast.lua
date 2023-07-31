@@ -1,10 +1,12 @@
 -- Snowbeast
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Emote("emits a low rumble and slowly nods his head in " .. e.other:GetCleanName() .. "'s direction. 'I applaud your courage little one. You must either be strong of spirit or weak of mind to show such little fear of me. I am the embodiment of primal instincts and bestial rage and protector of the mighty warrior beasts.");
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

@@ -1,9 +1,11 @@
 count = 0;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_timer("shout",17000);
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "shout") then
 		count = count + 1;
@@ -16,6 +18,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

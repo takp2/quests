@@ -1,3 +1,4 @@
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	
@@ -8,6 +9,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "doanim") then
 		e.self:DoAnim(15);

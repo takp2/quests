@@ -1,7 +1,9 @@
+---@param e NPCEventSpawn
 function event_spawn(e)
 	eq.set_proximity(-61, -20, -797, -761, -15, 0);
 end
 
+---@param e NPCEventEnter
 function event_enter(e)
 	if ( e.other:GetGM() ) then
 		return
@@ -14,6 +16,7 @@ function event_leave(e)
 	eq.stop_timer("cast");
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 
 	if ( e.timer == "cast" ) then

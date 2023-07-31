@@ -2,13 +2,14 @@
 -- The xp from this quest was what made it worthwhile, more than the concordance. -Kilelen
 -- Converted to .lua by Speedz
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFaction(e.self) <= 5) then
 			e.self:Say("I am Tv`ysa, guardian of the [Concordance of Research].");
 		else
 			e.self:Say(eq.ChooseRandom("I didn't know Slime could speak common.  Go back to the sewer before I lose my temper.","Is that your BREATH, or did something die in here?  Now go away!","I wonder how much I could get for the tongue of a blithering fool?  Leave before I decide to find out for myself.","Oh look..a talking lump of refuse..how novel!"));
-		end			
+		end
 	elseif(e.message:findi("Concordance of Research")) then
 		e.self:Say("The 'Concordance of Research' is an aid to those who follow the path of academia. It, and its sister books, 'Runes and Research', volumes I and II, help those who are [interested] in researching spells.");
 	elseif(e.message:findi("interested")) then
@@ -16,6 +17,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(e.other:GetFaction(e.self) <= 5 and (item_lib.check_turn_in(e.self, e.trade, {item1 = 10300}))) then -- Lightstone

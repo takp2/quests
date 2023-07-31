@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello there traveler. Please take a moment to look at my goods. I have delicious meals perfect for traveling conditions.");
@@ -80,6 +81,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 30625, item2 = 30625, item3 = 30625, item4 = 30625})) then
@@ -103,6 +105,7 @@ function event_waypoint_arrive(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	local rand = math.random(6);
 	if(rand == 1) then

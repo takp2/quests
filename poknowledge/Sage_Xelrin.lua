@@ -1,9 +1,11 @@
 local continue;
 
+---@param e NPCEventSpawn
 function event_spawn(e)
 	continue = 0;
 end
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Greetings " .. e.other:GetCleanName() .. ".  I assume you are here to ask about my research?  I imagine that word has spread of my groundbreaking approach to spell creation.  Well I am always willing to enlighten those that choose to learn.  As not to bog you down with too many details. my theory is simple. [Continue]");
@@ -20,6 +22,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "cont") then
 		eq.stop_timer("cont");
@@ -27,6 +30,7 @@ function event_timer(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	

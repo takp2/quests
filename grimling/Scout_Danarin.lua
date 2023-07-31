@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Hello, " .. e.other:GetCleanName() .. ". Welcome to the front lines of our war against the bastard grimlings. As I'm sure you know, we Vah Shir shun violence, but with this enemy there is no other way. Let me know if you'd like to see some action.");
@@ -6,6 +7,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	if ( eq.get_entity_list():IsMobSpawnedByNpcTypeID(167681) ) then -- ##Scout_Danarin 
 		return;

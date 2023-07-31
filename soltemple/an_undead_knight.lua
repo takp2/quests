@@ -1,5 +1,6 @@
 -- Quest for Darkforge Gauntlets/Greaves/Boots
 
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:Say("Away from this place of torment!  Make haste and flee before you, too, share my [gruesome fate]!!");
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12292, item2 = 12291, item3 = 16507})) then

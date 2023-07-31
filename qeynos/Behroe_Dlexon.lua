@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		if(e.other:GetFactionValue(e.self) >= -200) then -- verified faction amount
@@ -25,6 +26,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib =require("items");
 
@@ -50,6 +52,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade, e.text)
 end
 
+---@param e NPCEventDeathComplete
 function event_death_complete(e)
 	e.self:Say("Your actions will not go unnoticed! The League of Antonican Bards has many members all over this continent.");
 end

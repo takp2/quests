@@ -1,4 +1,5 @@
 -- Lurian NPCID: 124013
+---@param e NPCEventCombat
 function event_combat(e)
 	if (e.joined) then
 		-- grab the entity list

@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Welcome friend. you're a great leap from any sort of civilization.  What brings you to this foul place? Are you an adventurer or just a connoisseur of wretched foliage and damp clothing?");

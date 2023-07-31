@@ -2,6 +2,7 @@
 --This mob, usually KoS had to be charmed by an enchanter/bard before he would talk.
 --Text is completely improvised. Yes, I know its actually the drumming anim, but its close.
 --Quest for Guard Elron in North Qeynos
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("Hail")) then
 		e.self:DoAnim(39);
@@ -14,6 +15,7 @@ function event_say(e)
 	end
 end
 
+---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 10073})) then
@@ -26,6 +28,7 @@ function event_trade(e)
 	item_lib.return_items(e.self, e.other, e.trade)
 end
 
+---@param e NPCEventTimer
 function event_timer(e)
 	if(e.timer == "distracted") then
 		e.self:DoAnim(20);

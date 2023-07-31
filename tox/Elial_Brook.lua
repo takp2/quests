@@ -1,3 +1,4 @@
+---@param e NPCEventSay
 function event_say(e)
 	if(e.message:findi("hail")) then
 		e.self:Say("Good day to you. This is a dangerous forest for adventuring. Watch out for the [beasts of these woods].");
