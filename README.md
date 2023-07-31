@@ -1,1 +1,1 @@
-# quests
+quests for eqmacemu server
