@@ -293,7 +293,7 @@ function SpawnWave(noOfficer)
 		wave = math.random(2, #WAVES);
 	end
 
-	local i = 1, npc, spawn;
+	local i = 1
 
 	while i < #WAVES[wave] do
 
@@ -468,12 +468,11 @@ end
 
 -- true == cat, false == grimling
 function FlipFlags(state)
+	doors = eq.get_entity_list():GetDoorsByDoorID(FLAG1_ID);
 
-	local door;
-
-	door = eq.get_entity_list():GetDoorsByDoorID(FLAG1_ID);
-	if ( door ) then
-		if ( state ) then
+	if (#(doors) > 0) then
+		door = doors[1];
+		if (state) then
 			door:ForceOpen(eq.get_entity_list():GetMobByNpcTypeID(GOVERNOR_TYPE));
 		else
 			door:ForceClose(eq.get_entity_list():GetMobByNpcTypeID(GOVERNOR_TYPE));

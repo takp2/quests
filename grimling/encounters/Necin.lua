@@ -18,7 +18,7 @@ local DREAMSPINNER_TYPE = 167695;	-- this is a wizard.  Sony design error?
 
 local GRIMLING_TYPES = { OFFICER_TYPE, MANACRAFTER_TYPE, DEATHBRINGER_TYPE, PRIEST_TYPE, CADAVERIST_TYPE, DREAMSPINNER_TYPE, SKULLCRACKER_TYPE };
 
-local CAMP_SPAWN_IDS = { 334986, 334987, 334988, 334989, 334990, 334991, 334992, 334993, 334994, 
+local CAMP_SPAWN_IDS = { 334986, 334987, 334988, 334989, 334990, 334991, 334992, 334993, 334994,
 334970, 334971, 334972, 334973, 334974, 334975, 334976, 334977, 334978, 334979, 334980, 334981, 334982, 334983, 334984, 334985 };
 
 local SPAWNS = {		-- these NPCs are level 30-34
@@ -195,22 +195,22 @@ local quickWave = false;
 function GovernorSignalEvent(e)
 
 	if ( e.signal == 1 ) then
-	
+
 		local cat = eq.get_entity_list():GetNPCByNPCTypeID(NECIN_WALKING_CAT_TYPE);
 		eq.spawn2(NECIN_ROOTED_CAT_TYPE, 0, 0, cat:GetX(), cat:GetY(), cat:GetZ(), cat:GetHeading());
 		eq.depop_all(NECIN_WALKING_CAT_TYPE);
 		eq.set_timer("start", 65000);
 		FlipFlags(true);
 		eq.spawn_condition("grimling", 4, 0);		-- disable camp respawns
-		
+
 	elseif ( e.signal == 2 ) then
 		DepopCamps();
 		eq.set_timer("repop", 1000);
-		
+
 	elseif ( e.signal == 3 ) then
 		eq.stop_timer("wave");
 		eq.set_timer("reset", 90000);
-		
+
 	end
 end
 
@@ -221,7 +221,7 @@ function GovernorTimerEvent(e)
 		) then
 			SpawnWave();
 			local t = 100000;
-			
+
 			-- this is not precise.  didn't do the event long enough to determine the exact spawn timer pattern
 			if ( quickWave ) then
 				t = 40000;
@@ -235,7 +235,7 @@ function GovernorTimerEvent(e)
 					quickWave = true;
 				end
 			end
-			
+
 			t = t + math.random(1, 10) * 1000;
 			eq.set_timer("wave", t);
 		end
@@ -246,14 +246,14 @@ function GovernorTimerEvent(e)
 			and eq.get_entity_list():IsMobSpawnedByNpcTypeID(JHERUM_ROOTED_CAT_TYPE)
 		) then
 			SpawnWave(true);
-		end		
+		end
 	elseif ( e.timer == "repop" ) then
 		eq.stop_timer("repop");
 		RepopCamps();
-		
+
 	elseif ( e.timer == "reset" ) then
 		eq.stop_timer("reset");
-		
+
 		FlipFlags(false);
 		eq.spawn_condition("grimling", 4, 1);		-- enable camp respawns
 		eq.depop_all(NECIN_ROOTED_CAT_TYPE);
@@ -272,26 +272,25 @@ end
 
 function SpawnWave(noOfficer)
 	local spawn, spawnType, mob;
-	
+
 	if ( not noOfficer and math.random(100) <= 4 ) then
 		wave = 1;	-- officer wave
 	else
 		wave = math.random(2, #WAVES);
 	end
-	
-	local i = 1, npc, spawn;
-	
+
+	local i = 1
 	while i < #WAVES[wave] do
-	
+
 		npc = WAVES[wave][i];
 		spawn = WAVES[wave][i+1];
-		
+
 		mob = eq.spawn2(npc, SPAWNS[spawn].grid, 0, SPAWNS[spawn].x, SPAWNS[spawn].y, SPAWNS[spawn].z, 0);
 		mob:SetRunning(true);
-		
+
 		i = i + 2;
 	end
-	
+
 	-- keep town cat timer at 30 minutes so it doesn't respawn mid-event
 	eq.get_entity_list():GetSpawnByID(TOWN_CAT_SPAWNID):SetTimer(1800000);
 end
@@ -337,7 +336,7 @@ function NecinTimer(e)
 	if ( e.timer == "depop" ) then
 		eq.stop_timer("depop");
 		eq.depop();
-		
+
 	elseif ( e.timer == "talk1" ) then
 		eq.stop_timer("talk1");
 		e.self:Say("It's too late to turn back, there's only one thing to do. Half of you go with Jherum, the stronger half follow me. We'll have to attack both camps simultaneously. I'll call the attack, so listen for my battlecry. Decide who will follow who, we depart in one minute.");
@@ -346,12 +345,12 @@ end
 
 function NecinTrade(e)
 	local item_lib = require("items");
-	
+
 	if ( item_lib.check_turn_in(e.self, e.trade, {item1 = 4399}, 0) ) then		-- Grimling Officer Toes
 		e.self:Say(e.other:GetCleanName().."! Against extraordinary odds you have completed a vital mission in the war against the Vah Shir! This medal is all I can offer you, but our people owe you much more. Hurry and leave this place, it will not be safe here for long. Farewell!");
 		e.other:QuestReward(e.self, 0, 0, 0, 0, 4396, 5000); -- Silver Medal of War
-		
-		DisableCat(e.self);		
+
+		DisableCat(e.self);
 		victory = true;
 		eq.signal(GOVERNOR_TYPE, 3);
 		eq.signal(JHERUM_ROOTED_CAT_TYPE, 6);
@@ -398,7 +397,7 @@ end
 
 function JherumDeath(e)
 	eq.signal(GOVERNOR_TYPE, 3);
-	
+
 	if ( e.self:GetNPCTypeID() == JHERUM_WALKING_CAT_TYPE ) then
 		eq.signal(NECIN_ROOTED_CAT_TYPE, 1);
 		eq.signal(NECIN_WALKING_CAT_TYPE, 1);
@@ -442,18 +441,16 @@ end
 
 -- true == cat, false == grimling
 function FlipFlags(state)
-	
-	local door;
-
-	door = eq.get_entity_list():GetDoorsByDoorID(FLAG1_ID);
-	if ( door ) then
-		if ( state ) then
+	doors = eq.get_entity_list():GetDoorsByDoorID(FLAG1_ID);
+	if (#doors.entries > 0) then
+		door = doors.entries[1];
+		if (state) then
 			door:ForceOpen(eq.get_entity_list():GetMobByNpcTypeID(GOVERNOR_TYPE));
 		else
 			door:ForceClose(eq.get_entity_list():GetMobByNpcTypeID(GOVERNOR_TYPE));
 		end
 	end
-	
+
 	door = eq.get_entity_list():GetDoorsByDoorID(FLAG2_ID);
 	if ( door ) then
 		if ( state ) then
@@ -465,16 +462,16 @@ function FlipFlags(state)
 end
 
 function DepopCamps()
-	
+
 	local npcList = eq.get_entity_list():GetNPCList();
-	
+
 	if ( npcList ) then
-	
+
 		local campHashMap = {};
 		for _, id in ipairs(CAMP_SPAWN_IDS) do
 			campHashMap[id] = true;
 		end
-	
+
 		for npc in npcList.entries do
 
 			if ( npc.valid and campHashMap[npc:GetSpawnPointID()] ) then
@@ -487,7 +484,7 @@ end
 function RepopCamps()
 
 	local elist = eq.get_entity_list();
-	
+
 	for _, id in ipairs(CAMP_SPAWN_IDS) do
 		--eq.spawn_from_spawn2(id);
 		elist:GetSpawnByID(id):SetTimer(1);
@@ -515,7 +512,7 @@ end
 function event_encounter_load(e)
 	eq.register_npc_event("Necin", Event.timer, GOVERNOR_TYPE, GovernorTimerEvent);
 	eq.register_npc_event("Necin", Event.signal, GOVERNOR_TYPE, GovernorSignalEvent);
-	
+
 	eq.register_npc_event("Necin", Event.say, NECIN_ROOTED_CAT_TYPE, NecinHail);
 	eq.register_npc_event("Necin", Event.waypoint_arrive, NECIN_WALKING_CAT_TYPE, NecinWaypointArrive);
 	eq.register_npc_event("Necin", Event.waypoint_depart, NECIN_WALKING_CAT_TYPE, NecinWaypointDepart);
@@ -530,7 +527,6 @@ function event_encounter_load(e)
 	eq.register_npc_event("Necin", Event.signal, JHERUM_WALKING_CAT_TYPE, JherumSignalEvent);
 	eq.register_npc_event("Necin", Event.signal, JHERUM_ROOTED_CAT_TYPE, JherumSignalEvent);
 	eq.register_npc_event("Necin", Event.waypoint_arrive, JHERUM_WALKING_CAT_TYPE, JherumWaypointArrive);
-	eq.register_npc_event("Necin", Event.waypoint_depart, JHERUM_WALKING_CAT_TYPE, JherumWaypointDepart);
 	eq.register_npc_event("Necin", Event.timer, JHERUM_WALKING_CAT_TYPE, JherumTimer);
 	eq.register_npc_event("Necin", Event.death, JHERUM_WALKING_CAT_TYPE, JherumDeath);
 	eq.register_npc_event("Necin", Event.death, JHERUM_ROOTED_CAT_TYPE, JherumDeath);
@@ -540,6 +536,6 @@ function event_encounter_load(e)
 		eq.register_npc_event("Necin", Event.timer, typeId, GrimlingTimer);
 		eq.register_npc_event("Necin", Event.combat, typeId, GrimlingCombat);
 	end
-	
+
 	eq.spawn_condition("grimling", 4, 1);		-- enable camp respawns in case they are off due to zone crash or whatever
 end

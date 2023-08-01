@@ -80,7 +80,7 @@ local EMOTE_TRAP_TYPES = {
 	[163089] = 1,		-- Look
 	[163082] = 1,		-- Some
 	[163110] = 1,		-- Something
-	[163395] = 1,		-- Something	
+	[163395] = 1,		-- Something
 	[163134] = 1,		-- Strange
 	[163096] = 1,		-- The
 	[163384] = 1,		-- The
@@ -95,39 +95,39 @@ function TrapCombatEvent(e)
 	if ( e.joined ) then
 
 		local typeId = e.self:GetNPCTypeID();
-		
+
 		if ( EMOTE_TRAP_TYPES[typeId] ) then
 			eq.depop_with_timer();
 			return;
-			
+
 		elseif ( typeId == FAKE_SENDING ) then
 			e.self:Emote("tries to take form!");
 			if ( math.random(100) > 25 ) then
-				e.self:Emote("is unable to pierce the veil of reality.");				
+				e.self:Emote("is unable to pierce the veil of reality.");
 			end
 			eq.depop_with_timer();
 			return;
 		end
-	
+
 		if ( TYPES[typeId] and TYPES[typeId][1] and SPAWN_CHANCE[typeId] and SPAWN_CHANCE[typeId][1] ) then
-		
+
 			local roll = math.random(100);
 			local i = 0;
 			local sum = 0;
 			local spawnType = TYPES[typeId][1];
-			
+
 			repeat
 				i = i + 1;
 				sum = sum + SPAWN_CHANCE[typeId][i];
-			
+
 			until ( not SPAWN_CHANCE[typeId][i] or sum >= roll or i > 100 )
-			
+
 			spawnType = TYPES[typeId][i];
-		
+
 			local npc = eq.spawn2(spawnType, 0, 0, e.self:GetX(), e.self:GetY(), e.self:GetZ(), e.self:GetHeading());
 			eq.set_timer("depop", 900000, npc);
 		end
-		
+
 		eq.depop_with_timer();
 	else
 		eq.resume_timer("depop");
@@ -151,7 +151,7 @@ function TimerEvent(e)
 end
 
 function event_encounter_load(e)
-	
+
 	eq.register_npc_event("traps", Event.combat, FAKE_SENDING, TrapCombatEvent);
 	for typeId in pairs(TYPES) do
 		eq.register_npc_event("traps", Event.combat, typeId, TrapCombatEvent);
@@ -163,8 +163,7 @@ function event_encounter_load(e)
 	for _, spawnedTypes in pairs(TYPES) do
 		for _, typeId in ipairs(spawnedTypes) do
 			eq.register_npc_event("traps", Event.timer, typeId, TimerEvent);
-			eq.register_npc_event("traps", Event.combat, typeId, MobCombatEvent);
 		end
 	end
-		
+
 end

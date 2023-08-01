@@ -1,9 +1,10 @@
+
 function ItraerViusSpawn(e)
-	eq.spawn_condition("akheva",1,1);
+	eq.spawn_condition("akheva", 1, 1);
 end
 
 function ItraerViusDeath(e)
-	eq.spawn_condition("akheva",1,0);
+	eq.spawn_condition("akheva", 1, 0);
 end
 
 function event_encounter_load(e)

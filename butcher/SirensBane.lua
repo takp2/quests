@@ -12,8 +12,8 @@ function event_waypoint_arrive(e)
 	local minute = zone_time["zone_minute"];
 	if(e.wp == 7) then
 		eq.debug("Boat to OOT has reached its destination! Name is: " .. e.self:GetName() .. " Time is: " .. hour ..":" .. minute .. "", 1);
-		eq.spawn_condition("butcher",1,0);
-		eq.spawn_condition("butcher",2,0);
+		eq.spawn_condition("butcher", 1, 0);
+		eq.spawn_condition("butcher", 2, 0);
 		eq.get_entity_list():ForeachClient(
 			function(ent)
 				ent:MovePC(69,10944,1236,-20,0);

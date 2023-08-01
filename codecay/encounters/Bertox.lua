@@ -71,15 +71,14 @@ function ControllerTimer(e)
 		trashKills = 0;
 		bossKills = 0;
 		StartSpawns();
-	
+
 	elseif ( e.timer == "expire_warning" ) then
 		eq.zone_emote(0, "Dark voices whisper in your ear saying, 'Your time is close in coming to an end. Time to flee little ones!'");
-		
+
 	elseif ( e.timer == "expire" ) then
 		eq.zone_emote(0, "Harsh laughter echoes around the crypt and a voice then speaks saying, 'Perhaps you would care to try when you are more powerful fools.'  The harsh laughter continues softly as all of  the summoned minions of Bertoxxulous vanish.");
 		eq.update_spawn_timer(SPECTRE_SPAWNID, 21600000);
 		StopSpawns();
-		eq.csr_notice("CoDecay Bertox event failed");
 	end
 	eq.stop_timer(e.timer);
 end
@@ -87,11 +86,11 @@ end
 function ControllerSignal(e)
 
 	if ( e.signal == 1 ) then
-	
+
 		eq.set_timer("expire", 7380000);
 		eq.set_timer("expire_warning", 7080000);
 		eq.set_timer("start", 350000);
-		
+
 	elseif ( e.signal == 2 ) then
 		eq.stop_timer("expire");
 		eq.stop_timer("expire_warning");
@@ -105,7 +104,6 @@ function SpectreDeathComplete(e)
 	for _, loc in ipairs(SUMMONER_LOCS) do
 		eq.spawn2(SUMMONER_TYPE, 0, 0, loc[1], loc[2], loc[3], loc[4]);
 	end
-	eq.csr_notice(string.format("CoDecay Bertox event started by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function StartSpawns()
@@ -128,9 +126,9 @@ function TrashDeathComplete(e)
 
 	trashKills = trashKills + 1;
 	eq.debug("Bertox event trash kills == "..trashKills, 3);
-	
+
 	local boss = BOSS_TABLE[trashKills];
-	
+
 	if ( boss ) then
 		local b = eq.spawn2(boss[1], 0, 0, boss[2], boss[3], boss[4], boss[5]);
 		eq.zone_emote(0, string.format("An unsettling feeling of fear passes through you as you hear the summoners finish a dark incantation then cry out saying, 'We call to you corrupted King of Lxanvom, %s, your master has need of you!' %s thunders through the crypt as a foul fiend of Bertoxxulous is summoned forth.", b:GetCleanName(), boss[6]));
@@ -141,7 +139,7 @@ end
 function TrashCombat(e)
 	if ( e.joined ) then
 		eq.stop_timer("end_loiter");
-		
+
 	elseif ( math.random(1, 5) == 1 ) then
 		eq.set_timer("end_loiter", math.random(1, 300)*1000);
 	end
@@ -151,7 +149,7 @@ function TrashTimer(e)
 
 	if ( e.timer == "end_loiter" ) then
 		eq.stop_timer(e.timer);
-		
+
 		e.self:ResumeWandering();
 	end
 end
@@ -165,7 +163,7 @@ end
 
 function TriggerBossDeathComplete(e)
 	bossKills = bossKills + 1;
-	
+
 	if ( bossKills == 8 ) then
 		local boss;
 		eq.zone_emote(0, "An unsettling feeling of fear passes through you as you hear the summoners finish a dark incantation then cry out saying, 'We call to you the last corrupted Kings of Lxanvom. Meedo Adan! Qezzin Adan! Pzo Adan! Bhaly Adan! Your master has need of you!' Four separate howls of rage and despair echo throughout the lower depths of the crypt as four foul fiends of Bertoxxulous is summoned forth.");
@@ -174,7 +172,7 @@ function TriggerBossDeathComplete(e)
 			boss = BOSS_TABLE[i];
 			eq.spawn2(boss[1], 0, 0, boss[2], boss[3], boss[4], boss[5]);
 		end
-		
+
 	elseif ( bossKills == 12 ) then
 		eq.zone_emote(0, "A sinister vision enters your mind of a faceless one handsome yet dead and decaying. The vision then shifts to that of a torn bestial creature and a loud shout is heard, 'Defilers death comes for you today!'");
 		eq.spawn2(BERTOX_TYPE, 58, 0, 0, 280, -243, 0);
@@ -186,16 +184,15 @@ function BertoxDeathComplete(e)
 	eq.zone_emote(0, "A nimbus of light floods throughs the crypt in one magnificent wave as an earth shattering howl is heard.  The bringer of plagues, lord of all disease and decay, Bertoxxulous has been defeated. Suddenly an urgent whisper fills your head simply saying, 'The Torch of Lxanvom shall burn bright again.  Freedom is now ours, for that we thank you.'");
 	eq.spawn2(PROJECTION_TYPE, 0, 0, e.self:GetX(), e.self:GetY(), e.self:GetZ(), 0);
 	eq.signal(PROJECTION_TYPE, e.killer:GetID()); -- e.killer for death_complete is somebody with kill rights, not death blow
-	eq.csr_notice(string.format("CoDecay Bertox slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function event_encounter_load(e)
 
 	eq.register_npc_event("Bertox", Event.death_complete, SPECTRE_TYPE, SpectreDeathComplete);
-	
-	eq.register_npc_event("Bertox", Event.timer, CONTROLLER_TYPE, ControllerTimer);	
+
+	eq.register_npc_event("Bertox", Event.timer, CONTROLLER_TYPE, ControllerTimer);
 	eq.register_npc_event("Bertox", Event.signal, CONTROLLER_TYPE, ControllerSignal);
-	
+
 	for _, id in ipairs(TRASH_TYPES) do
 		eq.register_npc_event("Bertox", Event.death_complete, id, TrashDeathComplete);
 		eq.register_npc_event("Bertox", Event.combat, id, TrashCombat);
@@ -206,6 +203,6 @@ function event_encounter_load(e)
 	for _, boss in pairs(BOSS_TABLE) do
 		eq.register_npc_event("Bertox", Event.death_complete, boss[1], TriggerBossDeathComplete);
 	end
-	
+
 	eq.register_npc_event("Bertox", Event.death_complete, BERTOX_TYPE, BertoxDeathComplete);
 end
