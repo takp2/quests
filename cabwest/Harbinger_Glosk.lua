@@ -35,8 +35,8 @@ end
 ---@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
-	local text = "I await both the sceptre and your revenant skullcap.";	
-	
+	local text = "I await both the sceptre and your revenant skullcap.";
+
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 18207})) then 	--Guild Summons
 		e.self:Say("Another apprentice has reached rebirth. You now have become one with the Brood of Kotiz. We study the ancient writing of Kotiz. Through his writing we have found the power of the dark circles. Listen well to the scholars within this tower and seek the [Keepers Grotto] for knowledge of our spells. This drape shall be the sign to all Iksar that you walk with the Brood. Now go speak with Xydoz.");
 		e.other:Faction(e.self,443,100); 								--Brood of Kotiz
@@ -50,7 +50,7 @@ function event_trade(e)
 		e.other:QuestReward(e.self,0,0,0,2,4266,10000);
 	elseif(item_lib.check_turn_in(e.self, e.trade, {item1 = 48037})) then
 		e.self:Say("You have done well in doing what I have asked. To make a gem of reflection you will need some Mt Death mineral salts, a green goblin skin, spiroc bone dust, essence of rathe, blue slumber fungus, and a vial of pure essence. Combine all of these in this container and you will have what it is you seek.");
-		QuestReward(e.self,{itemid = 48039});
+		e.other:QuestReward(e.self,0,0,0,2,4266,10000);
 	elseif(item_lib.check_turn_in(e.self, e.trade, {item1 = 14794})) then
 		e.self:Emote("hisses and says venomously, 'And I am disturbed yet again. I hope for your sake it is important.'");
 		e.self:Emote("The gaunt necromancer looks down at the paper in his hands and after reading a few lines gasps, then falls into a violent coughing fit. After recovering he takes a deep breath, puffs his chest out and hands the paper back to you. With his head held high, he says in a raspy voice, 'Show this to Rixiz. He will test you.'");

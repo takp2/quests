@@ -12,15 +12,15 @@ function event_say(e)
 		if(e.other:GetFactionValue(e.self) >= 100) then
 			e.self:Say("Very good of you. Stop this meeting by killing the gnoll in Qeynos Hills. We hear that he shall be there in the late evening, and that his name is Furgoot or Furgy, something like that. Find him and kill him. I want his head. And if you should find any evidence of who the merchant is, be sure to hand it over to me.");
 		elseif(e.other:GetFactionValue(e.self) >= 0) then
-			e.self:Say("Well, I, and the Protectors of Jaggedpine, have noticed your helpful deeds so far...  just keep up the good work, and you will soon be trusted enough to handle such important matters.");		
+			e.self:Say("Well, I, and the Protectors of Jaggedpine, have noticed your helpful deeds so far...  just keep up the good work, and you will soon be trusted enough to handle such important matters.");
 		else
-			e.self:Say("You dare show your face around here, as bad as your reputation is with the Protectors of Jaggedpine? Begone, enemy of the forest!");		
+			e.self:Say("You dare show your face around here, as bad as your reputation is with the Protectors of Jaggedpine? Begone, enemy of the forest!");
 		end
 	elseif(e.message:findi("assist.* extermination of.* gnoll brewer")) then
 		if(e.other:GetFactionValue(e.self) >= 100) then
 			e.self:Say("Within the bowels of Blackburrow, our scouts have reported seeing the gnoll brewers.  You will go and brave the lair of the dogs and slay these brewers in order to cease the flow of Blackburrow Stout.  During your mission, should you find any Blackburrow casks, you must return them to me.  When you have recovered three of these casks, I shall award you the [Cloak of Jaggedpine].");
 		elseif(e.other:GetFactionValue(e.self) >= 0) then
-			e.self:Say("Well, I, and the Protectors of Jaggedpine, have noticed your helpful deeds so far...  just keep up the good work, and you will soon be trusted enough to handle such important matters.");		
+			e.self:Say("Well, I, and the Protectors of Jaggedpine, have noticed your helpful deeds so far...  just keep up the good work, and you will soon be trusted enough to handle such important matters.");
 		else
 			e.self:Say("You dare show your face around here, as bad as your reputation is with the Protectors of Jaggedpine? Begone, enemy of the forest!");
 		end
@@ -47,7 +47,7 @@ function event_say(e)
 	elseif(e.message:findi("talym") or e.message:findi("shoontar")) then
 		e.self:Say("Talym Shoontar is a wanted man.  He is a very infamous poacher.  Hager Sureshot has placed a bounty upon his head.");
 	elseif(e.message:findi("chanda") or e.message:findi("baobob") or e.message:findi("miller")) then
-		e.self:Say("The entire Miller family are nothing more than scum.  It is they who entice poachers to continue with their slaughter so they can profit from the skins of the wildlife.");	
+		e.self:Say("The entire Miller family are nothing more than scum.  It is they who entice poachers to continue with their slaughter so they can profit from the skins of the wildlife.");
 	elseif(e.message:findi("tunarbos")) then
 		e.self:Say("Long ago, centuries before the Combine Era even, there grew a great tree upon Norrath.  It stretched to the stars and was as wide as the span of Erud's Crossing.  From the roots of this tree sprung all the woodlands of Norrath.  An unknown force struck it down.  Some say it was the great dragon, Veeshan!  Whatever the force, the Great Tunarbos was shattered.  Lost forever.  Now the wood chips lie scattered across the face of Norrath.  To hold a shard of the Great Tunarbos is to hold the hand of Tunare.");
 	end
@@ -75,7 +75,7 @@ function event_trade(e)
 		e.other:QuestReward(e.self,math.random(5),math.random(5),math.random(5),0,2915,1000); -- Item: Cloak of Jaggedpine
 	elseif(e.other:GetFactionValue(e.self) >= -100 and item_lib.check_turn_in(e.self, e.trade, {item1 = 18811})) then
 		e.self:Say("Fine Work, " .. e.other:GetCleanName() .. ". Hmmm. It seems this needs taking care of. Take this note to the Captain of the City Guard in Qeynos. His name is Captain Tillin. He will have to attend to this matter. Also.. Let me see the gnoll\'s head. I must know you killed him. Be safe, my friend. I am sure that whoever this McNeal is, he was simply a lackey. Whoever he works for is most likely going to be looking for you. Watch your back in Qeynos.");
-		-- Confirmed Live Faction		
+		-- Confirmed Live Faction
 		e.other:Faction(e.self,302,5,0); -- Protectors of Pine
 		e.other:Faction(e.self,272,1,0); -- Jaggedpine Treefolk
 		e.other:Faction(e.self,306,-1,0); -- Sabertooths of Blackburrow

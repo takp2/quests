@@ -9,7 +9,7 @@ function event_waypoint_arrive(e)
 		local mobtypeID =  eq.get_entity_list():GetMobByNpcTypeID(84005);
 		local follow_hobble = mobtypeID:GetID();
 		eq.follow(follow_hobble);
-		eq.stop(23);
+		eq.stop();
 	end
 end
 
@@ -32,7 +32,7 @@ function event_trade(e)
 	local item_lib = require("items");
 	local text = "I need the three dragon scales of Azdalin, Gylton and Xyfyl.";
 
-	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12950, item2 = 12951, item3 = 12952},1,text)) then	
+	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 12950, item2 = 12951, item3 = 12952},1,text)) then
 		e.self:DoAnim(20);
 		e.self:Emote("tumbles around and stands on his hands. With his feet he pulls a long polearm from a nearby weapons cache!! 'Woohoo!! I can taste the brew in Freeport already. Here you are my friend. A real Wurmslayer!!'");
 		e.other:Faction(e.self,248,10);   -- Firiona Vie better
