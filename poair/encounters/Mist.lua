@@ -11,7 +11,7 @@ local WINDSURGER_TYPE = 215398; -- A_Phoenix_Windsurger
 local BOSS_TYPE = 215399; -- Melernil_Faal`Armanna
 local PH_TYPE = 215429; -- A_Firewing_Imitor
 local AVATAR_TYPE = 215393; -- #Avatar_of_Mist
-local GUY_TYPE = 215416; -- phoenix_guy 
+local GUY_TYPE = 215416; -- phoenix_guy
 
 local ISLAND_SPAWNIDS = { 367294, 366886, 366641, 367348, 365682, 365962, 367065, 366509, 365361, 366345,
 						365270, 366581, 365877, 366313, 366599, 366899, 367373, 367438, 367538 };
@@ -43,7 +43,7 @@ function CheckIsland()
 			return false;
 		end
 	end
-	
+
 	eq.set_timer(TIMER, 10800000); -- 3 hours
 	return true;
 end
@@ -54,7 +54,7 @@ end
 
 function ControllerTimer(e)
 	if ( e.timer == TIMER ) then
-		
+
 		if ( eventActive ) then
 			eq.depop_all(FIRESURGER_TYPE);
 			eq.depop_all(WINDSURGER_TYPE);
@@ -63,8 +63,8 @@ function ControllerTimer(e)
 			eventActive = false;
 			eq.set_timer(TIMER, 1080000); -- 18 mins
 		end
-		
-		RepopIsland(ISLAND_SPAWNIDS);
+
+		RepopIsland();
 	end
 end
 
@@ -73,19 +73,19 @@ function ControllerSignal(e)
 		if ( eventActive ) then
 			return;
 		end
-		
+
 		if ( CheckIsland() ) then -- true if island spawns are all dead
-		
+
 			eventActive = true;
-			
+
 			local mob, t;
 			for i, locs in ipairs(SURGER_LOCS) do
 				mob = eq.spawn2(FIRESURGER_TYPE, 0, 0, locs[1], locs[2], locs[3], locs[4]);
 			end
 		end
-		
+
 	elseif ( e.signal == 2 ) then
-	
+
 		local elist = eq.get_entity_list();
 		if ( not elist:IsMobSpawnedByNpcTypeID(FIRESURGER_TYPE) and not elist:IsMobSpawnedByNpcTypeID(WINDSURGER_TYPE) ) then
 			local mob, t;
@@ -93,12 +93,12 @@ function ControllerSignal(e)
 				mob = eq.spawn2(WINDSURGER_TYPE, 0, 0, locs[1], locs[2], locs[3], locs[4]);
 			end
 		end
-	
+
 	elseif ( e.signal == 3 ) then
 		local elist = eq.get_entity_list();
-		
+
 		if ( not elist:IsMobSpawnedByNpcTypeID(WINDSURGER_TYPE) ) then
-			
+
 			if ( elist:IsMobSpawnedByNpcTypeID(GUY_TYPE) ) then
 				mob = eq.unique_spawn(BOSS_TYPE, 0, 0, 326, -718, 441, 128);
 			else
@@ -129,7 +129,6 @@ end
 function BossDeathComplete(e)
 	eq.unique_spawn(AVATAR_TYPE, 0, 0, -1573, -570, 356.125, 192);
 	eq.depop_with_timer(GUY_TYPE);
-	eq.csr_notice(string.format("PoAir Melernil Faal`Armanna slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function AvatarSpawn(e)
@@ -144,7 +143,7 @@ function AvatarCombat(e)
 	else
 		eq.stop_timer("drophate");
 		eq.resume_timer("depop");
-		
+
 		-- this is to mimic certain behavior Sony's servers had/has.  NPCs aggroed a long time sometimes warp home or
 		-- some distance away in the direction of home and heal somewhat when they hate list wipe.  The exact logic to this
 		-- behavior is unknown.  Bosses with the tank hate list drop mechanic need this in order to not trivialize the
@@ -159,7 +158,7 @@ end
 
 function AvatarTimer(e)
 	if ( e.timer == "drophate") then
-	
+
 		if ( math.random() < 0.016666 ) then -- averages to once per 60 seconds
 			local target = e.self:GetTarget();
 			if ( target and target.valid ) then
@@ -167,10 +166,9 @@ function AvatarTimer(e)
 			end
 			eq.debug(e.self:GetName().." dropped target from hate list ("..target:GetName()..")", 2);
 		end
-		
+
 	elseif ( e.timer == "depop") then
 		eq.depop();
-		eq.csr_notice("PoAir Avatar of Mist despawned");
 	end
 end
 
@@ -189,7 +187,7 @@ function event_encounter_load(e)
 	eq.register_npc_event("Mist", Event.death, FIRESURGER_TYPE, FiresurgerDeath);
 	eq.register_npc_event("Mist", Event.death, WINDSURGER_TYPE, WindsurgerDeath);
 
-	eq.register_npc_event("Mist", Event.death_complete, BOSS_TYPE, BossDeathComplete);	
+	eq.register_npc_event("Mist", Event.death_complete, BOSS_TYPE, BossDeathComplete);
 	eq.register_npc_event("Mist", Event.combat, BOSS_TYPE, AvatarCombat);
 	eq.register_npc_event("Mist", Event.timer, BOSS_TYPE, AvatarTimer);
 

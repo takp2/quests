@@ -59,14 +59,14 @@ function ControllerTimer(e)
 		local prisoner, pain;
 
 		if ( wave == 4 ) then
-			eq.stop_timer("wave");			
+			eq.stop_timer("wave");
 		else
 			eq.set_timer("wave", WAVE_TIMER);
-			
+
 			if ( wave == 1 ) then
-			
+
 				eq.spawn2(RELIEF_TYPE, 0, 0, 871, -1123, 58.751, 0);
-				
+
 				for i = 1, 4 do
 					prisoner = eq.spawn2(PRISONER_TYPE, 0, 0, PRISONER_SPAWN_COORDS[i].x, PRISONER_SPAWN_COORDS[i].y, 58.126, PRISONER_SPAWN_COORDS[i].h);
 					pain = eq.spawn2(PAIN_AND_SUFFERING_TYPE, 0, 0, PAIN_SPAWN_COORDS[i].x, PAIN_SPAWN_COORDS[i].y, 58.751, 0);
@@ -78,7 +78,7 @@ function ControllerTimer(e)
 				end
 			end
 		end
-		
+
 		for i = 1, 4 do
 			prisoner, pain = prisonerTable[i][1], prisonerTable[i][2];
 			if ( prisoner and prisoner.valid ) then
@@ -92,11 +92,11 @@ end
 function SpawnWave()
 	local t, roll, mob, coords;
 	local count = 1;
-	
+
 	for i = 1, 2 do
 		for j = 1, 2 do
 			coords = WAVE_SPAWN_COORDS[i][j];
-			
+
 			roll = math.random(0, 99);
 			if ( roll < 47 ) then
 				t = TWISTED_TYPE;
@@ -146,21 +146,21 @@ function MobDeath(e)
 			relief:CastSpell(1130, relief:GetID());
 		end
 	end
-	
+
 	if ( wave == 4 and killed >= 19 ) then
 		eq.depop_all(RELIEF_TYPE);
 		eq.depop_all(PRISONER_TYPE);
 		eq.depop_all(PAIN_AND_SUFFERING_TYPE);
 		prisonerTable[1] = {}; prisonerTable[2] = {}; prisonerTable[3] = {}; prisonerTable[4] = {};
 		eq.unique_spawn(BOSS_TYPE, 0, 0, 887, -1121, 60, 64);
-		
+
 	elseif ( not isWraith and wave < 4 and wave > 0 ) then
 		local inWave;
 		local myId = e.self:GetID();
-		
+
 		for i = 1, 4 do
 			for j = 1, 4 do
-			
+
 				if ( waveSpawnIds[i][j] and waveSpawnIds[i][j] == myId ) then
 					inWave = true;
 					waveSpawnIds[i][j] = nil;
@@ -189,7 +189,7 @@ end
 
 function TrialFail()
 	eq.signal(TRIBUNAL_TYPE, 4);
-	
+
 	eq.depop_all(CONTROLLER_TYPE);
 	eq.depop_all(RELIEF_TYPE);
 	eq.depop_all(PRISONER_TYPE);
@@ -201,10 +201,9 @@ end
 function event_encounter_load(e)
 	eq.register_npc_event("TortureTrial", Event.spawn, CONTROLLER_TYPE, ControllerSpawn);
 	eq.register_npc_event("TortureTrial", Event.timer, CONTROLLER_TYPE, ControllerTimer);
-	
+
 	eq.register_npc_event("TortureTrial", Event.death, PRISONER_TYPE, TrialFail);
 	eq.register_npc_event("TortureTrial", Event.death, BOSS_TYPE, BossDeath);
-	eq.register_npc_event("TortureTrial", Event.death, WRAITH_TYPE, WraithDeath);
 
 	for _, id in ipairs(MOBS) do
 		eq.register_npc_event("TortureTrial", Event.spawn, id, MobSpawn);

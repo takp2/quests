@@ -1,3 +1,7 @@
+--- Sets faction for client, extended via lua_modules
+---@param npc NPC # NPC to set faction for
+---@param faction_id number # faction id
+---@param faction_value number # faction value
 function Client:Faction(npc, faction_id, faction_value, temp)
 	temp = temp or 0;
 
@@ -8,6 +12,12 @@ function Client:Faction(npc, faction_id, faction_value, temp)
 	self:SetFactionLevel2(self:CharacterID(), faction_id, faction_value, temp);
 end
 
+
+--- Gives cash to client
+---@param copper number # copper amount
+---@param silver number # silver amount
+---@param gold number # gold amount
+---@param platinum number # platinum amount
 function Client:GiveCash(copper, silver, gold, platinum)
 	copper = copper or 0;
 	silver = silver or 0;
@@ -62,14 +72,20 @@ function Client:GiveCash(copper, silver, gold, platinum)
 	self:Message(260, tmp);
 end
 
+--- Plays the ding sound for cilent
 function Client:Ding()
 	self:SendSound(141);
 end
 
+--- Shortcut to GetFactionLevel populating fields based on NPC
+---@param npc NPC # NPC to get faction level for
+---@return number # faction level
 function Client:GetFaction(npc)
 	return self:GetFactionLevel(self:CharacterID(), self:GetRace(), self:GetClass(), self:GetDeity(), npc:GetPrimaryFaction(), npc);
 end
 
+--- Returns the client's class in string form
+---@return string # class name
 function Client:Class()
 	local class = self:GetClass();
 
@@ -97,6 +113,8 @@ function Client:Class()
 	end
 end
 
+--- Returns the client's race in string form
+---@return string # race name
 function Client:Race()
 	local race = self:GetRace();
 
@@ -132,6 +150,9 @@ function Client:Race()
 	end
 end
 
+--- Returns if client has an item or not
+---@param itemid number # item id
+---@return boolean
 function Client:HasItem(itemid)
 
 	--main inventory and cursor
@@ -202,6 +223,9 @@ function Client:HasItem(itemid)
 	return false;
 end
 
+--- Iterates Hate list
+---@param func function # function to call
+---@param cond? function # condition to check
 function Client:ForeachHateList(func, cond)
 	cond = cond or function(ent, hate, damage, frenzy) return true end;
 	local lst = self:GetHateList();
@@ -213,6 +237,9 @@ function Client:ForeachHateList(func, cond)
 	end
 end
 
+--- Counts total hate that matches condition
+---@param cond? function # condition function
+---@return number # total hate
 function Client:CountHateList(cond)
 	cond = cond or function(ent, hate, damage, frenzy) return true end;
 	local lst = self:GetHateList();

@@ -10,7 +10,7 @@ local EMOTE_STRINGS = {
 	[1] = "An hourglass appears in the distance, the few remaining sands trickling down.  As the last grain falls, multicolored lights erupt from it, surrounding you in a brilliant flash.",
 	[2] = "Ethereal mists gather at the far wall, causing it fade in and out of focus.",
 	[3] = "In the distance, an hourglass appears, the grains of sand falling methodically into place.  As quickly as the image was formed, it dissipates.  You have %s left.",
-	
+
 	[4] = "As the path before you opens up in a swirl of mystical energy, the faded image of an hourglass appears. You have %s.",
 	[5] = "Solusek Ro says, 'This is absurd, why are we wasting our time and energy on this!?  Direct action is needed, now!  Banishing Zebuxoruk will not stop the mortals from entering into our planes.  Their greed for power will have them soon trampling through our realms!'",
 	[6] = "Rallos Zek says, 'On this I agree!  We must take action and the time is now.  I will not have these mortals achieving the powers that we hold.'",
@@ -26,7 +26,7 @@ local EMOTE_STRINGS = {
 	[16] = "Rathe says, 'Rallos still your warring heart.  This is what must be done.  We must place him in a stasis from which he will not be released.  Come share your power.  We must commence now.'",
 	[17] = "Xegony says, 'Mithaniel, Karana please record what you see here.  With your good nature I am sure that your records will be impartial to any side.  We must record this for the ages and learn from our mistake of allowing Zebuxoruk to gain so much power that is easily passed on to mortals.'",
 	[18] = "With a sudden jolt the wall comes into crystal clear focus.",
-	
+
 	[19] = "A bright aura streaks through the sky.  The power of it sends a surge through your body that makes your hair stand on end.",
 	[20] = "The Triumvirate of Water speaks as one voice.  It says, 'Now step up to the chambers.  Give a part of yourselves to the bind on Zebuxoruk.  Through our power, the bonds on him will never be broken.  He will be eternally placed in stasis.'",
 	[21] = "Saryrn says, 'What of our weakened state.  I refuse to return to my realm without the power to rule over my minions.'",
@@ -38,13 +38,13 @@ local EMOTE_STRINGS = {
 	[27] = "The Seventh Hammer says, 'Do not waste your energy Innoruuk.  You know they are eternally preoccupied with their trials.  Surely even you understand many of these trials exist because of the hate you instill into the population of Norrath.'",
 	[28] = "Innoruuk says, 'Do not mock me!  I shall seek you out after this is done and my power is restored.  You will not be so smug after our next meeting.'",
 	[29] = "With a sudden jolt the wall comes into crystal clear focus.",
-	
+
 	[30] = "Terris Thule says, 'I am certain my warriors will have no problem holding back any intruders, but I have my doubts about the other armies.'",
 	[31] = "Vallon Zek says, 'Surely you jest.  Your armies better than the regiments from our realm?'",
 	[32] = "Tallon Zek says, 'There is no question that our warriors of War and Tactics will be the backbone of the army.'",
 	[33] = "Saryrn says, 'It is no matter anyways, no mortal could ever ascend to this place.  These precautions are unnecessary.  Bringing them here was a waste of time.'",
 	[34] = "Energy swirls rapidly through the portal causing it to glow brightly with power.",
-	
+
 	[35] = "Rallos Zek says, 'Something is wrong.  I feel Tallon and Vallon's spirits have weakened.'",
 	[36] = "Innoruuk says, 'Don't be a fool, that is just from giving a part of themselves to the bond on Zebuxoruk.'",
 	[37] = "Cazic Thule says, 'No.  It is more than that, I can feel the force of Terris has been drained as well.'",
@@ -52,7 +52,7 @@ local EMOTE_STRINGS = {
 	[39] = "Innoruuk says, 'You are all incompetent!  I knew you all could not be trusted.  If we are defeated in our weakened state, I do not know if we will be able to coalesce again.  I will never forgive you all for what has transpired today!'",
 	[40] = "Rallos Zek says, 'Now is not the time to bicker!  We must focus our strength on these puny mortals!  Minions of the army, come to our sides.  Your gods beckon you, we need you now!'",
 	[41] = "The sundial across the room begins to glow with an ethereal energy.",
-	
+
 	[42] = "Fennin Ro says, 'Impossible!  How could the races of Norrath have traveled this deep into the Planes?!'",
 	[43] = "Xegony says, 'I regret that it has come to this.  They leave us with little choice, however.  We must fuse our powers together.  Separately we are weakened, together we will halt their advances.'",
 	[44] = "Triumvirate of Water says, 'Unfortunate as it may be, I agree.  We must call upon the beast we swore would never be needed.'",
@@ -91,6 +91,7 @@ local dialog;
 local trialSignal, signalTries, confirmSignal, confirmData, pulses;
 local lastSavedClientID;
 
+---@return table
 function Unpacket(s, numberize, returnTable)
 	local t = {};
 	for w in s:gmatch("([^;]+)") do
@@ -131,7 +132,7 @@ end
 function IsValidCharID(charID, dialNum)
 	for _, p in ipairs(validPlayers) do
 		if ( p[1] == charID ) then
-		
+
 			if ( not dialNum ) then
 				return true, p[4], p[5];
 			else
@@ -143,7 +144,7 @@ function IsValidCharID(charID, dialNum)
 					return true, p[4], p[5];
 				elseif ( dialNum == 8 and (p[3] == 4 or p[3] == 5) ) then
 					return true, p[4], p[5];
-				end			
+				end
 			end
 		end
 	end
@@ -161,14 +162,14 @@ function SetBossKilled(phase, bossNum)
 		return false;
 	end
 	zoneBossTable[phase][bossNum] = 1;
-	
+
 	local t = 561600; -- 6.5 days
 	if ( phase == 1 ) then
 		t = 43200; -- 12 hours
 	elseif ( phase == 2 or phase == 3 ) then
 		t = 302400; -- 3.5 days
 	end
-	
+
 	local timerNum = phase;
 	if ( phase == 4 ) then
 		timerNum = bossNum + 3;
@@ -180,7 +181,7 @@ function SetBossKilled(phase, bossNum)
 	if ( phase > 3 or zoneTimers[timerNum] == 0 ) then  -- phase 1-3 start the timer from the frist boss kill
 		zoneTimers[timerNum] = os.time() + t;
 	end
-	
+
 	SetInstanceGlobals();
 	return true;
 end
@@ -207,7 +208,7 @@ function CheckPhaseStatus(phase)
 			eq.debug("Phase "..phase.." boss "..i.." timer past expiry; respawning");
 			phaseDown = false;
 			zoneTimers[timerNum] = 0;
-			
+
 		elseif ( zoneBossTable[phase][i] == 0 ) then
 			phaseDown = false;
 		end
@@ -218,10 +219,10 @@ end
 -- kill data string is a series of 0s and 1s representing boss kills delimited by semicolons between phases
 -- timer data string is a series of integers for the respawn timestamps of phases 1-3 and each god, with last two digits cut off
 function SetInstanceVars(killData, timerData)
-	
+
 	local bosses = Unpacket(killData, false, true);
 	local timers = Unpacket(timerData, true, true);
-		
+
 	if ( not timers or not bosses or not timers[12] or not bosses[6] ) then
 		return false;
 	end
@@ -241,34 +242,34 @@ function SetInstanceVars(killData, timerData)
 			end
 		end
 	end
-	
+
 	for i = 1, 12 do
 		if ( not timers[i] ) then
 			zoneTimers[i] = 0;
 		else
 			zoneTimers[i] = timers[i] * 100;
-		end		
+		end
 	end
-	
+
 	validPlayers = {};
 	return true;
 end
 
 function SetupNewInstance(controller)
-	
+
 	for p = 1, 6 do
 		zoneBossTable[p] = {};
 		for i = 1, NUM_BOSSES_PHASE[p] do
 			zoneBossTable[p][i] = 0;
 		end
 	end
-	
+
 	for i = 1, 12 do
 		zoneTimers[i] = 0;
 	end
-	
+
 	validPlayers = {};
-	
+
 	-- look for an open instance slot.  this will break if there are 999 instance qglobals in use
 	local qglobals = eq.get_qglobals(controller);
 	for i = 1, 999 do
@@ -277,7 +278,7 @@ function SetupNewInstance(controller)
 			return i;
 		else
 			eq.debug("Instance ID "..i.." already exists", 3);
-		end	
+		end
 	end
 	return 0;
 end
@@ -285,7 +286,7 @@ end
 function SetInstanceGlobals()
 
 	local killsStr, timersStr = "", "";
-	
+
 	for p = 1, 6 do
 		for i = 1, NUM_BOSSES_PHASE[p] do
 			killsStr = killsStr..tostring(zoneBossTable[p][i])
@@ -294,14 +295,14 @@ function SetInstanceGlobals()
 			killsStr = killsStr..";";
 		end
 	end
-	
+
 	for i = 1, 12 do
 		timersStr = timersStr..tostring(math.floor(zoneTimers[i] / 100));	-- cut off last two digits to save space in qglobal
 		if ( i < 12 ) then
 			timersStr = timersStr..";";
 		end
 	end
-	
+
 	eq.set_global("time_kills_"..zoneInstanceID, killsStr, 2, "D7");
 	eq.set_global("time_timers_"..zoneInstanceID, timersStr, 2, "D7");
 end
@@ -332,20 +333,19 @@ end
 function TryStartTrials()
 	for i = 1, 5 do
 		if ( zonePhase == 1 and trialStates[i] == 0 ) then
-		
+
 			local clientList = eq.get_entity_list():GetClientList();
 			local x, y;
 			if ( clientList ) then
-			
+
 				for client in clientList.entries do
-				
+
 					x, y = client:GetX(), client:GetY();
-					
+
 					if ( trialStates[i] == 0 and not client:GetGM() and x > REGIONS[i][1] and x < REGIONS[i][2] and y > REGIONS[i][3] and y < REGIONS[i][4] ) then
 						eq.set_timer("trial"..i.."start", 44000);
 						trialStates[i] = 1;
 						eq.debug("Trial "..i.." started");
-						eq.csr_notice(string.format("PoTime trial %i started by %s <%s>", i, client:GetName(), client:GetGuildName()));
 					end
 				end
 			end
@@ -358,28 +358,28 @@ function CheckValidPlayers()
 	local activeClients = 0;
 	local trialClients = { 0, 0, 0, 0, 0, 0, 0, 0 };
 	local bootList = {};
-	
+
 	local elist = eq.get_entity_list();
 	local clientList = elist:GetClientList();
 	local bossID = GetEngagedBossTime();
-	
+
 	if ( bossEngagedTime == 0 and bossID > 0 ) then
 		bossEngagedTime = os.time();
 	elseif ( bossID == 0 ) then
 		bossEngagedTime = 0;
 	end
-	
+
 	if ( clientList ) then
-	
+
 		for client in clientList.entries do
 
 			if ( not client:GetGM() and client.valid and client:GetName() ~= "No name" ) then
 				x, y = client:GetX(), client:GetY();
 				charID = client:CharacterID();
-				
+
 				if ( x < 500 or y > 500 ) then
 					-- clients not in the graveyard
-					
+
 					isValid, zonedFromDial = IsValidCharID(charID);
 					if ( isValid ) then
 						activeClients = activeClients + 1;
@@ -392,9 +392,9 @@ function CheckValidPlayers()
 						eq.debug(client:GetName().." is in combat area but should not be.  Kicking them from zone.");
 					end
 				end
-			
+
 				if ( zonePhase == 1 ) then
-				
+
 					for i = 1, 5 do
 						if ( x > REGIONS[i][1] and x < REGIONS[i][2] and y > REGIONS[i][3] and y < REGIONS[i][4] ) then
 							if ( IsValidCharID(charID, i) ) then
@@ -408,9 +408,9 @@ function CheckValidPlayers()
 							end
 						end
 					end
-				
+
 				elseif ( zonePhase == 2 ) then
-				
+
 					for i = 6, 8 do
 						if ( x > REGIONS[i][1] and x < REGIONS[i][2] and y > REGIONS[i][3] and y < REGIONS[i][4] ) then
 							if ( IsValidCharID(charID, i) ) then
@@ -424,22 +424,22 @@ function CheckValidPlayers()
 							end
 						end
 					end
-			
+
 				end
 			end
 		end
-		
+
 		local c, charID;
 		if ( activeClients > MAX_CLIENTS ) then
 			eq.debug("Too many players in combat area detected");
 			local overCap = activeClients - MAX_CLIENTS;
 			local boots = 0;
-			
+
 			SortValidPlayerList(); -- sorted by zone-in time
-			
+
 			for i = #validPlayers, 1, -1 do
 				charID = validPlayers[i][1];
-				
+
 				c = elist:GetClientByCharID(charID);
 				if ( c.valid and not bootList[charID] ) then
 					bootList[charID] = true;
@@ -452,15 +452,15 @@ function CheckValidPlayers()
 				end
 			end
 		end
-		
+
 		for n = 1, 8 do
 			if ( trialClients[n] > REGION_MAX[n] ) then
 				eq.debug("Too many players detected in trial #"..n);
 				SortValidPlayerList(); -- sorted by zone-in time
-				
+
 				for i = #validPlayers, 1, -1 do
 					charID = validPlayers[i][1];
-					
+
 					c = elist:GetClientByCharID(charID);
 					if ( c.valid and not bootList[charID] and trialClients[n] > REGION_MAX[n] ) then
 						if ( c:GetX() > REGIONS[n][1] and c:GetX() < REGIONS[n][2] and c:GetY() > REGIONS[n][3] and c:GetY() < REGIONS[n][4] ) then
@@ -473,8 +473,8 @@ function CheckValidPlayers()
 				end
 			end
 		end
-		
-		for charID in pairs(bootList) do		
+
+		for charID in pairs(bootList) do
 			KickPlayer(elist:GetClientByCharID(charID));
 		end
 	end
@@ -484,7 +484,7 @@ end
 function KickRaid()
 	local clientList = eq.get_entity_list():GetClientList();
 	if ( clientList ) then
-	
+
 		for client in clientList.entries do
 
 			if ( not client:GetGM() and (client:GetX() < 500 or client:GetY() > 500) ) then
@@ -496,7 +496,7 @@ end
 
 function DepopZone()
 	local npc_list = eq.get_entity_list():GetNPCList();
-	
+
 	if ( npc_list ) then
 		for npc in npc_list.entries do
 			if ( npc.valid and npc:GetNPCTypeID() ~= POTIMEB_CONTROLLER_TYPE and npc:GetNPCTypeID() ~= EVENTS_CONTROLLER ) then
@@ -512,7 +512,7 @@ function SetFailWarningTimer()
 	if ( timeRemaining < 1801 ) then
 		eq.stop_timer("fail_warning");
 		return;
-		
+
 	elseif ( timeRemaining < 3601 ) then
 		failWarningMsg = "thirty minutes";
 		eq.set_timer("fail_warning", (timeRemaining - 1800)*1000);
@@ -545,7 +545,7 @@ function DoAdditionalHoursEmote(hours)
 	elseif ( hours == 3 ) then msg = "three additional hours";
 	elseif ( hours == 4 ) then msg = "four additional hours";
 	else msg = ""; end
-	
+
 	eq.zone_emote(0, string.format(EMOTE_STRINGS[4], msg));
 end
 
@@ -560,49 +560,44 @@ end
 
 ---@param e NPCEventSignal
 function event_signal(e)
-	
+
 	if ( e.signal == 1 ) then	-- PoTimeA is requesting to start an instance
-	
+
 		local charID, dialNum, raidID, instanceID, charName = Unpacket(e.data);
+---@diagnostic disable-next-line: cast-local-type
 		charID, dialNum, raidID, instanceID = tonumber(charID), tonumber(dialNum), tonumber(raidID), tonumber(instanceID);
-	
+
 		if ( not dialNum or not charID or not raidID or not instanceID ) then
 			return
 		end
 		eq.debug("Instance start requested; charID "..charID.." ("..(charName or "?")..") clicked dial number "..dialNum.." in raid ID "..raidID.." with instance ID "..instanceID);
-		
+
 		if ( zonePhase == 0 ) then
-		
+
 			if ( instanceID == 0 ) then
 				eq.debug("zone inactive and player has no instance; creating new instance and notifying PoTimeA");
-				instanceID = SetupNewInstance(e.self);				
-				eq.csr_notice("PoTime started using new instance ("..instanceID..") for player ID "..charID.." ("..(charName or "?")..")");
+				instanceID = SetupNewInstance(e.self);
 			else
 				eq.debug("zone inactive and player has previous instance; using previous instance");
 				local qglobals = eq.get_qglobals(e.self);
 				local killData = qglobals["time_kills_"..instanceID];
 				local timerData = qglobals["time_timers_"..instanceID];
 				if ( not killData or not timerData ) then
-					instanceID = SetupNewInstance(e.self);					
-					eq.csr_notice("PoTime player's instance expired; creating new one ("..instanceID..") for player ID "..charID.." ("..(charName or "?")..")");
+					instanceID = SetupNewInstance(e.self);
 				else
 					eq.debug("Instance kill data: "..killData);
 					eq.debug("Instance timer data: "..timerData);
 					eq.debug("current os.time() is "..os.time());
 					if ( not SetInstanceVars(killData, timerData) ) then
 						eq.debug("Error: Time instance qglobals are corrupted!  Instance ID: "..instanceID);
-						eq.csr_notice("PoTime Error: Instance qglobals are corrupted!  Instance ID: "..instanceID);
 						return;
-					end					
-					
-					eq.csr_notice("PoTime started reusing instance ID "..instanceID.." for player ID "..charID.." ("..(charName or "?")..")");
-					eq.csr_notice("Instance kills: "..killData);
+					end
+
 				end
 			end
 			zoneInstanceID = instanceID;
 			if ( zoneInstanceID == 0 ) then
 				eq.debug("Critical Error: All instance qglobals are in use.");
-				eq.csr_notice("PoTime Critical Error: All instance qglobals are in use");
 				return;
 			end
 			zonePhase = 1;
@@ -615,60 +610,61 @@ function event_signal(e)
 			for i = 1, #trialStates do
 				trialStates[i] = 0;
 			end
-		
+
 		elseif ( zonePhase > 0 ) then
 			eq.debug("Error: Zone already active and PoTimeA requesting new instance.  This shouldn't happen. (zone crash?)  Sending zone state update");
 			SendSignalRequestConfirm(4, zoneRaidID..";"..zoneInstanceID..";"..zonePhase);
 		end
-	
+
 	elseif ( e.signal == 2 ) then		-- confirmation signal from PoTimeA
 		signalTries = 0;
 		confirmData = nil;
 		confirmSignal = 0;
 		eq.stop_timer("confirm");
 		eq.debug("received confirmation signal from PoTimeA");
-	
+
 	elseif ( e.signal == 3 ) then		-- player ID of somebody about to zone over
-	
+
 		if ( not e.data or zonePhase < 1 ) then
 			return;
 		end
-		
+
 		local charID, dialNum = Unpacket(e.data, true);
-		
+
 		if ( charID and dialNum ) then
 			-- keep track of who zoned over via dial and their zone-in time so we can boot the right people when necessary
 			AddValidPlayer(charID, dialNum);
 			--eq.debug("character ID "..charID.." about to zone over");
 		end
-	
+
 	elseif ( e.signal == 4 ) then		-- player clicked a door
-	
+
 		if ( not e.data ) then
 			return;
 		end
-		
+
 		local doorID, charID = Unpacket(e.data, true);
+---@diagnostic disable-next-line: param-type-mismatch
 		DoorClick(doorID, eq.get_entity_list():GetClientByCharID(charID));
-	
+
 	elseif ( e.signal == 5 ) then		-- trial completed
-	
+
 		local trialNum = tonumber(e.data);
 		if ( not trialNum ) then
 			return;
 		end
 		SetTrialCompleted(trialNum);
-	
+
 	elseif ( e.signal == 6 ) then		-- boss killed
-	
+
 		local phase, bossNum = Unpacket(e.data, true);
-		
+
 		if ( not phase or not bossNum ) then
 			return;
 		end
-		
+
 		if ( SetBossKilled(phase, bossNum) ) then
-			
+
 			local allDead = true;
 			for num, killStatus in ipairs(zoneBossTable[phase]) do
 				if ( killStatus == 0 ) then
@@ -676,23 +672,24 @@ function event_signal(e)
 					break;
 				end
 			end
-			
+
 			if ( phase > 2 and allDead ) then
 				PhaseDialog();
 			end
 		end
-		
+
 	elseif ( e.signal == 7 ) then		-- phase 2 completed
 		PhaseDialog();
-		
+
 	elseif ( e.signal == 8 ) then		-- player zoned or logged into combat area
 
 		if ( e.data ) then
-		
+
+---@diagnostic disable-next-line: param-type-mismatch
 			local client = eq.get_entity_list():GetClientByID(tonumber(e.data));
 			if ( client and client.valid ) then
-			
-				if ( zonePhase < 1 ) then				
+
+				if ( zonePhase < 1 ) then
 					eq.debug(client:GetName().." zoned or logged in to combat area with zone inactive; moving them to graveyard");
 					client:MovePC(223, 851, -141, 396, 0);	-- graveyard
 				else
@@ -703,14 +700,14 @@ function event_signal(e)
 						if ( not lastSavedClientID or lastSavedClientID ~= charID ) then -- prevent redundant saves.  sometimes the 20 second timer saves right before this
 							SavePlayerInstance(client);
 						end
-						
+
 						if ( GetEngagedBossTime() > 0 and not zonedFromDial and bossEngagedTime > 0 ) then
-						
+
 							if ( client:FindBuff(756) and client:GetHPRatio() < 25 and client:GetManaRatio() < 5 and client:GetItemHPBonuses() < 100 ) then -- Resurrection Effects
 								eq.debug(client:GetName().." resurrected in combat");
 								return
 							end
-							if ( bossEngagedTime > savedEngagedTime ) then								
+							if ( bossEngagedTime > savedEngagedTime ) then
 								eq.debug(client:GetName().." zoned or logged into combat area while boss engaged and having left zone prior to engagement; moving them to graveyard");
 								client:MovePC(223, 851, -141, 396, 0);	-- graveyard
 							else
@@ -724,29 +721,29 @@ function event_signal(e)
 				end
 			end
 		end
-		
+
 	elseif ( e.signal == 9 ) then		-- GM commands
-	
+
 		local op, var = Unpacket(e.data, true);
-		
+
 		if ( not op ) then
 			return;
 		end
-	
+
 		if ( op == 1 and zonePhase > 0 ) then	-- reset zone now
 			eq.set_timer("fail", 1000);
-		
+
 		elseif ( op == 2 and zonePhase > 0 ) then	-- reset zone in 120 seconds
 			eq.zone_emote(7, "WARNING: Instance is shutting down in two minutes.  Players will be removed from the combat area.");
 			eq.set_timer("fail", 120000);
 			failTime = os.time() + 120;
-		
+
 		elseif ( op == 3 and var and zonePhase > 0 ) then	-- change running instance raid ID
 			eq.debug("Previous active instance raid ID was "..zoneRaidID);
 			zoneRaidID = var;
 			SendSignalRequestConfirm(4, zoneRaidID..";"..zoneInstanceID..";"..zonePhase);
 			eq.debug("Active instance raid ID is now "..zoneRaidID);
-			
+
 		elseif ( op == 4 and zonePhase == 1 ) then	-- force complete phase 1
 			if ( failTime < os.time() ) then
 				eq.stop_timer("phase1");
@@ -755,8 +752,7 @@ function event_signal(e)
 			for i = 1, 5 do
 				SetTrialCompleted(i);
 			end
-			eq.csr_notice("Plane of Time phase 1 skipped by GM");
-			
+
 		elseif ( op == 5 ) then	-- zone status
 			if ( zonePhase == -1 ) then
 				eq.debug("zone is cooling down");
@@ -776,30 +772,30 @@ function event_timer(e)
 
 		TryStartTrials();
 		return;
-	
+
 	elseif ( e.timer == "pulse" ) then
-	
+
 		if ( failTime >= os.time() ) then
 			local activeClients, regionCounts = CheckValidPlayers();
-			
+
 			data = "";
 			for i = 1, 8 do
 				data = data..tostring(regionCounts[i])..";";
 			end
 			data = data..tostring(activeClients);
 			eq.signal(POTIMEA_CONTROLLER_TYPE, 5, 0, data);
-			
+
 			pulses = pulses + 1;
 			if ( pulses == 3 ) then
 				eq.debug(string.format("Instance time remaining: %i minutes;  Active clients: %i", math.floor((failTime + 1 - os.time()) / 60), activeClients));
 				pulses = 0;
 			end
-			
+
 			return;
-		end	
-	
+		end
+
 	elseif ( e.timer == "dialog" ) then
-		
+
 		eq.zone_emote(0, EMOTE_STRINGS[dialog]);
 		if ( dialog == DIALOG_START_STOPS[zonePhase][2] ) then
 			PhaseStart();
@@ -807,12 +803,12 @@ function event_timer(e)
 			dialog = dialog + 1;
 			return;
 		end
-		
+
 	elseif ( e.timer == "fail_warning" ) then
 		eq.zone_emote(0, failWarningMsg);
 		SetFailWarningTimer();
 		return;
-	
+
 	elseif ( e.timer == "confirm" ) then
 		signalTries = signalTries - 1;
 		if ( signalTries < 1 ) then
@@ -822,11 +818,11 @@ function event_timer(e)
 			eq.signal(POTIMEA_CONTROLLER_TYPE, confirmSignal, 0, confirmData);
 			return;
 		end
-		
+
 	elseif ( e.timer == "fail" ) then
 		eq.zone_emote(0, EMOTE_STRINGS[1]);
 		eq.set_timer("fail2", 2500);
-		
+
 	elseif ( e.timer == "fail2" ) then
 		SetInstanceGlobals();
 		SendSignalRequestConfirm(2);	-- tell potimea that instance expired
@@ -838,16 +834,15 @@ function event_timer(e)
 		end
 		KickRaid();
 		DepopZone();
-		eq.csr_notice("PoTime running instance expired");
-	
+
 	elseif ( e.timer == "phase1" ) then
 		SetupPhaseOne();
-		
+
 	elseif ( e.timer == "cooldown" ) then
 		zonePhase = 0;
 		DepopZone();
 		eq.debug("zone now available");
-		
+
 	elseif ( e.timer:find("^trial") ) then
 		local _, _, trialNum = e.timer:find("^trial(%d)start$");
 		trialNum = tonumber(trialNum);
@@ -856,16 +851,16 @@ function event_timer(e)
 			eq.debug("Trial "..trialNum.." spawned.  Boss status == "..tostring(zoneBossTable[1][trialNum]));
 		end
 	end
-	
-	
+
+
 	eq.stop_timer(e.timer);
 end
 
 function SetTrialCompleted(t)
 	eq.zone_emote(0, EMOTE_STRINGS[2]);
 	trialStates[t] = 2;
-	
-	if ( zonePhase == 1 and 
+
+	if ( zonePhase == 1 and
 	trialStates[1] == 2 and trialStates[2] == 2 and trialStates[3] == 2 and trialStates[4] == 2 and trialStates[5] == 2 ) then
 		eq.stop_timer("check_trial_start");
 		PhaseDialog();
@@ -877,19 +872,19 @@ function GetAdditionalHours(phase)
 
 	if ( phase == 2 ) then
 		hours = 1;
-		
+
 	elseif ( phase == 3 ) then
 		hours = 1.25;
-		
+
 	elseif ( phase == 4 or phase == 5 ) then
 		for _, b in ipairs(zoneBossTable[phase]) do
 			if ( b == 0 ) then
 				hours = hours + 1;
 			end
 		end
-		
+
 	elseif ( phase == 6 ) then
-		hours = 2;	
+		hours = 2;
 	end
 	return hours;
 end
@@ -919,15 +914,14 @@ function PhaseStart()
 			data = data..";";
 		end
 		data = data..b;
-	end		
+	end
 
 	eq.signal(EVENTS_CONTROLLER, zonePhase*100+1, 0, data);
-	eq.csr_notice("PoTime Phase "..zonePhase.." started");
 end
 
 function PhaseDialog()
 	local now = os.time();
-	
+
 	if ( zonePhase == 6 ) then
 		failTime = now + 3598;
 		eq.set_timer("fail", (failTime - now)*1000);
@@ -947,11 +941,11 @@ function PhaseDialog()
 	else
 		eq.debug("Phase "..zonePhase.." completed.  Next phase is "..nextPhase);
 	end
-	
+
 	failTime = failTime + 3600*GetAdditionalHours(nextPhase);
 	eq.set_timer("fail", (failTime - now)*1000);
 	SetFailWarningTimer();
-	
+
 	eq.set_timer("dialog", 3000);
 	dialog = DIALOG_START_STOPS[zonePhase][1];
 end
@@ -980,7 +974,7 @@ function DoorClick(doorID, client)
 			OpenDoor(5, client);
 			return;
 		end
-		
+
 		if ( zonePhase > 2 ) then
 			-- Phase 2 earth/air doors
 			if ( doorID >= 38 and doorID <= 41 ) then
@@ -995,19 +989,19 @@ function DoorClick(doorID, client)
 				OpenDoor(13, client);
 				return;
 			end
-			
+
 			local x, y, z, h;
 			if ( zonePhase > 3 and doorID == 62 ) then	-- P3 portal to P4 room
 				x, y, z, h = -401, 0, 348.75, 64*2;
-				
+
 			elseif ( zonePhase > 4 and doorID == 24 ) then	-- P4 room sundial
 				x, y, z, h = -419, 0, 3.75, 64*2;
-				
-			elseif ( zonePhase > 5 and doorID == 51 ) then	-- dial to Quarm				
+
+			elseif ( zonePhase > 5 and doorID == 51 ) then	-- dial to Quarm
 				x, y, z, h = 251, -1124, 0, 192*2;
 				eq.signal(QUARM_TYPE, 1);
 			end
-			
+
 			if ( x ) then
 				client:MovePC(223, x, y, z, h);
 				if ( client:GetPet().valid ) then
@@ -1017,13 +1011,13 @@ function DoorClick(doorID, client)
 			end
 		end
 	end
-	
+
 	client:Message(0, "The wall feels both insubstantial and solid at the same time, almost as if you were not in phase with it.");
 end
 
 function OpenDoor(doorID, client)
 	local entity_list = eq.get_entity_list();
-	
+
 	for i = doorID, doorID+3 do
 		entity_list:FindDoor(i):ForceOpen(client);
 	end
@@ -1031,7 +1025,7 @@ end
 
 function GetEngagedBossTime()
 	local npcList = eq.get_entity_list():GetNPCList();
-	for npc in npcList.entries do	
+	for npc in npcList.entries do
 		if ( npc.valid and npc:GetMaxHP() > 1000000 and npc:IsEngaged() ) then
 			return npc:GetID();
 		end

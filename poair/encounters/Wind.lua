@@ -7,12 +7,12 @@ local PRIEST_TYPE = 215387; -- Stormrider_Priest_of_Destruction
 local SPORADIC_TYPE = 215388; -- A_Sporadic_Stormrider
 local FAKE_BOSS_TYPE = 215389; -- Pherlondien_Clawpike
 local BOSS_TYPE = 215390; -- Pherlondien_Clawpike
-local TRAP_TYPE = 215424; -- storm_boss_inv 
+local TRAP_TYPE = 215424; -- storm_boss_inv
 local PH_TYPE = 215425; -- A_Loathesome_Stormclaw
 local AVATAR_TYPE = 215391; -- #Avatar_of_Wind
 local GUY_TYPE = 215414; -- stormrider_guy
 
-local ISLAND_SPAWNIDS = { 365989, 366133, 366161, 366543, 366565, 366662, 366887, 367103, 367211, 367463, 
+local ISLAND_SPAWNIDS = { 365989, 366133, 366161, 366543, 366565, 366662, 366887, 367103, 367211, 367463,
 							367524, 365410, 365822, 365827, 365916, 366073, 366294, 366502, 367084, 367375,
 							365275, 365420, 365467, 365508, 365676, 366140, 367241 };
 local MENACING_LOCS = {
@@ -54,7 +54,7 @@ function CheckIsland()
 			return false;
 		end
 	end
-	
+
 	eq.set_timer(TIMER, 10800000); -- 3 hours
 	return true;
 end
@@ -65,7 +65,7 @@ end
 
 function ControllerTimer(e)
 	if ( e.timer == TIMER ) then
-		
+
 		if ( eventActive ) then
 			eq.depop_all(MENACING_TYPE);
 			eq.depop_all(PRIEST_TYPE);
@@ -77,28 +77,28 @@ function ControllerTimer(e)
 			eventActive = false;
 			eq.set_timer(TIMER, 1080000); -- 18 mins
 		end
-		
-		RepopIsland(ISLAND_SPAWNIDS);
+
+		RepopIsland();
 	end
 end
 
 function ControllerSignal(e)
 	if ( e.signal == 1 ) then
-	
+
 		if ( eventActive ) then
 			return;
 		end
-		
+
 		if ( CheckIsland() ) then -- true if island spawns are all dead
-		
+
 			eventActive = true;
-			
+
 			local mob, t;
 			for i, locs in ipairs(MENACING_LOCS) do
-			
+
 				mob = eq.spawn2(MENACING_TYPE, 0, 0, locs[1], locs[2], locs[3], 0);
 				mob:CastToNPC():MoveTo(locs[4], locs[5], locs[6], locs[7], true);
-				
+
 				if ( i < 3 ) then
 					t = 60000;
 				elseif ( i < 5 ) then
@@ -110,20 +110,20 @@ function ControllerSignal(e)
 				end
 				eq.set_timer("wake", t, mob);
 			end
-			
+
 			eq.spawn2(PRIEST_TYPE, 0, 0, -259, -677, 115, 211);
 		end
-		
+
 	elseif ( e.signal == 2 ) then
 		local elist = eq.get_entity_list();
-		
+
 		if ( not elist:IsMobSpawnedByNpcTypeID(SPORADIC_TYPE)
 			and not elist:IsMobSpawnedByNpcTypeID(TRAP_TYPE)
 			and not elist:IsMobSpawnedByNpcTypeID(BOSS_TYPE)
 		) then
-			
+
 			if ( elist:IsMobSpawnedByNpcTypeID(GUY_TYPE) ) then
-			
+
 				local bossi = math.random(1, #BOSS_LOCS);
 				local t;
 				for i, loc in ipairs(BOSS_LOCS) do
@@ -149,7 +149,7 @@ end
 function MenacingTimer(e)
 	if ( e.timer == "wake" ) then
 		eq.stop_timer(e.timer);
-		
+
 		e.self:SetSpecialAbility(24, 0); -- Will Not Aggro off
 		e.self:SetSpecialAbility(25, 0); -- Immune to Aggro off
 		e.self:SetSpecialAbility(35, 0); -- No Harm from Players off
@@ -162,13 +162,13 @@ function MenacingTimer(e)
 		elseif ( moveX ) then
 			e.self:CastToNPC():MoveTo(moveX, moveY, moveZ, -1, false);
 		end
-		
+
 		eq.set_timer("move", 10000);
-		
+
 	elseif ( e.timer == "move" ) then
-	
+
 		if ( not e.self:IsEngaged() ) then
-		
+
 			local priest = eq.get_entity_list():GetNPCByNPCTypeID(PRIEST_TYPE);
 			if ( priest.valid and priest:IsEngaged() ) then
 				e.self:CastToNPC():MoveTo(priest:GetX(), priest:GetY(), priest:GetZ(), -1, false);
@@ -179,7 +179,7 @@ end
 
 function PriestDeathComplete(e)
 	eq.depop_all(MENACING_TYPE);
-	
+
 	local rollX, rollY;
 	for i = 1, 4 do
 		rollX = math.random(-589, -169);
@@ -203,7 +203,6 @@ function BossDeath(e)
 	eq.unique_spawn(AVATAR_TYPE, 0, 0, -1591, 484, 15, 192);
 	eq.depop_with_timer(GUY_TYPE);
 	eq.depop_all(FAKE_BOSS_TYPE);
-	eq.csr_notice(string.format("PoAir Pherlondien Clawpike slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function AvatarSpawn(e)
@@ -218,7 +217,7 @@ function AvatarCombat(e)
 	else
 		eq.stop_timer("drophate");
 		eq.resume_timer("depop");
-		
+
 		-- this is to mimic certain behavior Sony's servers had/has.  NPCs aggroed a long time sometimes warp home or
 		-- some distance away in the direction of home and heal somewhat when they hate list wipe.  The exact logic to this
 		-- behavior is unknown.  Bosses with the tank hate list drop mechanic need this in order to not trivialize the
@@ -233,7 +232,7 @@ end
 
 function AvatarTimer(e)
 	if ( e.timer == "drophate") then
-	
+
 		if ( math.random() < 0.016666 ) then -- averages to once per 60 seconds
 			local target = e.self:GetTarget();
 			if ( target and target.valid ) then
@@ -241,10 +240,9 @@ function AvatarTimer(e)
 			end
 			eq.debug(e.self:GetName().." dropped target from hate list ("..target:GetName()..")", 2);
 		end
-		
+
 	elseif ( e.timer == "depop") then
 		eq.depop();
-		eq.csr_notice("PoAir Avatar of Wind despawned");
 	end
 end
 
@@ -252,7 +250,7 @@ function event_encounter_load(e)
 	eq.register_npc_event("Wind", Event.spawn, CONTROLLER_TYPE, ControllerSpawn);
 	eq.register_npc_event("Wind", Event.timer, CONTROLLER_TYPE, ControllerTimer);
 	eq.register_npc_event("Wind", Event.signal, CONTROLLER_TYPE, ControllerSignal);
-	
+
 	eq.register_npc_event("Wind", Event.death, LIGHTNINGCLAW_TYPE, IslandDeath);
 	eq.register_npc_event("Wind", Event.death, MISCHIEVOUS_TYPE, IslandDeath);
 	eq.register_npc_event("Wind", Event.death, FEARSOME_TYPE, IslandDeath);
@@ -260,11 +258,11 @@ function event_encounter_load(e)
 	eq.register_npc_event("Wind", Event.death_complete, PRIEST_TYPE, PriestDeathComplete);
 	eq.register_npc_event("Wind", Event.combat, TRAP_TYPE, TrapCombat);
 	eq.register_npc_event("Wind", Event.death_complete, SPORADIC_TYPE, SporadicDeath);
-	
+
 	eq.register_npc_event("Wind", Event.death_complete, BOSS_TYPE, BossDeath);
 	eq.register_npc_event("Wind", Event.combat, BOSS_TYPE, AvatarCombat);
 	eq.register_npc_event("Wind", Event.timer, BOSS_TYPE, AvatarTimer);
-	
+
 	eq.register_npc_event("Wind", Event.spawn, AVATAR_TYPE, AvatarSpawn);
 	eq.register_npc_event("Wind", Event.combat, AVATAR_TYPE, AvatarCombat);
 	eq.register_npc_event("Wind", Event.timer, AVATAR_TYPE, AvatarTimer);

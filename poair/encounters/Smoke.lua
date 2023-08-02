@@ -10,7 +10,7 @@ local GUY_TYPE = 215415; -- elemental_guy
 local PH_TYPE = 215427; -- An_Elemental_Anomaly
 local SWIRLING_TYPE = 215039; -- A_Swirling_Elemental_Force
 
-local ISLAND_SPAWNIDS = { 365296, 365384, 365387, 365415, 365449, 365471, 365521, 365730, 365852, 365996, 
+local ISLAND_SPAWNIDS = { 365296, 365384, 365387, 365415, 365449, 365471, 365521, 365730, 365852, 365996,
 							366238, 366398, 366425, 366713, 366778, 366918, 367066, 367114, 367117, 367331,
 							367514 };
 local CHAMP_LOCS = {
@@ -42,7 +42,7 @@ function CheckIsland()
 			return false;
 		end
 	end
-	
+
 	eq.set_timer(TIMER, 10800000); -- 3 hours
 	return true;
 end
@@ -53,7 +53,7 @@ end
 
 function ControllerTimer(e)
 	if ( e.timer == TIMER ) then
-		
+
 		kills = 0;
 		eq.depop_all(CHAMPION1_TYPE);
 		eq.depop_all(CHAMPION2_TYPE);
@@ -62,27 +62,27 @@ function ControllerTimer(e)
 		eq.depop_all(BOSS_TYPE);
 		eq.depop_all(PH_TYPE);
 		eq.set_timer(TIMER, 1080000); -- 18 mins
-		
-		RepopIsland(ISLAND_SPAWNIDS);
+
+		RepopIsland();
 	end
 end
 
 function ControllerSignal(e)
 	if ( e.signal == 1 ) then
-	
+
 		kills = kills + 1;
 		if ( CHAMP_LOCS[kills] ) then
 			eq.spawn2(CHAMP_LOCS[kills][1], 0, 0, CHAMP_LOCS[kills][2], CHAMP_LOCS[kills][3], CHAMP_LOCS[kills][4], CHAMP_LOCS[kills][5]);
 		end
-		
+
 		if ( kills == #ISLAND_SPAWNIDS ) then
 			local npcList = eq.get_entity_list():GetNPCList();
 			local t;
-			
+
 			for npc in npcList.entries do
 				if ( npc.valid ) then
 					t = npc:GetNPCTypeID();
-					
+
 					if ( t == CHAMPION1_TYPE or t == CHAMPION2_TYPE or t == CHAMPION3_TYPE or t == CHAMPION4_TYPE ) then
 						npc:SetSpecialAbility(24, 0); -- Will Not Aggro off
 						npc:SetSpecialAbility(25, 0); -- Immune to Aggro off
@@ -94,16 +94,16 @@ function ControllerSignal(e)
 				end
 			end
 		end
-		
+
 		CheckIsland();
-		
+
 	elseif ( e.signal == 2 ) then
-	
+
 		local elist = eq.get_entity_list();
-		if ( not elist:IsMobSpawnedByNpcTypeID(CHAMPION1_TYPE) and not elist:IsMobSpawnedByNpcTypeID(CHAMPION2_TYPE) 
+		if ( not elist:IsMobSpawnedByNpcTypeID(CHAMPION1_TYPE) and not elist:IsMobSpawnedByNpcTypeID(CHAMPION2_TYPE)
 			and not elist:IsMobSpawnedByNpcTypeID(CHAMPION3_TYPE) and not elist:IsMobSpawnedByNpcTypeID(CHAMPION4_TYPE)
 		) then
-		
+
 			if ( elist:IsMobSpawnedByNpcTypeID(GUY_TYPE) ) then
 
 				local mob = eq.unique_spawn(BOSS_TYPE, 0, 0, -445, -1284, 323, 0);
@@ -137,7 +137,7 @@ function SwirlingDeath(e)
 	if ( not found ) then
 		return;
 	end
-	
+
 	moveX, moveY, moveZ = e.self:GetX(), e.self:GetY(), e.self:GetZ();
 	eq.signal(CONTROLLER_TYPE, 1);
 end
@@ -150,7 +150,6 @@ end
 function BossDeathComplete(e)
 	eq.unique_spawn(AVATAR_TYPE, 0, 0, 1396, -680, 18, 0);
 	eq.depop_with_timer(GUY_TYPE);
-	eq.csr_notice(string.format("PoAir An Elemental Masterpiece slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function AvatarSpawn(e)
@@ -170,7 +169,7 @@ end
 
 function BossTimer(e)
 	if ( e.timer == "drophate") then
-	
+
 		if ( math.random() < 0.016666 ) then -- averages to once per 60 seconds
 			e.self:WipeHateList();
 			eq.debug(e.self:GetName().." hate list wiped", 2);
@@ -180,7 +179,7 @@ end
 
 function AvatarTimer(e)
 	if ( e.timer == "drophate") then
-	
+
 		if ( math.random() < 0.016666 ) then -- averages to once per 60 seconds
 			local target = e.self:GetTarget();
 			if ( target and target.valid ) then
@@ -188,10 +187,9 @@ function AvatarTimer(e)
 			end
 			eq.debug(e.self:GetName().." dropped target from hate list ("..target:GetName()..")", 2);
 		end
-		
+
 	elseif ( e.timer == "depop") then
 		eq.depop();
-		eq.csr_notice("PoAir Avatar of Smoke despawned");
 	end
 end
 
@@ -207,7 +205,7 @@ function event_encounter_load(e)
 	eq.register_npc_event("Smoke", Event.death, CHAMPION2_TYPE, ChampionDeath);
 	eq.register_npc_event("Smoke", Event.death, CHAMPION3_TYPE, ChampionDeath);
 	eq.register_npc_event("Smoke", Event.death, CHAMPION4_TYPE, ChampionDeath);
-	
+
 	eq.register_npc_event("Smoke", Event.death_complete, BOSS_TYPE, BossDeathComplete);
 	eq.register_npc_event("Smoke", Event.combat, BOSS_TYPE, AvatarCombat);
 	eq.register_npc_event("Smoke", Event.timer, BOSS_TYPE, BossTimer);

@@ -24,20 +24,19 @@ function event_say(e)
 end
 
 ---@param e NPCEventTrade
----@param e NPCEventTrade
 function event_trade(e)
 	local item_lib = require("items");
 
 	if(item_lib.check_turn_in(e.self, e.trade, {item1 = 29216,item2 = 29217,item3 = 29218,item4 = 29219})) then
-	
+
 		if ( e.other:GetFaction(e.self) <= 4 ) then
 
 			e.self:Say("What's this? Four pieces of a Diaku Emblem? Why ever would you give these to me? Well I think I can get them to fit back together. You know, while you have this, I would be quite happy if you would avenge the loss of my dear ship and kill every Diaku you find? Yes that would be very good indeed. Here is your key, and a key for all your companions as well.");
 			e.other:Faction(e.self,1609,5); -- Askr the Lost
 			e.other:Faction(e.self,1618,5); -- Storm Guardians
-			
+
 			--[[ note: this quest (and the others) adding keys to the entire group was added in the April 8 2003 patch
-			
+
 			local group = e.other:GetGroup();
 			if ( group and group:GroupCount() > 0 ) then
 				for i = 0, 5 do
@@ -50,7 +49,7 @@ function event_trade(e)
 			else
 			]]
 				e.other:QuestReward(e.self,{itemid = 29215,exp = 150000});
-			--end			
+			--end
 		else
 			e.self:Say("You need to prove your dedication to our cause before I can discuss such matters with you.");
 		end

@@ -40,9 +40,9 @@ end
 function event_signal(e)
 
 	if ( e.signal == 1 ) then		-- new instance started
-		
+
 		local charID, dialNum, raidID, instanceID = Unpacket(e.data, true);
-		
+
 		if ( raidID and instanceID ) then
 			eq.debug("Plane of Time instance started.  Raid ID: "..raidID..";  instanceID: "..instanceID);
 			activeRaidID = raidID;
@@ -55,27 +55,28 @@ function event_signal(e)
 			block = false;
 			eq.stop_timer("unblock");
 			--eq.zone_emote(0, "The portal flashes briefly, then glows steadily.");
-			
+
 			-- send instance starter inside
 			e.signal = 3;
 			event_signal(e);
 			return;
 		end
-	
+
 	elseif ( e.signal == 2 ) then			-- instance expired
-		
+
 		activePhase = -1;
 		eq.set_timer("cooldown", 120000);
 		eq.signal(POTIMEB_CONTROLLER_TYPE, 2);	-- send confirm
 		eq.debug("Plane of Time instance expired.");
-	
+
 	elseif ( e.signal == 3 ) then			-- player clicked dial; sent from dial
-	
+
 		if ( not e.data or block ) then
 			return;
 		end
-		
-		local charID, dialNum, raidID, instanceID = Unpacket(e.data, true);		
+
+		local charID, dialNum, raidID, instanceID = Unpacket(e.data, true);
+---@diagnostic disable-next-line: param-type-mismatch
 		local client = eq.get_entity_list():GetClientByCharID(charID);
 		local charName = client:GetName();
 		eq.debug("client clicked dial.  charID: "..charID.." ("..charName..");  dialNum: "..dialNum..";  raidID: "..raidID..";  instanceID: "..instanceID);
@@ -91,16 +92,16 @@ function event_signal(e)
 			eq.signal(POTIMEB_CONTROLLER_TYPE, 1, 0, e.data..";"..charName);
 			block = true;	-- block signals until the instance is started
 			eq.set_timer("unblock", 60000); -- in case signals are lost somehow
-			
+
 		elseif ( activeRaidID ~= raidID ) then
 			-- player is in the wrong raid
 			-- note: this text is not what Sony used.  I don't have a log of what they used so made this up
 			client:Message(0, "The portal glows momentarily before fading.  You see a brief vision of unfamiliar warriors in a great battle against the gods.");
-		
-		
+
+
 		elseif ( instanceID > 0 and activeInstanceID ~= instanceID ) then
 			-- player is saved to an instance that is not the same as the active instance
-			
+
 			local qglobals = eq.get_qglobals(POTIMEB_CONTROLLER_TYPE, 223);
 			local instanceTimers = qglobals["time_timers_"..instanceID];
 			local instanceExpired = true;
@@ -116,7 +117,7 @@ function event_signal(e)
 			else
 				eq.debug(client:GetName().."'s saved instance ("..instanceID..") does not exist.  Allowing entry.");
 			end
-			
+
 			if ( instanceExpired and instanceTimers ) then
 				eq.debug(client:GetName().."'s saved instance ("..instanceID..") has expired timers.  Allowing player to switch instances.");
 			end
@@ -133,7 +134,7 @@ function event_signal(e)
 			end
 
 		elseif ( (instanceID == activeInstanceID or instanceID == 0) and raidID == activeRaidID ) then
-			
+
 			local p2reject;
 			if ( activePhase == 2 ) then
 				if ( dialNum < 3 ) then
@@ -148,14 +149,14 @@ function event_signal(e)
 					if ( trialRaiders[7] >= 18 ) then
 						p2reject = true;
 					end
-				end				
+				end
 			end
-			
+
 			if ( numRaiders >= 60 or (activePhase == 1 and trialRaiders[dialNum] >= 18) or p2reject ) then
 				client:Message(0, "The energy has been drained from this portal.  You must wait before you can use it.");
 			else
 				client:Message(0, "The portal glows and the mists of time swirl around you.");
-				
+
 				-- keep track of how many people get in
 				if ( activePhase == 1 ) then
 					trialRaiders[dialNum] = trialRaiders[dialNum] + 1;
@@ -168,7 +169,7 @@ function event_signal(e)
 						trialRaiders[8] = trialRaiders[8] + 1;
 					end
 				end
-				
+
 				-- remove run speed buffs if quarm engaged
 				if ( activePhase == 6 and quarmState > 1 and quarmState < 5 ) then
 					for _, id in ipairs(RUN_SPEED_BUFFS) do
@@ -177,7 +178,7 @@ function event_signal(e)
 				end
 
 				eq.signal(POTIMEB_CONTROLLER_TYPE, 3, 0, client:CharacterID()..";"..dialNum);
-				
+
 				local loc = TRIAL_TELEPORTS[dialNum];
 				if ( PHASE_LOCS[activePhase] ) then
 					loc = PHASE_LOCS[activePhase];
@@ -186,24 +187,25 @@ function event_signal(e)
 				client:MovePC(TIMEB_ZONEID, loc[1], loc[2], loc[3], loc[4]);
 			end
 		end
-		
+
 	elseif ( e.signal == 4 ) then		-- zone state update / phase change
-	
+
 		if ( not e.data ) then
 			return;
 		end
 
+---@diagnostic disable-next-line: cast-local-type
 		activeRaidID, activeInstanceID, activePhase = Unpacket(e.data, true);
-		
+
 		eq.debug("PoTimeB (instance ID "..activeInstanceID.."; raid ID "..activeRaidID..") active phase is now "..activePhase);
 		eq.signal(POTIMEB_CONTROLLER_TYPE, 2);	-- send confirm
 		block = false;
-	
+
 	elseif ( e.signal == 5 ) then		-- periodic player counts
 
 		local oldCount = numRaiders;
 		local counts = Unpacket(e.data, true, true);
-		
+
 		if ( not playerZoned ) then
 			-- use PoTimeB numbers if nobody has zoned since last update.  doing this because if people zone over right before
 			-- TimeB reports counts, then they can be off due to zoning delay
@@ -218,8 +220,8 @@ function event_signal(e)
 			end
 			numRaiders = trialRaiders[9];
 		end
-		playerZoned = false;		
-		
+		playerZoned = false;
+
 		if ( oldCount ~= numRaiders ) then
 			if ( activePhase == 1 ) then
 				eq.debug("Active Raiders: "..numRaiders.."  --  Earth: "..trialRaiders[1]..";  Air: "..trialRaiders[2]..";  Undead: "..trialRaiders[3]..";  Water: "..trialRaiders[4]..";  Fire: "..trialRaiders[5]);
@@ -229,7 +231,7 @@ function event_signal(e)
 				eq.debug("Active Raiders: "..numRaiders);
 			end
 		end
-		
+
 	elseif ( e.signal == 6 ) then			-- Quarm state
 
 		if ( not e.data ) then
@@ -243,7 +245,7 @@ function event_signal(e)
 		else
 			eq.debug("Quarm state is now "..quarmState);
 		end
-		
+
 	elseif ( e.signal == 7 ) then			-- PoTimeB zone reset
 		ResetZone();
 		eq.debug("PoTimeB script reset");

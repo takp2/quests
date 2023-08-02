@@ -21,7 +21,7 @@ function Phase6Signal(e)
 		quarmState = 1;
 		local quarm = eq.spawn2(QUARM_TYPE, 0, 0, -401, -1106, 22, 64);
 		SetQuarmStats(quarm:CastToNPC());
-		quarmMoved = false;		
+		quarmMoved = false;
 		eq.spawn2(EGG_TYPE, 0, 0, -579, -1119, 60, 64);
 		eq.signal(POTIMEA_CONTROLLER_TYPE, 6, 0, tostring(quarmState));
 	end
@@ -30,7 +30,7 @@ end
 function QuarmSignal(e)
 	if ( not quarmMoved ) then
 		quarmMoved = true;
-		e.self:CastToNPC():MoveTo(42, -1126, 32, -1, false); -- not precise loc		
+		e.self:CastToNPC():MoveTo(42, -1126, 32, -1, false); -- not precise loc
 	end
 end
 
@@ -62,9 +62,9 @@ function SetQuarmStats(npc)
 end
 
 function SpawnVortices(quarm)
-		
+
 	eq.depop_all(VORTEX_TYPE);
-	
+
 	-- spawn two near quarm
 	local x, y, z = quarm:GetX(), quarm:GetY(), quarm:GetZ();
 	local mob;
@@ -95,7 +95,7 @@ function SpawnVortices(quarm)
 			end
 		end
 	end
-	
+
 	if ( #clients > 0 ) then
 		c = clients[math.random(1, #clients)];
 		mob = eq.spawn2(VORTEX_TYPE, 0, 0, c:GetX(), c:GetY(), c:GetZ()+10, 0);
@@ -114,13 +114,13 @@ end
 
 function VortexTimer(e)
 	if ( e.timer == "blur" ) then
-	
+
 		local target = e.self:GetTarget();
 		if ( target and target.valid ) then
 			e.self:RemoveFromHateList(target);
 		end
-		
-		local list = e.self:GetHateList();		
+
+		local list = e.self:GetHateList();
 		for ent in list.entries do
 			e.self:SetHate(ent.ent, 1);
 		end
@@ -135,7 +135,7 @@ function QuarmHP(e)
 		e.self:SendIllusionPacket({race=304,gender=2,texture=254,helmtexture=1,size=70});
 		phaseSpell = 2380; -- Drakeen Vortex; this is a revemped ST spell that I modified to mimic Quarm's 3k cold AoE
 		spellCount = 1;
-		
+
 	elseif ( e.hp_event > 40 ) then
 		eq.set_next_hp_event(math.random(23, 27));
 		quarmState = 3;
@@ -143,7 +143,7 @@ function QuarmHP(e)
 		e.self:SendIllusionPacket({race=304,gender=2,texture=254,helmtexture=2,size=70});
 		phaseSpell = 3777; -- Timeforged Airblast III, 18 second AoE stun
 		spellCount = 1;
-		
+
 	elseif ( e.hp_event > 20 ) then
 		quarmState = 4;
 		eq.get_entity_list():MessageClose(e.self, true, 500, 0, "Quarm shakes the cavern with a bellow of pain as the white head explodes into a swirling vortex of ethereal energy!");
@@ -157,16 +157,15 @@ function QuarmHP(e)
 	eq.set_timer("aoe", 30000);
 	eq.stop_timer("cascade");
 	eq.signal(POTIMEA_CONTROLLER_TYPE, 6, 0, tostring(quarmState));
-	
+
 	eq.debug("PoTime Quarm state is now "..quarmState);
-	eq.csr_notice("PoTime Quarm state is now "..quarmState);
 end
 
 function DoQuarmAOE(quarm)
 	local rng = math.random(1, 3);
-	
+
 	if ( quarmState == 1 ) then
-	
+
 		if ( rng == 1 ) then
 			-- AK's Quarm spam casted these spells because they were in place of the real spells and these had no recast timers on them
 			-- So doing this to kind-of mimic it.  Have to do something like this anyway because we only have a few spells we can use
@@ -178,9 +177,9 @@ function DoQuarmAOE(quarm)
 		else
 			quarm:CastSpell(eq.ChooseRandom(3767, 3768), quarm:GetID()); -- Epoch Conviction (curse), Infernal Flames (3k fire damage)
 		end
-		
+
 	elseif ( quarmState == 2 ) then
-	
+
 		if ( rng == 1 ) then
 			quarm:CastSpell(eq.ChooseRandom(3780, 3769), quarm:GetID()); -- Dissention of Water II (450 dmg+atk debuff), Glacier Breath (100 dmg+20% snare)
 			eq.set_timer("cascade", 2000);
@@ -190,9 +189,9 @@ function DoQuarmAOE(quarm)
 		else
 			quarm:CastSpell(eq.ChooseRandom(3767, 2380), quarm:GetID()); -- Epoch Conviction, Drakeen Vortex (3k cold damage)
 		end
-		
+
 	elseif ( quarmState == 3 ) then
-		
+
 		if ( rng == 1 ) then
 			quarm:CastSpell(3775, quarm:GetID()); -- Timeforged Airblast I (6 second stun, somewhat easily resisted)
 			eq.set_timer("cascade", 2000);
@@ -202,7 +201,7 @@ function DoQuarmAOE(quarm)
 		else
 			quarm:CastSpell(eq.ChooseRandom(3767, 3772), quarm:GetID()); -- Epoch Conviction, Earthen Collaboration II (poison)
 		end
-		
+
 	elseif ( quarmState == 4 ) then
 
 		if ( rng == 1 ) then
@@ -226,24 +225,24 @@ function QuarmTimer(e)
 			end
 			eq.stop_timer(e.timer);
 		end
-		
+
 	elseif ( e.timer == "vortices" ) then
-	
+
 		SpawnVortices(e.self);
-	
+
 	elseif ( e.timer == "aoe" ) then
-	
+
 		DoQuarmAOE(e.self);
 		eq.set_timer("aoe", 25000+math.random(0, 8000));
-		
+
 	elseif ( e.timer == "phase_spell" or e.timer == "cascade" ) then
-	
+
 		if ( e.timer == "phase_spell" ) then
-			e.self:CastSpell(phaseSpell, e.self:GetID());		
+			e.self:CastSpell(phaseSpell, e.self:GetID());
 		else
 			e.self:CastSpell(eq.ChooseRandom(cascadeSpellOne, cascadeSpellTwo), e.self:GetID());
 		end
-		
+
 		spellCount = spellCount - 1;
 		if ( spellCount <= 0 ) then
 			eq.stop_timer(e.timer);
@@ -257,7 +256,6 @@ function QuarmDeath(e)
 		e.self:ClearItemList();
 		e.self:Depop();
 		eq.depop_all(corpseType);
-		eq.csr_notice("PoTime error: Quarm did not power up correctly.  state == "..quarmState);
 	end
 end
 
@@ -267,7 +265,6 @@ function QuarmDeathComplete(e)
 	local egg = eq.get_entity_list():GetMobByNpcTypeID(EGG_TYPE);
 	egg:SetSpecialAbility(35, 0); -- No Harm from Players off
 	egg:SetBodyType(7, false); -- NoTarget off
-	eq.csr_notice(string.format("PoTime Quarm slain by %s's raid <%s>", e.killer:GetName(), e.killer:CastToClient():GetGuildName()));
 end
 
 function EggDeathComplete(e)
@@ -281,14 +278,14 @@ end
 
 function ZebuxorukTimer(e)
 	eq.stop_timer(e.timer);
-	
+
 	if ( e.timer == "dialog2" ) then
 		e.self:Say("I am surprised at the gods for taking such drastic measures, though I suppose all of the creations of the Nameless are capable of displaying poor judgment and irrational behavior.  These gods are burdened with powers and responsibilities beyond our comprehension, yet at times even they do not understand the eventual effect of their actions.  I am compelled to share the knowledge of the gods with the populace of Norrath, so that I might save their creations.  They do not realize that if mortality ceases to exist... if they are not worshipped and held aloft by the beliefs of those that they now have grown to fear... they will fall from power and a new age of darkness will wash over existence as they know it.  I did not seek to interfere with them or their realms, only to free them from a fate that awaits all of us.  It is this fate that now stands ready, greedily gathered on the edge of the void, ready to test the will of all mortals.");
 		eq.set_timer("move", 28000);
-		
+
 	elseif ( e.timer == "move" ) then
 		e.self:MoveTo(-295, -1120, 0, 64, true);	-- not precise loc
-		
+
 	elseif ( e.timer == "dialog5" ) then
 		e.self:Say("Druzzil, I have missed you.  Wasn't it you that taught me in your own realm to seek knowledge and share it in all forms?");
 	end
@@ -308,31 +305,31 @@ end
 
 function DruzzilTimer(e)
 	eq.stop_timer(e.timer);
-	
+
 	if ( e.timer == "dialog4" ) then
 		e.self:Emote("speaks with no movement of her mouth.  Her thoughts flow through you, calming you as you begin to comprehend what she is trying to communicate to you.");
 		e.self:Emote("speaks to your mind, 'Zebuxoruk, my student I cannot allow this to happen.  If you were to escape from another prison the will and power of the gods will have been compromised.'");
 		eq.set_timer("dialog6", 12000);
-	
+
 	elseif ( e.timer == "dialog6" ) then
 		e.self:Emote("speaks to your mind, 'That I did, but I also taught you not to share your wealth of knowledge if it would affect the fate of others.  I cannot allow this to happen.  I must set things back to how they were before you and these mortals arrived here, I believe that you cannot understand this and I am sorry.'");
 		eq.set_timer("dialog7", 6000);
-	
+
 	elseif ( e.timer == "dialog7" ) then
 		e.self:Emote("looks upon Zebuxoruk one last time, as a wave of sadness comes across her gentle face.");
 		eq.set_timer("dialog8", 6000);
-		
+
 	elseif ( e.timer == "dialog8" ) then
 		e.self:Emote("begins to chant an incantation; mana flows out from her body in all directions.  Things begin moving slowly in reverse.  You become dizzy from the experience and fall to your knees.  As you look up the last thing you can see is Druzzil Ro smiling in your direction.  She then waves her arms gracefully and points at you.");
 		eq.set_timer("dialog9", 6000);
-		
+
 	elseif ( e.timer == "dialog9" ) then
 		eq.get_entity_list():MessageClose(e.self, true, 500, 0, "There is a brilliant flash and you find yourself displaced through time and space.  For a moment you lose touch with yourself.  As you wake, you find yourself back in the Plane of Knowledge, moments after talking to Maelin with the information of retrieving the Quintessence of Elements.  Druzzil has preserved the timeline, and restored existence back to its normalcy.");
 		eq.set_timer("port", 2000);
-		
+
 	elseif ( e.timer == "port" ) then
 		eq.set_timer("depop", 10000);
-		
+
 		local clientList = eq.get_entity_list():GetClientList();
 		if ( clientList ) then
 			for client in clientList.entries do
@@ -341,7 +338,7 @@ function DruzzilTimer(e)
 				end
 			end
 		end
-		
+
 	elseif ( e.timer == "depop" ) then
 		eq.depop_all(ZEBUXORUK_TYPE);
 		eq.depop_all(DRUZZIL_TYPE);
@@ -367,6 +364,6 @@ function event_encounter_load(e)
 	eq.register_npc_event("Phase6", Event.waypoint_arrive, ZEBUXORUK_TYPE, ZebuxorukWaypointArrive);
 	eq.register_npc_event("Phase6", Event.spawn, DRUZZIL_TYPE, DruzzilSpawn);
 	eq.register_npc_event("Phase6", Event.timer, DRUZZIL_TYPE, DruzzilTimer);
-	
+
 	eq.signal(POTIMEA_CONTROLLER_TYPE, 7); -- tell PoTimeA that PoTimeB was reset in case zone B crashes
 end

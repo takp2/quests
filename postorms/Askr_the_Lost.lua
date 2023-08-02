@@ -19,7 +19,7 @@ local RESPONSES = {
 	"Askr looks over the remnants of the storm giants in his hands then looks up at you with a glimmer of hope in his eyes. 'Then it's true! You have the means to push back the scourge of giants... you must go forth to the Bastion of Thunder and finish there what you have started here. It is imperative that you clear the forces of giants from the Bastion so that order can be restored to the thunderous reaches beyond.'",
 	"Askr the Lost says 'To be honest, I cannot say that it is entirely possible, what with the ferocity of the giants and their reluctance to leave the lands they now inhabit. From what I do know, each of the Leaders of each tribe has one piece to allow entrance into the Bastion of Thunder. When two of these pieces are combined, they form an esoteric medallion that allows instant passage to the thunderous plains beyond. If you can find and seal two pieces of the medallion in this bag, I will be able to forge them into the medallion that will help you on your journey.'",
 	"",
-	"Askr the Lost says 'You have retrieved the pieces! You are well on your way to pushing forth on your quest to return balance to the plains of thunder. The most difficult part lies before you... deep in the heart of Mount Grenidor, there is a tempest that rages on eternally. It is there that you must present your medallion to the skies above to be transported to the citadel of thunderous might. Take the medallion and go forth, then deliver these storm giants to their creator!'",	
+	"Askr the Lost says 'You have retrieved the pieces! You are well on your way to pushing forth on your quest to return balance to the plains of thunder. The most difficult part lies before you... deep in the heart of Mount Grenidor, there is a tempest that rages on eternally. It is there that you must present your medallion to the skies above to be transported to the citadel of thunderous might. Take the medallion and go forth, then deliver these storm giants to their creator!'",
 	"Askr the Lost says 'A hearty welcome back to you, friend. You have the means to push back the scourge of giants... you must go forth to the Bastion of Thunder and finish there what you have started here. It is imperative that you clear the forces of giants from the Bastion so that order can be restored to the thunderous reaches beyond.'",
 	"Askr the Lost says 'You have returned to me, but for what purpose? You already have the way to the Bastion of Thunder, so please make haste there and rid the Bastion of those horrid storm giants! Only then may the balance that once ruled over these thunderous lands return to its rightful place.'",
 	"Askr points drunkenly towards the exit of the cave. 'Have you not seen the foul denizens of destruction outside? Hrmph! Going everywhere they please, pillaging, plundering... I'm lucky to have survived this long. Bah, it doesn't matter, there's nothing that anyone can do to stop them, and that is why I'm still stuck here with my *hic* potions.'",
@@ -32,14 +32,14 @@ local RESPONSES = {
 function event_timer(e)
 	-- periodocally check if players have left the zone, then clear their quest status if so
 	if ( e.timer == "checkreset" ) then
-	
+
 		local mob;
 		local elist = eq.get_entity_list();
-		
+
 		for name, id in pairs(stateTable) do
-		
+
 			mob = elist:GetClientByName(name);
-			
+
 			if ( not mob or not mob.valid ) then
 				stateTable[name] = nil;
 				entries = entries - 1;
@@ -56,15 +56,15 @@ end
 function GetState(name, karana)
 
 	local state = 1;
-	
+
 	if ( not stateTable[name] ) then
 		stateTable[name] = state;
-		
+
 		if ( entries == 0 ) then
 			eq.set_timer("checkreset", 15000);
 			--eq.debug("memory timer started for Askr the Lost", 3);
 		end
-		entries = entries + 1;		
+		entries = entries + 1;
 	end
 	return stateTable[name];
 end
@@ -85,9 +85,9 @@ function event_say(e)
 	local state = GetState(name, karana);
 
 	if ( karana == 0 ) then
-	
+
 		if ( e.message:findi("hail") ) then
-		
+
 			if ( headTable[name] ) then
 				e.other:Message(0, RESPONSES[18]);
 				state = 8;
@@ -98,28 +98,28 @@ function event_say(e)
 				e.other:Message(0, RESPONSES[state]);
 				SetState(name, state + 1);
 			end
-			
+
 		elseif ( e.message:findi("massive problem") ) then
 			e.other:Message(0, RESPONSES[17]);
-			
+
 		elseif ( e.message:findi("it was me") ) then
 			if ( state == 6 ) then
 				e.other:Message(0, RESPONSES[state]);
 				SetState(name, state + 1);
 			end
-		
+
 		elseif ( e.message:findi("paying attention") ) then
 			if ( state == 7 ) then
 				e.other:Message(0, RESPONSES[state]);
 				SetState(name, state + 1);
 			end
-			
+
 		elseif ( e.message:findi("yes") ) then
 			if ( state == 6 or state == 7 ) then
 				e.other:Message(0, RESPONSES[state]);
 				SetState(name, state + 1);
 			end
-		
+
 		elseif ( e.message:findi("continue") ) then
 			if ( state == 8 or state == 9 ) then
 				e.other:Message(0, RESPONSES[state]);
@@ -131,49 +131,48 @@ function event_say(e)
 				e.other:Message(0, RESPONSES[19]);
 			end
 		end
-		
+
 	elseif ( karana == 1 ) then
-	
-		if ( e.message:findi("hail") ) then		
+
+		if ( e.message:findi("hail") ) then
 			e.other:Message(0, RESPONSES[15]);
-			
+
 		elseif ( e.message:findi("bastion of thunder") ) then
 			e.other:Message(0, RESPONSES[12]);
 			e.other:SummonCursorItem(17192); -- Askr's Bag of Verity
 			SetState(name, state + 1);
 		end
-	
+
 	elseif ( karana >= 2 ) then
-	
-		if ( e.message:findi("hail") ) then		
+
+		if ( e.message:findi("hail") ) then
 			e.other:Message(0, RESPONSES[16]);
 		end
-	
+
 	end
-	
+
 end
 
----@param e NPCEventTrade
 ---@param e NPCEventTrade
 function event_trade(e)
 	local karana = tonumber(eq.get_qglobals(e.other).karana or 0);
 	local item_lib = require("items");
-	
+
 	if ( item_lib.check_turn_in(e.self, e.trade, { item1 = 28749 }) -- wind giant head
 		or item_lib.check_turn_in(e.self, e.trade, { item1 = 28781 }) -- desert giant head
 		or item_lib.check_turn_in(e.self, e.trade, { item1 = 28782 }) -- forest giant head
 	) then
-	
+
 		e.other:Message(0, RESPONSES[5]);
 		e.other:QuestReward(e.self, 0, 0, 0, 0, 0, 1);
 		e.other:SummonCursorItem(11486); -- returns a 'Storm Giant Head' that doesn't work for turn-in
 		SetState(e.other:GetName(), 6);
 		headTable[e.other:GetName()] = true;
 	end
-	
+
 	if ( item_lib.check_turn_in(e.self, e.trade, { item1 = 11487 }) ) then -- Askr's Sealed Bag of Verity
-	
-		if ( karana == 0 ) then		
+
+		if ( karana == 0 ) then
 			e.other:Message(0, RESPONSES[11]);
 			e.other:QuestReward(e.self, 0, 0, 0, 0, 0, 1000);
 			eq.set_global("karana", "1", 5, "F");
@@ -181,10 +180,10 @@ function event_trade(e)
 			SetState(e.other:GetName(), 12);
 		end
 	end
-	
+
 	if ( item_lib.check_turn_in(e.self, e.trade, { item1 = 11488 }) ) then -- Esoteric Meld
-	
-		if ( karana == 1 ) then		
+
+		if ( karana == 1 ) then
 			e.other:QuestReward(e.self, 0, 0, 0, 0, 0, 10000);
 			eq.set_global("karana", "2", 5, "F");
 			e.other:Message(15, "The mystical medallion given to you by Askr settles around your neck and then disappears into nothingness. There is no call for alarm, for the medallion is now a part of your soul.");
@@ -195,6 +194,6 @@ function event_trade(e)
 			e.other:SummonCursorItem(11488);
 		end
 	end
-	
+
 	item_lib.return_items(e.self, e.other, e.trade);
 end
